@@ -7,8 +7,6 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 
 public class root_tc_CADSEg extends GTCadseTestCase {
 
