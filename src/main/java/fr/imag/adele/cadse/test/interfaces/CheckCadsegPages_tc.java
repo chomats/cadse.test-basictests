@@ -28,6 +28,7 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	protected GTTreePath cadse_model = new GTTreePath(cadse_name);
 	protected GTTreePath build_model = cadse_model.concat(CadseDefinitionManager.BUILD_MODEL);
 	protected GTTreePath data_model  = cadse_model.concat(CadseDefinitionManager.DATA_MODEL);
+	protected GTTreePath mapping  = cadse_model.concat(CadseDefinitionManager.MAPPING);
 	protected GTTreePath it_mit  = data_model.concat(item_type_name);
 	
 	/**
@@ -58,7 +59,7 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_ICON_", "ITEM_TYPE_at_PACKAGE_NAME_", "ITEM_TYPE_at_ITEM_FACTORY_", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_INSTANCE_HIDDEN_", "ITEM_TYPE_at_IS_META_ITEM_TYPE_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_"};
 		itemCreationTest(data_model, GTCadseRTConstants.CONTEXTMENU_NEW_ITEM_TYPE, item_type_name ,CadseGCST.ITEM_TYPE, expected_creationCST, expected_modifCST);
 	}
-	
+		
 	@Test
 	public void test_Boolean_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_"};
@@ -114,7 +115,14 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_FINAL_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_REQUIRE_", "ATTRIBUTE_at_TRANSIENT_"};
 		itemCreationTest(it_mit, "Enum", "my_enum", CadseGCST.ENUM, expected_creationCST, expected_modifCST);
 	}
-
+	
+	@Test
+	public void test_Manager() throws Exception {
+		/* FIXME MANAGER_at_HUMAN_NAME_ should be removed soon from the modification page */
+		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "MANAGER_at_HUMAN_NAME_"};;
+		checkModificationPage(mapping.concat(item_type_name + "-manager"), "Manager", "Manager", expected_modifCST);
+	}
+	
 	/**
 	 * Attribute creation test.
 	 * 
