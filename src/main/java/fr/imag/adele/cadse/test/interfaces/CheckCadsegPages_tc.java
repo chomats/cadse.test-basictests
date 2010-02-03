@@ -19,7 +19,7 @@ import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 
 
 /**
- * Performs the official simple tutorial
+ * Checks whereas the creation and modification pages have the correct layout.
  */
 public class CheckCadsegPages_tc extends GTCadseTestCase {
 
@@ -140,6 +140,9 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 		
 		// Attribute creation and creation page checking
 		GTTreePath completePath = checkCreationPage(path, attributeTypeName, attributeName, itConstant, expected_creationCST);
+		
+		// The creation process shouldn't have induced compilation error/
+		checkCompilationErrors(workspaceView, cadse_model); 
 		
 		// Modification page
 		checkModificationPage(completePath, attributeTypeName, attributeTypeName, expected_modifCST);		
