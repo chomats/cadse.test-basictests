@@ -50,77 +50,77 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	public void test_CADSE_Definition() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_lt_EXTENDS"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_DEFINITION_at_CADSE_NAME_", "CADSE_at_DESCRIPTION_", "CADSE_DEFINITION_at_COMMENTARY_", "CADSE_DEFINITION_at_VENDOR_NAME_", "CADSE_DEFINITION_at_VERSION_CADSE_", "CADSE_at_ITEM_REPO_LOGIN_", "CADSE_at_ITEM_REPO_PASSWD_", "CADSE_at_ITEM_REPO_URL_", "CADSE_at_DEFAULT_CONTENT_REPO_URL_", "CADSE_DEFINITION_at_IMPORTS_", "CADSE_lt_EXTENDS"};
-		itemCreationTest(null, GTCadseRTConstants.CONTEXTMENU_NEW_CADSE_DEFINITION, cadse_name, CadseGCST.CADSE_DEFINITION, expected_creationCST, expected_modifCST);
+		itemCreationTest(null, cadse_name, CadseGCST.CADSE_DEFINITION, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_Item_Type() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_ICON_", "ITEM_TYPE_at_PACKAGE_NAME_", "ITEM_TYPE_at_ITEM_FACTORY_", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_INSTANCE_HIDDEN_", "ITEM_TYPE_at_IS_META_ITEM_TYPE_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_"};
-		itemCreationTest(data_model, GTCadseRTConstants.CONTEXTMENU_NEW_ITEM_TYPE, item_type_name ,CadseGCST.ITEM_TYPE, expected_creationCST, expected_modifCST);
+		itemCreationTest(data_model, item_type_name ,CadseGCST.ITEM_TYPE, expected_creationCST, expected_modifCST);
 	}
 		
 	@Test
 	public void test_Boolean_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_FINAL_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_REQUIRE_", "ATTRIBUTE_at_TRANSIENT_"};
-		itemCreationTest(it_mit, "Boolean", "my_boolean", CadseGCST.BOOLEAN, expected_creationCST, expected_modifCST);
+		itemCreationTest(it_mit, "my_boolean", CadseGCST.BOOLEAN, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_Double_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_FINAL_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_REQUIRE_", "ATTRIBUTE_at_TRANSIENT_"};
-		itemCreationTest(it_mit, "Double", "my_double", CadseGCST.DOUBLE, expected_creationCST, expected_modifCST);
+		itemCreationTest(it_mit, "my_double", CadseGCST.DOUBLE, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_Integer_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_FINAL_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_REQUIRE_", "ATTRIBUTE_at_TRANSIENT_"};
-		itemCreationTest(it_mit, "Integer", "my_integer", CadseGCST.INTEGER, expected_creationCST, expected_modifCST);
+		itemCreationTest(it_mit, "my_integer", CadseGCST.INTEGER, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_Long_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_FINAL_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_REQUIRE_", "ATTRIBUTE_at_TRANSIENT_"};
-		itemCreationTest(it_mit, "Long", "my_long", CadseGCST.LONG, expected_creationCST, expected_modifCST);
+		itemCreationTest(it_mit, "my_long", CadseGCST.LONG, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_String_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_FINAL_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_REQUIRE_", "ATTRIBUTE_at_TRANSIENT_", "STRING_at_NOT_EMPTY_"};
-		itemCreationTest(it_mit, "String", "my_string", CadseGCST.STRING, expected_creationCST, expected_modifCST);
+		itemCreationTest(it_mit, "my_string", CadseGCST.STRING, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_LinkType_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "LINK_TYPE_lt_DESTINATION", "LINK_TYPE_at_ANNOTATION_", "LINK_TYPE_at_AGGREGATION_", "LINK_TYPE_at_COMPOSITION_", "LINK_TYPE_at_PART_", "LINK_TYPE_at_REQUIRE_", "LINK_TYPE_at_MAPPING_", "LINK_TYPE_at_GROUP_", "LINK_TYPE_at_HIDDEN_", "LINK_TYPE_at_MIN_", "LINK_TYPE_at_MAX_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "LINK_TYPE_at_TWCOUPLED_", "LINK_TYPE_at_TWDEST_EVOL_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "LINK_TYPE_lt_SOURCE", "LINK_TYPE_lt_DESTINATION", "LINK_TYPE_lt_INVERSE_LINK", "LINK_TYPE_at_ANNOTATION_", "LINK_TYPE_at_AGGREGATION_", "LINK_TYPE_at_COMPOSITION_", "LINK_TYPE_at_PART_", "LINK_TYPE_at_REQUIRE_", "LINK_TYPE_at_MAPPING_", "LINK_TYPE_at_GROUP_", "LINK_TYPE_at_HIDDEN_", "LINK_TYPE_at_SELECTION_", "LINK_TYPE_at_LINK_MANAGER_", "LINK_TYPE_at_MIN_", "LINK_TYPE_at_MAX_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "LINK_TYPE_at_TWCOUPLED_", "LINK_TYPE_at_TWDEST_EVOL_", "ATTRIBUTE_at_TRANSIENT_"};
-		itemCreationTest(it_mit, "LinkType", "my_link_type", CadseGCST.LINK_TYPE, expected_creationCST, expected_modifCST);
+		itemCreationTest(it_mit, "my_link_type", CadseGCST.LINK_TYPE, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_Enum_Type() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ENUM_TYPE_at_VALUES_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ENUM_TYPE_at_JAVA_CLASS_", "ENUM_TYPE_at_MUST_BE_GENERATED_", "ENUM_TYPE_at_VALUES_"};		
-		itemCreationTest(data_model, "Enum type", "my_enum_type", CadseGCST.ENUM_TYPE, expected_creationCST, expected_modifCST);
+		itemCreationTest(data_model, "my_enum_type", CadseGCST.ENUM_TYPE, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_Enum_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_FINAL_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_REQUIRE_", "ATTRIBUTE_at_TRANSIENT_"};
-		itemCreationTest(it_mit, "Enum", "my_enum", CadseGCST.ENUM, expected_creationCST, expected_modifCST);
+		itemCreationTest(it_mit, "my_enum", CadseGCST.ENUM, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_Manager() throws Exception {
 		/* FIXME MANAGER_at_HUMAN_NAME_ should be removed soon from the modification page */
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "MANAGER_at_HUMAN_NAME_"};;
-		checkModificationPage(mapping.concat(item_type_name + "-manager"), "Manager", "Manager", expected_modifCST);
+		checkModificationPage(mapping.concat(item_type_name + "-manager"), CadseGCST.MANAGER, expected_modifCST);
 	}
 	
 	/**
@@ -135,34 +135,33 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	 * 
 	 * @throws WidgetNotFoundException the widget not found exception
 	 */
-	private void itemCreationTest(GTTreePath path, String attributeTypeName, String attributeName, ItemType itConstant, String[] expected_creationCST, String[] expected_modifCST)
+	private void itemCreationTest(GTTreePath path, String attributeName, ItemType itConstant, String[] expected_creationCST, String[] expected_modifCST)
 	throws WidgetNotFoundException {
 		
 		// Attribute creation and creation page checking
-		GTTreePath completePath = checkCreationPage(path, attributeTypeName, attributeName, itConstant, expected_creationCST);
+		GTTreePath completePath = checkCreationPage(path, attributeName, itConstant, expected_creationCST);
 		
 		// The creation process shouldn't have induced compilation error/
 		checkCompilationErrors(workspaceView, cadse_model); 
 		
 		// Modification page
-		checkModificationPage(completePath, attributeTypeName, attributeTypeName, expected_modifCST);		
+		checkModificationPage(completePath, itConstant, expected_modifCST);		
 	}
 	
 	/**
 	 * Creates an item and checks if the creation page displays the correct set of fields.
 	 * 
 	 * @param path                   The path in the workspace view used for item creation
-	 * @param attributeTypeName      The name of the type of attribute, in the contextual menu
 	 * @param attributeName          The name of the new attribute
 	 * @param itConstant             The ItemType constant of this attribute
 	 * @param expected_creationCST   The list of expected fields attributes constants.
 	 * 
 	 * @return the tree path to find the created item in the workspace view
 	 */
-	private GTTreePath checkCreationPage(GTTreePath path, String attributeTypeName, String attributeName, ItemType itConstant, String[] expected_creationCST)
+	private GTTreePath checkCreationPage(GTTreePath path, String attributeName, ItemType itConstant, String[] expected_creationCST)
 	{
 		// Creation
-		workspaceView.contextMenu(path, GTCadseRTConstants.CONTEXTMENU_NEW, attributeTypeName).click();
+		workspaceView.contextMenuNew(path, itConstant).click();
 		GTCadseShell shell = new GTCadseShell(itConstant);
 		String[] creationCST = GTCadseFactory.findCadseWorkbenchPart(shell).findAttributeConstants();
 	    String creationStr = getStringDef(shell);
@@ -206,8 +205,10 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	 * @param section    The section where to look for constants. Can be null.
 	 * @param expected   The list of expected fields attributes constants.
 	 */
-	private void checkModificationPage(GTTreePath path, String tab, String section, String[] expected)
+	private void checkModificationPage(GTTreePath path, ItemType itConstant, String[] expected)
 	{
+		String tab = tabLabel(itConstant);
+		String section = sectionLabel(itConstant);
 		
 		try {
 			// Selects node into the tree
