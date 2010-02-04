@@ -165,15 +165,15 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 		GTCadseShell shell = new GTCadseShell(itConstant);
 		String[] creationCST = GTCadseFactory.findCadseWorkbenchPart(shell).findAttributeConstants();
 	    String creationStr = getStringDef(shell);
-	    GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText(attributeName);
+	    GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText(attributeName);
 	    if (itConstant == CadseGCST.LINK_TYPE)
-	    	GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.LINK_TYPE_lt_DESTINATION).browser(cadse_name, CadseDefinitionManager.DATA_MODEL, item_type_name);
+	    	GTCadseFactory.findField(shell, CadseGCST.LINK_TYPE_lt_DESTINATION).browser(cadse_name, CadseDefinitionManager.DATA_MODEL, item_type_name);
 	    else if (itConstant == CadseGCST.CADSE_DEFINITION)
-	    	GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.myCadse");
+	    	GTCadseFactory.findField(shell, CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.myCadse");
 	    else if (itConstant == CadseGCST.ENUM_TYPE)
-	    	GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ENUM_TYPE_at_VALUES_).add("one", "two", "three");
+	    	GTCadseFactory.findField(shell, CadseGCST.ENUM_TYPE_at_VALUES_).add("one", "two", "three");
 	    else if (itConstant == CadseGCST.ENUM)
-	    	GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ENUM_lt_ENUM_TYPE).browser("my_enum_type");
+	    	GTCadseFactory.findField(shell, CadseGCST.ENUM_lt_ENUM_TYPE).browser("my_enum_type");
 	    shell.close();
 		
 	    // Compute complete path
