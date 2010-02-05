@@ -187,7 +187,7 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 		workspaceView.menu("refresh").click();
 	    
 	    // Assert item has been created
-	    workspaceView.findTree().selectNode(completePath);
+	    workspaceView.selectNode(completePath);
 	    
 	    
 		// Performs test
@@ -212,7 +212,7 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 		
 		try {
 			// Selects node into the tree
-			workspaceView.findTree().selectNode(path);
+			workspaceView.selectNode(path);
 			
 			// Displays property view
 			if (tab != null)
@@ -221,7 +221,7 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 				propertiesView.show();
 		} catch (Exception e) {
 			// Selects node into the tree
-			workspaceView.findTree().selectNode(path);
+			workspaceView.selectNode(path);
 			
 			// Displays property view
 			if (tab != null)
