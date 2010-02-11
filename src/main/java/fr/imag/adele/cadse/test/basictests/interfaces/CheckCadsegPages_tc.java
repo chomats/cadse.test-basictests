@@ -23,7 +23,7 @@ import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
  */
 public class CheckCadsegPages_tc extends GTCadseTestCase {
 
-	protected final String cadse_name = "my_CADSE";
+	protected final String cadse_name = "CADSE_interfaces";
 	protected final String item_type_name = "my_item_type";
 	protected GTTreePath cadse_model = new GTTreePath(cadse_name);
 	protected GTTreePath build_model = cadse_model.concat(CadseDefinitionManager.BUILD_MODEL);
