@@ -2,52 +2,30 @@ package fr.imag.adele.cadse.test.basictests.root;
 
 import org.junit.Test;
 
-import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.test.GTTestParameters;
 
 
 public class root_tc_execution extends GTCadseTestCase {
 
 	@Test
-	public void test_selection() throws Exception {
-
-		GTTestParameters.banner();
-		System.out.println("trace1");
-		GTTestParameters.banner();
-		
+	public void test_preparation() throws Exception {
 		selectCadses("Cadse Model.Workspace.CADSE_root");
 		welcomeView.close();
-		
-		GTTestParameters.banner();
-		System.out.println("trace2");
-		GTTestParameters.banner();
-
 	}
 	
 	
 	@Test
-	public void test_feature() throws Exception {
+	public void test_running() throws Exception {
 
-		GTTestParameters.banner();
-		System.out.println("trace3");
-		GTTestParameters.banner();
-
-		workspaceView.contextMenuNew("itR").click();
-		shell = new GTCadseShell("itR");
-		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("instance-itNrR");
-		shell.close();
-		workspaceView.selectNode(new GTTreePath("instance-itNrR"));
+		/* This items creation should be possible */
+		createBasicItem(workspaceView, null, "itR",   "itR",   "instance-itR",   new GTTreePath("instance-itR"));
+		createBasicItem(workspaceView, null, "itNrR", "itNrR", "instance-itNrR", new GTTreePath("instance-itNrR"));
+		createBasicItem(workspaceView, null, "itRR",  "itRR",  "instance-itRR",  new GTTreePath("instance-itRR"));
 		
-		//workspaceView.contextMenuNew("itNrR").click();
-		//workspaceView.contextMenuNew("itRR").click();
-				
-		while (true)
-			;
+		/* This items creation shouldn't be available */
+		assertItemCantbeCreated(workspaceView, null, "itNr",   3000);
+		assertItemCantbeCreated(workspaceView, null, "itNrNr", 3000);
+		assertItemCantbeCreated(workspaceView, null, "itRNr",  3000);
 	}
-	
-	
 }
