@@ -1,4 +1,5 @@
-package fr.imag.adele.cadse.test.basictests.root;
+package fr.imag.adele.cadse.test.basictests.isabstract;
+
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -10,11 +11,12 @@ import junit.framework.Test;
 
 @RunWith(Suite.class)
 @SuiteClasses(value={
-		root_tc_CADSEg.class
+		IsAbstract_tc_execution.class
 })
 
-public class root_ts_CADSEg {
+
+public class IsAbstract_ts_execution {
 	public static Test suite() {
-		return (Test) new JUnit4TestAdapter(root_ts_CADSEg.class);
+		return (Test) new JUnit4TestAdapter(IsAbstract_ts_execution.class);
 	}
 }

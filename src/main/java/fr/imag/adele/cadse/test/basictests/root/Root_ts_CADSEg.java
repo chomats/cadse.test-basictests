@@ -10,11 +10,11 @@ import junit.framework.Test;
 
 @RunWith(Suite.class)
 @SuiteClasses(value={
-		root_tc_execution.class
+		Root_tc_CADSEg.class
 })
 
-public class root_ts_execution {
+public class Root_ts_CADSEg {
 	public static Test suite() {
-		return (Test) new JUnit4TestAdapter(root_ts_execution.class);
+		return (Test) new JUnit4TestAdapter(Root_ts_CADSEg.class);
 	}
 }

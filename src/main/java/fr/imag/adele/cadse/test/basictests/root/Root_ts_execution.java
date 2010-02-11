@@ -1,5 +1,4 @@
-package fr.imag.adele.cadse.test.basictests.interfaces;
-
+package fr.imag.adele.cadse.test.basictests.root;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -11,11 +10,11 @@ import junit.framework.Test;
 
 @RunWith(Suite.class)
 @SuiteClasses(value={
-	CheckCadsegPages_tc.class
+		Root_tc_execution.class
 })
 
-public class CheckCadsegPages_ts {
+public class Root_ts_execution {
 	public static Test suite() {
-		return (Test) new JUnit4TestAdapter(CheckCadsegPages_ts.class);
+		return (Test) new JUnit4TestAdapter(Root_ts_execution.class);
 	}
 }

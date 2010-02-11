@@ -6,12 +6,14 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 
-public class root_tc_execution extends GTCadseTestCase {
+public class Root_tc_execution extends GTCadseTestCase {
 
 	@Test
 	public void test_preparation() throws Exception {
-		selectCadses("Cadse Model.Workspace.CADSE_root");
+		
+		selectCadses("Cadse Model.Workspace.CADSE_Root");
 		welcomeView.close();
+		workspaceView.show();
 	}
 	
 	

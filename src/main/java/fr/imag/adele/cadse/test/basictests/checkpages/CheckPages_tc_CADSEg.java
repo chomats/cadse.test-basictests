@@ -1,4 +1,4 @@
-package fr.imag.adele.cadse.test.basictests.interfaces;
+package fr.imag.adele.cadse.test.basictests.checkpages;
 
 import java.util.List;
 
@@ -21,9 +21,9 @@ import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 /**
  * Checks whereas the creation and modification pages have the correct layout.
  */
-public class CheckCadsegPages_tc extends GTCadseTestCase {
+public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 
-	protected final String cadse_name = "CADSE_interfaces";
+	protected final String cadse_name = "CADSE_CheckPages";
 	protected final String item_type_name = "my_item_type";
 	protected GTTreePath cadse_model = new GTTreePath(cadse_name);
 	protected GTTreePath build_model = cadse_model.concat(CadseDefinitionManager.BUILD_MODEL);
@@ -39,9 +39,7 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	@Test
 	public void test_selection() throws Exception {
 
-		shell = new GTCadseShell(GTCadseRTConstants.CADSE_SELECTOR_SHELL_TITLE);
-		shell.selectCadses(GTCadseRTConstants.CADSEG_MODEL);
-		shell.close();
+		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
 		welcomeView.close();
 		workspaceView.show();
 	}
