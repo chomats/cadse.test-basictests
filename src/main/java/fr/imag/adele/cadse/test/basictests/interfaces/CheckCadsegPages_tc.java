@@ -1,4 +1,4 @@
-package fr.imag.adele.cadse.test.interfaces;
+package fr.imag.adele.cadse.test.basictests.interfaces;
 
 import java.util.List;
 

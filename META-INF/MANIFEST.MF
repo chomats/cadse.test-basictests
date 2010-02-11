@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Export-Package: fr.imag.adele.cadse.test.interfaces;version="2.3.0";
+Export-Package: fr.imag.adele.cadse.test.basictests.interfaces;version="2.3.0";
   uses:="fr.imag.adele.graphictests.cadse.test,
    fr.imag.adele.graphictests.cadse.gtcadseworkbench_part,
    org.eclipse.swtbot.swt.finder.widgets,
@@ -13,7 +13,7 @@ Export-Package: fr.imag.adele.cadse.test.interfaces;version="2.3.0";
    junit.framework,
    org.junit.runners,
    org.junit.runner",
- fr.imag.adele.cadse.test.root;version="2.3.0";
+ fr.imag.adele.cadse.test.basictests.root;version="2.3.0";
   uses:="fr.imag.adele.graphictests.cadse.test,
    fr.imag.adele.graphictests.cadse.gtcadseworkbench_part,
    fr.imag.adele.graphictests.gttree,
@@ -32,12 +32,13 @@ Build-Jdk: 1.6.0_0
 Bundle-ManifestVersion: 2
 Import-Package: fr.imag.adele.cadse.core;version="2.3",
  fr.imag.adele.cadse.core.attribute;version="2.3",
- fr.imag.adele.cadse.test.interfaces;version="2.3",
- fr.imag.adele.cadse.test.root;version="2.3",
+ fr.imag.adele.cadse.test.basictests.interfaces;version="2.3",
+ fr.imag.adele.cadse.test.basictests.root;version="2.3",
  fr.imag.adele.graphictests.cadse.gtcadseworkbench_part;version="2.3",
  fr.imag.adele.graphictests.cadse.test;version="2.3",
  fr.imag.adele.graphictests.gttree;version="2.3",
  fr.imag.adele.graphictests.gtworkbench_part;version="2.3",
+ fr.imag.adele.graphictests.test;version="2.3.0",
  junit.framework,
  org.eclipse.swtbot.eclipse.finder.widgets,
  org.eclipse.swtbot.swt.finder.exceptions,

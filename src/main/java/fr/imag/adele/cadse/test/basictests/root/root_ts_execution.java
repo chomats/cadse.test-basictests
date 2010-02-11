@@ -1,4 +1,4 @@
-package fr.imag.adele.cadse.test.root;
+package fr.imag.adele.cadse.test.basictests.root;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -10,11 +10,11 @@ import junit.framework.Test;
 
 @RunWith(Suite.class)
 @SuiteClasses(value={
-		root_tc_CADSEg.class
+		root_tc_execution.class
 })
 
-public class root_ts_CADSEg {
+public class root_ts_execution {
 	public static Test suite() {
-		return (Test) new JUnit4TestAdapter(root_ts_CADSEg.class);
+		return (Test) new JUnit4TestAdapter(root_ts_execution.class);
 	}
 }

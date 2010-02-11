@@ -1,4 +1,4 @@
-package fr.imag.adele.cadse.test.root;
+package fr.imag.adele.cadse.test.basictests.root;
 
 import org.junit.Test;
 
