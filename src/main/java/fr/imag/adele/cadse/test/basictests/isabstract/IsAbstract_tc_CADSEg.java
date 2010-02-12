@@ -30,7 +30,7 @@ public class IsAbstract_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_item_creation() throws Exception {
 
-		// default values
+		// Default values
 		Boolean isRoot = true;
 		Boolean hasContent = null; // keep default
 		Boolean isHidden = false;
