@@ -68,7 +68,7 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_nosrc" + managerSufix), false, null, null);
 		
 		//  Java project content model Name template
-		createItemType(data_model, "javaproject_content_template1",   null, isAbstract, isRoot, true);
+		createItemType(data_model, "javaproject_content_template1", null, isAbstract, isRoot, true);
 		createItemType(data_model, "javaproject_content_template2", null, isAbstract, isRoot, true);
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_template1" + managerSufix), null, "${#qualified-name}_test", null);
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_template2" + managerSufix), null, "${#type-name}_test", null);

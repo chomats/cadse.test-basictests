@@ -35,9 +35,11 @@ public class HasContent_tc_execution extends GTCadseTestCase {
 		
 		//  Java project content model Name template
 		createBasicItem(workspaceView, null, "javaproject_content_template1", "javaproject_content_template1", "instance_template1", new GTTreePath("instance_template1"));
+		packageExplorerView.selectNode("instance_template1_test");
 		createBasicItem(workspaceView, null, "javaproject_content_template2", "javaproject_content_template2", "instance_template2", new GTTreePath("instance_template2"));
+		packageExplorerView.selectNode("javaproject_content_template2_test");
 
-
+		
 		// ======================= //
 		//                         //
 		// ======================= //
