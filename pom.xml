@@ -19,7 +19,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Export-Package>fr.imag.adele.cadse.test.root;version="${version.cadse}", fr.imag.adele.cadse.test.interfaces;version="${version.cadse}"</Export-Package>
+                        <Export-Package>fr.imag.adele.cadse.test.basictests*;version="${version.cadse}"</Export-Package>
                    </instructions>
                 </configuration>
             </plugin>

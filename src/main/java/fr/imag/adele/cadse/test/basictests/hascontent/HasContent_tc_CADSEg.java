@@ -3,6 +3,7 @@ package fr.imag.adele.cadse.test.basictests.hascontent;
 import org.junit.Test;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
+import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
@@ -78,17 +79,27 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		//                         //
 		// ======================= //
 
+		// Creates a java project content 
+		createItemType(data_model, "root_project", null, isAbstract, isRoot, true);
+		createJavaProjectContentModel(workspaceView, mapping_model.concat("root_project" + managerSufix), true,  null, null);
 		
-//		createItemType(data_model, "file_content",        null, isAbstract, isRoot, true);
-//		createItemType(data_model, "folder_content",      null, isAbstract, isRoot, true);
-//		createItemType(data_model, "javafile_content",    null, isAbstract, isRoot, true);
-//		createItemType(data_model, "javaproject_content", null, isAbstract, isRoot, true);
-
+		// File
+		createItemType(data_model, "file_content", null, isAbstract, isRoot, true);
+		createLinkType(data_model.concat("root_project"), "link_file", data_model.concat("file_content"), 0, -1, CadseGCST.LINK_TYPE_at_PART_, true);
+		createJavaFileContentModel(workspaceView, mapping_model.concat("file_content" + managerSufix), "/fic.txt", null);
 		
-
+		// Java file
+		// createItemType(data_model, "javafile_content",    null, isAbstract, isRoot, true);
+		
+		// Folder content
+		//createItemType(data_model, "folder_content",      null, isAbstract, isRoot, true);
 		
 		
-		//while (true);
+		while (true);
 	}
-
+	
+	@Test
+	public void test_check_compilation() throws Exception {
+		checkCompilationErrors(workspaceView, cadse_model);
+	}
 }

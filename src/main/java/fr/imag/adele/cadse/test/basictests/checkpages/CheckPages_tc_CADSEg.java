@@ -14,6 +14,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseWorkbenchPa
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
+import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.gtworkbench_part.GTWorkbenchPart;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 
@@ -50,6 +51,18 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_DEFINITION_at_CADSE_NAME_", "CADSE_at_DESCRIPTION_", "CADSE_DEFINITION_at_COMMENTARY_", "CADSE_DEFINITION_at_VENDOR_NAME_", "CADSE_DEFINITION_at_VERSION_CADSE_", "CADSE_at_ITEM_REPO_LOGIN_", "CADSE_at_ITEM_REPO_PASSWD_", "CADSE_at_ITEM_REPO_URL_", "CADSE_at_DEFAULT_CONTENT_REPO_URL_", "CADSE_DEFINITION_at_IMPORTS_", "CADSE_lt_EXTENDS"};
 		itemCreationTest(null, cadse_name, CadseGCST.CADSE_DEFINITION, expected_creationCST, expected_modifCST);
 	}
+	
+	@Test
+	public void test_JavaProjectContentModel() throws Exception {
+		String[] expected_creationCST = {"PROJECT_CONTENT_MODEL_at_PROJECT_NAME_", "JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
+		String[] expected_modifCST = {};
+		
+		createItemType(data_model, "mapping_javaProject", null, false, true, true);
+		checkCreationContentModel(expected_creationCST, null, null, mapping.concat("mapping_javaProject-manager"), "JavaProjectContentModel", null, null, null);
+		checkModificationPage(mapping.concat("mapping_javaProject-manager").concat("content-item"), CadseGCST.JAVA_PROJECT_CONTENT_MODEL, expected_modifCST);		
+	}
+
+	
 	
 	@Test
 	public void test_Item_Type() throws Exception {
@@ -119,6 +132,48 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		/* FIXME MANAGER_at_HUMAN_NAME_ should be removed soon from the modification page */
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "MANAGER_at_HUMAN_NAME_"};;
 		checkModificationPage(mapping.concat(item_type_name + "-manager"), CadseGCST.MANAGER, expected_modifCST);
+	}	
+	
+	
+	/**
+	 * Creates generic file content model.
+	 * 
+	 * @param view           The name of the view.
+	 * @param sourceNode     The path to the mapping entry of a specific item type.
+	 * @param extendsClass   The value of the extends class attribute. Null for default.
+	 * @param filePath       The path of the file which will be associated to the item
+	 * @param typeName       The name of the type to be created
+	 */
+	private void checkCreationContentModel(String[] expected_creationCST, Boolean hasSourceFolder, String projectName, GTTreePath sourceNode, String typeName, String filePath, String folderPath, Boolean extendsClass)
+	{
+		/* Creates content */
+		workspaceView.contextMenuNew(sourceNode, typeName).click();
+		GTShell shell = new GTShell(typeName);
+		String[] creationCST = GTCadseFactory.findCadseWorkbenchPart(shell).findAttributeConstants();
+	    String creationStr = getStringDef(shell);
+	    if (hasSourceFolder != null)
+			GTCadseFactory.findCadseField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(hasSourceFolder);
+		if (projectName != null && !projectName.isEmpty())
+			GTCadseFactory.findCadseField(shell, CadseGCST.PROJECT_CONTENT_MODEL_at_PROJECT_NAME_).typeText(projectName);
+		if (filePath != null && !filePath.isEmpty())
+			GTCadseFactory.findCadseField(shell, CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_).typeText(filePath);
+		if (folderPath != null && !folderPath.isEmpty())
+			GTCadseFactory.findCadseField(shell, CadseGCST.FOLDER_CONTENT_MODEL_at_FOLDER_PATH_).typeText(folderPath);
+		if (extendsClass != null)
+			GTCadseFactory.findCadseField(shell, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(extendsClass);
+		shell.close();
+		
+		/* Assert item has been displayed */
+		workspaceView.selectNode(sourceNode.concat("content-item"));
+		
+		// Performs test
+		if (attributesCSTEquals(creationCST, expected_creationCST) == false)
+			throw new WidgetNotFoundException("The workbench part doesn't contains expected attributes. Expected String : " + creationStr);
+	}
+	
+	@Test
+	public void test_check_compilation() throws Exception {
+		checkCompilationErrors(workspaceView, cadse_model);
 	}
 	
 	/**

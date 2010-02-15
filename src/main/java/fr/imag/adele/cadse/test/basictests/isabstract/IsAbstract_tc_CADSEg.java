@@ -55,4 +55,9 @@ public class IsAbstract_tc_CADSEg extends GTCadseTestCase {
 		createItemType(data_model, "itNaNa", data_model.concat("itNa"), false, isRoot, hasContent);
 		createString(data_model.concat("itNaNa"), "string_attribute_itNaNa", "default_value_itNaNa", isHidden, mustBeInitialized, isList);
 	}
+	
+	@Test
+	public void test_check_compilation() throws Exception {
+		checkCompilationErrors(workspaceView, cadse_model);
+	}
 }

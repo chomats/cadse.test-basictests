@@ -45,5 +45,10 @@ public class Root_tc_CADSEg extends GTCadseTestCase {
 		createItemType(data_model, "itRNr",  data_model.concat("itR"),  isAbstract, false, hasContent);
 		createItemType(data_model, "itNrR",  data_model.concat("itNr"), isAbstract, true,  hasContent);
 		createItemType(data_model, "itNrNr", data_model.concat("itNr"), isAbstract, false, hasContent);
-	}	
+	}
+	
+	@Test
+	public void test_check_compilation() throws Exception {
+		checkCompilationErrors(workspaceView, cadse_model);
+	}
 }
