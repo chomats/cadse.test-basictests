@@ -52,16 +52,20 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		itemCreationTest(null, cadse_name, CadseGCST.CADSE_DEFINITION, expected_creationCST, expected_modifCST);
 	}
 	
+	
+	
 	@Test
 	public void test_JavaProjectContentModel() throws Exception {
 		String[] expected_creationCST = {"PROJECT_CONTENT_MODEL_at_PROJECT_NAME_", "JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
-		String[] expected_modifCST = {};
+		String[] expected_modifCST =  {"PROJECT_CONTENT_MODEL_at_PROJECT_NAME_", "JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
 		
 		createItemType(data_model, "mapping_javaProject", null, false, true, true);
 		checkCreationContentModel(expected_creationCST, null, null, mapping.concat("mapping_javaProject-manager"), "JavaProjectContentModel", null, null, null);
 		checkModificationPage(mapping.concat("mapping_javaProject-manager").concat("content-item"), CadseGCST.JAVA_PROJECT_CONTENT_MODEL, expected_modifCST);		
 	}
 
+	
+	
 	
 	
 	@Test
