@@ -36,8 +36,10 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		String managerSufix = "-manager";
 		
 		// Default values
-		Boolean isAbstract = false;
-		Boolean isRoot = true;
+		Boolean notAbstract = false;
+		Boolean root = true;
+		Boolean withContent = true;
+		
 		String file_cm = "FileContentModel";
 		String folder_cm = "FolderContentModel";
 		String javaFile_cm = "JavaFileContentModel";
@@ -51,7 +53,7 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		// Item without content //
 		// ==================== //
 
-		createItemType(data_model, "no_content", null, isAbstract, isRoot, false);
+		createItemType(data_model, "no_content", null, notAbstract, root, false);
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), file_cm, 3000);
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), folder_cm, 3000);
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), javaFile_cm, 3000);
@@ -63,39 +65,51 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		// ======================= //
 		
 		// Java project content model with and without source folder
-		createItemType(data_model, "javaproject_content_src",   null, isAbstract, isRoot, true);
-		createItemType(data_model, "javaproject_content_nosrc", null, isAbstract, isRoot, true);
+		createItemType(data_model, "javaproject_content_src",   null, notAbstract, root, withContent);
+		createItemType(data_model, "javaproject_content_nosrc", null, notAbstract, root, withContent);
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_src" + managerSufix),   true,  null, null);
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_nosrc" + managerSufix), false, null, null);
 		
 		//  Java project content model Name template
-		createItemType(data_model, "javaproject_content_template1", null, isAbstract, isRoot, true);
-		createItemType(data_model, "javaproject_content_template2", null, isAbstract, isRoot, true);
+		createItemType(data_model, "javaproject_content_template1", null, notAbstract, root, withContent);
+		createItemType(data_model, "javaproject_content_template2", null, notAbstract, root, withContent);
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_template1" + managerSufix), null, "${#qualified-name}_test", null);
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_template2" + managerSufix), null, "${#type-name}_test", null);
 
 
-		// ======================= //
-		//                         //
-		// ======================= //
-
-		// Creates a java project content 
-		createItemType(data_model, "root_project", null, isAbstract, isRoot, true);
+		// =================== //
+		// Common root project //
+		// =================== //
+ 
+		createItemType(data_model, "root_project", null, notAbstract, root, withContent);
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("root_project" + managerSufix), true,  null, null);
 		
-		// File
-		createItemType(data_model, "file_content", null, isAbstract, isRoot, true);
-		createLinkType(data_model.concat("root_project"), "link_file", data_model.concat("file_content"), 0, -1, CadseGCST.LINK_TYPE_at_PART_, true);
-		createJavaFileContentModel(workspaceView, mapping_model.concat("file_content" + managerSufix), "/fic.txt", null);
 		
-		// Java file
-		// createItemType(data_model, "javafile_content",    null, isAbstract, isRoot, true);
+		// ================ //
+		// FileContentModel //
+		// ================ //
 		
-		// Folder content
-		//createItemType(data_model, "folder_content",      null, isAbstract, isRoot, true);
+		createItemType(data_model, "file_content", null, notAbstract, false, withContent);
+		createLinkType(data_model.concat("root_project"), "link_file", data_model.concat("file_content"), "0", "unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
+		createFileContentModel(workspaceView, mapping_model.concat("file_content" + managerSufix), "/${#short-name}.txt", null);
+
 		
+		// ================== //
+		// FolderContentModel //
+		// ================== //
 		
-		while (true);
+		createItemType(data_model, "folder_content", null, notAbstract, false, withContent);
+		createLinkType(data_model.concat("root_project"), "link_folder", data_model.concat("folder_content"), "0", "unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
+		createFolderContentModel(workspaceView, mapping_model.concat("folder_content" + managerSufix), "/${#short-name}", null);
+
+		
+		// ==================== //
+		// JavaFileContentModel //
+		// ==================== //
+		
+		createItemType(data_model, "javaFile_content", null, notAbstract, false, withContent);
+		createLinkType(data_model.concat("root_project"), "link_javaFile", data_model.concat("javaFile_content"), "0", "unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
+		createJavaFileContentModel(workspaceView, mapping_model.concat("javaFile_content" + managerSufix), "${#short-name}", "fr.imag.adele.${#short-name}", null);
 	}
 	
 	@Test
