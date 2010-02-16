@@ -54,53 +54,9 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 	
 	@Test
-	public void test_JavaProjectContentModel() throws Exception {
-		String[] expected_creationCST = {"PROJECT_CONTENT_MODEL_at_PROJECT_NAME_", "JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
-		String[] expected_modifCST    = {"PROJECT_CONTENT_MODEL_at_PROJECT_NAME_", "JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
-		
-		createItemType(data_model, "mapping_javaProject", null, false, true, true);
-		checkCreationContentModel(expected_creationCST, mapping.concat("mapping_javaProject-manager"), "JavaProjectContentModel",null, null, null, null, null, null, null);
-		checkModificationPage(mapping.concat("mapping_javaProject-manager").concat("content-item"), CadseGCST.JAVA_PROJECT_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
-	}
-	
-	@Test
-	public void test_JavaFileContentModel() throws Exception {
-		String[] expected_creationCST = {"JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_", "JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
-		String[] expected_modifCST    = {"JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_", "JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
-		
-		createItemType(data_model, "mapping_JavaFile", null, false, true, true);
-		checkCreationContentModel(expected_creationCST, mapping.concat("mapping_JavaFile-manager"), "JavaFileContentModel", null, null, null, null, null, null, null);
-		checkModificationPage(mapping.concat("mapping_JavaFile-manager").concat("content-item"), CadseGCST.JAVA_FILE_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
-	}
-
-	@Test
-	public void test_FolderContentModel() throws Exception {
-		String[] expected_creationCST = {"FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
-		String[] expected_modifCST    = {"FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
-			
-		createItemType(data_model, "mapping_folder", null, false, true, true);
-		checkCreationContentModel(expected_creationCST, mapping.concat("mapping_folder-manager"), "FolderContentModel", null, null, null, null, null, null, null);
-		checkModificationPage(mapping.concat("mapping_folder-manager").concat("content-item"), CadseGCST.FOLDER_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
-	}
-
-	@Test
-	public void test_FileContentModel() throws Exception {
-		String[] expected_creationCST = {"FILE_CONTENT_MODEL_at_FILE_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
-		String[] expected_modifCST    = {"FILE_CONTENT_MODEL_at_FILE_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
-		
-		createItemType(data_model, "mapping_file", null, false, true, true);
-		checkCreationContentModel(expected_creationCST, mapping.concat("mapping_file-manager"), "FileContentModel", null, null, null, null, null, null, null);
-		checkModificationPage(mapping.concat("mapping_file-manager").concat("content-item"), CadseGCST.FILE_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
-	}
-	
-	@Test
 	public void test_Item_Type() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_"};
-		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_ICON_", "ITEM_TYPE_at_PACKAGE_NAME_", "ITEM_TYPE_at_ITEM_FACTORY_", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_INSTANCE_HIDDEN_", "ITEM_TYPE_at_IS_META_ITEM_TYPE_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_"};
+		String[] expected_modifCST    = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ITEM_TYPE_at_DEFAULT_INSTANCE_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_ICON_", "ITEM_TYPE_at_PACKAGE_NAME_", "ITEM_TYPE_at_ITEM_FACTORY_", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_INSTANCE_HIDDEN_", "ITEM_TYPE_at_IS_META_ITEM_TYPE_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_"};
 		itemCreationTest(data_model, item_type_name ,CadseGCST.ITEM_TYPE, expected_creationCST, expected_modifCST);
 	}
 		
@@ -165,8 +121,51 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		/* FIXME MANAGER_at_HUMAN_NAME_ should be removed soon from the modification page */
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "MANAGER_at_HUMAN_NAME_"};;
 		checkModificationPage(mapping.concat(item_type_name + "-manager"), CadseGCST.MANAGER, expected_modifCST);
-	}	
+	}
 	
+	@Test
+	public void test_JavaProjectContentModel() throws Exception {
+		String[] expected_creationCST = {"PROJECT_CONTENT_MODEL_at_PROJECT_NAME_", "JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
+		String[] expected_modifCST    = {"PROJECT_CONTENT_MODEL_at_PROJECT_NAME_", "JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
+		
+		createItemType(data_model, "mapping_javaProject", null, false, true, true);
+		checkCreationContentModel(expected_creationCST, mapping.concat("mapping_javaProject-manager"), "JavaProjectContentModel", "${#qualified-name}_test", null, null, null, null, null, null);
+		checkModificationPage(mapping.concat("mapping_javaProject-manager").concat("content-item"), CadseGCST.JAVA_PROJECT_CONTENT_MODEL, expected_modifCST);
+		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
+	}
+	
+	@Test
+	public void test_JavaFileContentModel() throws Exception {
+		String[] expected_creationCST = {"JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_", "JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
+		String[] expected_modifCST    = {"JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_", "JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
+		
+		createItemType(data_model, "mapping_JavaFile", null, false, true, true);
+		checkCreationContentModel(expected_creationCST, mapping.concat("mapping_JavaFile-manager"), "JavaFileContentModel", null, null, "${#short-name}", "fr.imag.adele.${#short-name}", null, null, null);
+		checkModificationPage(mapping.concat("mapping_JavaFile-manager").concat("content-item"), CadseGCST.JAVA_FILE_CONTENT_MODEL, expected_modifCST);
+		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
+	}
+
+	@Test
+	public void test_FolderContentModel() throws Exception {
+		String[] expected_creationCST = {"FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
+		String[] expected_modifCST    = {"FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
+			
+		createItemType(data_model, "mapping_folder", null, false, true, true);
+		checkCreationContentModel(expected_creationCST, mapping.concat("mapping_folder-manager"), "FolderContentModel", null, null, null, null, "${#short-name}", null, null);
+		checkModificationPage(mapping.concat("mapping_folder-manager").concat("content-item"), CadseGCST.FOLDER_CONTENT_MODEL, expected_modifCST);
+		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
+	}
+
+	@Test
+	public void test_FileContentModel() throws Exception {
+		String[] expected_creationCST = {"FILE_CONTENT_MODEL_at_FILE_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
+		String[] expected_modifCST    = {"FILE_CONTENT_MODEL_at_FILE_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_"};
+		
+		createItemType(data_model, "mapping_file", null, false, true, true);
+		checkCreationContentModel(expected_creationCST, mapping.concat("mapping_file-manager"), "FileContentModel", null, null, null, null, null, "${#short-name}.txt", null);
+		checkModificationPage(mapping.concat("mapping_file-manager").concat("content-item"), CadseGCST.FILE_CONTENT_MODEL, expected_modifCST);
+		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
+	}
 	
 	/**
 	 * Creates generic file content model.
@@ -184,14 +183,18 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		GTShell shell = new GTShell(typeName);
 		String[] creationCST = GTCadseFactory.findCadseWorkbenchPart(shell).findAttributeConstants();
 	    String creationStr = getStringDef(shell);
+	    if (projectName != null && !projectName.isEmpty())
+			GTCadseFactory.findCadseField(shell, CadseGCST.PROJECT_CONTENT_MODEL_at_PROJECT_NAME_).typeText(projectName);
 	    if (hasSourceFolder != null)
 			GTCadseFactory.findCadseField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(hasSourceFolder);
-		if (projectName != null && !projectName.isEmpty())
-			GTCadseFactory.findCadseField(shell, CadseGCST.PROJECT_CONTENT_MODEL_at_PROJECT_NAME_).typeText(projectName);
+	    if (className != null && !className.isEmpty())
+			GTCadseFactory.findCadseField(shell, CadseGCST.JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_).typeText(className);
+	    if (packageName != null && !packageName.isEmpty())
+			GTCadseFactory.findCadseField(shell, CadseGCST.JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_).typeText(packageName);
+	    if (folderPath != null && !folderPath.isEmpty())
+			GTCadseFactory.findCadseField(shell, CadseGCST.FOLDER_CONTENT_MODEL_at_FOLDER_PATH_).typeText(folderPath);
 		if (filePath != null && !filePath.isEmpty())
 			GTCadseFactory.findCadseField(shell, CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_).typeText(filePath);
-		if (folderPath != null && !folderPath.isEmpty())
-			GTCadseFactory.findCadseField(shell, CadseGCST.FOLDER_CONTENT_MODEL_at_FOLDER_PATH_).typeText(folderPath);
 		if (extendsClass != null)
 			GTCadseFactory.findCadseField(shell, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(extendsClass);
 		shell.close();
@@ -226,12 +229,12 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		
 		// Attribute creation and creation page checking
 		GTTreePath completePath = checkCreationPage(path, attributeName, itConstant, expected_creationCST);
+				
+		// Modification page
+		checkModificationPage(completePath, itConstant, expected_modifCST);
 		
 		// The creation process shouldn't have induced compilation error/
-		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout); 
-		
-		// Modification page
-		checkModificationPage(completePath, itConstant, expected_modifCST);		
+		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
 	}
 	
 	/**
