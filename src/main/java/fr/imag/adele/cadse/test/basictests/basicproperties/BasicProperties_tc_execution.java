@@ -38,10 +38,10 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 		assertEquals("def_val", shell.findTextWithLabel("with_default_value").getText());
 		
 		// Hidden in computed pages and must be initialized
-		shell.findTextWithLabel("hid_beinit").typeText("found!");
 		shell.findTextWithLabel("notHid_beInit").typeText("found!");
 		assertTextFieldDoesNotExist(shell, "notHid_notInit", failingAssertTimeout);
 		assertTextFieldDoesNotExist(shell, "hid_notInit",    failingAssertTimeout);
+		assertTextFieldDoesNotExist(shell, "hid_beInit",     failingAssertTimeout);
 
 		// List
 		shell.findButton("Add...").click();
@@ -53,30 +53,25 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 		shell.close();
 		
 		
-		/* Assert item has been displayed */
-		workspaceView.selectNode("my_instance");
-		
-		
 		/* Property page */
-		propertiesView.showTab("my_it");
+		workspaceView.selectNode("my_instance");
+		propertiesView.showTab("my_item_type");
 		
 		// Name
-		assertEquals("my_instance", GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).getText());
+		assertEquals("my_instance", GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_at_NAME_).getText());
 		
 		// Default value
-		assertEquals("", shell.findTextWithLabel("no_default_value").getText());
-		assertEquals("def_val", shell.findTextWithLabel("with_default_value").getText());
+		assertEquals("", propertiesView.findTextWithLabel("no_default_value").getText());
+		assertEquals("def_val", propertiesView.findTextWithLabel("with_default_value").getText());
 		
 		// Hidden in computed pages and must be initialized
-//		shell.findTextWithLabel("hid_beinit").typeText("found!");
-//		shell.findTextWithLabel("notHid_beInit").typeText("found!");
-//		assertTextFieldDoesNotExist(shell, "notHid_notInit", 3000);
-//		assertTextFieldDoesNotExist(shell, "hid_notInit",    3000);
+		assertEquals("found!", propertiesView.findTextWithLabel("notHid_beInit").getText());
+		propertiesView.findTextWithLabel("notHid_notInit").typeText("found!");
+		assertTextFieldDoesNotExist(propertiesView, "hid_notInit", failingAssertTimeout);
+		assertTextFieldDoesNotExist(propertiesView, "hid_beInit",  failingAssertTimeout);
 		
 		// List
-		assertEquals("not list", shell.findTextWithLabel("not_list").getText());
-		shell.findTable().selectTableItem("value1");
-		
-		while(true);
+		assertEquals("not list", propertiesView.findTextWithLabel("not_list").getText());
+		propertiesView.findTree().selectNode("value1");
 	}
 }
