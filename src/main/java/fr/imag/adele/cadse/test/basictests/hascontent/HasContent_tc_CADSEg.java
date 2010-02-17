@@ -10,11 +10,12 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class HasContent_tc_CADSEg extends GTCadseTestCase {
 
+	protected final long failingAssertTimeout = 3000;
 	protected final String cadse_name  = "CADSE_HasContent";
-	protected GTTreePath cadse_model   = new GTTreePath(cadse_name);
-	protected GTTreePath build_model   = cadse_model.concat(CadseDefinitionManager.BUILD_MODEL);
-	protected GTTreePath data_model    = cadse_model.concat(CadseDefinitionManager.DATA_MODEL);
-	protected GTTreePath mapping_model = cadse_model.concat(CadseDefinitionManager.MAPPING);
+	protected final GTTreePath cadse_model   = new GTTreePath(cadse_name);
+	protected final GTTreePath build_model   = cadse_model.concat(CadseDefinitionManager.BUILD_MODEL);
+	protected final GTTreePath data_model    = cadse_model.concat(CadseDefinitionManager.DATA_MODEL);
+	protected final GTTreePath mapping_model = cadse_model.concat(CadseDefinitionManager.MAPPING);
 	
 	/**
 	 * Selects CADSEg in the launcher, and closes useless views. 
@@ -55,10 +56,10 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		// ==================== //
 
 		createItemType(data_model, "no_content", null, notAbstract, root, noContent);
-		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), file_cm, 3000);
-		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), folder_cm, 3000);
-		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), javaFile_cm, 3000);
-		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), javaProject_cm, 3000);
+		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), file_cm, failingAssertTimeout);
+		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), folder_cm, failingAssertTimeout);
+		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), javaFile_cm, failingAssertTimeout);
+		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), javaProject_cm, failingAssertTimeout);
 	
 		
 		// ======================= //

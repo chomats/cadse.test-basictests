@@ -12,6 +12,8 @@ import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 
 public class BasicProperties_tc_execution extends GTCadseTestCase {
 
+	protected final long failingAssertTimeout = 3000;
+	
 	@Test
 	public void test_preparation() throws Exception {
 		
@@ -38,8 +40,8 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 		// Hidden in computed pages and must be initialized
 		shell.findTextWithLabel("hid_beinit").typeText("found!");
 		shell.findTextWithLabel("notHid_beInit").typeText("found!");
-		assertTextFieldDoesNotExist(shell, "notHid_notInit", 3000);
-		assertTextFieldDoesNotExist(shell, "hid_notInit",    3000);
+		assertTextFieldDoesNotExist(shell, "notHid_notInit", failingAssertTimeout);
+		assertTextFieldDoesNotExist(shell, "hid_notInit",    failingAssertTimeout);
 
 		// List
 		shell.findButton("Add...").click();

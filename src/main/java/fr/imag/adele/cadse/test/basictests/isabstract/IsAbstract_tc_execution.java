@@ -9,6 +9,8 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class IsAbstract_tc_execution extends GTCadseTestCase {
 
+	protected final long failingAssertTimeout = 3000;
+	
 	@Test
 	public void test_preparation() throws Exception {
 		
@@ -38,9 +40,9 @@ public class IsAbstract_tc_execution extends GTCadseTestCase {
 		
 		
 		/* This items creation shouldn't be available */
-		assertItemCantbeCreated(workspaceView, null, "itA",   3000);
-		assertItemCantbeCreated(workspaceView, null, "itNaA", 3000);
-		assertItemCantbeCreated(workspaceView, null, "itAA",  3000);
+		assertItemCantbeCreated(workspaceView, null, "itA",   failingAssertTimeout);
+		assertItemCantbeCreated(workspaceView, null, "itNaA", failingAssertTimeout);
+		assertItemCantbeCreated(workspaceView, null, "itAA",  failingAssertTimeout);
 	}
 
 }
