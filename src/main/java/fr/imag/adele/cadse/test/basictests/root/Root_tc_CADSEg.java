@@ -30,21 +30,21 @@ public class Root_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_item_creation() throws Exception {
 
-		// default values
-		Boolean isAbstract = false;
-		Boolean hasContent = null;
+		// values
+		final Boolean notAbstract = false;
+		final Boolean defaultContent = null;
 		
 		// Creates a new cadse
 		createCadseDefinition(cadse_name, "model." + cadse_name);
 		
 		// Creates item types (R => Root, Nr => Non root)
-		createItemType(data_model, "itR",  null, isAbstract, true,  hasContent);
-		createItemType(data_model, "itNr", null, isAbstract, false, hasContent);
+		createItemType(data_model, "itR",  null, notAbstract, true,  defaultContent);
+		createItemType(data_model, "itNr", null, notAbstract, false, defaultContent);
 	
-		createItemType(data_model, "itRR",   data_model.concat("itR"),  isAbstract, true,  hasContent);
-		createItemType(data_model, "itRNr",  data_model.concat("itR"),  isAbstract, false, hasContent);
-		createItemType(data_model, "itNrR",  data_model.concat("itNr"), isAbstract, true,  hasContent);
-		createItemType(data_model, "itNrNr", data_model.concat("itNr"), isAbstract, false, hasContent);
+		createItemType(data_model, "itRR",   data_model.concat("itR"),  notAbstract, true,  defaultContent);
+		createItemType(data_model, "itRNr",  data_model.concat("itR"),  notAbstract, false, defaultContent);
+		createItemType(data_model, "itNrR",  data_model.concat("itNr"), notAbstract, true,  defaultContent);
+		createItemType(data_model, "itNrNr", data_model.concat("itNr"), notAbstract, false, defaultContent);
 	}
 	
 	@Test
