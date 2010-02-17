@@ -36,9 +36,10 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		String managerSufix = "-manager";
 		
 		// Default values
-		Boolean notAbstract = false;
-		Boolean root = true;
-		Boolean withContent = true;
+		final Boolean notAbstract = false;
+		final Boolean root = true;
+		final Boolean withContent = true;
+		final Boolean noContent = false;
 		
 		String file_cm = "FileContentModel";
 		String folder_cm = "FolderContentModel";
@@ -53,7 +54,7 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		// Item without content //
 		// ==================== //
 
-		createItemType(data_model, "no_content", null, notAbstract, root, false);
+		createItemType(data_model, "no_content", null, notAbstract, root, noContent);
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), file_cm, 3000);
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), folder_cm, 3000);
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), javaFile_cm, 3000);

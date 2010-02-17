@@ -1,4 +1,4 @@
-package fr.imag.adele.cadse.test.basictest.basicproperties;
+package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import org.junit.Test;
 
@@ -43,10 +43,10 @@ public class BasicProperties_tc_CADSEg extends GTCadseTestCase {
 		final Boolean isList = true;
 		final Boolean notList = false;
 		
-		final String it_name = "my_it";
+		final String it_name = "my_item_type";
 		final GTTreePath it_path = data_model.concat(it_name);
 		
-		// Creates a new cadse and a new item type
+		// Creates a new CADSE and a new item type
 		createCadseDefinition(cadse_name, "model." + cadse_name);
 		createItemType(data_model, it_name, null, notAbstract, root, defaultContent);
 		

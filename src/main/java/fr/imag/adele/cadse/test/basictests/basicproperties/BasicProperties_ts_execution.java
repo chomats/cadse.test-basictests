@@ -1,4 +1,4 @@
-package fr.imag.adele.cadse.test.basictest.basicproperties;
+package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;

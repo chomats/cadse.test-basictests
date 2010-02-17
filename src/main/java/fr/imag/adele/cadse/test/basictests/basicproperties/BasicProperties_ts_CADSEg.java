@@ -1,4 +1,4 @@
-package fr.imag.adele.cadse.test.basictest.basicproperties;
+package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
