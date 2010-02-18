@@ -56,7 +56,7 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 		/* Property page */
 		workspaceView.selectNode("my_instance");
 		propertiesView.showTab("my_item_type");
-		
+	
 		// Name
 		assertEquals("my_instance", GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_at_NAME_).getText());
 		

@@ -15,7 +15,7 @@ public class BasicProperties_tc_CADSEg extends GTCadseTestCase {
 	protected final GTTreePath build_model   = cadse_model.concat(CadseDefinitionManager.BUILD_MODEL);
 	protected final GTTreePath data_model    = cadse_model.concat(CadseDefinitionManager.DATA_MODEL);
 	protected final GTTreePath mapping_model = cadse_model.concat(CadseDefinitionManager.MAPPING);
-	
+
 	/**
 	 * Selects CADSEg in the launcher, and closes useless views. 
 	 * 

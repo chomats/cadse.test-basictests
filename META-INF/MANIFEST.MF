@@ -4,43 +4,56 @@ Export-Package: fr.imag.adele.cadse.test.basictests.isabstract;uses:="
  e.gtcadseworkbench_part,fr.imag.adele.graphictests.gttree,org.junit,f
  r.imag.adele.graphictests.gtworkbench_part,fr.imag.adele.graphictests
  .gttext,junit.framework,org.junit.runners,org.junit.runner";version="
- 2.3.0",fr.imag.adele.cadse.test.basictests.checkpages;uses:="fr.imag.
- adele.graphictests.cadse.test,fr.imag.adele.graphictests.cadse.gtcads
- eworkbench_part,org.eclipse.swtbot.swt.finder.widgets,org.eclipse.swt
- bot.swt.finder.exceptions,fr.imag.adele.graphictests.gttree,org.junit
- ,fr.imag.adele.graphictests.gtworkbench_part,org.eclipse.swtbot.eclip
- se.finder.widgets,fr.imag.adele.cadse.core,fr.imag.adele.cadse.core.a
- ttribute,junit.framework,org.junit.runners,org.junit.runner";version=
- "2.3.0",fr.imag.adele.cadse.test.basictests.hascontent;uses:="fr.imag
- .adele.graphictests.cadse.test,fr.imag.adele.graphictests.cadse.gtcad
- seworkbench_part,fr.imag.adele.cadse.core,fr.imag.adele.graphictests.
- gttree,fr.imag.adele.cadse.core.attribute,org.junit,fr.imag.adele.gra
- phictests.gtworkbench_part,junit.framework,org.junit.runners,org.juni
- t.runner";version="2.3.0",fr.imag.adele.cadse.test.basictests.root;us
- es:="fr.imag.adele.graphictests.cadse.test,fr.imag.adele.graphictests
- .cadse.gtcadseworkbench_part,fr.imag.adele.graphictests.gttree,org.ju
- nit,fr.imag.adele.graphictests.gtworkbench_part,junit.framework,org.j
- unit.runners,org.junit.runner";version="2.3.0"
+ 2.3.0",fr.imag.adele.cadse.test.basictests.defaultinstancename;uses:=
+ "fr.imag.adele.graphictests.cadse.test,fr.imag.adele.graphictests.cad
+ se.gtcadseworkbench_part,fr.imag.adele.cadse.core,fr.imag.adele.graph
+ ictests.gttree,fr.imag.adele.cadse.core.attribute,org.junit,fr.imag.a
+ dele.graphictests.gtworkbench_part,org.eclipse.swtbot.swt.finder.widg
+ ets,junit.framework,org.junit.runners,org.junit.runner";version="2.3.
+ 0",fr.imag.adele.cadse.test.basictests.checkpages;uses:="fr.imag.adel
+ e.graphictests.cadse.test,fr.imag.adele.graphictests.cadse.gtcadsewor
+ kbench_part,org.eclipse.swtbot.swt.finder.widgets,org.eclipse.swtbot.
+ swt.finder.exceptions,fr.imag.adele.graphictests.gttree,org.junit,fr.
+ imag.adele.graphictests.gtworkbench_part,org.eclipse.swtbot.eclipse.f
+ inder.widgets,fr.imag.adele.cadse.core,fr.imag.adele.cadse.core.attri
+ bute,junit.framework,org.junit.runners,org.junit.runner";version="2.3
+ .0",fr.imag.adele.cadse.test.basictests.hascontent;uses:="fr.imag.ade
+ le.graphictests.cadse.test,fr.imag.adele.graphictests.cadse.gtcadsewo
+ rkbench_part,fr.imag.adele.cadse.core,fr.imag.adele.graphictests.gttr
+ ee,fr.imag.adele.cadse.core.attribute,org.junit,fr.imag.adele.graphic
+ tests.gtworkbench_part,junit.framework,org.junit.runners,org.junit.ru
+ nner";version="2.3.0",fr.imag.adele.cadse.test.basictests.basicproper
+ ties;uses:="fr.imag.adele.graphictests.cadse.test,fr.imag.adele.graph
+ ictests.cadse.gtcadseworkbench_part,fr.imag.adele.graphictests.gttree
+ ,org.junit,fr.imag.adele.graphictests.gtworkbench_part,junit.framewor
+ k,org.junit.runners,org.junit.runner";version="2.3.0",fr.imag.adele.c
+ adse.test.basictests.root;uses:="fr.imag.adele.graphictests.cadse.tes
+ t,fr.imag.adele.graphictests.cadse.gtcadseworkbench_part,fr.imag.adel
+ e.graphictests.gttree,org.junit,fr.imag.adele.graphictests.gtworkbenc
+ h_part,junit.framework,org.junit.runners,org.junit.runner";version="2
+ .3.0"
 Built-By: etienne
 Tool: Bnd-0.0.357
 Bundle-Name: fr.imag.adele.cadse.test.basictests
 Created-By: Apache Maven Bundle Plugin
 Bundle-Vendor: Adele/LIG/ Grenoble University, France
-Bundle-Version: 2.3.0.SNAPSHOT-201002161501
+Bundle-Version: 2.3.0.SNAPSHOT-201002171105
 Build-Jdk: 1.6.0_0
 Bundle-ManifestVersion: 2
 Import-Package: fr.imag.adele.cadse.core;version="2.3",fr.imag.adele.c
  adse.core.attribute;version="2.3",fr.imag.adele.cadse.test.basictests
- .checkpages;version="2.3",fr.imag.adele.cadse.test.basictests.hascont
- ent;version="2.3",fr.imag.adele.cadse.test.basictests.isabstract;vers
- ion="2.3",fr.imag.adele.cadse.test.basictests.root;version="2.3",fr.i
- mag.adele.graphictests.cadse.gtcadseworkbench_part;version="2.3",fr.i
- mag.adele.graphictests.cadse.test;version="2.3",fr.imag.adele.graphic
- tests.gttext;version="2.3",fr.imag.adele.graphictests.gttree;version=
- "2.3",fr.imag.adele.graphictests.gtworkbench_part;version="2.3",junit
- .framework,org.eclipse.swtbot.eclipse.finder.widgets,org.eclipse.swtb
- ot.swt.finder.exceptions,org.eclipse.swtbot.swt.finder.widgets,org.ju
- nit,org.junit.runner,org.junit.runners
+ .basicproperties;version="2.3",fr.imag.adele.cadse.test.basictests.ch
+ eckpages;version="2.3",fr.imag.adele.cadse.test.basictests.defaultins
+ tancename;version="2.3",fr.imag.adele.cadse.test.basictests.hasconten
+ t;version="2.3",fr.imag.adele.cadse.test.basictests.isabstract;versio
+ n="2.3",fr.imag.adele.cadse.test.basictests.root;version="2.3",fr.ima
+ g.adele.graphictests.cadse.gtcadseworkbench_part;version="2.3",fr.ima
+ g.adele.graphictests.cadse.test;version="2.3",fr.imag.adele.graphicte
+ sts.gttext;version="2.3",fr.imag.adele.graphictests.gttree;version="2
+ .3",fr.imag.adele.graphictests.gtworkbench_part;version="2.3",junit.f
+ ramework,org.eclipse.swtbot.eclipse.finder.widgets,org.eclipse.swtbot
+ .swt.finder.exceptions,org.eclipse.swtbot.swt.finder.widgets,org.juni
+ t,org.junit.runner,org.junit.runners
 Bundle-SymbolicName: fr.imag.adele.cadse.test.basictests;singleton:=tr
  ue
 Bundle-DocURL: http://www-adele.imag.fr/
