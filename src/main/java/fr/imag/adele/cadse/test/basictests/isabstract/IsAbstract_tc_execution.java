@@ -9,8 +9,6 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class IsAbstract_tc_execution extends GTCadseTestCase {
 
-	protected final long failingAssertTimeout = 3000;
-	
 	@Test
 	public void test_preparation() throws Exception {
 		

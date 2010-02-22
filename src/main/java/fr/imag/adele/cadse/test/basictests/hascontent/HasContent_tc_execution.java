@@ -33,7 +33,7 @@ public class HasContent_tc_execution extends GTCadseTestCase {
 		packageExplorerView.selectNode("instance_src", sourceFolder);
 		createBasicItem(workspaceView, null, "javaproject_content_nosrc", "javaproject_content_nosrc", "instance_nosrc", new GTTreePath("instance_nosrc"));
 		packageExplorerView.selectNode("instance_nosrc");
-		assertNodeDoesNotExists(packageExplorerView, new GTTreePath("instance_nosrc", sourceFolder), 3000);
+		assertNodeDoesNotExists(packageExplorerView, new GTTreePath("instance_nosrc", sourceFolder), failingAssertTimeout);
 		
 		//  Java project content model Name template
 		createBasicItem(workspaceView, null, "javaproject_content_template1", "javaproject_content_template1", "instance_template1", new GTTreePath("instance_template1"));

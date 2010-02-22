@@ -10,7 +10,6 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class HasContent_tc_CADSEg extends GTCadseTestCase {
 
-	protected final long failingAssertTimeout = 3000;
 	protected final String cadse_name  = "CADSE_HasContent";
 	protected final GTTreePath cadse_model   = new GTTreePath(cadse_name);
 	protected final GTTreePath build_model   = cadse_model.concat(CadseDefinitionManager.BUILD_MODEL);
@@ -37,10 +36,6 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		String managerSufix = "-manager";
 		
 		// Default values
-		final Boolean notAbstract = false;
-		final Boolean root = true;
-		final Boolean withContent = true;
-		final Boolean noContent = false;
 		
 		String file_cm = "FileContentModel";
 		String folder_cm = "FolderContentModel";

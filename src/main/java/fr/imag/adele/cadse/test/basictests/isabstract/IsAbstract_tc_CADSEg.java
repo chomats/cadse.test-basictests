@@ -29,13 +29,6 @@ public class IsAbstract_tc_CADSEg extends GTCadseTestCase {
 
 	@Test
 	public void test_item_creation() throws Exception {
-
-		// Default values
-		final Boolean root = true;
-		final Boolean defaultContent = null;
-		final Boolean notHidden = false;
-		final Boolean mustBeInitialized = true;
-		final Boolean notList = false;
 		
 		// Creates a new cadse
 		createCadseDefinition(cadse_name, "model." + cadse_name);

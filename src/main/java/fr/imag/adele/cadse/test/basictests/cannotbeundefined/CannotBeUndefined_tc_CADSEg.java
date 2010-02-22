@@ -137,14 +137,6 @@ public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 		
 	private void createItems(ItemType attr, String prefix, boolean[] tabUndef, String[] tabDefVal, boolean[] tabInit) {
 
-		// Values
-		final Boolean notAbstract = false;
-		final Boolean root = true;
-		final Boolean defaultContent = null;
-		final Boolean notHidden = false;
-		final Boolean notList = false;
-		
-		
 		int i=1;
 		for (boolean undef : tabUndef) {
 			for (String defVal : tabDefVal) {

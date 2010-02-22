@@ -31,7 +31,6 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	protected GTTreePath data_model  = cadse_model.concat(CadseDefinitionManager.DATA_MODEL);
 	protected GTTreePath mapping  = cadse_model.concat(CadseDefinitionManager.MAPPING);
 	protected GTTreePath it_mit  = data_model.concat(item_type_name);
-	protected final long check_error_timeout = 3000; 
 	
 	/**
 	 * Selects CADSEg in the launcher, and closes useless views. 
@@ -131,7 +130,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		createItemType(data_model, "mapping_javaProject", null, false, true, true);
 		checkCreationContentModel(expected_creationCST, mapping.concat("mapping_javaProject-manager"), "JavaProjectContentModel", "${#qualified-name}_test", null, null, null, null, null, null);
 		checkModificationPage(mapping.concat("mapping_javaProject-manager").concat("content-item"), CadseGCST.JAVA_PROJECT_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
+		checkCompilationErrors(workspaceView, cadse_model, failingAssertTimeout);
 	}
 	
 	@Test
@@ -142,7 +141,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		createItemType(data_model, "mapping_JavaFile", null, false, true, true);
 		checkCreationContentModel(expected_creationCST, mapping.concat("mapping_JavaFile-manager"), "JavaFileContentModel", null, null, "${#short-name}", "fr.imag.adele.${#short-name}", null, null, null);
 		checkModificationPage(mapping.concat("mapping_JavaFile-manager").concat("content-item"), CadseGCST.JAVA_FILE_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
+		checkCompilationErrors(workspaceView, cadse_model, failingAssertTimeout);
 	}
 
 	@Test
@@ -153,7 +152,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		createItemType(data_model, "mapping_folder", null, false, true, true);
 		checkCreationContentModel(expected_creationCST, mapping.concat("mapping_folder-manager"), "FolderContentModel", null, null, null, null, "${#short-name}", null, null);
 		checkModificationPage(mapping.concat("mapping_folder-manager").concat("content-item"), CadseGCST.FOLDER_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
+		checkCompilationErrors(workspaceView, cadse_model, failingAssertTimeout);
 	}
 
 	@Test
@@ -164,7 +163,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		createItemType(data_model, "mapping_file", null, false, true, true);
 		checkCreationContentModel(expected_creationCST, mapping.concat("mapping_file-manager"), "FileContentModel", null, null, null, null, null, "${#short-name}.txt", null);
 		checkModificationPage(mapping.concat("mapping_file-manager").concat("content-item"), CadseGCST.FILE_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
+		checkCompilationErrors(workspaceView, cadse_model, failingAssertTimeout);
 	}
 	
 	/**
@@ -209,7 +208,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	
 	@Test
 	public void test_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
+		checkCompilationErrors(workspaceView, cadse_model, failingAssertTimeout);
 	}
 	
 	/**
@@ -234,7 +233,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		checkModificationPage(completePath, itConstant, expected_modifCST);
 		
 		// The creation process shouldn't have induced compilation error/
-		checkCompilationErrors(workspaceView, cadse_model, check_error_timeout);
+		checkCompilationErrors(workspaceView, cadse_model, failingAssertTimeout);
 	}
 	
 	/**

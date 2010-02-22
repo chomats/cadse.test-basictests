@@ -11,8 +11,6 @@ import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 
 
 public class BasicProperties_tc_execution extends GTCadseTestCase {
-
-	protected final long failingAssertTimeout = 3000;
 	
 	@Test
 	public void test_preparation() throws Exception {

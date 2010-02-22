@@ -28,6 +28,21 @@ public class Link_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	@Test
-	public void test_item_creation() throws Exception {
+	public void test_source_destination() throws Exception {
+				
+		GTTreePath s1 = data_model.concat("s1");
+		createItemType(data_model, "s1", null, notAbstract, root, defaultContent);
+		GTTreePath s2 = data_model.concat("s2");
+		createItemType(data_model, "s2", s1,   notAbstract, root, defaultContent);
+		
+		GTTreePath d1 = data_model.concat("d1");
+		createItemType(data_model, "d1", null, notAbstract, root, defaultContent);
+		GTTreePath d2 = data_model.concat("d2");
+		createItemType(data_model, "d2", d1,   notAbstract, root, defaultContent);
+		
+		createLinkType(s1, "l11", d1, "0", "unbounded");
+		createLinkType(s1, "l12", d2, "0", "unbounded");
+		createLinkType(s2, "l21", d1, "0", "unbounded");
+		createLinkType(s2, "l22", d2, "0", "unbounded");
 	}
 }

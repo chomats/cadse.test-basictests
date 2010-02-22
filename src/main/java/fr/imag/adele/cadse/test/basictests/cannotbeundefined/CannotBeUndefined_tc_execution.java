@@ -13,8 +13,6 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 
-	protected final long failingAssertTimeout = 3000;
-	
 	@Test
 	public void test_preparation() throws Exception {
 		
@@ -32,24 +30,24 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 	public void test_attr_integer() throws Exception {
 
 		int i=0;
-		createAttrInteger(1, ++i, "123", "456", true,  "456", 3000); 
-		createAttrInteger(1, ++i, "123", "",    false, null,  3000);
-		createAttrInteger(2, ++i, null,  null,  true,  "123", 3000);  
-		createAttrInteger(3, ++i, "",    "456", true,  "456", 3000);
-		createAttrInteger(3, ++i, "",    "",    false, null,  3000);
-		createAttrInteger(4, ++i, null,  null,  true,  null,  3000);
+		createAttrInteger(1, ++i, "123", "456", true,  "456", failingAssertTimeout); 
+		createAttrInteger(1, ++i, "123", "",    false, null,  failingAssertTimeout);
+		createAttrInteger(2, ++i, null,  null,  true,  "123", failingAssertTimeout);  
+		createAttrInteger(3, ++i, "",    "456", true,  "456", failingAssertTimeout);
+		createAttrInteger(3, ++i, "",    "",    false, null,  failingAssertTimeout);
+		createAttrInteger(4, ++i, null,  null,  true,  null,  failingAssertTimeout);
 		try {
 			workspaceView.selectNode("instance_int4"); // For Stéphane : ERROR!
 			fail("The attribute creation should have failled.");
 		} catch (Exception e) {
 			// success
 		}
-		createAttrInteger(5, ++i, "123", "456", true,  "456", 3000);
-		createAttrInteger(5, ++i, "123", "",    true,  "",    3000); // For Stéphane : ERROR!
-		createAttrInteger(6, ++i, null,  null,  true,  "123", 3000);
-		createAttrInteger(7, ++i, "",    "456", true,  "456", 3000);
-		createAttrInteger(7, ++i, "",    "",    true,  "",    3000);  // For Stéphane : ERROR!
-		createAttrInteger(8, ++i, null,  null,  true,  "",    3000);
+		createAttrInteger(5, ++i, "123", "456", true,  "456", failingAssertTimeout);
+		createAttrInteger(5, ++i, "123", "",    true,  "",    failingAssertTimeout); // For Stéphane : ERROR!
+		createAttrInteger(6, ++i, null,  null,  true,  "123", failingAssertTimeout);
+		createAttrInteger(7, ++i, "",    "456", true,  "456", failingAssertTimeout);
+		createAttrInteger(7, ++i, "",    "",    true,  "",    failingAssertTimeout);  // For Stéphane : ERROR!
+		createAttrInteger(8, ++i, null,  null,  true,  "",    failingAssertTimeout);
 	}
 	
 	

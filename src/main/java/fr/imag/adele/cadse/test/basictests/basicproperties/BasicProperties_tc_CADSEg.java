@@ -32,17 +32,6 @@ public class BasicProperties_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_item_creation() throws Exception {
 	
-		// Values
-		final Boolean notAbstract = false;
-		final Boolean root = true;
-		final Boolean defaultContent = null;
-		final Boolean hidden = true;
-		final Boolean notHidden = false;
-		final Boolean mustBeInitialized = true;
-		final Boolean notInitialized = false;
-		final Boolean isList = true;
-		final Boolean notList = false;
-		
 		final String it_name = "my_item_type";
 		final GTTreePath it_path = data_model.concat(it_name);
 		
