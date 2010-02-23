@@ -3,6 +3,7 @@ package fr.imag.adele.cadse.test.basictests.link;
 import org.junit.Test;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
+import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
@@ -45,5 +46,16 @@ public class Link_tc_CADSEg extends GTCadseTestCase {
 		createLinkType(s1, "l12", d2, "0", "unbounded");
 		createLinkType(s2, "l21", d1, "0", "unbounded");
 		createLinkType(s2, "l22", d2, "0", "unbounded");
+	}
+	
+	@Test
+	public void test_annotation() throws Exception {
+	
+		createItemType(data_model, "annotation_src", null, notAbstract, root, defaultContent);
+		createItemType(data_model, "annotation_dst", null, notAbstract, root, defaultContent);
+		GTTreePath annotation_src = data_model.concat("annotation_src");
+		GTTreePath annotation_dst = data_model.concat("annotation_dst");
+		
+		createLinkType(annotation_src, "link_annotation", annotation_dst, "0", "unbounded", CadseGCST.LINK_TYPE_at_ANNOTATION_, true);
 	}
 }
