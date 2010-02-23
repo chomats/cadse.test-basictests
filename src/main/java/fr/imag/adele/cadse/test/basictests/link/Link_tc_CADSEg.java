@@ -20,16 +20,17 @@ public class Link_tc_CADSEg extends GTCadseTestCase {
 	 * @throws Exception the exception
 	 */
 	@Test
-	public void test_selection() throws Exception {
+	public void test_init() throws Exception {
 
 		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
 		welcomeView.close();
 		workspaceView.show();
+		createCadseDefinition(cadse_name, "model." + cadse_name);
 	}
 
 	@Test
 	public void test_source_destination() throws Exception {
-				
+		
 		GTTreePath s1 = data_model.concat("s1");
 		createItemType(data_model, "s1", null, notAbstract, root, defaultContent);
 		GTTreePath s2 = data_model.concat("s2");
