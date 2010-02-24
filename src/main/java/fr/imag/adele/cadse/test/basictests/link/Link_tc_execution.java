@@ -21,7 +21,7 @@ public class Link_tc_execution extends GTCadseTestCase {
 	@Test
 	public void test_source_destination() throws Exception {
 		
-		String prefix = "instance_sd_";
+		String prefix = "instance_src_dst_";
 		
 		// source 1
 		String source1_name = prefix + "s1";
@@ -152,6 +152,6 @@ public class Link_tc_execution extends GTCadseTestCase {
 		addLink(workspaceView, source3_path, dest3_name, "link_annotation");
 		
 		deleteBasicItem(workspaceView, dest3_path);
-		assertItemDoesNotExists(workspaceView, source3_path, failingAssertTimeout);
+		assertNodeDoesNotExists(workspaceView, source3_path, failingAssertTimeout);
 	}
 }
