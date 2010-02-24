@@ -21,9 +21,9 @@ public class Root_tc_execution extends GTCadseTestCase {
 	public void test_running() throws Exception {
 
 		/* This items creation should be possible */
-		createBasicItem(workspaceView, null, "itR",   "itR",   "instance-itR",   new GTTreePath("instance-itR"));
-		createBasicItem(workspaceView, null, "itNrR", "itNrR", "instance-itNrR", new GTTreePath("instance-itNrR"));
-		createBasicItem(workspaceView, null, "itRR",  "itRR",  "instance-itRR",  new GTTreePath("instance-itRR"));
+		createBasicItem(workspaceView, null, "itR",   "instance-itR",   new GTTreePath("instance-itR"));
+		createBasicItem(workspaceView, null, "itNrR", "instance-itNrR", new GTTreePath("instance-itNrR"));
+		createBasicItem(workspaceView, null, "itRR",  "instance-itRR",  new GTTreePath("instance-itRR"));
 		
 		/* This items creation shouldn't be available */
 		assertItemCantbeCreated(workspaceView, null, "itNr",   failingAssertTimeout);

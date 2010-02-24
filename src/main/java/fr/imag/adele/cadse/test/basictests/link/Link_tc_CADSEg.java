@@ -32,32 +32,60 @@ public class Link_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_source_destination() throws Exception {
 		
-		GTTreePath s1 = data_model.concat("s1");
-		createItemType(data_model, "s1", null, notAbstract, root, defaultContent);
-		GTTreePath s2 = data_model.concat("s2");
-		createItemType(data_model, "s2", s1,   notAbstract, root, defaultContent);
+		String prefix = "";
+		String s1_name = prefix + "s1";
+		String s2_name = prefix + "s2";
+		String d1_name = prefix + "d1";
+		String d2_name = prefix + "d2";
+		GTTreePath s1_path = data_model.concat("s1");
+		GTTreePath s2_path = data_model.concat("s2");
+		GTTreePath d1_path = data_model.concat("d1");
+		GTTreePath d2_path = data_model.concat("d2");
 		
-		GTTreePath d1 = data_model.concat("d1");
-		createItemType(data_model, "d1", null, notAbstract, root, defaultContent);
-		GTTreePath d2 = data_model.concat("d2");
-		createItemType(data_model, "d2", d1,   notAbstract, root, defaultContent);
+		/* Item Type definition */
+		createItemType(data_model, s1_name, null,    notAbstract, root, defaultContent);
+		createItemType(data_model, s2_name, s1_path, notAbstract, root, defaultContent);
+		createItemType(data_model, d1_name, null,    notAbstract, root, defaultContent);
+		createItemType(data_model, d2_name, d1_path, notAbstract, root, defaultContent);
 		
-		createLinkType(s1, "l11", d1, "0", "unbounded");
-		createLinkType(s1, "l12", d2, "0", "unbounded");
-		createLinkType(s2, "l21", d1, "0", "unbounded");
-		createLinkType(s2, "l22", d2, "0", "unbounded");
+		/* Link type definition */
+		createLinkType("l11", s1_path, d1_path, "0", "unbounded");
+		createLinkType("l12", s1_path, d2_path, "0", "unbounded");
+		createLinkType("l21", s2_path, d1_path, "0", "unbounded");
+		createLinkType("l22", s2_path, d2_path, "0", "unbounded");
 	}
 	
 	@Test
 	public void test_annotation() throws Exception {
 	
-		createItemType(data_model, "annotation_src", null, notAbstract, root, defaultContent);
-		createItemType(data_model, "annotation_dst", null, notAbstract, root, defaultContent);
-		GTTreePath annotation_src = data_model.concat("annotation_src");
-		GTTreePath annotation_dst = data_model.concat("annotation_dst");
+		String prefix = "annotation_";
+		String src_name = prefix + "src";
+		String dst_name = prefix + "dst";
+		GTTreePath src_path = data_model.concat(src_name);
+		GTTreePath dst_path = data_model.concat(dst_name);
 		
-		createLinkType(annotation_src, "link_annotation", annotation_dst, "0", "unbounded", CadseGCST.LINK_TYPE_at_ANNOTATION_, true);
+		/* Item Type definition */
+		createItemType(data_model, src_name, null, notAbstract, root, defaultContent);
+		createItemType(data_model, dst_name, null, notAbstract, root, defaultContent);
+		
+		/* Link type definition */
+		createLinkType(prefix + "link", src_path, dst_path, "0", "unbounded", CadseGCST.LINK_TYPE_at_ANNOTATION_, true);
 	}
 	
+	@Test
+	public void test_part() throws Exception {
 	
+		String prefix = "part_";
+		String src_name = prefix + "src";
+		String dst_name = prefix + "dst";
+		GTTreePath src_path = data_model.concat(src_name);
+		GTTreePath dst_path = data_model.concat(dst_name);
+		
+		/* Item Type definition */
+		createItemType(data_model, src_name, null, notAbstract, root, defaultContent);
+		createItemType(data_model, dst_name, null, notAbstract, root, defaultContent);
+		
+		/* Link type definition */
+		createLinkType(prefix + "link", src_path, dst_path, "0", "unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
+	}
 }

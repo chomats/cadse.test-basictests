@@ -53,7 +53,7 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 	
 	private void verif_test_ok(String prefix, int... indexes) {
 		for (int i : indexes)
-			createBasicItem(workspaceView, null, "my_" + prefix + i, "my_" + prefix + i, "instance_" + prefix + i, new GTTreePath("instance_" + prefix + i));
+			createBasicItem(workspaceView, null, "my_" + prefix + i, "instance_" + prefix + i, new GTTreePath("instance_" + prefix + i));
 	}
 	
 	/**

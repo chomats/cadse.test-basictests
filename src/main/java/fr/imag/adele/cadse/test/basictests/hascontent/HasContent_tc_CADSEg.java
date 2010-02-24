@@ -87,7 +87,7 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		// ================ //
 		
 		createItemType(data_model, "file_content", null, notAbstract, false, withContent);
-		createLinkType(data_model.concat("root_project"), "link_file", data_model.concat("file_content"), "0", "unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
+		createLinkType("link_file", data_model.concat("root_project"), data_model.concat("file_content"), "0", "unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
 		createFileContentModel(workspaceView, mapping_model.concat("file_content" + managerSufix), "/${#short-name}.txt", null);
 
 		
@@ -96,7 +96,7 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		// ================== //
 		
 		createItemType(data_model, "folder_content", null, notAbstract, false, withContent);
-		createLinkType(data_model.concat("root_project"), "link_folder", data_model.concat("folder_content"), "0", "unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
+		createLinkType("link_folder", data_model.concat("root_project"), data_model.concat("folder_content"), "0", "unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
 		createFolderContentModel(workspaceView, mapping_model.concat("folder_content" + managerSufix), "/${#short-name}", null);
 
 		
@@ -105,7 +105,7 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		// ==================== //
 		
 		createItemType(data_model, "javaFile_content", null, notAbstract, false, withContent);
-		createLinkType(data_model.concat("root_project"), "link_javaFile", data_model.concat("javaFile_content"), "0", "unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
+		createLinkType("link_javaFile", data_model.concat("root_project"), data_model.concat("javaFile_content"), "0", "unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
 		createJavaFileContentModel(workspaceView, mapping_model.concat("javaFile_content" + managerSufix), "${#short-name}", "fr.imag.adele.${#short-name}", null);
 	}
 	

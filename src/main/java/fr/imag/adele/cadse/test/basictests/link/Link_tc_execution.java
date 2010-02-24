@@ -44,12 +44,12 @@ public class Link_tc_execution extends GTCadseTestCase {
 		
 		
 		/* New attributes */
-		createBasicItem(workspaceView, null, "s1", "s1", source1_name, source1_path);
-		createBasicItem(workspaceView, null, "s2", "s2", source2_name, source2_path);
-		createBasicItem(workspaceView, null, "d1", "d1", dest1a_name, dest1a_path);
-		createBasicItem(workspaceView, null, "d1", "d1", dest1b_name, dest1b_path);
-		createBasicItem(workspaceView, null, "d2", "d2", dest2a_name, dest2a_path);
-		createBasicItem(workspaceView, null, "d2", "d2", dest2b_name, dest2b_path);
+		createBasicItem(workspaceView, null, "s1", source1_name, source1_path);
+		createBasicItem(workspaceView, null, "s2", source2_name, source2_path);
+		createBasicItem(workspaceView, null, "d1", dest1a_name, dest1a_path);
+		createBasicItem(workspaceView, null, "d1", dest1b_name, dest1b_path);
+		createBasicItem(workspaceView, null, "d2", dest2a_name, dest2a_path);
+		createBasicItem(workspaceView, null, "d2", dest2b_name, dest2b_path);
 		
 	
 		/* Should be allowed */ 
@@ -106,50 +106,51 @@ public class Link_tc_execution extends GTCadseTestCase {
 	@Test
 	public void test_annotation() throws Exception {
 		
-		String prefix = "instance_annotation_";
+		String type_prefix = "annotation_";
+		String instance_prefix = "instance_annotation_";
 		
 		// source 1
-		String source1_name = prefix + "s1";
+		String source1_name = instance_prefix + "s1";
 		GTTreePath source1_path = new GTTreePath(source1_name);
 		// source 2
-		String source2_name = prefix + "s2";
+		String source2_name = instance_prefix + "s2";
 		GTTreePath source2_path = new GTTreePath(source2_name);
 		// source 3
-		String source3_name = prefix + "s3";
+		String source3_name = instance_prefix + "s3";
 		GTTreePath source3_path = new GTTreePath(source3_name);
 		// destination 1
-		String dest1_name = prefix + "d1";
+		String dest1_name = instance_prefix + "d1";
 		GTTreePath dest1_path = new GTTreePath(dest1_name);
 		// destination 2
-		String dest2_name = prefix + "d2";
+		String dest2_name = instance_prefix + "d2";
 		GTTreePath dest2_path = new GTTreePath(dest2_name);
 		// destination 3
-		String dest3_name = prefix + "d3";
+		String dest3_name = instance_prefix + "d3";
 		GTTreePath dest3_path = new GTTreePath(dest3_name);
 		
 		
 			
 		// Link creation and deletion
-		createBasicItem(workspaceView, null, "annotation_src", "annotation_src", source1_name, source1_path);
-		createBasicItem(workspaceView, null, "annotation_dst", "annotation_dst", dest1_name,   dest1_path);
-		addLink(workspaceView, source1_path, dest1_name, "link_annotation");
+		createBasicItem(workspaceView, null, type_prefix + "src", source1_name, source1_path);
+		createBasicItem(workspaceView, null, type_prefix + "dst", dest1_name,   dest1_path);
+		addLink(workspaceView, source1_path, dest1_name, type_prefix + "link");
 		
-		assertLinkCantBeAdded(workspaceView, source1_path, dest1_name, "link_annotation", failingAssertTimeout);
+		assertLinkCantBeAdded(workspaceView, source1_path, dest1_name, type_prefix + "link", failingAssertTimeout);
 		
 		// FIXME Tester la suppression du lien et sa re creation --> Voir avec Stéphane la spec
 		
 		// Source deletion
-		createBasicItem(workspaceView, null, "annotation_src", "annotation_src", source2_name, source2_path);
-		createBasicItem(workspaceView, null, "annotation_dst", "annotation_dst", dest2_name, dest2_path);
-		addLink(workspaceView, source2_path, dest2_name, "link_annotation");
+		createBasicItem(workspaceView, null, type_prefix + "src", source2_name, source2_path);
+		createBasicItem(workspaceView, null, type_prefix + "dst", dest2_name, dest2_path);
+		addLink(workspaceView, source2_path, dest2_name, type_prefix + "link");
 		
 		deleteBasicItem(workspaceView, source2_path);
 		workspaceView.selectNode(dest2_name);
 				
 		// Destination deletion
-		createBasicItem(workspaceView, null, "annotation_src", "annotation_src", source3_name, source3_path);
-		createBasicItem(workspaceView, null, "annotation_dst", "annotation_dst", dest3_name, dest3_path);
-		addLink(workspaceView, source3_path, dest3_name, "link_annotation");
+		createBasicItem(workspaceView, null, type_prefix + "src", source3_name, source3_path);
+		createBasicItem(workspaceView, null, type_prefix + "dst", dest3_name, dest3_path);
+		addLink(workspaceView, source3_path, dest3_name, type_prefix + "link");
 		
 		deleteBasicItem(workspaceView, dest3_path);
 		assertNodeDoesNotExists(workspaceView, source3_path, failingAssertTimeout);
