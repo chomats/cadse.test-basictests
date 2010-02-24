@@ -20,14 +20,28 @@ public class Link_tc_execution extends GTCadseTestCase {
 	@Test
 	public void test_annotation() throws Exception {
 		
-		createBasicItem(workspaceView, null, "annotation_src", "annotation_src", "annotation1", new GTTreePath("annotation1"));
-		createBasicItem(workspaceView, null, "annotation_dst", "annotation_dst", "annotation2", new GTTreePath("annotation2"));
+		// Link creation and deletion
+		createBasicItem(workspaceView, null, "annotation_src", "annotation_src", "annotation_src1", new GTTreePath("annotation_src1"));
+		createBasicItem(workspaceView, null, "annotation_dst", "annotation_dst", "annotation_dst1", new GTTreePath("annotation_dst1"));
+		addLink("annotation_src1", "annotation_src", "annotation_dst1", "link_annotation");
+		assertLinkCantBeAdded("annotation_src1", "annotation_src", "annotation_dst1", "link_annotation", failingAssertTimeout);
 		
-		addLink("annotation1", "annotation_src", "annotation2", "link_annotation");
-		assertLinkCantBeAdded("annotation1", "annotation_src", "annotation2", "link_annotation", failingAssertTimeout);
+		// FIXME Tester la suppression du lien et sa re creation --> Voir avec Stéphane la spec
 		
+		// Source deletion
+		createBasicItem(workspaceView, null, "annotation_src", "annotation_src", "annotation_src2", new GTTreePath("annotation_src2"));
+		createBasicItem(workspaceView, null, "annotation_dst", "annotation_dst", "annotation_dst2", new GTTreePath("annotation_dst2"));
+		addLink("annotation_src2", "annotation_src", "annotation_dst2", "link_annotation");
 		
-		
+		deleteBasicItem(workspaceView, new GTTreePath("annotation_src2"));
+		workspaceView.selectNode("annotation_dst2");
+				
+		// Destination deletion
+		createBasicItem(workspaceView, null, "annotation_src", "annotation_src", "annotation_src3", new GTTreePath("annotation_src3"));
+		createBasicItem(workspaceView, null, "annotation_dst", "annotation_dst", "annotation_dst3", new GTTreePath("annotation_dst3"));
+		addLink("annotation_src3", "annotation_src", "annotation_dst3", "link_annotation");
+		deleteBasicItem(workspaceView, new GTTreePath("annotation_dst3"));
+		assertItemDoesNotExists(workspaceView, new GTTreePath("annotation_src3"), failingAssertTimeout);
 		
 		while(true);
 	}
