@@ -58,4 +58,6 @@ public class Link_tc_CADSEg extends GTCadseTestCase {
 		
 		createLinkType(annotation_src, "link_annotation", annotation_dst, "0", "unbounded", CadseGCST.LINK_TYPE_at_ANNOTATION_, true);
 	}
+	
+	
 }
