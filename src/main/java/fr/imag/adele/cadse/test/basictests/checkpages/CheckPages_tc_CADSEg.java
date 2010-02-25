@@ -117,7 +117,6 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	
 	@Test
 	public void test_Manager() throws Exception {
-		/* FIXME MANAGER_at_HUMAN_NAME_ should be removed soon from the modification page */
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "MANAGER_at_HUMAN_NAME_"};;
 		checkModificationPage(mapping.concat(item_type_name + "-manager"), CadseGCST.MANAGER, expected_modifCST);
 	}
