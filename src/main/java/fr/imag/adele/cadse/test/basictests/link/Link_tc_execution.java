@@ -12,8 +12,7 @@ public class Link_tc_execution extends GTCadseTestCase {
 	@Test
 	public void test_preparation() throws Exception {
 		
-		// FIXME regarder ça avec stéphane.
-		selectCadses("Cadse "/*Model.Workspace.CADSE_Link"*/);
+		selectCadses("Cadse Model.Workspace.CADSE_Link");
 		welcomeView.close();
 		workspaceView.show();
 	}
@@ -135,14 +134,20 @@ public class Link_tc_execution extends GTCadseTestCase {
 			
 		// Link creation and deletion
 		createBasicItem(workspaceView, null, src_type_name, src1_name, src1_path);
-		createBasicItem(workspaceView, null, dst_type_name, dst1_name,   dst1_path);
+		createBasicItem(workspaceView, null, dst_type_name, dst1_name, dst1_path);
 		addLink(workspaceView, src1_path, dst1_name, link_type_name);
 		
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1_name, link_type_name, failingAssertTimeout);
 		
-		// FIXME Tester la suppression du lien et sa re creation --> Voir avec Stéphane la spec
+		// Link deletion
+		removeLink(workspaceView, src1_path, dst1_name, link_type_name);
+		assertNodeDoesNotExists(workspaceView, src1_path, failingAssertTimeout);
 		
-		// source deletion
+		// Re-creation
+		createBasicItem(workspaceView, null, src_type_name, src1_name, src1_path);
+		addLink(workspaceView, src1_path, dst1_name, link_type_name);
+		
+		// Source deletion
 		createBasicItem(workspaceView, null, src_type_name, src2_name, src2_path);
 		createBasicItem(workspaceView, null, dst_type_name, dst2_name, dst2_path);
 		addLink(workspaceView, src2_path, dst2_name, link_type_name);
