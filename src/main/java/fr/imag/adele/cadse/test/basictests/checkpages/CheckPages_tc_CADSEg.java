@@ -299,9 +299,6 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	    else
 	    	completePath = new GTTreePath(attributeName);
 	    	    
-		// FIXME [ENUM TYPE] next line will have to be removed as soon as the bug will be corrected	with Enum Type Refresh
-		workspaceView.menu("refresh").click();
-	    
 	    // Assert item has been created
 	    workspaceView.selectNode(completePath);
 	    

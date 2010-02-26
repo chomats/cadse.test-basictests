@@ -38,7 +38,7 @@ public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 	}
 	
 	@Test
-	public void test_attr_bool() throws Exception {
+	public void Ztest_attr_bool() throws Exception {
 	
 		//          ==============================================
 		//          | cannot be undef | def value | must be init |
@@ -106,7 +106,7 @@ public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 	}
 	
 	@Test
-	public void test_attr_string() throws Exception {
+	public void Ztest_attr_string() throws Exception {
 	
 		//          ==============================================
 		//          | cannot be undef | def value | must be init |
