@@ -22,7 +22,7 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 	}
 	
 	@Test
-	public void Ztest_attr_bool() throws Exception {
+	public void test_attr_bool() throws Exception {
 		verif_test_ok("bool", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
 	}
 	
@@ -37,7 +37,7 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 		createAttrInteger(3, ++i, "",    "",    false, null,  failingAssertTimeout);
 		createAttrInteger(4, ++i, null,  null,  false, null,  failingAssertTimeout);			
 		createAttrInteger(5, ++i, "123", "456", true,  "456", failingAssertTimeout);		
-		createAttrInteger(5, ++i, "123", "",    true,  "",    failingAssertTimeout); // FIXME For Stéphane : ERROR!
+		createAttrInteger(5, ++i, "123", "",    true,  "",    failingAssertTimeout);
 		createAttrInteger(6, ++i, null,  null,  true,  "123", failingAssertTimeout);
 		createAttrInteger(7, ++i, "",    "456", true,  "456", failingAssertTimeout);
 		createAttrInteger(7, ++i, "",    "",    true,  "",    failingAssertTimeout);
