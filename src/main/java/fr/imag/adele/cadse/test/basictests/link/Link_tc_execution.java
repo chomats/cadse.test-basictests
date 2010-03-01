@@ -2,6 +2,7 @@ package fr.imag.adele.cadse.test.basictests.link;
 
 import org.junit.Test;
 
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
@@ -26,12 +27,10 @@ public class Link_tc_execution extends GTCadseTestCase {
 		String dst1_name = instance_prefix + "d1";
 		String dst2_name = instance_prefix + "d2";
 		String dst3_name = instance_prefix + "d3";
-		String dst4_name = instance_prefix + "d4";
 		GTTreePath src1_path = new GTTreePath(src1_name);
 		GTTreePath dst1_path = new GTTreePath(dst1_name);
 		GTTreePath dst2_path = new GTTreePath(dst2_name);
 		GTTreePath dst3_path = new GTTreePath(dst3_name);
-		GTTreePath dst4_path = new GTTreePath(dst4_name);
 		
 		// Types
 		String type_prefix = "min_max_";
@@ -44,19 +43,16 @@ public class Link_tc_execution extends GTCadseTestCase {
 		createBasicItem(workspaceView, null, d1_type_name, dst1_name, dst1_path);
 		createBasicItem(workspaceView, null, d1_type_name, dst2_name, dst2_path);
 		createBasicItem(workspaceView, null, d1_type_name, dst3_name, dst3_path);
-		createBasicItem(workspaceView, null, d1_type_name, dst4_name, dst4_path);
 		
 		// Should be allowed 
-		while (true);
-//		addLink(workspaceView, src1_path, dst1_name, link_type_name);	
-//		addLink(workspaceView, src1_path, dst2_name, link_type_name);
-//		addLink(workspaceView, src1_path, dst3_name, link_type_name);
-//		addLink(workspaceView, src1_path, dst4_name, link_type_name);
-		
-		
+		addLink(workspaceView, src1_path, dst1_name, link_type_name);	
+		addLink(workspaceView, src1_path, dst2_name, link_type_name);
+				
 		// Should not be allowed
-		
-		//assertLinkCantBeAdded(workspaceView, src1_path, dst1a_name, l12_link_type_name, failingAssertTimeout);
+		addLink(workspaceView, src1_path, dst3_name, link_type_name);
+		for (String str : GTCadseFactory.findCadseField(propertiesView, link_type_name).getRoots())
+			if (str.equals(link_type_name))
+				fail("The link shouldn't have been added");
 	}
 	
 	@Test
