@@ -28,6 +28,24 @@ public class Link_tc_CADSEg extends GTCadseTestCase {
 		workspaceView.show();
 		createCadseDefinition(cadse_name, "model." + cadse_name);
 	}
+	
+	@Test
+	public void test_minMax() throws Exception {
+		
+		String type_prefix = "min_max_";
+		String s1_name = type_prefix + "s1";
+		String d1_name = type_prefix + "d1";
+		GTTreePath s1_path = data_model.concat(s1_name);
+		GTTreePath d1_path = data_model.concat(d1_name);
+		String link_name = type_prefix + "link";
+		
+		/* Item Type definition */
+		createItemType(data_model, s1_name, null,    notAbstract, root, defaultContent);
+		createItemType(data_model, d1_name, null,    notAbstract, root, defaultContent);
+			
+		/* Link type definition */
+		createLinkType(link_name, s1_path, d1_path, "0", "2");
+	}
 
 	@Test
 	public void test_src_dst() throws Exception {

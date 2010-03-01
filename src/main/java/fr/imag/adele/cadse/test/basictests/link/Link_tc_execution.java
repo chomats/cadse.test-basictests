@@ -18,6 +18,48 @@ public class Link_tc_execution extends GTCadseTestCase {
 	}
 	
 	@Test
+	public void test_minMax() throws Exception {
+
+		// Instances
+		String instance_prefix = "instance_min_max_";
+		String src1_name = instance_prefix + "s1";
+		String dst1_name = instance_prefix + "d1";
+		String dst2_name = instance_prefix + "d2";
+		String dst3_name = instance_prefix + "d3";
+		String dst4_name = instance_prefix + "d4";
+		GTTreePath src1_path = new GTTreePath(src1_name);
+		GTTreePath dst1_path = new GTTreePath(dst1_name);
+		GTTreePath dst2_path = new GTTreePath(dst2_name);
+		GTTreePath dst3_path = new GTTreePath(dst3_name);
+		GTTreePath dst4_path = new GTTreePath(dst4_name);
+		
+		// Types
+		String type_prefix = "min_max_";
+		String s1_type_name = type_prefix + "s1";
+		String d1_type_name = type_prefix + "d1";
+		String link_type_name = type_prefix + "link";
+		
+		// New attributes
+		createBasicItem(workspaceView, null, s1_type_name, src1_name, src1_path);
+		createBasicItem(workspaceView, null, d1_type_name, dst1_name, dst1_path);
+		createBasicItem(workspaceView, null, d1_type_name, dst2_name, dst2_path);
+		createBasicItem(workspaceView, null, d1_type_name, dst3_name, dst3_path);
+		createBasicItem(workspaceView, null, d1_type_name, dst4_name, dst4_path);
+		
+		// Should be allowed 
+		while (true);
+//		addLink(workspaceView, src1_path, dst1_name, link_type_name);	
+//		addLink(workspaceView, src1_path, dst2_name, link_type_name);
+//		addLink(workspaceView, src1_path, dst3_name, link_type_name);
+//		addLink(workspaceView, src1_path, dst4_name, link_type_name);
+		
+		
+		// Should not be allowed
+		
+		//assertLinkCantBeAdded(workspaceView, src1_path, dst1a_name, l12_link_type_name, failingAssertTimeout);
+	}
+	
+	@Test
 	public void test_src_dst() throws Exception {
 		
 		// Instances
