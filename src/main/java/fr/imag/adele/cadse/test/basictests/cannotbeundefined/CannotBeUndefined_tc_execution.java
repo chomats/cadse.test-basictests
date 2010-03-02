@@ -27,7 +27,7 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 	@Test
 	public void test_numerical_attr() throws Exception {
 
-		// numericalAttrCommon("int");
+		numericalAttrCommon("int");
 		numericalAttrCommon("double");
 		numericalAttrCommon("long");
 	}
@@ -41,17 +41,29 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 
 	private void numericalAttrCommon(String typePrefix) {
 
+		String str123;
+		String str456;
+
+		if (typePrefix.equals("int")) {
+			str123 = "123";
+			str456 = "456";
+		}
+		else {
+			str123 = "123.0";
+			str456 = "456.0";
+		}
+
 		int i = 0;
-		createNumericalAttr(typePrefix, 1, ++i, "123", "456", true, "456", failingAssertTimeout);
-		createNumericalAttr(typePrefix, 1, ++i, "123", "", false, null, failingAssertTimeout);
-		createNumericalAttr(typePrefix, 2, ++i, null, null, true, "123", failingAssertTimeout);
-		createNumericalAttr(typePrefix, 3, ++i, "", "456", true, "456", failingAssertTimeout);
+		createNumericalAttr(typePrefix, 1, ++i, str123, str456, true, str456, failingAssertTimeout);
+		createNumericalAttr(typePrefix, 1, ++i, str123, "", false, null, failingAssertTimeout);
+		createNumericalAttr(typePrefix, 2, ++i, null, null, true, str123, failingAssertTimeout);
+		createNumericalAttr(typePrefix, 3, ++i, "", str456, true, str456, failingAssertTimeout);
 		createNumericalAttr(typePrefix, 3, ++i, "", "", false, null, failingAssertTimeout);
 		createNumericalAttr(typePrefix, 4, ++i, null, null, false, null, failingAssertTimeout);
-		createNumericalAttr(typePrefix, 5, ++i, "123", "456", true, "456", failingAssertTimeout);
-		createNumericalAttr(typePrefix, 5, ++i, "123", "", true, "", failingAssertTimeout);
-		createNumericalAttr(typePrefix, 6, ++i, null, null, true, "123", failingAssertTimeout);
-		createNumericalAttr(typePrefix, 7, ++i, "", "456", true, "456", failingAssertTimeout);
+		createNumericalAttr(typePrefix, 5, ++i, str123, str456, true, str456, failingAssertTimeout);
+		createNumericalAttr(typePrefix, 5, ++i, str123, "", true, "", failingAssertTimeout);
+		createNumericalAttr(typePrefix, 6, ++i, null, null, true, str123, failingAssertTimeout);
+		createNumericalAttr(typePrefix, 7, ++i, "", str456, true, str456, failingAssertTimeout);
 		createNumericalAttr(typePrefix, 7, ++i, "", "", true, "", failingAssertTimeout);
 		createNumericalAttr(typePrefix, 8, ++i, null, null, true, "", failingAssertTimeout);
 	}
