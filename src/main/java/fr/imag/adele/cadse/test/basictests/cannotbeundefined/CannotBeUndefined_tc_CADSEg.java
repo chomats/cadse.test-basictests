@@ -76,33 +76,35 @@ public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	@Test
-	public void test_attr_integer() throws Exception {
+	public void test_numerical_attr() throws Exception {
 	
 		//          ==============================================
 		//          | cannot be undef | def value | must be init |
 		// =======================================================
-		// =  int1  |      true       |    123    |    true      |
+		// =  num1  |      true       |    123    |    true      |
 		// =======================================================
-		// =  int2  |      true       |    123    |    false     |
+		// =  num2  |      true       |    123    |    false     |
 		// =======================================================
-		// =  int3  |      true       |    ""     |    true      |
+		// =  num3  |      true       |    ""     |    true      |
 		// =======================================================
-		// =  int4  |      true       |    ""     |    false     |
+		// =  num4  |      true       |    ""     |    false     |
 		// =======================================================
-		// =  int5  |      false      |    123    |    true      |
+		// =  num5  |      false      |    123    |    true      |
 		// =======================================================
-		// =  int6  |      false      |    123    |    false     |
+		// =  num6  |      false      |    123    |    false     |
 		// =======================================================
-		// =  int7  |      false      |    ""     |    true      |
+		// =  num7  |      false      |    ""     |    true      |
 		// =======================================================
-		// =  int8  |      false      |    ""     |    false     |
+		// =  num8  |      false      |    ""     |    false     |
 		// =======================================================
 
 		boolean[] tabUndef = {true, false};
 		String[] tabDefVal = {"123", ""};
 		boolean[] tabInit  = {true, false};
 		
-		createItems(CadseGCST.INTEGER, "int", tabUndef, tabDefVal, tabInit);
+		createItems(CadseGCST.DOUBLE,  "double", tabUndef, tabDefVal, tabInit);
+		createItems(CadseGCST.INTEGER, "int",    tabUndef, tabDefVal, tabInit);
+		createItems(CadseGCST.LONG,    "long",   tabUndef, tabDefVal, tabInit);
 	}
 	
 	@Test
@@ -153,9 +155,7 @@ public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 					createBasicAttribute(it_path, attr, attr_name, null, defVal, notHidden, init, notList);
 					
 					/* Cannot be undefined attribute */
-					try {
-						propertiesView.showTab(attr.getDisplayName());
-					}
+					try { propertiesView.showTab(attr.getDisplayName()); }
 					catch (Exception e) {
 						workspaceView.selectNode(attr_path);
 						propertiesView.showTab(attr.getDisplayName());

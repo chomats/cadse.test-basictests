@@ -29,8 +29,20 @@ public class BasicProperties_tc_CADSEg extends GTCadseTestCase {
 		workspaceView.show();
 	}
 
+	/**
+	 * Tests String basic properties.
+	 * <ul>
+	 *   <li>name</li>
+	 *   <li>default value</li>
+	 *   <li>hidden in comuted pages</li>
+	 *   <li>must be initialized</li>
+	 *   <li>is list</li>
+	 * </ul>
+	 * 
+	 * @throws Exception
+	 */
 	@Test
-	public void test_item_creation() throws Exception {
+	public void test_string_basic_properties() throws Exception {
 	
 		final String it_name = "my_item_type";
 		final GTTreePath it_path = data_model.concat(it_name);

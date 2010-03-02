@@ -22,7 +22,7 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 	
 	
 	@Test
-	public void test_running() throws Exception {
+	public void test_string_basic_properties() throws Exception {
 		
 		/* Creates attribute */
 		workspaceView.contextMenuNew("my_item_type").click();
