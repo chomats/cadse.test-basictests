@@ -6,18 +6,19 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
-
-
 public class Link_tc_execution extends GTCadseTestCase {
 
+	/**
+	 * Selects the CADSE to be executed and closes unless views.
+	 */
 	@Test
 	public void test_preparation() throws Exception {
-		
+
 		selectCadses("Cadse Model.Workspace.CADSE_Link");
 		welcomeView.close();
 		workspaceView.show();
 	}
-	
+
 	@Test
 	public void test_minMax() throws Exception {
 
@@ -31,33 +32,35 @@ public class Link_tc_execution extends GTCadseTestCase {
 		GTTreePath dst1_path = new GTTreePath(dst1_name);
 		GTTreePath dst2_path = new GTTreePath(dst2_name);
 		GTTreePath dst3_path = new GTTreePath(dst3_name);
-		
+
 		// Types
 		String type_prefix = "min_max_";
 		String s1_type_name = type_prefix + "s1";
 		String d1_type_name = type_prefix + "d1";
 		String link_type_name = type_prefix + "link";
-		
+
 		// New attributes
 		createBasicItem(workspaceView, null, s1_type_name, src1_name, src1_path);
 		createBasicItem(workspaceView, null, d1_type_name, dst1_name, dst1_path);
 		createBasicItem(workspaceView, null, d1_type_name, dst2_name, dst2_path);
 		createBasicItem(workspaceView, null, d1_type_name, dst3_name, dst3_path);
-		
-		// Should be allowed 
-		addLink(workspaceView, src1_path, dst1_name, link_type_name);	
+
+		// Should be allowed
+		addLink(workspaceView, src1_path, dst1_name, link_type_name);
 		addLink(workspaceView, src1_path, dst2_name, link_type_name);
-				
+
 		// Should not be allowed
 		addLink(workspaceView, src1_path, dst3_name, link_type_name);
-		for (String str : GTCadseFactory.findCadseField(propertiesView, link_type_name).getRoots())
-			if (str.equals(link_type_name))
+		for (String str : GTCadseFactory.findCadseField(propertiesView, link_type_name).getRoots()) {
+			if (str.equals(link_type_name)) {
 				fail("The link shouldn't have been added");
+			}
+		}
 	}
-	
+
 	@Test
 	public void test_src_dst() throws Exception {
-		
+
 		// Instances
 		String instance_prefix = "instance_src_dst_";
 		String src1_name = instance_prefix + "s1";
@@ -72,7 +75,7 @@ public class Link_tc_execution extends GTCadseTestCase {
 		GTTreePath dst1b_path = new GTTreePath(dst1b_name);
 		GTTreePath dst2a_path = new GTTreePath(dst2a_name);
 		GTTreePath dst2b_path = new GTTreePath(dst2b_name);
-		
+
 		// Types
 		String type_prefix = "src_dst_";
 		String s1_type_name = type_prefix + "s1";
@@ -83,8 +86,7 @@ public class Link_tc_execution extends GTCadseTestCase {
 		String l12_link_type_name = type_prefix + "l12";
 		String l21_link_type_name = type_prefix + "l21";
 		String l22_link_type_name = type_prefix + "l22";
-		
-				
+
 		// New attributes
 		createBasicItem(workspaceView, null, s1_type_name, src1_name, src1_path);
 		createBasicItem(workspaceView, null, s2_type_name, src2_name, src2_path);
@@ -92,62 +94,60 @@ public class Link_tc_execution extends GTCadseTestCase {
 		createBasicItem(workspaceView, null, d1_type_name, dst1b_name, dst1b_path);
 		createBasicItem(workspaceView, null, d2_type_name, dst2a_name, dst2a_path);
 		createBasicItem(workspaceView, null, d2_type_name, dst2b_name, dst2b_path);
-		
-	
-		// Should be allowed 
+
+		// Should be allowed
 		addLink(workspaceView, src1_path, dst1a_name, l11_link_type_name);
-				
+
 		addLink(workspaceView, src1_path, dst1b_name, l11_link_type_name);
-		
+
 		addLink(workspaceView, src2_path, dst1a_name, l11_link_type_name);
 		addLink(workspaceView, src2_path, dst1a_name, l21_link_type_name);
-				
+
 		addLink(workspaceView, src2_path, dst1b_name, l11_link_type_name);
 		addLink(workspaceView, src2_path, dst1b_name, l21_link_type_name);
-				
+
 		addLink(workspaceView, src1_path, dst2a_name, l11_link_type_name);
 		addLink(workspaceView, src1_path, dst2a_name, l12_link_type_name);
-				
+
 		addLink(workspaceView, src1_path, dst2b_name, l11_link_type_name);
 		addLink(workspaceView, src1_path, dst2b_name, l12_link_type_name);
-		
+
 		addLink(workspaceView, src2_path, dst2a_name, l11_link_type_name);
 		addLink(workspaceView, src2_path, dst2a_name, l12_link_type_name);
 		addLink(workspaceView, src2_path, dst2a_name, l21_link_type_name);
 		addLink(workspaceView, src2_path, dst2a_name, l22_link_type_name);
-		
+
 		addLink(workspaceView, src2_path, dst2b_name, l11_link_type_name);
 		addLink(workspaceView, src2_path, dst2b_name, l12_link_type_name);
 		addLink(workspaceView, src2_path, dst2b_name, l21_link_type_name);
 		addLink(workspaceView, src2_path, dst2b_name, l22_link_type_name);
-		
-		
+
 		// Should not be allowed
-		
+
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1a_name, l12_link_type_name, failingAssertTimeout);
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1a_name, l21_link_type_name, failingAssertTimeout);
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1a_name, l22_link_type_name, failingAssertTimeout);
-		
+
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1b_name, l12_link_type_name, failingAssertTimeout);
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1b_name, l21_link_type_name, failingAssertTimeout);
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1b_name, l22_link_type_name, failingAssertTimeout);
-		
+
 		assertLinkCantBeAdded(workspaceView, src2_path, dst1a_name, l12_link_type_name, failingAssertTimeout);
 		assertLinkCantBeAdded(workspaceView, src2_path, dst1a_name, l22_link_type_name, failingAssertTimeout);
-		
+
 		assertLinkCantBeAdded(workspaceView, src2_path, dst1b_name, l12_link_type_name, failingAssertTimeout);
 		assertLinkCantBeAdded(workspaceView, src2_path, dst1b_name, l22_link_type_name, failingAssertTimeout);
-		
+
 		assertLinkCantBeAdded(workspaceView, src1_path, dst2a_name, l21_link_type_name, failingAssertTimeout);
 		assertLinkCantBeAdded(workspaceView, src1_path, dst2a_name, l22_link_type_name, failingAssertTimeout);
-		
+
 		assertLinkCantBeAdded(workspaceView, src1_path, dst2b_name, l21_link_type_name, failingAssertTimeout);
-		assertLinkCantBeAdded(workspaceView, src1_path, dst2b_name, l22_link_type_name, failingAssertTimeout);	
+		assertLinkCantBeAdded(workspaceView, src1_path, dst2b_name, l22_link_type_name, failingAssertTimeout);
 	}
-	
+
 	@Test
 	public void test_annotation() throws Exception {
-		
+
 		// Instances
 		String instance_prefix = "instance_annotation_";
 		String src1_name = instance_prefix + "s1";
@@ -162,49 +162,48 @@ public class Link_tc_execution extends GTCadseTestCase {
 		GTTreePath dst1_path = new GTTreePath(dst1_name);
 		GTTreePath dst2_path = new GTTreePath(dst2_name);
 		GTTreePath dst3_path = new GTTreePath(dst3_name);
-		
+
 		// Types
 		String type_prefix = "annotation_";
 		String link_type_name = type_prefix + "link";
 		String src_type_name = type_prefix + "src";
 		String dst_type_name = type_prefix + "dst";
-		
-			
+
 		// Link creation and deletion
 		createBasicItem(workspaceView, null, src_type_name, src1_name, src1_path);
 		createBasicItem(workspaceView, null, dst_type_name, dst1_name, dst1_path);
 		addLink(workspaceView, src1_path, dst1_name, link_type_name);
-		
+
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1_name, link_type_name, failingAssertTimeout);
-		
+
 		// Link deletion
 		removeLink(workspaceView, src1_path, dst1_name, link_type_name);
 		assertNodeDoesNotExists(workspaceView, src1_path, failingAssertTimeout);
-		
+
 		// Re-creation
 		createBasicItem(workspaceView, null, src_type_name, src1_name, src1_path);
 		addLink(workspaceView, src1_path, dst1_name, link_type_name);
-		
+
 		// Source deletion
 		createBasicItem(workspaceView, null, src_type_name, src2_name, src2_path);
 		createBasicItem(workspaceView, null, dst_type_name, dst2_name, dst2_path);
 		addLink(workspaceView, src2_path, dst2_name, link_type_name);
-		
+
 		deleteBasicItem(workspaceView, src2_path);
 		workspaceView.selectNode(dst2_name);
-				
+
 		// Destination deletion
 		createBasicItem(workspaceView, null, src_type_name, src3_name, src3_path);
 		createBasicItem(workspaceView, null, dst_type_name, dst3_name, dst3_path);
 		addLink(workspaceView, src3_path, dst3_name, link_type_name);
-		
+
 		deleteBasicItem(workspaceView, dst3_path);
 		assertNodeDoesNotExists(workspaceView, src3_path, failingAssertTimeout);
 	}
-	
+
 	@Test
 	public void test_part() throws Exception {
-	
+
 		// Instances
 		String instance_prefix = "instance_part_";
 		String src1_name = instance_prefix + "s1";
@@ -215,32 +214,32 @@ public class Link_tc_execution extends GTCadseTestCase {
 		GTTreePath dst1_path = new GTTreePath(dst1_name);
 		GTTreePath dst2_path = new GTTreePath(dst2_name);
 		GTTreePath dst3_path = new GTTreePath(dst3_name);
-			
+
 		// Types
 		String type_prefix = "part_";
 		String link_type_name = type_prefix + "link";
 		String src_type_name = type_prefix + "src";
 		String dst_type_name = type_prefix + "dst";
-		
+
 		// source and destination creation
 		assertItemCantbeCreated(workspaceView, null, dst_type_name, failingAssertTimeout);
 		createBasicItem(workspaceView, null, src_type_name, src1_name, src1_path);
 		createBasicItem(workspaceView, src1_path, dst_type_name, dst1_name, dst1_path);
 		assertLinkCantBeRemoved(workspaceView, src1_path, dst1_name, link_type_name, failingAssertTimeout);
-		
+
 		// assert destination can be deleted
 		deleteBasicItem(workspaceView, dst1_path);
 		workspaceView.selectNode(src1_path);
-		
+
 		// source deletion
 		deleteBasicItem(workspaceView, src1_path);
-		
+
 		// source and multiple destination creation
 		createBasicItem(workspaceView, null, src_type_name, src1_name, src1_path);
 		createBasicItem(workspaceView, src1_path, dst_type_name, dst1_name, dst1_path);
 		createBasicItem(workspaceView, src1_path, dst_type_name, dst2_name, dst2_path);
 		createBasicItem(workspaceView, src1_path, dst_type_name, dst3_name, dst3_path);
-		
+
 		deleteBasicItem(workspaceView, src1_path);
 		assertNodeDoesNotExists(workspaceView, dst1_path, failingAssertTimeout);
 		assertNodeDoesNotExists(workspaceView, dst2_path, failingAssertTimeout);

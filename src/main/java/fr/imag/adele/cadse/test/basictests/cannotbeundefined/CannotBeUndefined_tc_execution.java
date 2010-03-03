@@ -11,6 +11,9 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 
+	/**
+	 * Selects the CADSE to be executed and closes unless views.
+	 */
 	@Test
 	public void test_preparation() throws Exception {
 
