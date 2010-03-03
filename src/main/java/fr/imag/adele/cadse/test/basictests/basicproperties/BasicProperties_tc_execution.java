@@ -61,8 +61,7 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 	 */
 	@Test
 	public void test_double_basic_properties() throws Exception {
-		// FIXME empty value is NOT "0.0" BUT "" (empty string)
-		commonAttributeTest("my_double_type", "my_double_instance", "123.0", "0.0", "456.0", "789.0");
+		commonAttributeTest("my_double_type", "my_double_instance", "123.0", "", "456.0", "789.0");
 	}
 
 	/**
@@ -79,8 +78,7 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 	 */
 	@Test
 	public void test_integer_basic_properties() throws Exception {
-		// FIXME empty value is NOT "0.0" BUT "" (empty string)
-		commonAttributeTest("my_int_type", "my_int_instance", "123", "0", "456", "789");
+		commonAttributeTest("my_int_type", "my_int_instance", "123", "", "456", "789");
 	}
 
 	/**
@@ -97,8 +95,7 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 	 */
 	@Test
 	public void test_long_basic_properties() throws Exception {
-		// FIXME empty value is NOT "0.0" BUT "" (empty string)
-		commonAttributeTest("my_long_type", "my_long_instance", "123.0", "0.0", "456.0", "789.0");
+		commonAttributeTest("my_long_type", "my_long_instance", "123.0", "", "456.0", "789.0");
 	}
 
 	/**
@@ -115,7 +112,6 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 	 */
 	@Test
 	public void test_string_basic_properties() throws Exception {
-		// FIXME empty value is NOT "0.0" BUT "" (empty string)
 		commonAttributeTest("my_string_type", "my_string_instance", "def_val", "", "value1", "new_value");
 	}
 

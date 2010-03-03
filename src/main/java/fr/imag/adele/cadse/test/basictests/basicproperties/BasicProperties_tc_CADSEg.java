@@ -135,6 +135,24 @@ public class BasicProperties_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
+	 * Tests string basic properties.
+	 * <ul>
+	 * <li>name</li>
+	 * <li>default value</li>
+	 * <li>hidden in computed pages</li>
+	 * <li>must be initialized</li>
+	 * <li>is list</li>
+	 * </ul>
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void test_enum_basic_properties() throws Exception {
+		createEnumType(data_model, "the_enum", "one", "two", "three");
+		typeTest("my_enum_type", CadseGCST.ENUM, "two");
+	}
+
+	/**
 	 * Creates an item type and a set of attributes.
 	 * 
 	 * @param it_name
