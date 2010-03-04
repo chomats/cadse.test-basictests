@@ -36,7 +36,7 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void test_attr_bool() throws Exception {
+	public void test_bool() throws Exception {
 		verif_test_ok("bool", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
 	}
 
@@ -46,7 +46,7 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void test_attr_double() throws Exception {
+	public void test_double() throws Exception {
 		numericalAttrCommon("double");
 	}
 
@@ -56,7 +56,7 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void test_attr_int() throws Exception {
+	public void test_int() throws Exception {
 		numericalAttrCommon("int");
 	}
 
@@ -66,7 +66,7 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void test_attr_long() throws Exception {
+	public void test_long() throws Exception {
 		numericalAttrCommon("long");
 	}
 
@@ -76,7 +76,17 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void test_attr_string() throws Exception {
+	public void test_string() throws Exception {
+		// FIXME to be implemented
+	}
+
+	/**
+	 * Performs the test on the enum attribute.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void test_enum() throws Exception {
 		// FIXME to be implemented
 	}
 

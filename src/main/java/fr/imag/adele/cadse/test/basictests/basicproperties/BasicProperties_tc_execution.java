@@ -43,7 +43,7 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void test_bool_basic_properties() throws Exception {
+	public void test_bool() throws Exception {
 		commonAttributeTest("my_bool_type", "my_bool_instance", true, false, "true", true);
 	}
 
@@ -60,7 +60,7 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void test_double_basic_properties() throws Exception {
+	public void test_double() throws Exception {
 		commonAttributeTest("my_double_type", "my_double_instance", "123.0", "", "456.0", "789.0");
 	}
 
@@ -77,7 +77,7 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void test_integer_basic_properties() throws Exception {
+	public void test_integer() throws Exception {
 		commonAttributeTest("my_int_type", "my_int_instance", "123", "", "456", "789");
 	}
 
@@ -94,7 +94,7 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void test_long_basic_properties() throws Exception {
+	public void test_long() throws Exception {
 		commonAttributeTest("my_long_type", "my_long_instance", "123.0", "", "456.0", "789.0");
 	}
 
@@ -111,7 +111,7 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void test_string_basic_properties() throws Exception {
+	public void test_string() throws Exception {
 		commonAttributeTest("my_string_type", "my_string_instance", "def_val", "", "value1", "new_value");
 	}
 
@@ -128,7 +128,7 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void test_enum_basic_properties() throws Exception {
+	public void test_enum() throws Exception {
 		enumAttributeTest("my_enum_type", "my_enum_instance", "two", "", "three", "three");
 	}
 
