@@ -92,7 +92,7 @@ public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 		String[] tabDefVal = { "true", "false", "" };
 		boolean[] tabInit = { true, false };
 
-		createItems(CadseGCST.BOOLEAN, "bool", tabUndef, tabDefVal, tabInit);
+		createItems(CadseGCST.BOOLEAN, "bool", null, tabUndef, tabDefVal, tabInit);
 	}
 
 	/**
@@ -151,13 +151,18 @@ public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 	 * Performs a test on enum attribute, combining the following properties.
 	 * <ol>
 	 * <li>Cannot be undefined</li>
-	 * <li>Default value</li>
+	 * <li>Default value = must be always set! (test performed by the basic properties test)</li>
 	 * <li>Must be initialized</li>
 	 * </ol>
 	 */
 	@Test
 	public void test_enum() throws Exception {
-		// FIXME not implemented
+		String[] tabDefVal = { "two" };
+		boolean[] tabUndef = { true, false };
+		boolean[] tabInit = { true, false };
+
+		createEnumType(data_model, "my_enum", "one", "two", "three");
+		createItems(CadseGCST.ENUM, "enum", "my_enum", tabUndef, tabDefVal, tabInit);
 	}
 
 	/**
@@ -207,7 +212,7 @@ public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 		boolean[] tabUndef = { true, false };
 		boolean[] tabInit = { true, false };
 
-		createItems(attr, prefix, tabUndef, tabDefVal, tabInit);
+		createItems(attr, prefix, null, tabUndef, tabDefVal, tabInit);
 	}
 
 	/**
@@ -216,15 +221,18 @@ public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 	 * @param attr
 	 *            the type of the attribute to be created
 	 * @param prefix
-	 *            prefix, used to compute te attribute name.
+	 *            prefix, used to compute the attribute name.
 	 * @param tabUndef
 	 *            values for the can be undefined parameter
 	 * @param tabDefVal
 	 *            values for the default value parameter
 	 * @param tabInit
 	 *            values for the must be initialized parameter
+	 * @param enumType
+	 *            the enum type
 	 */
-	private void createItems(ItemType attr, String prefix, boolean[] tabUndef, String[] tabDefVal, boolean[] tabInit) {
+	private void createItems(ItemType attr, String prefix, String enumType, boolean[] tabUndef, String[] tabDefVal,
+			boolean[] tabInit) {
 
 		int i = 1;
 		for (boolean undef : tabUndef) {
@@ -239,7 +247,7 @@ public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 					/* Attribute creation */
 					String attr_name = prefix + "_attr";
 					GTTreePath attr_path = it_path.concat(attr_name);
-					createBasicAttribute(it_path, attr, attr_name, null, defVal, notHidden, init, notList);
+					createBasicAttribute(it_path, attr, attr_name, enumType, defVal, notHidden, init, notList);
 
 					/* Cannot be undefined attribute */
 					try {
