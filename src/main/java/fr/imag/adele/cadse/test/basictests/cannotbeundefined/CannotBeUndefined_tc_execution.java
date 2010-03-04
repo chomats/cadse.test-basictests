@@ -9,6 +9,14 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
+/**
+ * Performs a test on the attributes, combining the following properties.
+ * <ol>
+ * <li>Cannot be undefined</li>
+ * <li>Default value</li>
+ * <li>Must be initialized</li>
+ * </ol>
+ */
 public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 
 	/**
@@ -22,19 +30,65 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 		workspaceView.show();
 	}
 
+	/**
+	 * Performs the test on the boolean attribute.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_attr_bool() throws Exception {
 		verif_test_ok("bool", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
 	}
 
+	/**
+	 * Performs the test on the double attribute.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
-	public void test_numerical_attr() throws Exception {
-
-		numericalAttrCommon("int");
+	public void test_attr_double() throws Exception {
 		numericalAttrCommon("double");
+	}
+
+	/**
+	 * Performs the test on the int attribute.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void test_attr_int() throws Exception {
+		numericalAttrCommon("int");
+	}
+
+	/**
+	 * Performs the test on the long attribute.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void test_attr_long() throws Exception {
 		numericalAttrCommon("long");
 	}
 
+	/**
+	 * Performs the test on the string attribute.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void test_attr_string() throws Exception {
+		// FIXME to be implemented
+	}
+
+	/**
+	 * Assert a set of basic items can be created.
+	 * 
+	 * @param prefix
+	 *            the prefix used to compute the name of the item.
+	 * @param indexes
+	 *            the indexes used to compute the name of the item.
+	 * @throws Exception
+	 */
 	private void verif_test_ok(String prefix, int... indexes) {
 		for (int i : indexes) {
 			createBasicItem(workspaceView, null, "my_" + prefix + i, "instance_" + prefix + i, new GTTreePath(
@@ -42,6 +96,12 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 		}
 	}
 
+	/**
+	 * Performs a set of tests on a numerical attribute.
+	 * 
+	 * @param typePrefix
+	 *            the prefix used to match item type.
+	 */
 	private void numericalAttrCommon(String typePrefix) {
 
 		String str123;

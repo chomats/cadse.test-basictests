@@ -27,26 +27,27 @@ public class BasicProperties_tc_CADSEg extends GTCadseTestCase {
 	protected final GTTreePath data_model = cadse_model.concat(CadseDefinitionManager.DATA_MODEL);
 
 	/**
-	 * Selects CADSEg in the launcher, and closes useless views.
+	 * Makes a few things before the test starts.
+	 * <ul>
+	 * <li>Starts CADSEg</li>
+	 * <li>Closes unless views</li>
+	 * <li>Creates a new CADSE</li>
+	 * </ul>
 	 * 
 	 * @throws Exception
 	 *             the exception
 	 */
 	@Test
-	public void test_selection() throws Exception {
+	public void test_preparation() throws Exception {
 
+		// Starts CADSEg
 		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
+
+		// Closes unless views
 		welcomeView.close();
 		workspaceView.show();
-	}
 
-	/**
-	 * Creates a new CADSE definition.
-	 * 
-	 * @throws Exception
-	 */
-	@Test
-	public void test_cadse_creation() throws Exception {
+		// Creates a new CADSE
 		createCadseDefinition(cadse_name, "model." + cadse_name);
 	}
 

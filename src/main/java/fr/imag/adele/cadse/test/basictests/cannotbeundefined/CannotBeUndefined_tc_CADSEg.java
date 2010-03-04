@@ -10,34 +10,53 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
+/**
+ * Performs a test on the attributes, combining the following properties.
+ * <ol>
+ * <li>Cannot be undefined</li>
+ * <li>Default value</li>
+ * <li>Must be initialized</li>
+ * </ol>
+ */
 public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 
 	protected final String cadse_name = "CADSE_CannotBeUndefined";
-
 	protected final GTTreePath cadse_model = new GTTreePath(cadse_name);
-	protected final GTTreePath build_model = cadse_model.concat(CadseDefinitionManager.BUILD_MODEL);
 	protected final GTTreePath data_model = cadse_model.concat(CadseDefinitionManager.DATA_MODEL);
-	protected final GTTreePath mapping_model = cadse_model.concat(CadseDefinitionManager.MAPPING);
 
 	/**
-	 * Selects CADSEg in the launcher, and closes useless views.
+	 * Makes a few things before the test starts.
+	 * <ul>
+	 * <li>Starts CADSEg</li>
+	 * <li>Closes unless views</li>
+	 * <li>Creates a new CADSE</li>
+	 * </ul>
 	 * 
 	 * @throws Exception
 	 *             the exception
 	 */
 	@Test
-	public void test_selection() throws Exception {
+	public void test_preparation() throws Exception {
 
+		// Starts CADSEg
 		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
+
+		// Closes unless views
 		welcomeView.close();
 		workspaceView.show();
-	}
 
-	@Test
-	public void test_cadse_creation() throws Exception {
+		// Creates a new CADSE
 		createCadseDefinition(cadse_name, "model." + cadse_name);
 	}
 
+	/**
+	 * Performs a test on boolean attribute, combining the following properties.
+	 * <ol>
+	 * <li>Cannot be undefined</li>
+	 * <li>Default value</li>
+	 * <li>Must be initialized</li>
+	 * </ol>
+	 */
 	@Test
 	public void test_attr_bool() throws Exception {
 
@@ -76,8 +95,63 @@ public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 		createItems(CadseGCST.BOOLEAN, "bool", tabUndef, tabDefVal, tabInit);
 	}
 
+	/**
+	 * Performs a test on double attribute, combining the following properties.
+	 * <ol>
+	 * <li>Cannot be undefined</li>
+	 * <li>Default value</li>
+	 * <li>Must be initialized</li>
+	 * </ol>
+	 */
 	@Test
-	public void test_numerical_attr() throws Exception {
+	public void test_attr_double() throws Exception {
+		common_attr_test(CadseGCST.DOUBLE, "double");
+	}
+
+	/**
+	 * Performs a test on integer attribute, combining the following properties.
+	 * <ol>
+	 * <li>Cannot be undefined</li>
+	 * <li>Default value</li>
+	 * <li>Must be initialized</li>
+	 * </ol>
+	 */
+	@Test
+	public void test_attr_int() throws Exception {
+		common_attr_test(CadseGCST.INTEGER, "int");
+	}
+
+	/**
+	 * Performs a test on long attribute, combining the following properties.
+	 * <ol>
+	 * <li>Cannot be undefined</li>
+	 * <li>Default value</li>
+	 * <li>Must be initialized</li>
+	 * </ol>
+	 */
+	@Test
+	public void test_attr_long() throws Exception {
+		common_attr_test(CadseGCST.LONG, "long");
+	}
+
+	/**
+	 * Performs a test on string attribute, combining the following properties.
+	 * <ol>
+	 * <li>Cannot be undefined</li>
+	 * <li>Default value</li>
+	 * <li>Must be initialized</li>
+	 * </ol>
+	 */
+	@Test
+	public void test_attr_string() throws Exception {
+		common_attr_test(CadseGCST.STRING, "str");
+	}
+
+	/**
+	 * Common method to perform test on numerical attributes and string attribute.
+	 */
+	@Test
+	public void common_attr_test(ItemType attr, String prefix) throws Exception {
 
 		// _______=============================================
 		// _______| cannot be undef | def value | must be init
@@ -99,45 +173,34 @@ public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 		// = num8 | _____false_____ | ____""___ | false
 		// ====================================================
 
-		boolean[] tabUndef = { true, false };
-		String[] tabDefVal = { "123", "" };
-		boolean[] tabInit = { true, false };
-
-		createItems(CadseGCST.DOUBLE, "double", tabUndef, tabDefVal, tabInit);
-		createItems(CadseGCST.INTEGER, "int", tabUndef, tabDefVal, tabInit);
-		createItems(CadseGCST.LONG, "long", tabUndef, tabDefVal, tabInit);
-	}
-
-	@Test
-	public void test_attr_string() throws Exception {
-
-		// _______=============================================
-		// _______| cannot be undef | def value | must be init
-		// ====================================================
-		// = str1 | _____true______ | ___str___ | true
-		// ====================================================
-		// = str2 | _____true______ | ___str___ | false
-		// ====================================================
-		// = str3 | _____true______ | ___""____ | true
-		// ====================================================
-		// = str4 | _____true______ | ___""____ | false
-		// ====================================================
-		// = str5 | _____false_____ | ___str___ | true
-		// ====================================================
-		// = str6 | _____false_____ | ___str___ | false
-		// ====================================================
-		// = str7 | _____false_____ | ___""____ | true
-		// ====================================================
-		// = str8 | _____false_____ | ___""____ | false
-		// ====================================================
+		String[] tabDefVal = { "", "" };
+		if (attr == CadseGCST.STRING) {
+			tabDefVal[0] = "str";
+		}
+		else {
+			tabDefVal[0] = "123";
+		}
 
 		boolean[] tabUndef = { true, false };
-		String[] tabDefVal = { "str", "" };
 		boolean[] tabInit = { true, false };
 
-		createItems(CadseGCST.STRING, "str", tabUndef, tabDefVal, tabInit);
+		createItems(attr, prefix, tabUndef, tabDefVal, tabInit);
 	}
 
+	/**
+	 * A very powerful method used to create attributes combining values available in tables.
+	 * 
+	 * @param attr
+	 *            the type of the attribute to be created
+	 * @param prefix
+	 *            prefix, used to compute te attribute name.
+	 * @param tabUndef
+	 *            values for the can be undefined parameter
+	 * @param tabDefVal
+	 *            values for the default value parameter
+	 * @param tabInit
+	 *            values for the must be initialized parameter
+	 */
 	private void createItems(ItemType attr, String prefix, boolean[] tabUndef, String[] tabDefVal, boolean[] tabInit) {
 
 		int i = 1;

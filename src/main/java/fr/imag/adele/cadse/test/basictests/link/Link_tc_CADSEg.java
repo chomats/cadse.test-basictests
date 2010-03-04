@@ -13,36 +13,47 @@ public class Link_tc_CADSEg extends GTCadseTestCase {
 	protected final String cadse_name = "CADSE_Link";
 	protected GTTreePath cadse_model = new GTTreePath(cadse_name);
 	protected GTTreePath build_model = cadse_model.concat(CadseDefinitionManager.BUILD_MODEL);
-	protected GTTreePath data_model  = cadse_model.concat(CadseDefinitionManager.DATA_MODEL);
-	
+	protected GTTreePath data_model = cadse_model.concat(CadseDefinitionManager.DATA_MODEL);
+
 	/**
-	 * Selects CADSEg in the launcher, and closes useless views. 
+	 * Makes a few things before the test starts.
+	 * <ul>
+	 * <li>Starts CADSEg</li>
+	 * <li>Closes unless views</li>
+	 * <li>Creates a new CADSE</li>
+	 * </ul>
 	 * 
-	 * @throws Exception the exception
+	 * @throws Exception
+	 *             the exception
 	 */
 	@Test
-	public void test_init() throws Exception {
+	public void test_preparation() throws Exception {
 
+		// Starts CADSEg
 		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
+
+		// Closes unless views
 		welcomeView.close();
 		workspaceView.show();
+
+		// Creates a new CADSE
 		createCadseDefinition(cadse_name, "model." + cadse_name);
 	}
-	
+
 	@Test
 	public void test_minMax() throws Exception {
-		
+
 		String type_prefix = "min_max_";
 		String s1_name = type_prefix + "s1";
 		String d1_name = type_prefix + "d1";
 		GTTreePath s1_path = data_model.concat(s1_name);
 		GTTreePath d1_path = data_model.concat(d1_name);
 		String link_name = type_prefix + "link";
-		
+
 		/* Item Type definition */
-		createItemType(data_model, s1_name, null,    notAbstract, root, defaultContent);
-		createItemType(data_model, d1_name, null,    notAbstract, root, defaultContent);
-			
+		createItemType(data_model, s1_name, null, notAbstract, root, defaultContent);
+		createItemType(data_model, d1_name, null, notAbstract, root, defaultContent);
+
 		/* Link type definition */
 		createLinkType(link_name, s1_path, d1_path, "0", "2");
 	}
@@ -63,52 +74,52 @@ public class Link_tc_CADSEg extends GTCadseTestCase {
 		String l12_name = type_prefix + "l12";
 		String l21_name = type_prefix + "l21";
 		String l22_name = type_prefix + "l22";
-		
+
 		/* Item Type definition */
-		createItemType(data_model, s1_name, null,    notAbstract, root, defaultContent);
+		createItemType(data_model, s1_name, null, notAbstract, root, defaultContent);
 		createItemType(data_model, s2_name, s1_path, notAbstract, root, defaultContent);
-		createItemType(data_model, d1_name, null,    notAbstract, root, defaultContent);
+		createItemType(data_model, d1_name, null, notAbstract, root, defaultContent);
 		createItemType(data_model, d2_name, d1_path, notAbstract, root, defaultContent);
-		
+
 		/* Link type definition */
 		createLinkType(l11_name, s1_path, d1_path, "0", "unbounded");
 		createLinkType(l12_name, s1_path, d2_path, "0", "unbounded");
 		createLinkType(l21_name, s2_path, d1_path, "0", "unbounded");
 		createLinkType(l22_name, s2_path, d2_path, "0", "unbounded");
 	}
-	
+
 	@Test
 	public void test_annotation() throws Exception {
-	
+
 		String type_prefix = "annotation_";
 		String src_name = type_prefix + "src";
 		String dst_name = type_prefix + "dst";
 		String link_name = type_prefix + "link";
 		GTTreePath src_path = data_model.concat(src_name);
 		GTTreePath dst_path = data_model.concat(dst_name);
-		
+
 		/* Item Type definition */
 		createItemType(data_model, src_name, null, notAbstract, root, defaultContent);
 		createItemType(data_model, dst_name, null, notAbstract, root, defaultContent);
-		
+
 		/* Link type definition */
 		createLinkType(link_name, src_path, dst_path, "0", "unbounded", CadseGCST.LINK_TYPE_at_ANNOTATION_, true);
 	}
-	
+
 	@Test
 	public void test_part() throws Exception {
-	
+
 		String type_prefix = "part_";
 		String src_name = type_prefix + "src";
 		String dst_name = type_prefix + "dst";
 		String link_name = type_prefix + "link";
 		GTTreePath src_path = data_model.concat(src_name);
 		GTTreePath dst_path = data_model.concat(dst_name);
-		
+
 		/* Item Type definition */
 		createItemType(data_model, src_name, null, notAbstract, root, defaultContent);
 		createItemType(data_model, dst_name, null, notAbstract, root, defaultContent);
-		
+
 		/* Link type definition */
 		createLinkType(link_name, src_path, dst_path, "0", "unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
 	}
