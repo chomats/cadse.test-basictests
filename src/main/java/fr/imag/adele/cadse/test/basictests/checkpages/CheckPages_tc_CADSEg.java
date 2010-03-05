@@ -19,7 +19,24 @@ import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.gtworkbench_part.GTWorkbenchPart;
 
 /**
- * Checks whereas the creation and modification pages have the correct layout.
+ * Checks whereas the creation and modification pages have the correct layout. The following items are tested:
+ * <ul>
+ * <li>CADSE definition</li>
+ * <li>Item Type</li>
+ * <li>Boolean attribute</li>
+ * <li>Double attribute</li>
+ * <li>Integer attribute</li>
+ * <li>Long attribute</li>
+ * <li>String attribute</li>
+ * <li>Enum Type</li>
+ * <li>Enum attribute</li>
+ * <li><Link Type/li>
+ * <li>Manager</li>
+ * <li>Java Project Content Model</li>
+ * <li>Java File Content Model</li>
+ * <li>Folder Content Model</li>
+ * <li>File Content Model</li>
+ * </ul>
  */
 public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 
@@ -52,6 +69,11 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		workspaceView.show();
 	}
 
+	/**
+	 * Tests if the CADSE definition pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_CADSE_Definition() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_lt_EXTENDS" };
@@ -66,6 +88,11 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				expected_modifCST);
 	}
 
+	/**
+	 * Tests if the Item type pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_Item_Type() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ITEM_TYPE_lt_SUPER_TYPE",
@@ -80,6 +107,11 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				expected_modifCST);
 	}
 
+	/**
+	 * Tests if the boolean attribute pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_Boolean_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
@@ -90,13 +122,18 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
-				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_",
-				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
+				"ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
 		itemCreationTest(it_mit, "my_boolean", CadseGCST.BOOLEAN, expected_creationCST, expected_creationVal,
 				expected_modifCST);
 	}
 
+	/**
+	 * Tests if the double attribute pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_Double_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
@@ -107,13 +144,18 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
-				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_",
-				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
+				"ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
 		itemCreationTest(it_mit, "my_double", CadseGCST.DOUBLE, expected_creationCST, expected_creationVal,
 				expected_modifCST);
 	}
 
+	/**
+	 * Tests if the integer attribute pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_Integer_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
@@ -124,13 +166,18 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
-				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_",
-				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
+				"ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
 		itemCreationTest(it_mit, "my_integer", CadseGCST.INTEGER, expected_creationCST, expected_creationVal,
 				expected_modifCST);
 	}
 
+	/**
+	 * Tests if the long attribute pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_Long_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
@@ -141,13 +188,18 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
-				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_",
-				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
+				"ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
 		itemCreationTest(it_mit, "my_long", CadseGCST.LONG, expected_creationCST, expected_creationVal,
 				expected_modifCST);
 	}
 
+	/**
+	 * Tests if the string attribute pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_String_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
@@ -158,14 +210,19 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
-				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_",
-				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_",
-				"STRING_at_NOT_EMPTY_" };
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "STRING_at_NOT_EMPTY_",
+				"ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_",
+				"ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_NATIF_",
+				"ATTRIBUTE_at_TRANSIENT_" };
 		itemCreationTest(it_mit, "my_string", CadseGCST.STRING, expected_creationCST, expected_creationVal,
 				expected_modifCST);
 	}
 
+	/**
+	 * Tests if the enum type pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_Enum_Type() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ENUM_TYPE_at_VALUES_" };
@@ -176,6 +233,11 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				expected_modifCST);
 	}
 
+	/**
+	 * Tests if the enum attribute pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_Enum_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_",
@@ -186,13 +248,18 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
-				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_",
-				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
+				"ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
 		itemCreationTest(it_mit, "my_enum", CadseGCST.ENUM, expected_creationCST, expected_creationVal,
 				expected_modifCST);
 	}
 
+	/**
+	 * Tests if the link type attribute pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_LinkType_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "LINK_TYPE_lt_DESTINATION", "LINK_TYPE_at_ANNOTATION_",
@@ -218,6 +285,11 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				expected_modifCST);
 	}
 
+	/**
+	 * Tests if the manager pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_Manager() throws Exception {
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
@@ -226,6 +298,11 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		checkModificationPage(mapping.concat(item_type_name + "-manager"), CadseGCST.MANAGER, expected_modifCST);
 	}
 
+	/**
+	 * Tests if the Java Project Content Model mapping pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_JavaProjectContentModel() throws Exception {
 		String[] expected_creationCST = { "PROJECT_CONTENT_MODEL_at_PROJECT_NAME_",
@@ -243,6 +320,11 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		checkCompilationErrors(workspaceView, cadse_model, failingAssertTimeout);
 	}
 
+	/**
+	 * Tests if the Java File Content Model mapping pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_JavaFileContentModel() throws Exception {
 		String[] expected_creationCST = { "JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_",
@@ -260,6 +342,11 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		checkCompilationErrors(workspaceView, cadse_model, failingAssertTimeout);
 	}
 
+	/**
+	 * Tests if the Folder Content Model mapping pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_FolderContentModel() throws Exception {
 		String[] expected_creationCST = { "FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
@@ -274,6 +361,11 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		checkCompilationErrors(workspaceView, cadse_model, failingAssertTimeout);
 	}
 
+	/**
+	 * Tests if the File Content Model mapping pages (creation and modification) have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void test_FileContentModel() throws Exception {
 		String[] expected_creationCST = { "FILE_CONTENT_MODEL_at_FILE_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
