@@ -30,6 +30,11 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 		workspaceView.show();
 	}
 
+	@Test
+	public void test_() throws Exception {
+		numericalAttrCommon("long");
+	}
+
 	/**
 	 * Performs the test on the boolean attribute.
 	 * 
@@ -117,9 +122,13 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 		String str123;
 		String str456;
 
-		if (typePrefix.equals("int")) {
+		if (typePrefix.equals("int") || typePrefix.equals("long")) {
 			str123 = "123";
 			str456 = "456";
+		}
+		else if (typePrefix.equals("str")) {
+			str123 = "str";
+			str456 = "hello world!";
 		}
 		else {
 			str123 = "123.0";
@@ -173,7 +182,8 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 
 		/* Field displayed */
 		if (fieldValue != null) {
-			assertEquals(fieldValue, shell.findTextWithLabel(attrName).getText());
+			String currentValue = shell.findTextWithLabel(attrName).getText();
+			assertEquals("Assert failed : Type=" + typeName + " instance=" + instanceName, fieldValue, currentValue);
 		}
 		else {
 			assertTextFieldDoesNotExist(shell, attrName, timeout);
