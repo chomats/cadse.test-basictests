@@ -248,9 +248,9 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
-				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
-				"ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
+				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_",
+				"ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
 		itemCreationTest(it_mit, "my_enum", CadseGCST.ENUM, expected_creationCST, expected_creationVal,
 				expected_modifCST);
 	}
