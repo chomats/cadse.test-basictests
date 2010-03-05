@@ -95,7 +95,7 @@ public class BasicProperties_tc_execution extends GTCadseTestCase {
 	 */
 	@Test
 	public void test_long() throws Exception {
-		commonAttributeTest("my_long_type", "my_long_instance", "123.0", "", "456.0", "789.0");
+		commonAttributeTest("my_long_type", "my_long_instance", "123", "", "456", "789");
 	}
 
 	/**
