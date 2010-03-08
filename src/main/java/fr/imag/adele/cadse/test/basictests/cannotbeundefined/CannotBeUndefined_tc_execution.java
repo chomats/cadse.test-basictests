@@ -30,11 +30,6 @@ public class CannotBeUndefined_tc_execution extends GTCadseTestCase {
 		workspaceView.show();
 	}
 
-	@Test
-	public void test_() throws Exception {
-		numericalAttrCommon("long");
-	}
-
 	/**
 	 * Performs the test on the boolean attribute.
 	 * 
