@@ -115,11 +115,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_Boolean_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
-				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
-				"ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "", "", false, true, false, "Create new revision", "Abort", true,
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
+				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
+				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
+
+		Object[] expected_creationVal = { "", "", false, true, false, false, "Create new revision", "Abort", true,
 				"Generic merge values" };
+
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
 				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
@@ -137,10 +139,10 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_Double_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
-				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
-				"ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "", "", false, true, false, "Create new revision", "Abort", true,
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
+				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
+				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
+		Object[] expected_creationVal = { "", "", false, true, false, false, "Create new revision", "Abort", true,
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
@@ -159,10 +161,10 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_Integer_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
-				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
-				"ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "", "", false, true, false, "Create new revision", "Abort", true,
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
+				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
+				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
+		Object[] expected_creationVal = { "", "", false, true, false, false, "Create new revision", "Abort", true,
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
@@ -181,10 +183,10 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_Long_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
-				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
-				"ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "", "", false, true, false, "Create new revision", "Abort", true,
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
+				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
+				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
+		Object[] expected_creationVal = { "", "", false, true, false, false, "Create new revision", "Abort", true,
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
@@ -203,10 +205,10 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_String_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
-				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
-				"ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "", "", false, true, false, "Create new revision", "Abort", true,
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
+				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
+				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
+		Object[] expected_creationVal = { "", "", false, true, false, false, "Create new revision", "Abort", true,
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
@@ -240,6 +242,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 */
 	@Test
 	public void test_Enum_Attribute() throws Exception {
+
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_",
 				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
@@ -559,8 +562,8 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 					"The workbench part doesn't contains expected attributes. Expected String : " + creationCST_str);
 		}
 		if (isSameValues(creationVal, expected_creationVal) == false) {
-			throw new WidgetNotFoundException("The defaul values are not those which were expected. Expected String : "
-					+ creationVal_str);
+			throw new WidgetNotFoundException(
+					"The default values are not those which were expected. Expected String : " + creationVal_str);
 		}
 
 		return completePath;
