@@ -115,14 +115,14 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_Boolean_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
-				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_" };
 		Object[] expected_creationVal = { "", "", false, true, false, "Create new revision", "Abort", true,
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
-				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
+				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
 		itemCreationTest(it_mit, "my_boolean", CadseGCST.BOOLEAN, expected_creationCST, expected_creationVal,
@@ -137,14 +137,14 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_Double_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
-				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_" };
 		Object[] expected_creationVal = { "", "", false, true, false, "Create new revision", "Abort", true,
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
-				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
+				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
 		itemCreationTest(it_mit, "my_double", CadseGCST.DOUBLE, expected_creationCST, expected_creationVal,
@@ -159,14 +159,14 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_Integer_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
-				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "", "0", false, true, false, "Create new revision", "Abort", true,
+		Object[] expected_creationVal = { "", "", false, true, false, "Create new revision", "Abort", true,
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
-				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
+				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
 		itemCreationTest(it_mit, "my_integer", CadseGCST.INTEGER, expected_creationCST, expected_creationVal,
@@ -181,14 +181,14 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_Long_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
-				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_" };
 		Object[] expected_creationVal = { "", "", false, true, false, "Create new revision", "Abort", true,
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
-				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
+				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
 		itemCreationTest(it_mit, "my_long", CadseGCST.LONG, expected_creationCST, expected_creationVal,
@@ -203,14 +203,14 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_String_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
-				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_" };
 		Object[] expected_creationVal = { "", "", false, true, false, "Create new revision", "Abort", true,
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
-				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "STRING_at_NOT_EMPTY_",
+				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
+				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "STRING_at_NOT_EMPTY_",
 				"ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_",
 				"ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_NATIF_",
 				"ATTRIBUTE_at_TRANSIENT_" };
@@ -241,14 +241,14 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_Enum_Attribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_",
-				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_",
+				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_" };
 		Object[] expected_creationVal = { "", "<none>", "", false, true, false, "Create new revision", "Abort", true,
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
-				"ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
+				"ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
+				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
 				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_",
 				"ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
 		itemCreationTest(it_mit, "my_enum", CadseGCST.ENUM, expected_creationCST, expected_creationVal,
@@ -265,8 +265,8 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "LINK_TYPE_lt_DESTINATION", "LINK_TYPE_at_ANNOTATION_",
 				"LINK_TYPE_at_AGGREGATION_", "LINK_TYPE_at_COMPOSITION_", "LINK_TYPE_at_PART_",
 				"LINK_TYPE_at_REQUIRE_", "LINK_TYPE_at_MAPPING_", "LINK_TYPE_at_GROUP_", "LINK_TYPE_at_HIDDEN_",
-				"LINK_TYPE_at_MIN_", "LINK_TYPE_at_MAX_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
-				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_",
+				"LINK_TYPE_at_MIN_", "LINK_TYPE_at_MAX_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
+				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_",
 				"ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "LINK_TYPE_at_TWCOUPLED_",
 				"LINK_TYPE_at_TWDEST_EVOL_" };
 		Object[] expected_creationVal = { "", "<none>", false, true, false, false, false, false, false, false, "0",
@@ -277,7 +277,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				"LINK_TYPE_at_ANNOTATION_", "LINK_TYPE_at_AGGREGATION_", "LINK_TYPE_at_COMPOSITION_",
 				"LINK_TYPE_at_PART_", "LINK_TYPE_at_REQUIRE_", "LINK_TYPE_at_MAPPING_", "LINK_TYPE_at_GROUP_",
 				"LINK_TYPE_at_HIDDEN_", "LINK_TYPE_at_SELECTION_", "LINK_TYPE_at_LINK_MANAGER_", "LINK_TYPE_at_MIN_",
-				"LINK_TYPE_at_MAX_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
+				"LINK_TYPE_at_MAX_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_", "LINK_TYPE_at_TWCOUPLED_", "LINK_TYPE_at_TWDEST_EVOL_",
 				"ATTRIBUTE_at_TRANSIENT_" };
