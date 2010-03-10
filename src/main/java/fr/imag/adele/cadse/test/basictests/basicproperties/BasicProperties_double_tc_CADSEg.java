@@ -58,10 +58,10 @@ public class BasicProperties_double_tc_CADSEg extends BasicProperties_number_tc_
 	public void test_double() throws Exception {
 
 		String[] defVal = { null, "123" };
-		boolean[] hicp = { true, false };
-		boolean[] mbi = { true, false };
+		boolean[] sicp = { true, false };
+		boolean[] simp = { true, false };
 		boolean[] cbu = { true, false };
 
-		createItems(data_model, CadseGCST.DOUBLE, attr_name, defVal, hicp, mbi, cbu);
+		createItems(data_model, CadseGCST.DOUBLE, attr_name, defVal, sicp, simp, cbu);
 	}
 }
