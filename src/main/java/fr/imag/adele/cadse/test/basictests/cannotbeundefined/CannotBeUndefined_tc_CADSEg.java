@@ -247,7 +247,9 @@ public class CannotBeUndefined_tc_CADSEg extends GTCadseTestCase {
 					/* Attribute creation */
 					String attr_name = prefix + "_attr";
 					GTTreePath attr_path = it_path.concat(attr_name);
-					createBasicAttribute(it_path, attr, attr_name, enumType, defVal, notHidden, init, notList);
+
+					// FIXME!!!!!!!
+					// createBasicAttribute(it_path, attr, attr_name, enumType, defVal, notHidden, init, notList);
 
 					/* Cannot be undefined attribute */
 					try {
