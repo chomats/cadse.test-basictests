@@ -1,13 +1,16 @@
 package fr.imag.adele.cadse.test.basictests.defaultinstancename;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
-import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.test.GTTestCase;
 
-public class DefaultInstanceName_tc_execution extends GTCadseTestCase {
+public class DefaultInstanceName_tc_execution extends GTTestCase {
 
 	/**
 	 * Selects the CADSE to be executed and closes unless views.

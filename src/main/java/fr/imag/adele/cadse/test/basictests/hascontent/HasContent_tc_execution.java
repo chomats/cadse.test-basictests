@@ -1,11 +1,16 @@
 package fr.imag.adele.cadse.test.basictests.hascontent;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicItem;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+
 import org.junit.Test;
 
-import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
+import fr.imag.adele.graphictests.test.GTTestCase;
 
-public class HasContent_tc_execution extends GTCadseTestCase {
+public class HasContent_tc_execution extends GTTestCase {
 
 	/**
 	 * Selects the CADSE to be executed and closes unless views.

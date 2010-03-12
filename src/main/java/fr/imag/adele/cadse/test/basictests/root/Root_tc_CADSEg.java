@@ -1,13 +1,19 @@
 package fr.imag.adele.cadse.test.basictests.root;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+
 import org.junit.Test;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
+import fr.imag.adele.graphictests.test.GTTestCase;
 
-public class Root_tc_CADSEg extends GTCadseTestCase {
+public class Root_tc_CADSEg extends GTTestCase {
 
 	protected final String cadse_name = "CADSE_Root";
 	protected GTTreePath cadse_model = new GTTreePath(cadse_name);

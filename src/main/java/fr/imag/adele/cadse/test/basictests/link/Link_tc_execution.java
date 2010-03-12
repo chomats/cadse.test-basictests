@@ -1,12 +1,23 @@
 package fr.imag.adele.cadse.test.basictests.link;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.addLink;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.assertItemCantbeCreated;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.assertLinkCantBeAdded;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.assertLinkCantBeRemoved;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicItem;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.deleteBasicItem;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.removeLink;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+
 import org.junit.Test;
 
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
-import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
+import fr.imag.adele.graphictests.test.GTTestCase;
 
-public class Link_tc_execution extends GTCadseTestCase {
+public class Link_tc_execution extends GTTestCase {
 
 	/**
 	 * Selects the CADSE to be executed and closes unless views.

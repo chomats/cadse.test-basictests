@@ -1,5 +1,13 @@
 package fr.imag.adele.cadse.test.basictests.checkpages;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.sectionLabel;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.tabLabel;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+
 import java.util.List;
 
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
@@ -13,10 +21,10 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseWorkbenchPart;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.gtworkbench_part.GTWorkbenchPart;
+import fr.imag.adele.graphictests.test.GTTestCase;
 
 /**
  * Checks whereas the creation and modification pages have the correct layout. The following items are tested:
@@ -38,7 +46,7 @@ import fr.imag.adele.graphictests.gtworkbench_part.GTWorkbenchPart;
  * <li>File Content Model</li>
  * </ul>
  */
-public class CheckPages_tc_CADSEg extends GTCadseTestCase {
+public class CheckPages_tc_CADSEg extends GTTestCase {
 
 	protected final String cadse_name = "CADSE_CheckPages";
 	protected final String item_type_name = "my_item_type";
@@ -537,7 +545,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 			GTCadseFactory.findCadseField(shell, CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.myCadse");
 		}
 		else if (itConstant == CadseGCST.ENUM_TYPE) {
-			GTCadseFactory.findCadseField(shell, CadseGCST.ENUM_TYPE_at_VALUES_).add("one", "two", "three");
+			GTCadseFactory.findCadseField(shell, CadseGCST.ENUM_TYPE_at_VALUES_).addBrowser("one", "two", "three");
 		}
 		else if (itConstant == CadseGCST.ENUM) {
 			GTCadseFactory.findCadseField(shell, CadseGCST.ENUM_lt_ENUM_TYPE).browser("my_enum_type");

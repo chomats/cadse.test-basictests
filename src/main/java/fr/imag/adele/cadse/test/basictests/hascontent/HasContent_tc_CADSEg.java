@@ -1,14 +1,31 @@
 package fr.imag.adele.cadse.test.basictests.hascontent;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.assertItemCantbeCreated;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createFileContentModel;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createFolderContentModel;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createJavaFileContentModel;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createJavaProjectContentModel;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.noContent;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notAbstract;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.root;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.withContent;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+
 import org.junit.Test;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
+import fr.imag.adele.graphictests.test.GTTestCase;
 
-public class HasContent_tc_CADSEg extends GTCadseTestCase {
+public class HasContent_tc_CADSEg extends GTTestCase {
 
 	protected final String cadse_name = "CADSE_HasContent";
 	protected final GTTreePath cadse_model = new GTTreePath(cadse_name);

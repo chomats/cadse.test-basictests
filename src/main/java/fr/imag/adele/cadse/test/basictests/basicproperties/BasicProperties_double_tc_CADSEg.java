@@ -1,8 +1,12 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+
 import org.junit.Test;
 
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.test.GTTestCase;
 
 /**
  * Tests basic properties for double attributes.
@@ -13,7 +17,7 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
  * <li>cannot be undefined</li>
  * </ul>
  */
-public class BasicProperties_double_tc_CADSEg extends BasicProperties_number_tc_Common {
+public class BasicProperties_double_tc_CADSEg extends GTTestCase {
 
 	/**
 	 * Makes a few things before the test starts.
@@ -45,7 +49,7 @@ public class BasicProperties_double_tc_CADSEg extends BasicProperties_number_tc_
 	 */
 	@Test
 	public void test_double() throws Exception {
-		BasicProperties_double_data data = new BasicProperties_double_data();
+		BasicPropertiesDoubleTestDriver data = new BasicPropertiesDoubleTestDriver();
 		data.createAll();
 	}
 }
