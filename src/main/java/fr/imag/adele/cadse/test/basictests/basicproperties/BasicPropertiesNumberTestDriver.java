@@ -343,6 +343,8 @@ public abstract class BasicPropertiesNumberTestDriver extends GTTestCase {
 
 		for (int i = 0; i < defValGraphicTab.size(); i++) {
 
+			System.out.println("Starting CADSEg #" + i);
+
 			/* Item type creation */
 			GTTreePath it_path = data_model.concat(getItName(i));
 			createItemType(data_model, getItName(i), null, false, true, null);
@@ -360,6 +362,7 @@ public abstract class BasicPropertiesNumberTestDriver extends GTTestCase {
 	public void testExecution(ArrayList<Integer> exclude) {
 		for (int i = 0; i < sicpTab.size(); i++) {
 			if (!exclude.contains(new Integer(i))) {
+				System.out.println("Starting execution #" + i);
 				testExecution(i);
 			}
 		}
