@@ -109,8 +109,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ITEM_TYPE_at_DEFAULT_INSTANCE_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_ICON_",
 				"ITEM_TYPE_at_PACKAGE_NAME_", "ITEM_TYPE_at_ITEM_FACTORY_", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_",
-				"ITEM_TYPE_at_IS_INSTANCE_HIDDEN_", "ITEM_TYPE_at_IS_META_ITEM_TYPE_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_",
-				"ITEM_TYPE_at_HAS_CONTENT_" };
+				"ITEM_TYPE_at_IS_INSTANCE_HIDDEN_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_" };
 		itemCreationTest(data_model, item_type_name, CadseGCST.ITEM_TYPE, expected_creationCST, expected_creationVal,
 				expected_modifCST);
 	}
@@ -127,8 +126,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
 				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
 
-		Object[] expected_creationVal = { "EMPTY", true, false, true, false, false, "Create new revision", "Abort", true,
-				"Generic merge values" };
+		Object[] expected_creationVal = { "EMPTY", true, false, true, false, false, "Create new revision", "Abort",
+				true, "Generic merge values" };
 
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
@@ -150,8 +149,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
 				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "EMPTY", "EMPTY", false, true, false, false, "Create new revision", "Abort", true,
-				"Generic merge values" };
+		Object[] expected_creationVal = { "EMPTY", "EMPTY", false, true, false, false, "Create new revision", "Abort",
+				true, "Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
 				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
@@ -172,8 +171,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
 				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "EMPTY", "EMPTY", false, true, false, false, "Create new revision", "Abort", true,
-				"Generic merge values" };
+		Object[] expected_creationVal = { "EMPTY", "EMPTY", false, true, false, false, "Create new revision", "Abort",
+				true, "Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
 				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
@@ -194,8 +193,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
 				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "EMPTY", "EMPTY", false, true, false, false, "Create new revision", "Abort", true,
-				"Generic merge values" };
+		Object[] expected_creationVal = { "EMPTY", "EMPTY", false, true, false, false, "Create new revision", "Abort",
+				true, "Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
 				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
@@ -216,8 +215,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
 				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "EMPTY", "EMPTY", false, true, false, false, "Create new revision", "Abort", true,
-				"Generic merge values" };
+		Object[] expected_creationVal = { "EMPTY", "EMPTY", false, true, false, false, "Create new revision", "Abort",
+				true, "Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
 				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "STRING_at_NOT_EMPTY_",
@@ -255,8 +254,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "EMPTY", "<none>", "EMPTY", false, true, false, "Create new revision", "Abort", true,
-				"Generic merge values" };
+		Object[] expected_creationVal = { "EMPTY", "<none>", "EMPTY", false, true, false, "Create new revision",
+				"Abort", true, "Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
 				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
@@ -280,8 +279,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_",
 				"ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "LINK_TYPE_at_TWCOUPLED_",
 				"LINK_TYPE_at_TWDEST_EVOL_" };
-		Object[] expected_creationVal = { "EMPTY", "<none>", false, true, false, false, false, false, false, false, "0",
-				"unbounded", false, true, "Create new revision", "Abort", true, "Generic merge values", false,
+		Object[] expected_creationVal = { "EMPTY", "<none>", false, true, false, false, false, false, false, false,
+				"0", "unbounded", false, true, "Create new revision", "Abort", true, "Generic merge values", false,
 				"Create new revision" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"LINK_TYPE_lt_SOURCE", "LINK_TYPE_lt_DESTINATION", "LINK_TYPE_lt_INVERSE_LINK",
