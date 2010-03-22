@@ -8,15 +8,15 @@ public class BasicPropertiesLongTestDriver extends BasicPropertiesNumberTestDriv
 	public BasicPropertiesLongTestDriver() {
 
 		defValGraphicValues.add("");
-		defValGraphicValues.add("123.0");
+		defValGraphicValues.add("123");
 		defValModelValues.add(null);
-		defValModelValues.add(123d);
+		defValModelValues.add(123l);
 
 		newValGraphicValues.add("");
-		newValGraphicValues.add("456.0");
+		newValGraphicValues.add("456");
 		newValGraphicValues.add(null); // null stands for leave unchanged
 		newValModelValues.add(null);
-		newValModelValues.add(456d);
+		newValModelValues.add(456l);
 		newValModelValues.add(null);
 
 		initializeTables();

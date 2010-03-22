@@ -34,13 +34,6 @@ public class BasicProperties_double_tc_execution extends GTTestCase {
 		exclude.add(6); // it's possible to add an empty string in a list...
 		exclude.add(50); // it's possible to add an empty string in a list...
 		exclude.add(54); // it's possible to add an empty string in a list...
-		exclude.add(90); // not in context menu
-		exclude.add(91); // not in context menu
-		exclude.add(92); // not in context menu
-		exclude.add(93); // not in context menu
-		exclude.add(94); // not in context menu
-		exclude.add(95); // not in context menu
-		exclude.add(96); // not in context menu
 
 		doubleTest.testExecution(exclude);
 
