@@ -24,6 +24,9 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 		newValGraphicValues = new String[] { null, "", "new_dv" }; // null stands for leave unchanged
 		newValModelValues = new Object[] { null, "", "new_dv" };
 
+		sicpValues = new boolean[] { true };
+		simpValues = new boolean[] { true };
+
 		initializeTables();
 	}
 
@@ -49,7 +52,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	public void initializeTables() {
 
 		for (String defValGraphic : defValGraphicValues) {
-			for (String newValGraphic : newValGraphicTab) {
+			for (String newValGraphic : newValGraphicValues) {
 				for (boolean sicp : sicpValues) {
 					for (boolean simp : simpValues) {
 						for (boolean cbu : cbuValues) {
@@ -57,6 +60,10 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 								for (boolean notEmpty : notEmptyValues) {
 									defValGraphicTab.add(defValGraphic);
 									newValGraphicTab.add(newValGraphic);
+
+									defValModelTab.add(defValGraphic); // graphic value equals the model one
+									newValModelTab.add(newValGraphic); // graphic value equals the model one
+
 									sicpTab.add(sicp);
 									simpTab.add(simp);
 									cbuTab.add(cbu);

@@ -33,9 +33,9 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	/** A prefix, to compute the instances name */
 	private final String instance_prefix = "instance_";
 
-	// ================== //
+	// ================ //
 	// CADSE DEFINITION //
-	// ================== //
+	// ================ //
 
 	/** The CADSE definition name */
 	protected final String cadse_name = "CADSE_BasicProperties_" + getTypeUnderTest();
@@ -44,18 +44,18 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	/** A path to the data model */
 	protected final GTTreePath data_model = cadse_model.concat(CadseDefinitionManager.DATA_MODEL);
 
-	// =========================== //
+	// ========================== //
 	// PROPERTIES POSSIBLE VALUES //
-	// =========================== //
+	// ========================== //
 
 	/** Set of values for the Show in Creation Page property */
-	protected final boolean[] sicpValues = { true, false };
+	protected boolean[] sicpValues = { true, false };
 	/** Set of values for the Show in Modification Page property */
-	protected final boolean[] simpValues = { true, false };
+	protected boolean[] simpValues = { true, false };
 	/** Set of values for the Cannot be undefined property */
-	protected final boolean[] cbuValues = { true, false };
+	protected boolean[] cbuValues = { true, false };
 	/** Set of values for the List property */
-	protected final boolean[] listValues = { true, false };
+	protected boolean[] listValues = { true, false };
 
 	/** Set of values for the displayed default value */
 	protected String[] defValGraphicValues;
@@ -66,9 +66,9 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	/** Set of values for the modeled new value */
 	protected Object[] newValModelValues;
 
-	// ======================================================== //
+	// ======================================================= //
 	// TABLES USED FOR PROPERTIES VALUES FOR ALL THE INSTANCES //
-	// ======================================================== //
+	// ======================================================= //
 
 	/** The Show in Creation Page property value for all the instances */
 	protected final ArrayList<Boolean> sicpTab = new ArrayList<Boolean>();
@@ -416,8 +416,9 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
 		// initial visual value
 		if (fieldInCP) {
-			assertEqualsListValues("Initial visual value error for #" + i, getInitialVisualValue(i), GTCadseFactory
-					.findCadseField(shell, getAttributeName()).getValue());
+			Object expected = getInitialVisualValue(i);
+			Object actual = GTCadseFactory.findCadseField(shell, getAttributeName()).getValue();
+			assertEqualsListValues("Initial visual value error for #" + i, expected, actual);
 		}
 
 		// initial model value
