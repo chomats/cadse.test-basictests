@@ -9,7 +9,7 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.test.GTTestCase;
 
 /**
- * Tests basic properties for long attributes.
+ * Tests basic properties for string attributes.
  * <ul>
  * <li>default value</li>
  * <li>hidden in computed pages</li>
@@ -17,7 +17,7 @@ import fr.imag.adele.graphictests.test.GTTestCase;
  * <li>cannot be undefined</li>
  * </ul>
  */
-public class BasicProperties_long_tc_CADSEg extends GTTestCase {
+public class BasicProperties_string_tc_CADSEg extends GTTestCase {
 
 	/**
 	 * Makes a few things before the test starts.
@@ -42,14 +42,14 @@ public class BasicProperties_long_tc_CADSEg extends GTTestCase {
 	}
 
 	/**
-	 * Creates a set of long attributes.
+	 * Creates a set of string attributes.
 	 * 
 	 * @throws Exception
 	 *             the exception
 	 */
 	@Test
-	public void test_long() throws Exception {
-		BasicProperties_long_testDriver data = new BasicProperties_long_testDriver();
+	public void test_string() throws Exception {
+		BasicProperties_string_testDriver data = new BasicProperties_string_testDriver();
 		data.createAll();
 	}
 }

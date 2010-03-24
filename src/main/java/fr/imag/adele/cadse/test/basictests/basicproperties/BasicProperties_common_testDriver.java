@@ -20,11 +20,11 @@ import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTTestCase;
 
-public abstract class BasicPropertiesNumberTestDriver extends GTTestCase {
+public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
-	// ======== //
+	// ====== //
 	// PREFIX //
-	// ======== //
+	// ====== //
 
 	/** A prefix, to compute the attributes name */
 	private final String attr_prefix = "attr_";
@@ -55,15 +55,16 @@ public abstract class BasicPropertiesNumberTestDriver extends GTTestCase {
 	/** Set of values for the Cannot be undefined property */
 	protected final boolean[] cbuValues = { true, false };
 	/** Set of values for the List property */
-	protected final boolean[] listValues = { true, false }; // NOT LIST
+	protected final boolean[] listValues = { true, false };
+
 	/** Set of values for the displayed default value */
-	protected ArrayList<String> defValGraphicValues = new ArrayList<String>();
+	protected String[] defValGraphicValues;
 	/** Set of values for the modeled default value */
-	protected ArrayList<Object> defValModelValues = new ArrayList<Object>();
+	protected Object[] defValModelValues;
 	/** Set of values for the displayed new value */
-	protected ArrayList<String> newValGraphicValues = new ArrayList<String>();
+	protected String[] newValGraphicValues;
 	/** Set of values for the modeled new value */
-	protected ArrayList<Object> newValModelValues = new ArrayList<Object>();
+	protected Object[] newValModelValues;
 
 	// ======================================================== //
 	// TABLES USED FOR PROPERTIES VALUES FOR ALL THE INSTANCES //
@@ -77,12 +78,8 @@ public abstract class BasicPropertiesNumberTestDriver extends GTTestCase {
 	protected final ArrayList<Boolean> cbuTab = new ArrayList<Boolean>();
 	/** The List property value for all the instances */
 	protected final ArrayList<Boolean> listTab = new ArrayList<Boolean>();
-
-	// ======================================================= //
-	// TABLES USED FOR COMPUTED VALUES FOR ALL THE INSTANCES //
-	// ======================================================= //
-
 	/** The displayed default value for all the instances */
+
 	protected final ArrayList<String> defValGraphicTab = new ArrayList<String>();
 	/** The model default value for all the instances */
 	protected final ArrayList<Object> defValModelTab = new ArrayList<Object>();
@@ -90,6 +87,33 @@ public abstract class BasicPropertiesNumberTestDriver extends GTTestCase {
 	protected final ArrayList<String> newValGraphicTab = new ArrayList<String>();
 	/** The model new value for all the instances */
 	protected final ArrayList<Object> newValModelTab = new ArrayList<Object>();
+
+	/**
+	 * Performs table initializations
+	 */
+	public void initializeTables() {
+
+		for (int j = 0; j < defValGraphicValues.length; j++) {
+			for (int k = 0; k < newValGraphicValues.length; k++) {
+				for (boolean sicp : sicpValues) {
+					for (boolean simp : simpValues) {
+						for (boolean cbu : cbuValues) {
+							for (boolean list : listValues) {
+								defValModelTab.add(defValModelValues[j]);
+								defValGraphicTab.add(defValGraphicValues[j]);
+								newValModelTab.add(newValModelValues[k]);
+								newValGraphicTab.add(newValGraphicValues[k]);
+								sicpTab.add(sicp);
+								simpTab.add(simp);
+								cbuTab.add(cbu);
+								listTab.add(list);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 
 	/**
 	 * Returns the type under test.
@@ -106,7 +130,7 @@ public abstract class BasicPropertiesNumberTestDriver extends GTTestCase {
 	abstract public ItemType getItemTypeUnderTest();
 
 	/**
-	 * O * Gets the attribute name.
+	 * Gets the attribute name.
 	 * 
 	 * @return the attribute name
 	 */
@@ -307,33 +331,6 @@ public abstract class BasicPropertiesNumberTestDriver extends GTTestCase {
 	}
 
 	/**
-	 * Performs table initializations
-	 */
-	public void initializeTables() {
-
-		for (int j = 0; j < defValGraphicValues.size(); j++) {
-			for (int k = 0; k < newValGraphicValues.size(); k++) {
-				for (boolean sicp : sicpValues) {
-					for (boolean simp : simpValues) {
-						for (boolean cbu : cbuValues) {
-							for (boolean list : listValues) {
-								defValModelTab.add(defValModelValues.get(j));
-								defValGraphicTab.add(defValGraphicValues.get(j));
-								newValModelTab.add(newValModelValues.get(k));
-								newValGraphicTab.add(newValGraphicValues.get(k));
-								sicpTab.add(sicp);
-								simpTab.add(simp);
-								cbuTab.add(cbu);
-								listTab.add(list);
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	/**
 	 * Creates the CADSE, the items type and all the attributes in CADSEg.
 	 */
 	public void createAll() {
@@ -356,7 +353,23 @@ public abstract class BasicPropertiesNumberTestDriver extends GTTestCase {
 
 			/* Assert item has been created */
 			workspaceView.selectNode(attr_path);
+
+			/* Post create */
+			postCreate(i, it_path, attr_path);
 		}
+	}
+
+	/**
+	 * Performs actions after the item creation.
+	 * 
+	 * @param i
+	 *            the number of the item to be created
+	 * @param it_path
+	 *            the item type path
+	 * @param attr_path
+	 *            the attribute path
+	 */
+	protected void postCreate(int i, GTTreePath it_path, GTTreePath attr_path) {
 	}
 
 	public void testExecution(ArrayList<Integer> exclude) {
@@ -524,30 +537,6 @@ public abstract class BasicPropertiesNumberTestDriver extends GTTestCase {
 		for (int i = 0; i < tab1.size(); i++) {
 			assertEquals(tab1.get(i), tab2.get(i));
 		}
-
-		// if (expected instanceof String && actual instanceof String) {
-		// String s1 = (String) expected;
-		// String s2 = (String) actual;
-		// assertEquals(message, s1, s2);
-		// }
-		// else if (expected instanceof String[] && actual instanceof String[]) {
-		// String[] s1 = (String[]) expected;
-		// String[] s2 = (String[]) actual;
-		// if (s1.length != s2.length) {
-		// fail(message);
-		// }
-		// for (int i = 0; i < s1.length; i++) {
-		// assertEquals(message, s1[i], s2[i]);
-		// }
-		// }
-		// else if (expected instanceof ArrayList<?> && actual instanceof ArrayList<?>) {
-		// ArrayList<?> s1 = (ArrayList<?>) expected;
-		// ArrayList<?> s2 = (ArrayList<?>) actual;
-		// assertTrue(message, s1.equals(s2));
-		// }
-		// else {
-		// fail(message);
-		// }
 	}
 
 	@SuppressWarnings("unchecked")
@@ -575,4 +564,5 @@ public abstract class BasicPropertiesNumberTestDriver extends GTTestCase {
 		}
 		return tab;
 	}
+
 }

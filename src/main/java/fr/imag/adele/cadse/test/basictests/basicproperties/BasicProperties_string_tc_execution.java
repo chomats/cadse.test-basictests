@@ -11,7 +11,7 @@ import fr.imag.adele.graphictests.test.GTTestCase;
 
 /**
  */
-public class BasicProperties_integer_tc_execution extends GTTestCase {
+public class BasicProperties_string_tc_execution extends GTTestCase {
 
 	/**
 	 * Selects the CADSE to be executed and closes unless views.
@@ -19,15 +19,15 @@ public class BasicProperties_integer_tc_execution extends GTTestCase {
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses("Cadse Model.Workspace.CADSE_BasicProperties_integer");
+		selectCadses("Cadse Model.Workspace.CADSE_BasicProperties_string");
 		welcomeView.close();
 		workspaceView.show();
 	}
 
 	@Test
-	public void test_integer() throws Exception {
+	public void test_string() throws Exception {
 
-		BasicProperties_integer_testDriver integerTest = new BasicProperties_integer_testDriver();
+		BasicProperties_string_testDriver stringTest = new BasicProperties_string_testDriver();
 
 		ArrayList<Integer> exclude = new ArrayList<Integer>();
 		exclude.add(2); // it's possible to add an empty string in a list...
@@ -35,7 +35,7 @@ public class BasicProperties_integer_tc_execution extends GTTestCase {
 		exclude.add(50); // it's possible to add an empty string in a list...
 		exclude.add(54); // it's possible to add an empty string in a list...
 
-		integerTest.testExecution(exclude);
+		stringTest.testExecution(exclude);
 
 	}
 }

@@ -27,7 +27,7 @@ public class BasicProperties_long_tc_execution extends GTTestCase {
 	@Test
 	public void test_long() throws Exception {
 
-		BasicPropertiesLongTestDriver longTest = new BasicPropertiesLongTestDriver();
+		BasicProperties_long_testDriver longTest = new BasicProperties_long_testDriver();
 
 		ArrayList<Integer> exclude = new ArrayList<Integer>();
 		// exclude.add(2); // it's possible to add an empty string in a list...

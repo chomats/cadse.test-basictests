@@ -27,7 +27,7 @@ public class BasicProperties_double_tc_execution extends GTTestCase {
 	@Test
 	public void test_double() throws Exception {
 
-		BasicPropertiesDoubleTestDriver doubleTest = new BasicPropertiesDoubleTestDriver();
+		BasicProperties_double_testDriver doubleTest = new BasicProperties_double_testDriver();
 
 		ArrayList<Integer> exclude = new ArrayList<Integer>();
 		exclude.add(2); // it's possible to add an empty string in a list...
