@@ -10,7 +10,15 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createJ
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createJavaProjectContentModel;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.jpcmSrcFolderKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.noContentKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notJpcmSrcFolderKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notRootKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.partKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.withContentKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
 import org.junit.Test;
@@ -18,6 +26,7 @@ import org.junit.Test;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
 
@@ -71,8 +80,7 @@ public class HasContent_tc_CADSEg extends GTTestCase {
 		// Item without content //
 		// ==================== //
 
-		createItemType(data_model, "no_content", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true, CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, false);
+		createItemType(data_model, "no_content", notAbstractKv, rootKv, noContentKv);
 
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), file_cm,
 				failingAssertTimeout);
@@ -88,68 +96,61 @@ public class HasContent_tc_CADSEg extends GTTestCase {
 		// ======================= //
 
 		// Java project content model with and without source folder
-		createItemType(data_model, "javaproject_content_src", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true, CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, true);
-		createItemType(data_model, "javaproject_content_nosrc", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true, CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, true);
+		createItemType(data_model, "javaproject_content_src", notAbstractKv, rootKv, withContentKv);
+		createItemType(data_model, "javaproject_content_nosrc", notAbstractKv, rootKv, withContentKv);
 
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_src" + managerSufix),
-				CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_, true);
+				jpcmSrcFolderKv);
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_nosrc" + managerSufix),
-				CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_, false);
+				notJpcmSrcFolderKv);
 
 		// Java project content model Name template
-		createItemType(data_model, "javaproject_content_template1", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_,
-				false, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true, CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, true);
-		createItemType(data_model, "javaproject_content_template2", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_,
-				false, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true, CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, true);
+		createItemType(data_model, "javaproject_content_template1", notAbstractKv, rootKv, withContentKv);
+		createItemType(data_model, "javaproject_content_template2", notAbstractKv, rootKv, withContentKv);
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_template1"
-				+ managerSufix), CadseGCST.PROJECT_CONTENT_MODEL_at_PROJECT_NAME_, "${#qualified-name}_test");
+				+ managerSufix), new KeyValue(CadseGCST.PROJECT_CONTENT_MODEL_at_PROJECT_NAME_,
+				"${#qualified-name}_test"));
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_template2"
-				+ managerSufix), CadseGCST.PROJECT_CONTENT_MODEL_at_PROJECT_NAME_, "${#type-name}_test");
+				+ managerSufix), new KeyValue(CadseGCST.PROJECT_CONTENT_MODEL_at_PROJECT_NAME_, "${#type-name}_test"));
 
 		// =================== //
 		// Common root project //
 		// =================== //
 
-		createItemType(data_model, "root_project", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true, CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, true);
+		createItemType(data_model, "root_project", notAbstractKv, rootKv, withContentKv);
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("root_project" + managerSufix),
-				CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_, true);
+				jpcmSrcFolderKv);
 
 		// ================ //
 		// FileContentModel //
 		// ================ //
 
-		createItemType(data_model, "file_content", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, false, CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, true);
+		createItemType(data_model, "file_content", notAbstractKv, notRootKv, withContentKv);
 		createLinkType("link_file", data_model.concat("root_project"), data_model.concat("file_content"), "0",
-				"unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
-		createFileContentModel(workspaceView, mapping_model.concat("file_content" + managerSufix),
-				CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_, "/${#short-name}.txt");
+				"unbounded", partKv);
+		createFileContentModel(workspaceView, mapping_model.concat("file_content" + managerSufix), new KeyValue(
+				CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_, "/${#short-name}.txt"));
 
 		// ================== //
 		// FolderContentModel //
 		// ================== //
 
-		createItemType(data_model, "folder_content", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, false, CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, true);
+		createItemType(data_model, "folder_content", notAbstractKv, notRootKv, withContentKv);
 		createLinkType("link_folder", data_model.concat("root_project"), data_model.concat("folder_content"), "0",
-				"unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
-		createFolderContentModel(workspaceView, mapping_model.concat("folder_content" + managerSufix),
-				CadseGCST.FOLDER_CONTENT_MODEL_at_FOLDER_PATH_, "/${#short-name}");
+				"unbounded", partKv);
+		createFolderContentModel(workspaceView, mapping_model.concat("folder_content" + managerSufix), new KeyValue(
+				CadseGCST.FOLDER_CONTENT_MODEL_at_FOLDER_PATH_, "/${#short-name}"));
 
 		// ==================== //
 		// JavaFileContentModel //
 		// ==================== //
 
-		createItemType(data_model, "javaFile_content", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, false, CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, true);
+		createItemType(data_model, "javaFile_content", notAbstractKv, notRootKv, withContentKv);
 		createLinkType("link_javaFile", data_model.concat("root_project"), data_model.concat("javaFile_content"), "0",
-				"unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
+				"unbounded", partKv);
 		createJavaFileContentModel(workspaceView, mapping_model.concat("javaFile_content" + managerSufix),
-				CadseGCST.JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_, "${#short-name}",
-				CadseGCST.JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_, "fr.imag.adele.${#short-name}");
+				new KeyValue(CadseGCST.JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_, "${#short-name}"), new KeyValue(
+						CadseGCST.JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_, "fr.imag.adele.${#short-name}"));
 	}
 
 	/**
