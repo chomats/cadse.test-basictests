@@ -1,5 +1,7 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.sicpKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.simpKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
 import java.util.ArrayList;
@@ -7,6 +9,7 @@ import java.util.ArrayList;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
+import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class BasicProperties_string_testDriver extends BasicProperties_common_testDriver {
@@ -18,14 +21,26 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 
 	public BasicProperties_string_testDriver() {
 
-		defValGraphicValues = new String[] { null, "", "my_dv" };
-		defValModelValues = new Object[] { null, "", "my_dv" };
+		/* Values given into CADSEg */
+		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
+		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "my_dv");
+		defValCADSEgValues = new KeyValue[] { kv11, kv12, kv13 };
 
-		newValGraphicValues = new String[] { null, "", "new_dv" }; // null stands for leave unchanged
-		newValModelValues = new Object[] { null, "", "new_dv" };
+		/* Execution : value at start up */
+		KeyValue kv21 = new KeyValue(getAttributeName(), null, null);
+		KeyValue kv22 = new KeyValue(getAttributeName(), "", "");
+		KeyValue kv23 = new KeyValue(getAttributeName(), "my_dv", "my_dv");
+		executionOldValues = new KeyValue[] { kv21, kv22, kv23 };
 
-		sicpValues = new boolean[] { true };
-		simpValues = new boolean[] { true };
+		/* Execution : new value */
+		KeyValue kv31 = new KeyValue(getAttributeName(), "", "");
+		KeyValue kv32 = new KeyValue(getAttributeName(), "new_val", "new_val");
+		KeyValue kv33 = null; // null stands for leave unchanged
+		executionNewValues = new KeyValue[] { kv31, kv32, kv33 };
+
+		sicpValues = new KeyValue[] { sicpKv };
+		simpValues = new KeyValue[] { simpKv };
 
 		initializeTables();
 	}
@@ -43,39 +58,6 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	@Override
 	public ItemType getItemTypeUnderTest() {
 		return CadseGCST.STRING;
-	}
-
-	/**
-	 * Performs table initializations
-	 */
-	@Override
-	public void initializeTables() {
-
-		for (String defValGraphic : defValGraphicValues) {
-			for (String newValGraphic : newValGraphicValues) {
-				for (boolean sicp : sicpValues) {
-					for (boolean simp : simpValues) {
-						for (boolean cbu : cbuValues) {
-							for (boolean list : listValues) {
-								for (boolean notEmpty : notEmptyValues) {
-									defValGraphicTab.add(defValGraphic);
-									newValGraphicTab.add(newValGraphic);
-
-									defValModelTab.add(defValGraphic); // graphic value equals the model one
-									newValModelTab.add(newValGraphic); // graphic value equals the model one
-
-									sicpTab.add(sicp);
-									simpTab.add(simp);
-									cbuTab.add(cbu);
-									listTab.add(list);
-									notEmptyTab.add(notEmpty);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
 	}
 
 	/**

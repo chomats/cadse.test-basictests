@@ -1,9 +1,19 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.cbuKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicAttribute;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.listKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notCbuKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notListKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notSicpKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notSimpKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.rootKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.sicpKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.simpKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
 import java.util.ArrayList;
@@ -15,6 +25,7 @@ import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
+import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
@@ -49,60 +60,55 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	// ========================== //
 
 	/** Set of values for the Show in Creation Page property */
-	protected boolean[] sicpValues = { true, false };
+	protected KeyValue[] sicpValues = { sicpKv, notSicpKv };
 	/** Set of values for the Show in Modification Page property */
-	protected boolean[] simpValues = { true, false };
+	protected KeyValue[] simpValues = { simpKv, notSimpKv };
 	/** Set of values for the Cannot be undefined property */
-	protected boolean[] cbuValues = { true, false };
+	protected KeyValue[] cbuValues = { cbuKv, notCbuKv };
 	/** Set of values for the List property */
-	protected boolean[] listValues = { true, false };
+	protected KeyValue[] listValues = { listKv, notListKv };
 
-	/** Set of values for the displayed default value */
-	protected String[] defValGraphicValues;
-	/** Set of values for the modeled default value */
-	protected Object[] defValModelValues;
-	/** Set of values for the displayed new value */
-	protected String[] newValGraphicValues;
-	/** Set of values for the modeled new value */
-	protected Object[] newValModelValues;
+	/** Set of values for the default value in CADSEg */
+	protected KeyValue[] defValCADSEgValues;
+	/** Set of values for the pre-set value at execution time */
+	protected KeyValue[] executionOldValues;
+	/** Set of values for the new value at execution time */
+	protected KeyValue[] executionNewValues;
 
 	// ======================================================= //
 	// TABLES USED FOR PROPERTIES VALUES FOR ALL THE INSTANCES //
 	// ======================================================= //
 
 	/** The Show in Creation Page property value for all the instances */
-	protected final ArrayList<Boolean> sicpTab = new ArrayList<Boolean>();
+	protected final ArrayList<KeyValue> sicpTab = new ArrayList<KeyValue>();
 	/** The Show in Modification Page property value for all the instances */
-	protected final ArrayList<Boolean> simpTab = new ArrayList<Boolean>();
+	protected final ArrayList<KeyValue> simpTab = new ArrayList<KeyValue>();
 	/** The Cannot be undefined property value for all the instances */
-	protected final ArrayList<Boolean> cbuTab = new ArrayList<Boolean>();
+	protected final ArrayList<KeyValue> cbuTab = new ArrayList<KeyValue>();
 	/** The List property value for all the instances */
-	protected final ArrayList<Boolean> listTab = new ArrayList<Boolean>();
-	/** The displayed default value for all the instances */
+	protected final ArrayList<KeyValue> listTab = new ArrayList<KeyValue>();
 
-	protected final ArrayList<String> defValGraphicTab = new ArrayList<String>();
-	/** The model default value for all the instances */
-	protected final ArrayList<Object> defValModelTab = new ArrayList<Object>();
-	/** The displayed new value for all the instances */
-	protected final ArrayList<String> newValGraphicTab = new ArrayList<String>();
-	/** The model new value for all the instances */
-	protected final ArrayList<Object> newValModelTab = new ArrayList<Object>();
+	/** The default value for all the instances */
+	protected final ArrayList<KeyValue> defValCADSEgTab = new ArrayList<KeyValue>();
+	/** The pre-set value at execution time for all the instances */
+	protected final ArrayList<KeyValue> executionOldTab = new ArrayList<KeyValue>();
+	/** The new value at execution time for all the instances */
+	protected final ArrayList<KeyValue> executionNewTab = new ArrayList<KeyValue>();
 
 	/**
 	 * Performs table initializations
 	 */
 	public void initializeTables() {
 
-		for (int j = 0; j < defValGraphicValues.length; j++) {
-			for (int k = 0; k < newValGraphicValues.length; k++) {
-				for (boolean sicp : sicpValues) {
-					for (boolean simp : simpValues) {
-						for (boolean cbu : cbuValues) {
-							for (boolean list : listValues) {
-								defValModelTab.add(defValModelValues[j]);
-								defValGraphicTab.add(defValGraphicValues[j]);
-								newValModelTab.add(newValModelValues[k]);
-								newValGraphicTab.add(newValGraphicValues[k]);
+		for (int j = 0; j < defValCADSEgValues.length; j++) {
+			for (int k = 0; k < executionNewValues.length; k++) {
+				for (KeyValue sicp : sicpValues) {
+					for (KeyValue simp : simpValues) {
+						for (KeyValue cbu : cbuValues) {
+							for (KeyValue list : listValues) {
+								defValCADSEgTab.add(defValCADSEgValues[j]);
+								executionOldTab.add(executionOldValues[j]);
+								executionNewTab.add(executionNewValues[k]);
 								sicpTab.add(sicp);
 								simpTab.add(simp);
 								cbuTab.add(cbu);
@@ -168,12 +174,12 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 * @return a string or a list of string
 	 */
 	public Object getInitialVisualValue(int i) {
-		if (sicpTab.get(i)) {
-			if (listTab.get(i)) {
+		if (sicpTab.get(i).getBoolean()) {
+			if (listTab.get(i).getBoolean()) {
 				return new String[] {};
 			}
 			else {
-				return defValGraphicTab.get(i);
+				return executionOldTab.get(i).graphicalValue;
 			}
 		}
 		else {
@@ -189,11 +195,11 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 * @return the initial model value
 	 */
 	public Object getInitialModelValue(int i) {
-		if (listTab.get(i)) {
+		if (listTab.get(i).getBoolean()) {
 			return new ArrayList<Object>();
 		}
 		else {
-			return defValModelTab.get(i);
+			return executionOldTab.get(i).modelValue;
 		}
 	}
 
@@ -205,25 +211,25 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 * @return the final model value
 	 */
 	public Object getFinalModelValue(int i) {
-		if (listTab.get(i)) { // def val is ignored with list attributes
-			if (newValModelTab.get(i) != null) {
-				return new Object[] { newValModelTab.get(i) };
+		if (listTab.get(i).getBoolean()) { // def val is ignored with list attributes
+			if (executionNewTab.get(i) != null) {
+				return new Object[] { executionNewTab.get(i).modelValue };
 			}
 			else {
 				return new Object[] {};
 			}
 		}
 		else {
-			if (sicpTab.get(i)) {
-				if (newValGraphicTab.get(i) != null) { // in case graphic = "" and model = null
-					return newValModelTab.get(i);
+			if (sicpTab.get(i).getBoolean()) {
+				if (executionNewTab.get(i) != null) { // in case graphic = "" and model = null
+					return executionNewTab.get(i).modelValue;
 				}
 				else {
-					return defValModelTab.get(i);
+					return executionOldTab.get(i).modelValue;
 				}
 			}
 			else {
-				return defValModelTab.get(i);
+				return executionOldTab.get(i).modelValue;
 			}
 		}
 	}
@@ -236,21 +242,21 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 * @return the final graphical value
 	 */
 	public Object getFinalGraphicalValue(int i) {
-		if (sicpTab.get(i)) {
-			if (listTab.get(i)) { // default value is ignored with list
-				if (newValGraphicTab.get(i) != null && !newValGraphicTab.get(i).equals("")) {
-					return new String[] { newValGraphicTab.get(i) };
+		if (sicpTab.get(i).getBoolean()) {
+			if (listTab.get(i).getBoolean()) { // default value is ignored with list
+				if (executionNewTab.get(i) != null && !executionNewTab.get(i).graphicalValue.equals("")) {
+					return new String[] { executionNewTab.get(i).graphicalValue.toString() };
 				}
 				else {
 					return new String[] {};
 				}
 			}
 			else {
-				if (newValGraphicTab.get(i) != null) {
-					return newValGraphicTab.get(i);
+				if (executionNewTab.get(i) != null) {
+					return executionNewTab.get(i).graphicalValue;
 				}
 				else {
-					return defValGraphicTab.get(i); // no new value
+					return executionOldTab.get(i).graphicalValue; // no new value
 				}
 			}
 		}
@@ -267,11 +273,11 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 * @return true, if is ok button is activated
 	 */
 	public boolean isOkButtonActivated(int i) {
-		if (listTab.get(i)) {
+		if (listTab.get(i).getBoolean()) {
 			return true;
 		}
 		else {
-			return cbuTab.get(i) ? (getFinalModelValue(i) != null) : true;
+			return cbuTab.get(i).getBoolean() ? (getFinalModelValue(i) != null) : true;
 		}
 	}
 
@@ -284,9 +290,9 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 */
 	public Object getPropertiesGraphicalValue(int i) {
 
-		if (simpTab.get(i)) {
-			if (listTab.get(i)) {
-				if (sicpTab.get(i)) {
+		if (simpTab.get(i).getBoolean()) {
+			if (listTab.get(i).getBoolean()) {
+				if (sicpTab.get(i).getBoolean()) {
 					return getFinalGraphicalValue(i);
 				}
 				else {
@@ -294,12 +300,11 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 				}
 			}
 			else {
-
-				if (sicpTab.get(i)) {
+				if (sicpTab.get(i).getBoolean()) {
 					return getFinalGraphicalValue(i);
 				}
 				else {
-					return defValGraphicTab.get(i);
+					return defValCADSEgTab.get(i).graphicalValue;
 				}
 			}
 		}
@@ -317,15 +322,15 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 */
 	public Object getPropertiesModelValue(int i) {
 
-		if (sicpTab.get(i)) {
+		if (sicpTab.get(i).getBoolean()) {
 			return getFinalModelValue(i);
 		}
 		else {
-			if (listTab.get(i)) {
+			if (listTab.get(i).getBoolean()) {
 				return new Object[] {}; // default value is ignored with list attributes
 			}
 			else {
-				return defValModelTab.get(i);
+				return defValCADSEgTab.get(i).modelValue;
 			}
 		}
 	}
@@ -338,23 +343,18 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 		// Creates a new CADSE
 		createCadseDefinition(cadse_name, "model." + cadse_name);
 
-		for (int i = 0; i < defValGraphicTab.size(); i++) {
+		for (int i = 0; i < defValCADSEgTab.size(); i++) {
 
 			System.out.println("Starting CADSEg #" + i);
 
 			/* Item type creation */
 			GTTreePath it_path = data_model.concat(getItName(i));
-			createItemType(data_model, getItName(i), CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-					CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
+			createItemType(data_model, getItName(i), notAbstractKv, rootKv);
 
 			/* Attribute creation */
 			GTTreePath attr_path = it_path.concat(getAttributeName());
-			createBasicAttribute(it_path, getItemTypeUnderTest(), getAttributeName(),
-					CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, defValGraphicTab.get(i),
-					CadseGCST.ATTRIBUTE_at_MUST_BE_INITIALIZED_, sicpTab.get(i),
-					CadseGCST.ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_, simpTab.get(i),
-					CadseGCST.ATTRIBUTE_at_CANNOT_BE_UNDEFINED_, cbuTab.get(i), CadseGCST.ATTRIBUTE_at_IS_LIST_,
-					listTab.get(i));
+			createBasicAttribute(it_path, getItemTypeUnderTest(), getAttributeName(), defValCADSEgTab.get(i), sicpTab
+					.get(i), simpTab.get(i), cbuTab.get(i), listTab.get(i));
 
 			/* Assert item has been created */
 			workspaceView.selectNode(attr_path);
@@ -400,7 +400,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 */
 	public void testExecution(int i) {
 
-		boolean fieldInCP = sicpTab.get(i);
+		boolean fieldInCP = sicpTab.get(i).getBoolean();
 
 		/* ============== */
 		/* Creation page */
@@ -433,13 +433,14 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 		}
 
 		// New Attribute Value
-		if (fieldInCP && newValGraphicTab.get(i) != null) {
-			if (listTab.get(i)) {
-				if (newValGraphicTab.get(i).equals("")) {
+		if (fieldInCP && executionNewTab.get(i) != null) {
+			if (listTab.get(i).getBoolean()) {
+				if (executionNewTab.get(i).graphicalValue.equals("")) {
 					long old_timeout = SWTBotPreferences.TIMEOUT;
 					try {
 						SWTBotPreferences.TIMEOUT = failingAssertTimeout;
-						GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(newValGraphicTab.get(i));
+						GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(
+								executionNewTab.get(i).graphicalValue.toString());
 						SWTBotPreferences.TIMEOUT = old_timeout;
 						fail("It should be impossible to fill an empty value for #" + i);
 					}
@@ -451,11 +452,13 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 					}
 				}
 				else {
-					GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(newValGraphicTab.get(i));
+					GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(
+							executionNewTab.get(i).graphicalValue.toString());
 				}
 			}
 			else {
-				GTCadseFactory.findCadseField(shell, getAttributeName()).typeText(newValGraphicTab.get(i));
+				GTCadseFactory.findCadseField(shell, getAttributeName()).typeText(
+						executionNewTab.get(i).graphicalValue.toString());
 			}
 		}
 
@@ -463,16 +466,16 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText(getInstanceName(i));
 
 		// final visual value
-		if (fieldInCP && newValGraphicTab.get(i) != null) {
+		if (fieldInCP && executionNewTab.get(i) != null) {
 			assertEqualsListValues("Error with final visual value for #" + i, getFinalGraphicalValue(i), GTCadseFactory
 					.findCadseField(shell, getAttributeName()).getValue());
 		}
 
 		// final model value (okButtonActivated is important! if the value is not correct, the previous correct
 		// model value (default value) is locked even if the field displays another value.
-		if (fieldInCP && newValGraphicTab.get(i) != null && isOkButtonActivated(i)) {
-			assertEqualsListValues("Final model value error for #" + i, newValModelTab.get(i), GTCadseFactory
-					.findCadseField(shell, getAttributeName()).getModelValue());
+		if (fieldInCP && executionNewTab.get(i) != null && isOkButtonActivated(i)) {
+			assertEqualsListValues("Final model value error for #" + i, executionNewTab.get(i).modelValue,
+					GTCadseFactory.findCadseField(shell, getAttributeName()).getModelValue());
 		}
 
 		// Waits until refresh
@@ -510,7 +513,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 				.getText());
 
 		// Field value
-		if (simpTab.get(i)) {
+		if (simpTab.get(i).getBoolean()) {
 			assertEqualsListValues("Error in graphical modification page value for #" + i,
 					getPropertiesGraphicalValue(i), GTCadseFactory.findCadseField(propertiesView, getAttributeName())
 							.getValue());

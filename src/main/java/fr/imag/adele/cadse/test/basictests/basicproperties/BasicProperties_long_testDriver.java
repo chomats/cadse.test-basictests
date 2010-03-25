@@ -2,16 +2,27 @@ package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.KeyValue;
 
-public class BasicProperties_long_testDriver extends BasicProperties_number_testDriver {
+public class BasicProperties_long_testDriver extends BasicProperties_common_testDriver {
 
 	public BasicProperties_long_testDriver() {
 
-		defValGraphicValues = new String[] { "", "123" };
-		defValModelValues = new Object[] { null, 123l };
+		/* Values given into CADSEg */
+		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "123");
+		defValCADSEgValues = new KeyValue[] { kv11, kv12 };
 
-		newValGraphicValues = new String[] { "", "456", null }; // null stands for leave unchanged
-		newValModelValues = new Object[] { null, 456l, null };
+		/* Execution : value at start up */
+		KeyValue kv21 = new KeyValue(getAttributeName(), "", null);
+		KeyValue kv22 = new KeyValue(getAttributeName(), "123", 123l);
+		executionOldValues = new KeyValue[] { kv21, kv22 };
+
+		/* Execution : new value */
+		KeyValue kv31 = new KeyValue(getAttributeName(), "", null);
+		KeyValue kv32 = new KeyValue(getAttributeName(), "456", 456l);
+		KeyValue kv33 = null; // null stands for leave unchanged
+		executionNewValues = new KeyValue[] { kv31, kv32, kv33 };
 
 		initializeTables();
 	}
