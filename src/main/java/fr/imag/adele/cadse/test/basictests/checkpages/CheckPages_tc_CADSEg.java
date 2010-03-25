@@ -321,7 +321,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		String[] expected_modifCST = { "PROJECT_CONTENT_MODEL_at_PROJECT_NAME_",
 				"JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 
-		createItemType(data_model, "mapping_javaProject", null, false, true, true);
+		createItemType(data_model, "mapping_javaProject", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
+				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true, CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, true);
 		checkCreationContentModel(expected_creationCST, expected_creationVal, mapping
 				.concat("mapping_javaProject-manager"), "JavaProjectContentModel", "${#qualified-name}_test", null,
 				null, null, null, null, null);
@@ -343,7 +344,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		String[] expected_modifCST = { "JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_",
 				"JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 
-		createItemType(data_model, "mapping_JavaFile", null, false, true, true);
+		createItemType(data_model, "mapping_JavaFile", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
+				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true, CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, true);
 		checkCreationContentModel(expected_creationCST, expected_creationVal, mapping
 				.concat("mapping_JavaFile-manager"), "JavaFileContentModel", null, null, "${#short-name}",
 				"fr.imag.adele.${#short-name}", null, null, null);
@@ -363,7 +365,9 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		Object[] expected_creationVal = { "EMPTY", false };
 		String[] expected_modifCST = { "FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 
-		createItemType(data_model, "mapping_folder", null, false, true, true);
+		createItemType(data_model, "mapping_folder", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
+				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true, CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, true);
+
 		checkCreationContentModel(expected_creationCST, expected_creationVal, mapping.concat("mapping_folder-manager"),
 				"FolderContentModel", null, null, null, null, "${#short-name}", null, null);
 		checkModificationPage(mapping.concat("mapping_folder-manager").concat("content-item"),
@@ -382,7 +386,9 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		Object[] expected_creationVal = { "EMPTY", true };
 		String[] expected_modifCST = { "FILE_CONTENT_MODEL_at_FILE_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 
-		createItemType(data_model, "mapping_file", null, false, true, true);
+		createItemType(data_model, "mapping_file", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
+				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true, CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, true);
+
 		checkCreationContentModel(expected_creationCST, expected_creationVal, mapping.concat("mapping_file-manager"),
 				"FileContentModel", null, null, null, null, null, "${#short-name}.txt", null);
 		checkModificationPage(mapping.concat("mapping_file-manager").concat("content-item"),

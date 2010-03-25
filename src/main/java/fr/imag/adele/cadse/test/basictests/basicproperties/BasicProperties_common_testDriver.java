@@ -344,12 +344,17 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
 			/* Item type creation */
 			GTTreePath it_path = data_model.concat(getItName(i));
-			createItemType(data_model, getItName(i), null, false, true, null);
+			createItemType(data_model, getItName(i), CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
+					CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
 
 			/* Attribute creation */
 			GTTreePath attr_path = it_path.concat(getAttributeName());
-			createBasicAttribute(it_path, getItemTypeUnderTest(), getAttributeName(), null, defValGraphicTab.get(i),
-					sicpTab.get(i), simpTab.get(i), cbuTab.get(i), listTab.get(i));
+			createBasicAttribute(it_path, getItemTypeUnderTest(), getAttributeName(),
+					CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, defValGraphicTab.get(i),
+					CadseGCST.ATTRIBUTE_at_MUST_BE_INITIALIZED_, sicpTab.get(i),
+					CadseGCST.ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_, simpTab.get(i),
+					CadseGCST.ATTRIBUTE_at_CANNOT_BE_UNDEFINED_, cbuTab.get(i), CadseGCST.ATTRIBUTE_at_IS_LIST_,
+					listTab.get(i));
 
 			/* Assert item has been created */
 			workspaceView.selectNode(attr_path);
