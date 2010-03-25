@@ -4,6 +4,9 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCo
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.partKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
@@ -12,6 +15,7 @@ import org.junit.Test;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
 
@@ -58,10 +62,8 @@ public class Link_tc_CADSEg extends GTTestCase {
 		String link_name = type_prefix + "link";
 
 		/* Item Type definition */
-		createItemType(data_model, s1_name, CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
-		createItemType(data_model, d1_name, CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
+		createItemType(data_model, s1_name, notAbstractKv, rootKv);
+		createItemType(data_model, d1_name, notAbstractKv, rootKv);
 
 		/* Link type definition */
 		createLinkType(link_name, s1_path, d1_path, "0", "2");
@@ -85,14 +87,12 @@ public class Link_tc_CADSEg extends GTTestCase {
 		String l22_name = type_prefix + "l22";
 
 		/* Item Type definition */
-		createItemType(data_model, s1_name, CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
-		createItemType(data_model, s2_name, CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, s1_path,
-				CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
-		createItemType(data_model, d1_name, CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
-		createItemType(data_model, d2_name, CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, d1_path,
-				CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
+		createItemType(data_model, s1_name, notAbstractKv, rootKv);
+		createItemType(data_model, s2_name, new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, s1_path), notAbstractKv,
+				rootKv);
+		createItemType(data_model, d1_name, notAbstractKv, rootKv);
+		createItemType(data_model, d2_name, new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, d1_path), notAbstractKv,
+				rootKv);
 
 		/* Link type definition */
 		createLinkType(l11_name, s1_path, d1_path, "0", "unbounded");
@@ -112,13 +112,12 @@ public class Link_tc_CADSEg extends GTTestCase {
 		GTTreePath dst_path = data_model.concat(dst_name);
 
 		/* Item Type definition */
-		createItemType(data_model, src_name, CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
-		createItemType(data_model, dst_name, CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
+		createItemType(data_model, src_name, notAbstractKv, rootKv);
+		createItemType(data_model, dst_name, notAbstractKv, rootKv);
 
 		/* Link type definition */
-		createLinkType(link_name, src_path, dst_path, "0", "unbounded", CadseGCST.LINK_TYPE_at_ANNOTATION_, true);
+		createLinkType(link_name, src_path, dst_path, "0", "unbounded", new KeyValue(
+				CadseGCST.LINK_TYPE_at_ANNOTATION_, true));
 	}
 
 	@Test
@@ -132,13 +131,11 @@ public class Link_tc_CADSEg extends GTTestCase {
 		GTTreePath dst_path = data_model.concat(dst_name);
 
 		/* Item Type definition */
-		createItemType(data_model, src_name, CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
-		createItemType(data_model, dst_name, CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
+		createItemType(data_model, src_name, notAbstractKv, rootKv);
+		createItemType(data_model, dst_name, notAbstractKv, rootKv);
 
 		/* Link type definition */
-		createLinkType(link_name, src_path, dst_path, "0", "unbounded", CadseGCST.LINK_TYPE_at_PART_, true);
+		createLinkType(link_name, src_path, dst_path, "0", "unbounded", partKv);
 	}
 
 	/**
