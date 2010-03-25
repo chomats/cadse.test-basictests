@@ -3,6 +3,9 @@ package fr.imag.adele.cadse.test.basictests.root;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notRootKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
@@ -11,6 +14,7 @@ import org.junit.Test;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
 
@@ -50,19 +54,17 @@ public class Root_tc_CADSEg extends GTTestCase {
 	public void test_item_creation() throws Exception {
 
 		// Creates item types (R => Root, Nr => Non root)
-		createItemType(data_model, "itR", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
-		createItemType(data_model, "itNr", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, false);
+		createItemType(data_model, "itR", notAbstractKv, rootKv);
+		createItemType(data_model, "itNr", notAbstractKv, notRootKv);
 
-		createItemType(data_model, "itRR", CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itR"),
-				CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
-		createItemType(data_model, "itRNr", CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itR"),
-				CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, false);
-		createItemType(data_model, "itNrR", CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itNr"),
-				CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
-		createItemType(data_model, "itNrNr", CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itNr"),
-				CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, false);
+		createItemType(data_model, "itRR", new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itR")),
+				notAbstractKv, rootKv);
+		createItemType(data_model, "itRNr", new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itR")),
+				notAbstractKv, notRootKv);
+		createItemType(data_model, "itNrR", new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itNr")),
+				notAbstractKv, rootKv);
+		createItemType(data_model, "itNrNr",
+				new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itNr")), notAbstractKv, notRootKv);
 	}
 
 	/**
