@@ -3,6 +3,8 @@ package fr.imag.adele.cadse.test.basictests.defaultinstancename;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
@@ -52,8 +54,7 @@ public class DefaultInstanceName_tc_CADSEg extends GTTestCase {
 	public void test_item_creation() throws Exception {
 
 		// Creates item type with default instance name
-		createItemType(data_model, "my_item_type", CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, false,
-				CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, true);
+		createItemType(data_model, "my_item_type", notAbstractKv, rootKv);
 		workspaceView.selectNode(data_model.concat("my_item_type"));
 		propertiesView.showTab("Item type");
 		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_DEFAULT_INSTANCE_NAME_).typeText(
