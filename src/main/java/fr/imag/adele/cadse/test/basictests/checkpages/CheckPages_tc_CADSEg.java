@@ -7,9 +7,9 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.section
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.tabLabel;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.notAbstractKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.rootKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.withContentKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.rootKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.withContentKv;
 
 import java.util.List;
 

@@ -12,21 +12,21 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createL
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.jpcmSrcFolderKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.noContentKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.notAbstractKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.notJpcmSrcFolderKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.notRootKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.partKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.rootKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.withContentKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.jpcmSrcFolderKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.noContentKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.notJpcmSrcFolderKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.notRootKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.partKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.rootKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.withContentKv;
 
 import org.junit.Test;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.KeyValue;
+import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
 

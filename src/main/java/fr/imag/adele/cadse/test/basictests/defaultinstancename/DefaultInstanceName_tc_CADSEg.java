@@ -5,8 +5,8 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createC
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.notAbstractKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.rootKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.rootKv;
 
 import org.junit.Test;
 

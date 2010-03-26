@@ -2,7 +2,7 @@ package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
-import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.KeyValue;
+import fr.imag.adele.graphictests.cadse.test.KeyValue;
 
 public class BasicProperties_integer_testDriver extends BasicProperties_common_testDriver {
 

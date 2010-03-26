@@ -1,15 +1,15 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.sicpKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.simpKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.sicpKv;
+import static fr.imag.adele.graphictests.cadse.test.KeyValue.simpKv;
 
 import java.util.ArrayList;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
-import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.KeyValue;
+import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class BasicProperties_string_testDriver extends BasicProperties_common_testDriver {
