@@ -3,13 +3,13 @@ package fr.imag.adele.cadse.test.basictests.checkpages;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notAbstractKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.sectionLabel;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.tabLabel;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.withContentKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.rootKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.withContentKv;
 
 import java.util.List;
 
@@ -88,7 +88,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	@Test
 	public void test_CADSE_Definition() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_lt_EXTENDS" };
-		Object[] expected_creationVal = { "EMPTY", "EMPTY", new Object[] {} };
+		Object[] expected_creationVal = { "", "", new Object[] {} };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_DEFINITION_at_CADSE_NAME_", "CADSE_at_DESCRIPTION_",
 				"CADSE_DEFINITION_at_COMMENTARY_", "CADSE_DEFINITION_at_VENDOR_NAME_",
@@ -108,7 +108,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	public void test_Item_Type() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ITEM_TYPE_lt_SUPER_TYPE",
 				"ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_" };
-		Object[] expected_creationVal = { "EMPTY", "Item", false, true, true };
+		Object[] expected_creationVal = { "", "Item", false, true, true };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ITEM_TYPE_at_DEFAULT_INSTANCE_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_ICON_",
 				"ITEM_TYPE_at_PACKAGE_NAME_", "ITEM_TYPE_at_ITEM_FACTORY_", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_",
@@ -129,8 +129,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
 				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
 
-		Object[] expected_creationVal = { "EMPTY", true, false, true, false, false, "Create new revision", "Abort",
-				true, "Generic merge values" };
+		Object[] expected_creationVal = { "", true, false, true, false, false, "Create new revision", "Abort", true,
+				"Generic merge values" };
 
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
@@ -152,8 +152,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
 				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "EMPTY", "EMPTY", false, true, false, false, "Create new revision", "Abort",
-				true, "Generic merge values" };
+		Object[] expected_creationVal = { "", "", false, true, false, false, "Create new revision", "Abort", true,
+				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
 				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
@@ -174,8 +174,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
 				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "EMPTY", "EMPTY", false, true, false, false, "Create new revision", "Abort",
-				true, "Generic merge values" };
+		Object[] expected_creationVal = { "", "", false, true, false, false, "Create new revision", "Abort", true,
+				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
 				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
@@ -196,8 +196,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
 				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "EMPTY", "EMPTY", false, true, false, false, "Create new revision", "Abort",
-				true, "Generic merge values" };
+		Object[] expected_creationVal = { "", "", false, true, false, false, "Create new revision", "Abort", true,
+				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
 				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_",
@@ -218,8 +218,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_",
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
 				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "EMPTY", "EMPTY", false, true, false, false, "Create new revision", "Abort",
-				true, "Generic merge values" };
+		Object[] expected_creationVal = { "", "", false, true, false, false, "Create new revision", "Abort", true,
+				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
 				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "STRING_at_NOT_EMPTY_",
@@ -238,7 +238,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	@Test
 	public void test_Enum_Type() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ENUM_TYPE_at_VALUES_" };
-		Object[] expected_creationVal = { "EMPTY", new Object[] {} };
+		Object[] expected_creationVal = { "", new Object[] {} };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ENUM_TYPE_at_JAVA_CLASS_", "ENUM_TYPE_at_MUST_BE_GENERATED_", "ENUM_TYPE_at_VALUES_" };
 		itemCreationTest(data_model, "my_enum_type", CadseGCST.ENUM_TYPE, expected_creationCST, expected_creationVal,
@@ -257,8 +257,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "EMPTY", "<none>", "EMPTY", false, true, false, "Create new revision",
-				"Abort", true, "Generic merge values" };
+		Object[] expected_creationVal = { "", "", "", false, true, false, "Create new revision", "Abort", true,
+				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_",
 				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
@@ -282,8 +282,8 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_",
 				"ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "LINK_TYPE_at_TWCOUPLED_",
 				"LINK_TYPE_at_TWDEST_EVOL_" };
-		Object[] expected_creationVal = { "EMPTY", "<none>", false, true, false, false, false, false, false, false,
-				"0", "unbounded", false, true, "Create new revision", "Abort", true, "Generic merge values", false,
+		Object[] expected_creationVal = { "", "", false, true, false, false, false, false, false, false, "0",
+				"unbounded", false, true, "Create new revision", "Abort", true, "Generic merge values", false,
 				"Create new revision" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"LINK_TYPE_lt_SOURCE", "LINK_TYPE_lt_DESTINATION", "LINK_TYPE_lt_INVERSE_LINK",
@@ -343,7 +343,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	public void test_JavaFileContentModel() throws Exception {
 		String[] expected_creationCST = { "JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_",
 				"JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
-		Object[] expected_creationVal = { "EMPTY", "EMPTY", true };
+		Object[] expected_creationVal = { "", "", true };
 		String[] expected_modifCST = { "JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_",
 				"JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 
@@ -365,7 +365,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	@Test
 	public void test_FolderContentModel() throws Exception {
 		String[] expected_creationCST = { "FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
-		Object[] expected_creationVal = { "EMPTY", false };
+		Object[] expected_creationVal = { "", false };
 		String[] expected_modifCST = { "FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 
 		createItemType(data_model, "mapping_folder", notAbstractKv, rootKv, withContentKv);
@@ -385,7 +385,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	@Test
 	public void test_FileContentModel() throws Exception {
 		String[] expected_creationCST = { "FILE_CONTENT_MODEL_at_FILE_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
-		Object[] expected_creationVal = { "EMPTY", true };
+		Object[] expected_creationVal = { "", true };
 		String[] expected_modifCST = { "FILE_CONTENT_MODEL_at_FILE_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 
 		createItemType(data_model, "mapping_file", notAbstractKv, rootKv, withContentKv);

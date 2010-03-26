@@ -3,10 +3,10 @@ package fr.imag.adele.cadse.test.basictests.defaultinstancename;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notAbstractKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.rootKv;
 
 import org.junit.Test;
 

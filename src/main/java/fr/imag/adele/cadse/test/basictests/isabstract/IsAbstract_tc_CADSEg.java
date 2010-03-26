@@ -2,13 +2,23 @@ package fr.imag.adele.cadse.test.basictests.isabstract;
 
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createString;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.abstractKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.notListKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.rootKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.sicpKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.simpKv;
 
 import org.junit.Test;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
+import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
 
@@ -47,26 +57,39 @@ public class IsAbstract_tc_CADSEg extends GTTestCase {
 	@Test
 	public void test_item_creation() throws Exception {
 
+		// Key values
+		KeyValue superItA = new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itA"));
+		KeyValue superItNa = new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itNa"));
+
+		KeyValue defValAKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "default_value_itA");
+		KeyValue defValAAKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "default_value_itAA");
+		KeyValue defValANaKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "default_value_itANa");
+
+		KeyValue defValNaKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "default_value_itNa");
+		KeyValue defValNaAKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "default_value_itNaA");
+		KeyValue defValNaNaKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "default_value_itNaNa");
+
 		// Creates item types (A => Abstract, Na => Non abstract)
 
-		// FIXME!!!!!
+		// KeyValue abstractKv = new KeyValue(CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, true);
 
-		/*
-		 * createItemType(data_model, "itA", null, true, root, defaultContent); createString(data_model.concat("itA"),
-		 * "string_attribute_itA", "default_value_itA", notHidden, mustBeInitialized, notList);
-		 * createItemType(data_model, "itNa", null, false, root, defaultContent);
-		 * createString(data_model.concat("itNa"), "string_attribute_itNa", "default_value_itNa", notHidden,
-		 * mustBeInitialized, notList); createItemType(data_model, "itAA", data_model.concat("itA"), true, root,
-		 * defaultContent); createString(data_model.concat("itAA"), "string_attribute_itAA", "default_value_itAA",
-		 * notHidden, mustBeInitialized, notList); createItemType(data_model, "itANa", data_model.concat("itA"), false,
-		 * root, defaultContent); createString(data_model.concat("itANa"), "string_attribute_itANa",
-		 * "default_value_itANa", notHidden, mustBeInitialized, notList); createItemType(data_model, "itNaA",
-		 * data_model.concat("itNa"), true, root, defaultContent); createString(data_model.concat("itNaA"),
-		 * "string_attribute_itNaA", "default_value_itNaA", notHidden, mustBeInitialized, notList);
-		 * createItemType(data_model, "itNaNa", data_model.concat("itNa"), false, root, defaultContent);
-		 * createString(data_model.concat("itNaNa"), "string_attribute_itNaNa", "default_value_itNaNa", notHidden,
-		 * mustBeInitialized, notList);
-		 */
+		createItemType(data_model, "itA", abstractKv, rootKv);
+		createString(data_model.concat("itA"), "string_attribute_itA", defValAKv, sicpKv, simpKv, notListKv);
+
+		createItemType(data_model, "itNa", notAbstractKv, rootKv);
+		createString(data_model.concat("itNa"), "string_attribute_itNa", defValNaKv, sicpKv, simpKv, notListKv);
+
+		createItemType(data_model, "itAA", superItA, abstractKv, rootKv);
+		createString(data_model.concat("itAA"), "string_attribute_itAA", defValAAKv, sicpKv, simpKv, notListKv);
+
+		createItemType(data_model, "itANa", superItA, notAbstractKv, rootKv);
+		createString(data_model.concat("itANa"), "string_attribute_itANa", defValANaKv, sicpKv, simpKv, notListKv);
+
+		createItemType(data_model, "itNaA", superItNa, abstractKv, rootKv);
+		createString(data_model.concat("itNaA"), "string_attribute_itNaA", defValNaAKv, sicpKv, simpKv, notListKv);
+
+		createItemType(data_model, "itNaNa", superItNa, notAbstractKv, rootKv);
+		createString(data_model.concat("itNaNa"), "string_attribute_itNaNa", defValNaNaKv, sicpKv, simpKv, notListKv);
 	}
 
 	/**

@@ -1,8 +1,8 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.sicpKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.simpKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.sicpKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.simpKv;
 
 import java.util.ArrayList;
 

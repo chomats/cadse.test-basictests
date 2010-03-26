@@ -10,16 +10,16 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createJ
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createJavaProjectContentModel;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.jpcmSrcFolderKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.noContentKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notAbstractKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notJpcmSrcFolderKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notRootKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.partKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.withContentKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.jpcmSrcFolderKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.noContentKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.notJpcmSrcFolderKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.notRootKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.partKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.rootKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.withContentKv;
 
 import org.junit.Test;
 

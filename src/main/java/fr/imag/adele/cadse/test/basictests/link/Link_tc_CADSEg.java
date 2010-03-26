@@ -4,11 +4,11 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCo
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.notAbstractKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.partKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.partKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.Literals.rootKv;
 
 import org.junit.Test;
 
