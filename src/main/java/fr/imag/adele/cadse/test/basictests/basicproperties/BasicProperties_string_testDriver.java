@@ -22,9 +22,9 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	public BasicProperties_string_testDriver() {
 
 		/* Values given into CADSEg */
-		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
-		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
-		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "my_dv");
+		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null, null);
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "", "");
+		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "my_dv", "my_dv");
 		defValCADSEgValues = new KeyValue[] { kv11, kv12, kv13 };
 
 		/* Execution : value at start up */

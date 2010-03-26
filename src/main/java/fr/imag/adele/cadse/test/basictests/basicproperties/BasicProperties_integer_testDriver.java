@@ -9,8 +9,8 @@ public class BasicProperties_integer_testDriver extends BasicProperties_common_t
 	public BasicProperties_integer_testDriver() {
 
 		/* Values given into CADSEg */
-		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
-		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "123");
+		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "", null);
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "123", 123);
 		defValCADSEgValues = new KeyValue[] { kv11, kv12 };
 
 		/* Execution : value at start up */

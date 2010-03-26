@@ -406,9 +406,9 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
 		boolean fieldInCP = sicpTab.get(i).getBoolean();
 
-		/* ============== */
+		/* ============= */
 		/* Creation page */
-		/* ============== */
+		/* ============= */
 
 		workspaceView.contextMenuNew(getItName(i)).click();
 		GTShell shell = new GTShell(getItName(i));
