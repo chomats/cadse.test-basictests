@@ -377,6 +377,11 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	protected void postCreate(int i, GTTreePath it_path, GTTreePath attr_path) {
 	}
 
+	/**
+	 * At runtime, test if the CADSE has the correct behavior. Excludes the tests with numbers in the list in parameter.
+	 * 
+	 * @param exclude
+	 */
 	public void testExecution(ArrayList<Integer> exclude) {
 		for (int i = 0; i < sicpTab.size(); i++) {
 			if (!exclude.contains(new Integer(i))) {
@@ -390,9 +395,8 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 * At runtime, test if the CADSE has the correct behavior.
 	 */
 	public void testExecution() {
-		for (int i = 0; i < sicpTab.size(); i++) {
-			testExecution(i);
-		}
+		ArrayList<Integer> exclude = new ArrayList<Integer>();
+		testExecution(exclude);
 	}
 
 	/**
@@ -514,11 +518,15 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
 		// Field value
 		if (simpTab.get(i).getBoolean()) {
-			assertEqualsListValues("Error in graphical modification page value for #" + i,
-					getPropertiesGraphicalValue(i), GTCadseFactory.findCadseField(propertiesView, getAttributeName())
-							.getValue());
-			assertEqualsListValues("Error in model modification page value for #" + i, getPropertiesModelValue(i),
-					GTCadseFactory.findCadseField(propertiesView, getAttributeName()).getModelValue());
+
+			Object graphicalExpected = getPropertiesGraphicalValue(i);
+			Object graphicalActual = GTCadseFactory.findCadseField(propertiesView, getAttributeName()).getValue();
+			assertEqualsListValues("Error in graphical modification page value for #" + i, graphicalExpected,
+					graphicalActual);
+
+			Object modelExpected = getPropertiesModelValue(i);
+			Object modelActual = GTCadseFactory.findCadseField(propertiesView, getAttributeName()).getModelValue();
+			assertEqualsListValues("Error in model modification page value for #" + i, modelExpected, modelActual);
 		}
 	}
 
