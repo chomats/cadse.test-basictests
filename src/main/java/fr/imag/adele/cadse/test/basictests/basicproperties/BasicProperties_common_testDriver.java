@@ -338,30 +338,48 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	/**
 	 * Creates the CADSE, the items type and all the attributes in CADSEg.
 	 */
-	public void createAll() {
+	public void testCreation() {
 
-		// Creates a new CADSE
-		createCadseDefinition(cadse_name, "model." + cadse_name);
+		/* Creates the CADSE */
+		testCreateCadse();
 
+		/* Creates the item types and attributes */
 		for (int i = 0; i < defValCADSEgTab.size(); i++) {
-
-			System.out.println("Starting CADSEg #" + i);
-
-			/* Item type creation */
-			GTTreePath it_path = data_model.concat(getItName(i));
-			createItemType(data_model, getItName(i), notAbstractKv, rootKv);
-
-			/* Attribute creation */
-			GTTreePath attr_path = it_path.concat(getAttributeName());
-			createBasicAttribute(it_path, getItemTypeUnderTest(), getAttributeName(), defValCADSEgTab.get(i), sicpTab
-					.get(i), simpTab.get(i), cbuTab.get(i), listTab.get(i));
-
-			/* Assert item has been created */
-			workspaceView.selectNode(attr_path);
-
-			/* Post create */
-			postCreate(i, it_path, attr_path);
+			testCreation(i);
 		}
+	}
+
+	/**
+	 * Creates the CADSE.
+	 */
+	public void testCreateCadse() {
+		createCadseDefinition(cadse_name, "model." + cadse_name);
+	}
+
+	/**
+	 * Creates the attribute number i.
+	 * 
+	 * @param i
+	 *            the attribute number to be created.
+	 */
+	public void testCreation(int i) {
+
+		System.out.println("Starting CADSEg #" + i);
+
+		/* Item type creation */
+		GTTreePath it_path = data_model.concat(getItName(i));
+		createItemType(data_model, getItName(i), notAbstractKv, rootKv);
+
+		/* Attribute creation */
+		GTTreePath attr_path = it_path.concat(getAttributeName());
+		createBasicAttribute(it_path, getItemTypeUnderTest(), getAttributeName(), defValCADSEgTab.get(i), sicpTab
+				.get(i), simpTab.get(i), cbuTab.get(i), listTab.get(i));
+
+		/* Assert item has been created */
+		workspaceView.selectNode(attr_path);
+
+		/* Post create */
+		postCreate(i, it_path, attr_path);
 	}
 
 	/**

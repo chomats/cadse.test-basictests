@@ -50,6 +50,6 @@ public class BasicProperties_integer_tc_CADSEg extends GTTestCase {
 	@Test
 	public void test_integer() throws Exception {
 		BasicProperties_integer_testDriver data = new BasicProperties_integer_testDriver();
-		data.createAll();
+		data.testCreation();
 	}
 }

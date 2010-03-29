@@ -50,6 +50,6 @@ public class BasicProperties_double_tc_CADSEg extends GTTestCase {
 	@Test
 	public void test_double() throws Exception {
 		BasicProperties_double_testDriver data = new BasicProperties_double_testDriver();
-		data.createAll();
+		data.testCreation();
 	}
 }

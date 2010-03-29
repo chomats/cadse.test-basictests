@@ -8,16 +8,20 @@ import java.util.ArrayList;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class BasicProperties_string_testDriver extends BasicProperties_common_testDriver {
 
+	/* Not Empty attribute : True value */
+	KeyValue notEmptyTrue = new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, true, true);
+	/* Not Empty attribute : False value */
+	KeyValue notEmptyFalse = new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, false, false);
 	/** Set of values for the notEmpty property */
-	protected final boolean[] notEmptyValues = { true, false };
+	protected final KeyValue[] notEmptyValues = { notEmptyTrue, notEmptyFalse };
+
 	/** The notEmpty property value for all the instances */
-	protected final ArrayList<Boolean> notEmptyTab = new ArrayList<Boolean>();
+	protected final ArrayList<KeyValue> notEmptyTab = new ArrayList<KeyValue>();
 
 	public BasicProperties_string_testDriver() {
 
@@ -61,6 +65,36 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	}
 
 	/**
+	 * Performs table initializations
+	 */
+	@Override
+	public void initializeTables() {
+
+		for (KeyValue notEmpty : notEmptyValues) {
+			for (int j = 0; j < defValCADSEgValues.length; j++) {
+				for (int k = 0; k < executionNewValues.length; k++) {
+					for (KeyValue sicp : sicpValues) {
+						for (KeyValue simp : simpValues) {
+							for (KeyValue cbu : cbuValues) {
+								for (KeyValue list : listValues) {
+									defValCADSEgTab.add(defValCADSEgValues[j]);
+									executionOldTab.add(executionOldValues[j]);
+									executionNewTab.add(executionNewValues[k]);
+									sicpTab.add(sicp);
+									simpTab.add(simp);
+									cbuTab.add(cbu);
+									listTab.add(list);
+									notEmptyTab.add(notEmpty);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/**
 	 * Performs actions after the item creation.
 	 * 
 	 * @param i
@@ -77,6 +111,6 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 		workspaceView.selectNode(attr_path);
 
 		propertiesView.showTab("String");
-		GTCadseFactory.findCadseField(propertiesView, CadseGCST.STRING_at_NOT_EMPTY_).check(notEmptyTab.get(i));
+		notEmptyTab.get(i).checkBox(propertiesView);
 	}
 }

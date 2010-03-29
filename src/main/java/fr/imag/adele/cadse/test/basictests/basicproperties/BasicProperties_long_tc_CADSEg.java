@@ -50,6 +50,6 @@ public class BasicProperties_long_tc_CADSEg extends GTTestCase {
 	@Test
 	public void test_long() throws Exception {
 		BasicProperties_long_testDriver data = new BasicProperties_long_testDriver();
-		data.createAll();
+		data.testCreation();
 	}
 }
