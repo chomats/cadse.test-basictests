@@ -28,7 +28,6 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
-import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTTestCase;
 
 public abstract class BasicProperties_common_testDriver extends GTTestCase {
@@ -450,37 +449,36 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
 		// initial model value
 		if (fieldInCP) {
-			assertEqualsListValues("Initial model value error for #" + i, getInitialModelValue(i), GTCadseFactory
-					.findCadseField(shell, getAttributeName()).getModelValue());
+			Object expected = getInitialModelValue(i);
+			Object actual = GTCadseFactory.findCadseField(shell, getAttributeName()).getModelValue();
+			assertEqualsListValues("Initial model value error for #" + i, expected, actual);
 		}
 
 		// New Attribute Value
 		if (fieldInCP && executionNewTab.get(i) != null) {
+
+			String newValue = executionNewTab.get(i).graphicalValue.toString();
+
 			if (listTab.get(i).getBoolean()) {
-				if (executionNewTab.get(i).graphicalValue.equals("")) {
-					long old_timeout = SWTBotPreferences.TIMEOUT;
-					try {
-						SWTBotPreferences.TIMEOUT = failingAssertTimeout;
-						GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(
-								executionNewTab.get(i).graphicalValue.toString());
-						SWTBotPreferences.TIMEOUT = old_timeout;
-						fail("It should be impossible to fill an empty value for #" + i);
-					}
-					catch (Exception e) {
-						// SUCCESS : it's not possible to fill an empty value
-						SWTBotPreferences.TIMEOUT = old_timeout;
-						shell.close(GTEclipseConstants.CANCEL_BUTTON);
-						return; // END of test for this item!
-					}
+
+				boolean expectedSuccess = !executionNewTab.get(i).graphicalValue.equals("");
+
+				if (expectedSuccess) {
+					GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(newValue);
 				}
 				else {
-					GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(
-							executionNewTab.get(i).graphicalValue.toString());
+					try {
+						GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(newValue,
+								failingAssertTimeout);
+						fail("It should be impossible to fill \"" + newValue + "\" for #" + i);
+					}
+					catch (Exception e) {
+						// success
+					}
 				}
 			}
 			else {
-				GTCadseFactory.findCadseField(shell, getAttributeName()).typeText(
-						executionNewTab.get(i).graphicalValue.toString());
+				GTCadseFactory.findCadseField(shell, getAttributeName()).typeText(newValue);
 			}
 		}
 
