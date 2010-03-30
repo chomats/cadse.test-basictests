@@ -544,7 +544,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 		// final model value (okButtonActivated is important! if the value is not correct, the previous correct
 		// model value (default value) is locked even if the field displays another value.
 		if (fieldInCP && newValue != null && isOkButtonActivated(i)) {
-			Object expected = newValue.modelValue;
+			Object expected = getFinalModelValue(i);
 			Object actual = GTCadseFactory.findCadseField(shell, getAttributeName()).getModelValue();
 			assertEqualsListValues("Final model value error for #" + i, expected, actual);
 		}

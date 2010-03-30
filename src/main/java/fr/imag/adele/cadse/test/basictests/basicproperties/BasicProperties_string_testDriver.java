@@ -1,15 +1,20 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 import static fr.imag.adele.graphictests.cadse.test.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.test.KeyValue.simpKv;
 
 import java.util.ArrayList;
 
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
+import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 
 public class BasicProperties_string_testDriver extends BasicProperties_common_testDriver {
 
@@ -134,6 +139,136 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 			boolean notEmptyResult = notEmpty ? (!getFinalModelValue(i).equals("")) : true;
 
 			return cbuResult && notEmptyResult;
+		}
+	}
+
+	/**
+	 * Sets the new graphical value.
+	 * 
+	 * @param i
+	 *            the instance number
+	 * @param shell
+	 *            the shell
+	 */
+	@Override
+	public void setNewGraphicalValue(int i, GTShell shell) {
+
+		String newValue = (String) executionNewTab.get(i).graphicalValue;
+		boolean isList = listTab.get(i).getBoolean();
+		boolean notEmpty = notEmptyTab.get(i).getBoolean();
+
+		if (isList) {
+
+			boolean expectedSuccess = notEmpty ? !newValue.equals("") : true;
+
+			if (expectedSuccess) {
+				GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(newValue);
+			}
+			else {
+				try {
+					GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(newValue, failingAssertTimeout);
+					fail("It should be impossible to fill \"" + newValue + "\" for #" + i);
+				}
+				catch (Exception e) {
+					// success
+				}
+			}
+		}
+		else {
+			GTCadseFactory.findCadseField(shell, getAttributeName()).typeText(newValue);
+		}
+	}
+
+	/**
+	 * Gets the final graphical value.
+	 * 
+	 * @param i
+	 *            the instance number
+	 * @return the final graphical value
+	 */
+	@Override
+	public Object getFinalGraphicalValue(int i) {
+
+		boolean fieldInCP = sicpTab.get(i).getBoolean();
+		boolean isList = listTab.get(i).getBoolean();
+		KeyValue newKv = executionNewTab.get(i);
+		KeyValue oldKv = executionOldTab.get(i);
+		Object newGraphicalValue = (newKv == null) ? null : newKv.graphicalValue;
+		Object oldGraphicalValue = (oldKv == null) ? null : oldKv.graphicalValue;
+		boolean notEmpty = notEmptyTab.get(i).getBoolean();
+
+		if (fieldInCP) {
+			if (isList) { // default value is ignored with list
+				if (newKv != null) {
+					if (!newGraphicalValue.equals("") || !notEmpty) {
+						return new String[] { newGraphicalValue.toString() };
+					}
+					else {
+						return new String[] {};
+					}
+				}
+				else {
+					return new String[] {};
+				}
+			}
+			else {
+				if (newKv != null) {
+					return newGraphicalValue;
+				}
+				else {
+					return oldGraphicalValue; // no new value
+				}
+			}
+		}
+		else {
+			throw new WidgetNotFoundException("No field in this dialog");
+		}
+	}
+
+	/**
+	 * Gets the final model value.
+	 * 
+	 * @param i
+	 *            the instance number
+	 * @return the final model value
+	 */
+	@Override
+	public Object getFinalModelValue(int i) {
+
+		boolean fieldInCP = sicpTab.get(i).getBoolean();
+		boolean isList = listTab.get(i).getBoolean();
+		KeyValue newKv = executionNewTab.get(i);
+		KeyValue oldKv = executionOldTab.get(i);
+		Object newModelValue = (newKv == null) ? null : newKv.modelValue;
+		Object oldModelValue = (oldKv == null) ? null : oldKv.modelValue;
+		boolean notEmpty = notEmptyTab.get(i).getBoolean();
+
+		if (isList) { // def val is ignored with list attributes
+			if (newKv != null && newModelValue != null) {
+
+				if (notEmpty && newModelValue.equals("")) {
+					return new Object[] {};
+				}
+				else {
+					return new Object[] { newModelValue };
+				}
+			}
+			else {
+				return new Object[] {};
+			}
+		}
+		else {
+			if (fieldInCP) {
+				if (newKv != null) { // in case graphic = "" and model = null
+					return newModelValue;
+				}
+				else {
+					return oldModelValue;
+				}
+			}
+			else {
+				return oldModelValue;
+			}
 		}
 	}
 }
