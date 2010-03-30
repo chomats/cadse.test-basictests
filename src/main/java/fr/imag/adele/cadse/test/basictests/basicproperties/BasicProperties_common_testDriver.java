@@ -203,6 +203,40 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	}
 
 	/**
+	 * Sets the new graphical value.
+	 * 
+	 * @param i
+	 *            the instance number
+	 * @param shell
+	 *            the shell
+	 */
+	public void setNewGraphicalValue(int i, GTShell shell) {
+
+		String newValue = (String) executionNewTab.get(i).graphicalValue;
+
+		if (listTab.get(i).getBoolean()) {
+
+			boolean expectedSuccess = !newValue.equals("");
+
+			if (expectedSuccess) {
+				GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(newValue);
+			}
+			else {
+				try {
+					GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(newValue, failingAssertTimeout);
+					fail("It should be impossible to fill \"" + newValue + "\" for #" + i);
+				}
+				catch (Exception e) {
+					// success
+				}
+			}
+		}
+		else {
+			GTCadseFactory.findCadseField(shell, getAttributeName()).typeText(newValue);
+		}
+	}
+
+	/**
 	 * Gets the final model value.
 	 * 
 	 * @param i
@@ -456,30 +490,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
 		// New Attribute Value
 		if (fieldInCP && executionNewTab.get(i) != null) {
-
-			String newValue = executionNewTab.get(i).graphicalValue.toString();
-
-			if (listTab.get(i).getBoolean()) {
-
-				boolean expectedSuccess = !executionNewTab.get(i).graphicalValue.equals("");
-
-				if (expectedSuccess) {
-					GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(newValue);
-				}
-				else {
-					try {
-						GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(newValue,
-								failingAssertTimeout);
-						fail("It should be impossible to fill \"" + newValue + "\" for #" + i);
-					}
-					catch (Exception e) {
-						// success
-					}
-				}
-			}
-			else {
-				GTCadseFactory.findCadseField(shell, getAttributeName()).typeText(newValue);
-			}
+			setNewGraphicalValue(i, shell);
 		}
 
 		// name + CHANGES FOCUS!!!
@@ -487,15 +498,17 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
 		// final visual value
 		if (fieldInCP && executionNewTab.get(i) != null) {
-			assertEqualsListValues("Error with final visual value for #" + i, getFinalGraphicalValue(i), GTCadseFactory
-					.findCadseField(shell, getAttributeName()).getValue());
+			Object expected = getFinalGraphicalValue(i);
+			Object actual = GTCadseFactory.findCadseField(shell, getAttributeName()).getValue();
+			assertEqualsListValues("Error with final visual value for #" + i, expected, actual);
 		}
 
 		// final model value (okButtonActivated is important! if the value is not correct, the previous correct
 		// model value (default value) is locked even if the field displays another value.
 		if (fieldInCP && executionNewTab.get(i) != null && isOkButtonActivated(i)) {
-			assertEqualsListValues("Final model value error for #" + i, executionNewTab.get(i).modelValue,
-					GTCadseFactory.findCadseField(shell, getAttributeName()).getModelValue());
+			Object expected = executionNewTab.get(i).modelValue;
+			Object actual = GTCadseFactory.findCadseField(shell, getAttributeName()).getModelValue();
+			assertEqualsListValues("Final model value error for #" + i, expected, actual);
 		}
 
 		// Waits until refresh

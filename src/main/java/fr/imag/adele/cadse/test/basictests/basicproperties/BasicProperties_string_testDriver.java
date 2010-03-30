@@ -32,7 +32,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 		defValCADSEgValues = new KeyValue[] { kv11, kv12, kv13 };
 
 		/* Execution : value at start up */
-		KeyValue kv21 = new KeyValue(getAttributeName(), null, null);
+		KeyValue kv21 = new KeyValue(getAttributeName(), "", "");
 		KeyValue kv22 = new KeyValue(getAttributeName(), "", "");
 		KeyValue kv23 = new KeyValue(getAttributeName(), "my_dv", "my_dv");
 		executionOldValues = new KeyValue[] { kv21, kv22, kv23 };
@@ -112,5 +112,28 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 
 		propertiesView.showTab("String");
 		notEmptyTab.get(i).checkBox(propertiesView);
+	}
+
+	/**
+	 * Checks if is ok button is activated.
+	 * 
+	 * @param i
+	 *            the instance number
+	 * @return true, if is ok button is activated
+	 */
+	@Override
+	public boolean isOkButtonActivated(int i) {
+		if (listTab.get(i).getBoolean()) {
+			return true;
+		}
+		else {
+			boolean cbu = cbuTab.get(i).getBoolean();
+			boolean notEmpty = notEmptyTab.get(i).getBoolean();
+
+			boolean cbuResult = cbu ? (getFinalModelValue(i) != null) : true;
+			boolean notEmptyResult = notEmpty ? (!getFinalModelValue(i).equals("")) : true;
+
+			return cbuResult && notEmptyResult;
+		}
 	}
 }
