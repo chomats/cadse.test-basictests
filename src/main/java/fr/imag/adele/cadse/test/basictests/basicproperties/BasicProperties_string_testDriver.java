@@ -116,7 +116,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 		workspaceView.selectNode(attr_path);
 
 		propertiesView.showTab("String");
-		notEmptyTab.get(i).checkBox(propertiesView);
+		notEmptyTab.get(i).setValue(propertiesView);
 	}
 
 	/**
