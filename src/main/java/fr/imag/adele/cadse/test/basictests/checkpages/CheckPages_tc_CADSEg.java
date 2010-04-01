@@ -129,7 +129,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
 				"ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
 
-		Object[] expected_creationVal = { "", true, false, true, false, false, "Create new revision", "Abort", true,
+		Object[] expected_creationVal = { "", false, false, true, true, false, "Create new revision", "Abort", true,
 				"Generic merge values" };
 
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
