@@ -28,6 +28,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTTestCase;
 
 public abstract class BasicProperties_common_testDriver extends GTTestCase {
@@ -217,7 +218,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 * @param shell
 	 *            the shell
 	 */
-	public void setNewGraphicalValue(int i, GTShell shell) {
+	public boolean setNewGraphicalValue(int i, GTShell shell) {
 
 		String newValue = (String) executionNewTab.get(i).graphicalValue;
 		boolean isList = listTab.get(i).getBoolean();
@@ -242,6 +243,8 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 		else {
 			GTCadseFactory.findCadseField(shell, getAttributeName()).typeText(newValue);
 		}
+
+		return true; // success
 	}
 
 	/**
@@ -528,7 +531,11 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
 		// New Attribute Value
 		if (fieldInCP && newValue != null) {
-			setNewGraphicalValue(i, shell);
+			if (!setNewGraphicalValue(i, shell)) {
+				// setting the new value has failed, as expected
+				shell.close(GTEclipseConstants.CANCEL_BUTTON);
+				return;
+			}
 		}
 
 		// name + CHANGES FOCUS!!!

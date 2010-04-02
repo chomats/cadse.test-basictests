@@ -151,7 +151,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	 *            the shell
 	 */
 	@Override
-	public void setNewGraphicalValue(int i, GTShell shell) {
+	public boolean setNewGraphicalValue(int i, GTShell shell) {
 
 		String newValue = (String) executionNewTab.get(i).graphicalValue;
 		boolean isList = listTab.get(i).getBoolean();
@@ -177,6 +177,8 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 		else {
 			GTCadseFactory.findCadseField(shell, getAttributeName()).typeText(newValue);
 		}
+
+		return true; // success
 	}
 
 	/**
