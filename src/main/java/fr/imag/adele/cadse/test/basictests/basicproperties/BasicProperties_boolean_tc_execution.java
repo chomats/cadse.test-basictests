@@ -26,10 +26,6 @@ public class BasicProperties_boolean_tc_execution extends GTTestCase {
 	public void test_boolean() throws Exception {
 		BasicProperties_boolean_testDriver booleanTest = new BasicProperties_boolean_testDriver();
 
-		// ArrayList<Integer> exclude = new ArrayList<Integer>();
-		// exclude.add(19);
-
 		booleanTest.testExecution();
-
 	}
 }
