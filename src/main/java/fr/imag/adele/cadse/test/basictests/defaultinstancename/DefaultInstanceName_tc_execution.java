@@ -1,12 +1,12 @@
 package fr.imag.adele.cadse.test.basictests.defaultinstancename;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.test.GTTestCase;
 
@@ -29,7 +29,7 @@ public class DefaultInstanceName_tc_execution extends GTTestCase {
 		/* Creates attribute */
 		workspaceView.contextMenuNew("my_item_type").click();
 		GTShell shell = new GTShell("my_item_type");
-		assertEquals("my_default_name", GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).getText());
+		assertEquals("my_default_name", findCadseField(shell, CadseGCST.ITEM_at_NAME_).getText());
 		shell.close();
 
 		/* Assert item has been displayed */

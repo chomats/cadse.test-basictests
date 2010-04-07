@@ -1,5 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 import static fr.imag.adele.graphictests.cadse.test.KeyValue.sicpKv;
@@ -11,7 +12,6 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
@@ -162,11 +162,11 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 			boolean expectedSuccess = notEmpty ? !newValue.equals("") : true;
 
 			if (expectedSuccess) {
-				GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(newValue);
+				findCadseField(shell, getAttributeName()).addValue(newValue);
 			}
 			else {
 				try {
-					GTCadseFactory.findCadseField(shell, getAttributeName()).addValue(newValue, failingAssertTimeout);
+					findCadseField(shell, getAttributeName()).addValue(newValue, failingAssertTimeout);
 					fail("It should be impossible to fill \"" + newValue + "\" for #" + i);
 				}
 				catch (Exception e) {
@@ -175,7 +175,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 			}
 		}
 		else {
-			GTCadseFactory.findCadseField(shell, getAttributeName()).typeText(newValue);
+			findCadseField(shell, getAttributeName()).typeText(newValue);
 		}
 
 		return true; // success

@@ -1,5 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.defaultinstancename;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
@@ -12,7 +13,6 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
@@ -57,8 +57,7 @@ public class DefaultInstanceName_tc_CADSEg extends GTTestCase {
 		createItemType(data_model, "my_item_type", notAbstractKv, rootKv);
 		workspaceView.selectNode(data_model.concat("my_item_type"));
 		propertiesView.showTab("Item type");
-		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_DEFAULT_INSTANCE_NAME_).typeText(
-				"my_default_name");
+		findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_DEFAULT_INSTANCE_NAME_).typeText("my_default_name");
 	}
 
 	/**

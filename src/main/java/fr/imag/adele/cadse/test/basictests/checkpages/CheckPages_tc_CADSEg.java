@@ -1,5 +1,7 @@
 package fr.imag.adele.cadse.test.basictests.checkpages;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseWorkbenchPart;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
@@ -439,13 +441,12 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		/* Creates content */
 		workspaceView.contextMenuNew(sourceNode, typeName).click();
 		GTShell shell = new GTShell(typeName);
-		String[] creationCST = GTCadseFactory.findCadseWorkbenchPart(shell).findAttributeConstants();
-		Object[] creationVal = GTCadseFactory.findCadseWorkbenchPart(shell).findAttributeValues();
+		String[] creationCST = findCadseWorkbenchPart(shell).findAttributeConstants();
+		Object[] creationVal = findCadseWorkbenchPart(shell).findAttributeValues();
 		String creationCST_str = getStringDef(shell);
 		String creationVal_str = getStringVal(shell);
 		if (projectName != null && !projectName.isEmpty()) {
-			GTCadseFactory.findCadseField(shell, CadseGCST.PROJECT_CONTENT_MODEL_at_PROJECT_NAME_)
-					.typeText(projectName);
+			findCadseField(shell, CadseGCST.PROJECT_CONTENT_MODEL_at_PROJECT_NAME_).typeText(projectName);
 		}
 		if (hasSourceFolder != null) {
 			GTCadseFactory.findCadseField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(
@@ -537,24 +538,24 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		// Creation
 		workspaceView.contextMenuNew(path, itConstant).click();
 		GTCadseShell shell = new GTCadseShell(itConstant);
-		String[] creationCST = GTCadseFactory.findCadseWorkbenchPart(shell).findAttributeConstants();
-		Object[] creationVal = GTCadseFactory.findCadseWorkbenchPart(shell).findAttributeValues();
+		String[] creationCST = findCadseWorkbenchPart(shell).findAttributeConstants();
+		Object[] creationVal = findCadseWorkbenchPart(shell).findAttributeValues();
 		String creationCST_str = getStringDef(shell);
 		String creationVal_str = getStringVal(shell);
 
-		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText(attributeName);
+		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText(attributeName);
 		if (itConstant == CadseGCST.LINK_TYPE) {
-			GTCadseFactory.findCadseField(shell, CadseGCST.LINK_TYPE_lt_DESTINATION).browser(cadse_name,
+			findCadseField(shell, CadseGCST.LINK_TYPE_lt_DESTINATION).browser(cadse_name,
 					CadseDefinitionManager.DATA_MODEL, item_type_name);
 		}
 		else if (itConstant == CadseGCST.CADSE_DEFINITION) {
-			GTCadseFactory.findCadseField(shell, CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.myCadse");
+			findCadseField(shell, CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.myCadse");
 		}
 		else if (itConstant == CadseGCST.ENUM_TYPE) {
-			GTCadseFactory.findCadseField(shell, CadseGCST.ENUM_TYPE_at_VALUES_).addBrowser("one", "two", "three");
+			findCadseField(shell, CadseGCST.ENUM_TYPE_at_VALUES_).addBrowser("one", "two", "three");
 		}
 		else if (itConstant == CadseGCST.ENUM) {
-			GTCadseFactory.findCadseField(shell, CadseGCST.ENUM_lt_ENUM_TYPE).browser("my_enum_type");
+			findCadseField(shell, CadseGCST.ENUM_lt_ENUM_TYPE).browser("my_enum_type");
 		}
 		shell.close();
 
@@ -627,10 +628,10 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		// Section decoding
 		GTCadseWorkbenchPart wp;
 		if (section != null) {
-			wp = GTCadseFactory.findCadseWorkbenchPart(propertiesView.findSection(section));
+			wp = findCadseWorkbenchPart(propertiesView.findSection(section));
 		}
 		else {
-			wp = GTCadseFactory.findCadseWorkbenchPart(propertiesView);
+			wp = findCadseWorkbenchPart(propertiesView);
 		}
 
 		// Gets attributes constants
@@ -685,7 +686,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	 */
 	private String getStringDef(GTWorkbenchPart wp) {
 
-		List<IAttributeType<?>> attrlist = GTCadseFactory.findCadseWorkbenchPart(wp).findAttributeDefinition();
+		List<IAttributeType<?>> attrlist = findCadseWorkbenchPart(wp).findAttributeDefinition();
 
 		StringBuilder sb = new StringBuilder();
 		boolean begin = true;
@@ -717,7 +718,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	 */
 	private String getStringVal(GTWorkbenchPart wp) {
 
-		Object[] values = GTCadseFactory.findCadseWorkbenchPart(wp).findAttributeValues();
+		Object[] values = findCadseWorkbenchPart(wp).findAttributeValues();
 
 		StringBuilder sb = new StringBuilder();
 		boolean begin = true;

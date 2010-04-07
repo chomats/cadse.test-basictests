@@ -1,5 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.link;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.addLink;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.assertItemCantbeCreated;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.assertLinkCantBeAdded;
@@ -13,7 +14,6 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspa
 
 import org.junit.Test;
 
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
 
@@ -62,7 +62,7 @@ public class Link_tc_execution extends GTTestCase {
 
 		// Should not be allowed
 		addLink(workspaceView, src1_path, dst3_name, link_type_name);
-		for (String str : GTCadseFactory.findCadseField(propertiesView, link_type_name).getRoots()) {
+		for (String str : findCadseField(propertiesView, link_type_name).getRoots()) {
 			if (str.equals(link_type_name)) {
 				fail("The link shouldn't have been added");
 			}
