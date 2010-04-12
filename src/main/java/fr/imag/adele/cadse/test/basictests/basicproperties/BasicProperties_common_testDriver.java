@@ -30,6 +30,7 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTTestCase;
+import fr.imag.adele.graphictests.test.GTTestParameters;
 
 public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
@@ -425,7 +426,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 * Creates the CADSE.
 	 */
 	public void testCreateCadse() {
-		createCadseDefinition(cadse_name, "model." + cadse_name);
+		createCadseDefinition(cadse_name, "model." + cadse_name, GTTestParameters.TIMEOUT);
 	}
 
 	/**
