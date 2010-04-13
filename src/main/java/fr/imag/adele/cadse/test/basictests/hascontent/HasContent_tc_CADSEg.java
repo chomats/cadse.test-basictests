@@ -9,7 +9,6 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createI
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createJavaFileContentModel;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createJavaProjectContentModel;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 import static fr.imag.adele.graphictests.cadse.test.KeyValue.jpcmSrcFolderKv;
@@ -84,13 +83,13 @@ public class HasContent_tc_CADSEg extends GTTestCase {
 		createItemType(data_model, "no_content", notAbstractKv, rootKv, noContentKv);
 
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), file_cm,
-				failingAssertTimeout);
+				GTTestParameters.FAILING_ASSERT_TIMEOUT);
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), folder_cm,
-				failingAssertTimeout);
+				GTTestParameters.FAILING_ASSERT_TIMEOUT);
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), javaFile_cm,
-				failingAssertTimeout);
+				GTTestParameters.FAILING_ASSERT_TIMEOUT);
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), javaProject_cm,
-				failingAssertTimeout);
+				GTTestParameters.FAILING_ASSERT_TIMEOUT);
 
 		// ======================= //
 		// JavaProjectContentModel //
@@ -161,6 +160,6 @@ public class HasContent_tc_CADSEg extends GTTestCase {
 	 */
 	@Test
 	public void test_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, cadse_model);
+		checkCompilationErrors(workspaceView, cadse_model, GTTestParameters.TIMEOUT);
 	}
 }

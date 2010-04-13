@@ -2,7 +2,6 @@ package fr.imag.adele.cadse.test.basictests.root;
 
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.assertItemCantbeCreated;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicItem;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
@@ -10,6 +9,7 @@ import org.junit.Test;
 
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
+import fr.imag.adele.graphictests.test.GTTestParameters;
 
 public class Root_tc_execution extends GTTestCase {
 
@@ -33,8 +33,8 @@ public class Root_tc_execution extends GTTestCase {
 		createBasicItem(workspaceView, null, "itRR", "instance-itRR", new GTTreePath("instance-itRR"));
 
 		/* This items creation shouldn't be available */
-		assertItemCantbeCreated(workspaceView, null, "itNr", failingAssertTimeout);
-		assertItemCantbeCreated(workspaceView, null, "itNrNr", failingAssertTimeout);
-		assertItemCantbeCreated(workspaceView, null, "itRNr", failingAssertTimeout);
+		assertItemCantbeCreated(workspaceView, null, "itNr", GTTestParameters.FAILING_ASSERT_TIMEOUT);
+		assertItemCantbeCreated(workspaceView, null, "itNrNr", GTTestParameters.FAILING_ASSERT_TIMEOUT);
+		assertItemCantbeCreated(workspaceView, null, "itRNr", GTTestParameters.FAILING_ASSERT_TIMEOUT);
 	}
 }

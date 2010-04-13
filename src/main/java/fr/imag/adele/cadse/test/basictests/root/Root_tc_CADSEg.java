@@ -75,6 +75,6 @@ public class Root_tc_CADSEg extends GTTestCase {
 	 */
 	@Test
 	public void test_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, cadse_model);
+		checkCompilationErrors(workspaceView, cadse_model, GTTestParameters.TIMEOUT);
 	}
 }

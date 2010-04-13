@@ -1,7 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.hascontent;
 
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicItem;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
@@ -9,6 +8,7 @@ import org.junit.Test;
 
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
+import fr.imag.adele.graphictests.test.GTTestParameters;
 
 public class HasContent_tc_execution extends GTTestCase {
 
@@ -40,7 +40,7 @@ public class HasContent_tc_execution extends GTTestCase {
 				"instance_nosrc"));
 		packageExplorerView.selectNode("instance_nosrc");
 		assertNodeDoesNotExists(packageExplorerView, new GTTreePath("instance_nosrc", sourceFolder),
-				failingAssertTimeout);
+				GTTestParameters.FAILING_ASSERT_TIMEOUT);
 
 		// Java project content model Name template
 		createBasicItem(workspaceView, null, "javaproject_content_template1", "instance_template1", new GTTreePath(

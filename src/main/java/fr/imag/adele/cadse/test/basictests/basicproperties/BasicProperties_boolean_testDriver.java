@@ -1,7 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.failingAssertTimeout;
 
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
@@ -9,6 +8,7 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.test.GTTestParameters;
 
 public class BasicProperties_boolean_testDriver extends BasicProperties_common_testDriver {
 
@@ -68,7 +68,8 @@ public class BasicProperties_boolean_testDriver extends BasicProperties_common_t
 				}
 				else {
 					try {
-						findCadseField(shell, getAttributeName()).addValue(newValue.toString(), failingAssertTimeout);
+						findCadseField(shell, getAttributeName()).addValue(newValue.toString(),
+								GTTestParameters.FAILING_ASSERT_TIMEOUT);
 						fail("It should be impossible to fill \"" + newValue + "\" for #" + i);
 					}
 					catch (Exception e) {
