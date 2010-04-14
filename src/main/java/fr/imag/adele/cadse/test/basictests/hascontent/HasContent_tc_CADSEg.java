@@ -28,7 +28,7 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
-import fr.imag.adele.graphictests.test.GTTestParameters;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class HasContent_tc_CADSEg extends GTTestCase {
 
@@ -60,7 +60,7 @@ public class HasContent_tc_CADSEg extends GTTestCase {
 		workspaceView.show();
 
 		// Creates a new CADSE
-		createCadseDefinition(cadse_name, "model." + cadse_name, GTTestParameters.TIMEOUT);
+		createCadseDefinition(cadse_name, "model." + cadse_name, GTPreferences.TIMEOUT);
 	}
 
 	@Test
@@ -83,13 +83,13 @@ public class HasContent_tc_CADSEg extends GTTestCase {
 		createItemType(data_model, "no_content", notAbstractKv, rootKv, noContentKv);
 
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), file_cm,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), folder_cm,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), javaFile_cm,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), javaProject_cm,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 
 		// ======================= //
 		// JavaProjectContentModel //
@@ -160,6 +160,6 @@ public class HasContent_tc_CADSEg extends GTTestCase {
 	 */
 	@Test
 	public void test_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, cadse_model, GTTestParameters.TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.TIMEOUT);
 	}
 }

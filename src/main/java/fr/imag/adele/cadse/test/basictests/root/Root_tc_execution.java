@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
-import fr.imag.adele.graphictests.test.GTTestParameters;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class Root_tc_execution extends GTTestCase {
 
@@ -33,8 +33,8 @@ public class Root_tc_execution extends GTTestCase {
 		createBasicItem(workspaceView, null, "itRR", "instance-itRR", new GTTreePath("instance-itRR"));
 
 		/* This items creation shouldn't be available */
-		assertItemCantbeCreated(workspaceView, null, "itNr", GTTestParameters.FAILING_ASSERT_TIMEOUT);
-		assertItemCantbeCreated(workspaceView, null, "itNrNr", GTTestParameters.FAILING_ASSERT_TIMEOUT);
-		assertItemCantbeCreated(workspaceView, null, "itRNr", GTTestParameters.FAILING_ASSERT_TIMEOUT);
+		assertItemCantbeCreated(workspaceView, null, "itNr", GTPreferences.FAILING_ASSERT_TIMEOUT);
+		assertItemCantbeCreated(workspaceView, null, "itNrNr", GTPreferences.FAILING_ASSERT_TIMEOUT);
+		assertItemCantbeCreated(workspaceView, null, "itRNr", GTPreferences.FAILING_ASSERT_TIMEOUT);
 	}
 }

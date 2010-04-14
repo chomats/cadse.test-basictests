@@ -17,7 +17,7 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
-import fr.imag.adele.graphictests.test.GTTestParameters;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class Root_tc_CADSEg extends GTTestCase {
 
@@ -48,7 +48,7 @@ public class Root_tc_CADSEg extends GTTestCase {
 		workspaceView.show();
 
 		// Creates a new CADSE
-		createCadseDefinition(cadse_name, "model." + cadse_name, GTTestParameters.TIMEOUT);
+		createCadseDefinition(cadse_name, "model." + cadse_name, GTPreferences.TIMEOUT);
 	}
 
 	@Test
@@ -75,6 +75,6 @@ public class Root_tc_CADSEg extends GTTestCase {
 	 */
 	@Test
 	public void test_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, cadse_model, GTTestParameters.TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.TIMEOUT);
 	}
 }

@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
-import fr.imag.adele.graphictests.test.GTTestParameters;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class HasContent_tc_execution extends GTTestCase {
 
@@ -40,7 +40,7 @@ public class HasContent_tc_execution extends GTTestCase {
 				"instance_nosrc"));
 		packageExplorerView.selectNode("instance_nosrc");
 		assertNodeDoesNotExists(packageExplorerView, new GTTreePath("instance_nosrc", sourceFolder),
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 
 		// Java project content model Name template
 		createBasicItem(workspaceView, null, "javaproject_content_template1", "instance_template1", new GTTreePath(

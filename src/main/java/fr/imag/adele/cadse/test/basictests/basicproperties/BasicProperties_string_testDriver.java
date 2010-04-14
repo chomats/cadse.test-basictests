@@ -14,7 +14,7 @@ import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
-import fr.imag.adele.graphictests.test.GTTestParameters;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class BasicProperties_string_testDriver extends BasicProperties_common_testDriver {
 
@@ -167,7 +167,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 			else {
 				try {
 					findCadseField(shell, getAttributeName()).addValue(newValue,
-							GTTestParameters.FAILING_ASSERT_TIMEOUT);
+							GTPreferences.FAILING_ASSERT_TIMEOUT);
 					fail("It should be impossible to fill \"" + newValue + "\" for #" + i);
 				}
 				catch (Exception e) {

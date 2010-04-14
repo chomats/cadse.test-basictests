@@ -29,7 +29,7 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.gtworkbench_part.GTWorkbenchPart;
 import fr.imag.adele.graphictests.test.GTTestCase;
-import fr.imag.adele.graphictests.test.GTTestParameters;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 /**
  * Checks whereas the creation and modification pages have the correct layout. The following items are tested:
@@ -332,7 +332,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				null, null, null, null, null);
 		checkModificationPage(mapping.concat("mapping_javaProject-manager").concat("content-item"),
 				CadseGCST.JAVA_PROJECT_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, GTTestParameters.FAILING_ASSERT_TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.FAILING_ASSERT_TIMEOUT);
 	}
 
 	/**
@@ -355,7 +355,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"fr.imag.adele.${#short-name}", null, null, null);
 		checkModificationPage(mapping.concat("mapping_JavaFile-manager").concat("content-item"),
 				CadseGCST.JAVA_FILE_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, GTTestParameters.FAILING_ASSERT_TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.FAILING_ASSERT_TIMEOUT);
 	}
 
 	/**
@@ -375,7 +375,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"FolderContentModel", null, null, null, null, "${#short-name}", null, null);
 		checkModificationPage(mapping.concat("mapping_folder-manager").concat("content-item"),
 				CadseGCST.FOLDER_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, GTTestParameters.FAILING_ASSERT_TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.FAILING_ASSERT_TIMEOUT);
 	}
 
 	/**
@@ -395,7 +395,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"FileContentModel", null, null, null, null, null, "${#short-name}.txt", null);
 		checkModificationPage(mapping.concat("mapping_file-manager").concat("content-item"),
 				CadseGCST.FILE_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, GTTestParameters.FAILING_ASSERT_TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.FAILING_ASSERT_TIMEOUT);
 	}
 
 	/**
@@ -405,7 +405,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	 */
 	@Test
 	public void test_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, cadse_model, GTTestParameters.TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.TIMEOUT);
 	}
 
 	/**
@@ -514,7 +514,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		checkModificationPage(completePath, itConstant, expected_modifCST);
 
 		// The creation process shouldn't have induced compilation error/
-		checkCompilationErrors(workspaceView, cadse_model, GTTestParameters.FAILING_ASSERT_TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.FAILING_ASSERT_TIMEOUT);
 	}
 
 	/**
@@ -556,7 +556,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		else if (itConstant == CadseGCST.ENUM) {
 			findCadseField(shell, CadseGCST.ENUM_lt_ENUM_TYPE).browser("my_enum_type");
 		}
-		shell.close();
+		shell.close(GTPreferences.TIMEOUT); /* For CADSE Definition */
 
 		// Compute complete path
 		GTTreePath completePath = null;

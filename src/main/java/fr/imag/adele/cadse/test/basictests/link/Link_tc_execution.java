@@ -15,7 +15,7 @@ import org.junit.Test;
 
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
-import fr.imag.adele.graphictests.test.GTTestParameters;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class Link_tc_execution extends GTTestCase {
 
@@ -136,38 +136,38 @@ public class Link_tc_execution extends GTTestCase {
 		// Should not be allowed
 
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1a_name, l12_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1a_name, l21_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1a_name, l22_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1b_name, l12_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1b_name, l21_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1b_name, l22_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 
 		assertLinkCantBeAdded(workspaceView, src2_path, dst1a_name, l12_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 		assertLinkCantBeAdded(workspaceView, src2_path, dst1a_name, l22_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 
 		assertLinkCantBeAdded(workspaceView, src2_path, dst1b_name, l12_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 		assertLinkCantBeAdded(workspaceView, src2_path, dst1b_name, l22_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 
 		assertLinkCantBeAdded(workspaceView, src1_path, dst2a_name, l21_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 		assertLinkCantBeAdded(workspaceView, src1_path, dst2a_name, l22_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 
 		assertLinkCantBeAdded(workspaceView, src1_path, dst2b_name, l21_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 		assertLinkCantBeAdded(workspaceView, src1_path, dst2b_name, l22_link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 	}
 
 	@Test
@@ -200,11 +200,11 @@ public class Link_tc_execution extends GTTestCase {
 		addLink(workspaceView, src1_path, dst1_name, link_type_name);
 
 		assertLinkCantBeAdded(workspaceView, src1_path, dst1_name, link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 
 		// Link deletion
 		removeLink(workspaceView, src1_path, dst1_name, link_type_name);
-		assertNodeDoesNotExists(workspaceView, src1_path, GTTestParameters.FAILING_ASSERT_TIMEOUT);
+		assertNodeDoesNotExists(workspaceView, src1_path, GTPreferences.FAILING_ASSERT_TIMEOUT);
 
 		// Re-creation
 		createBasicItem(workspaceView, null, src_type_name, src1_name, src1_path);
@@ -224,7 +224,7 @@ public class Link_tc_execution extends GTTestCase {
 		addLink(workspaceView, src3_path, dst3_name, link_type_name);
 
 		deleteBasicItem(workspaceView, dst3_path);
-		assertNodeDoesNotExists(workspaceView, src3_path, GTTestParameters.FAILING_ASSERT_TIMEOUT);
+		assertNodeDoesNotExists(workspaceView, src3_path, GTPreferences.FAILING_ASSERT_TIMEOUT);
 	}
 
 	@Test
@@ -248,11 +248,11 @@ public class Link_tc_execution extends GTTestCase {
 		String dst_type_name = type_prefix + "dst";
 
 		// source and destination creation
-		assertItemCantbeCreated(workspaceView, null, dst_type_name, GTTestParameters.FAILING_ASSERT_TIMEOUT);
+		assertItemCantbeCreated(workspaceView, null, dst_type_name, GTPreferences.FAILING_ASSERT_TIMEOUT);
 		createBasicItem(workspaceView, null, src_type_name, src1_name, src1_path);
 		createBasicItem(workspaceView, src1_path, dst_type_name, dst1_name, dst1_path);
 		assertLinkCantBeRemoved(workspaceView, src1_path, dst1_name, link_type_name,
-				GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				GTPreferences.FAILING_ASSERT_TIMEOUT);
 
 		// assert destination can be deleted
 		deleteBasicItem(workspaceView, dst1_path);
@@ -268,8 +268,8 @@ public class Link_tc_execution extends GTTestCase {
 		createBasicItem(workspaceView, src1_path, dst_type_name, dst3_name, dst3_path);
 
 		deleteBasicItem(workspaceView, src1_path);
-		assertNodeDoesNotExists(workspaceView, dst1_path, GTTestParameters.FAILING_ASSERT_TIMEOUT);
-		assertNodeDoesNotExists(workspaceView, dst2_path, GTTestParameters.FAILING_ASSERT_TIMEOUT);
-		assertNodeDoesNotExists(workspaceView, dst3_path, GTTestParameters.FAILING_ASSERT_TIMEOUT);
+		assertNodeDoesNotExists(workspaceView, dst1_path, GTPreferences.FAILING_ASSERT_TIMEOUT);
+		assertNodeDoesNotExists(workspaceView, dst2_path, GTPreferences.FAILING_ASSERT_TIMEOUT);
+		assertNodeDoesNotExists(workspaceView, dst3_path, GTPreferences.FAILING_ASSERT_TIMEOUT);
 	}
 }

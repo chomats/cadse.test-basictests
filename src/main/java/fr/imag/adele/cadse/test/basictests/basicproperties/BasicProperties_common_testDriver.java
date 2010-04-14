@@ -29,7 +29,7 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTTestCase;
-import fr.imag.adele.graphictests.test.GTTestParameters;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
@@ -233,7 +233,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 			else {
 				try {
 					findCadseField(shell, getAttributeName()).addValue(newValue,
-							GTTestParameters.FAILING_ASSERT_TIMEOUT);
+							GTPreferences.FAILING_ASSERT_TIMEOUT);
 					fail("It should be impossible to fill \"" + newValue + "\" for #" + i);
 				}
 				catch (Exception e) {
@@ -426,7 +426,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 * Creates the CADSE.
 	 */
 	public void testCreateCadse() {
-		createCadseDefinition(cadse_name, "model." + cadse_name, GTTestParameters.TIMEOUT);
+		createCadseDefinition(cadse_name, "model." + cadse_name, GTPreferences.TIMEOUT);
 	}
 
 	/**
@@ -571,7 +571,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 		}
 		else {
 			try {
-				shell.close(GTTestParameters.FAILING_ASSERT_TIMEOUT);
+				shell.close(GTPreferences.FAILING_ASSERT_TIMEOUT);
 				fail("OK button is activated whereas it shouldn't for #" + i);
 			}
 			catch (Exception e) {

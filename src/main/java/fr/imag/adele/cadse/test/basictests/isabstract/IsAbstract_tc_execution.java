@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
-import fr.imag.adele.graphictests.test.GTTestParameters;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class IsAbstract_tc_execution extends GTTestCase {
 
@@ -43,9 +43,9 @@ public class IsAbstract_tc_execution extends GTTestCase {
 		assertEquals("default_value_itNaNa", propertiesView.findTextWithLabel("string_attribute_itNaNa").getText());
 
 		/* This items creation shouldn't be available */
-		assertItemCantbeCreated(workspaceView, null, "itA", GTTestParameters.FAILING_ASSERT_TIMEOUT);
-		assertItemCantbeCreated(workspaceView, null, "itNaA", GTTestParameters.FAILING_ASSERT_TIMEOUT);
-		assertItemCantbeCreated(workspaceView, null, "itAA", GTTestParameters.FAILING_ASSERT_TIMEOUT);
+		assertItemCantbeCreated(workspaceView, null, "itA", GTPreferences.FAILING_ASSERT_TIMEOUT);
+		assertItemCantbeCreated(workspaceView, null, "itNaA", GTPreferences.FAILING_ASSERT_TIMEOUT);
+		assertItemCantbeCreated(workspaceView, null, "itAA", GTPreferences.FAILING_ASSERT_TIMEOUT);
 	}
 
 }
