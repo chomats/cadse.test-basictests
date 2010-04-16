@@ -5,6 +5,7 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspa
 
 import org.junit.Test;
 
+import fr.imag.adele.graphictests.test.GTPreferences;
 import fr.imag.adele.graphictests.test.GTTestCase;
 
 /**
@@ -17,7 +18,7 @@ public class BasicProperties_double_tc_execution extends GTTestCase {
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses("Cadse Model.Workspace.CADSE_BasicProperties_double");
+		selectCadses(GTPreferences.TIMEOUT, "Cadse Model.Workspace.CADSE_BasicProperties_double");
 		welcomeView.close();
 		workspaceView.show();
 	}

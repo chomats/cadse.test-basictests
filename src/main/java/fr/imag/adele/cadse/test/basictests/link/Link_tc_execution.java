@@ -14,8 +14,8 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspa
 import org.junit.Test;
 
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.test.GTTestCase;
 import fr.imag.adele.graphictests.test.GTPreferences;
+import fr.imag.adele.graphictests.test.GTTestCase;
 
 public class Link_tc_execution extends GTTestCase {
 
@@ -25,7 +25,7 @@ public class Link_tc_execution extends GTTestCase {
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses("Cadse Model.Workspace.CADSE_Link");
+		selectCadses(GTPreferences.TIMEOUT, "Cadse Model.Workspace.CADSE_Link");
 		welcomeView.close();
 		workspaceView.show();
 	}
@@ -199,8 +199,7 @@ public class Link_tc_execution extends GTTestCase {
 		createBasicItem(workspaceView, null, dst_type_name, dst1_name, dst1_path);
 		addLink(workspaceView, src1_path, dst1_name, link_type_name);
 
-		assertLinkCantBeAdded(workspaceView, src1_path, dst1_name, link_type_name,
-				GTPreferences.FAILING_ASSERT_TIMEOUT);
+		assertLinkCantBeAdded(workspaceView, src1_path, dst1_name, link_type_name, GTPreferences.FAILING_ASSERT_TIMEOUT);
 
 		// Link deletion
 		removeLink(workspaceView, src1_path, dst1_name, link_type_name);

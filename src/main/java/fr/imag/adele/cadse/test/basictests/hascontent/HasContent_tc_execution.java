@@ -7,8 +7,8 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspa
 import org.junit.Test;
 
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.test.GTTestCase;
 import fr.imag.adele.graphictests.test.GTPreferences;
+import fr.imag.adele.graphictests.test.GTTestCase;
 
 public class HasContent_tc_execution extends GTTestCase {
 
@@ -18,7 +18,7 @@ public class HasContent_tc_execution extends GTTestCase {
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses("Cadse Model.Workspace.CADSE_HasContent");
+		selectCadses(GTPreferences.TIMEOUT, "Cadse Model.Workspace.CADSE_HasContent");
 		welcomeView.close();
 		workspaceView.show();
 	}

@@ -6,6 +6,7 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspa
 import org.junit.Test;
 
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.test.GTPreferences;
 import fr.imag.adele.graphictests.test.GTTestCase;
 
 /**
@@ -34,7 +35,7 @@ public class BasicProperties_boolean_tc_CADSEg extends GTTestCase {
 	public void test_preparation() throws Exception {
 
 		// Starts CADSEg
-		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
+		selectCadses(GTPreferences.TIMEOUT, GTCadseRTConstants.CADSEG_MODEL);
 
 		// Closes unless views
 		welcomeView.close();

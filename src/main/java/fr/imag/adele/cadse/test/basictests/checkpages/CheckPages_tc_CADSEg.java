@@ -28,8 +28,8 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.gtworkbench_part.GTWorkbenchPart;
-import fr.imag.adele.graphictests.test.GTTestCase;
 import fr.imag.adele.graphictests.test.GTPreferences;
+import fr.imag.adele.graphictests.test.GTTestCase;
 
 /**
  * Checks whereas the creation and modification pages have the correct layout. The following items are tested:
@@ -75,7 +75,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	public void test_preparation() throws Exception {
 
 		// Starts CADSEg
-		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
+		selectCadses(GTPreferences.TIMEOUT, GTCadseRTConstants.CADSEG_MODEL);
 
 		// Closes unless views
 		welcomeView.close();

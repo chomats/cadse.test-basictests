@@ -16,8 +16,8 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.test.GTTestCase;
 import fr.imag.adele.graphictests.test.GTPreferences;
+import fr.imag.adele.graphictests.test.GTTestCase;
 
 public class Root_tc_CADSEg extends GTTestCase {
 
@@ -41,7 +41,7 @@ public class Root_tc_CADSEg extends GTTestCase {
 	public void test_preparation() throws Exception {
 
 		// Starts CADSEg
-		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
+		selectCadses(GTPreferences.TIMEOUT, GTCadseRTConstants.CADSEG_MODEL);
 
 		// Closes unless views
 		welcomeView.close();
