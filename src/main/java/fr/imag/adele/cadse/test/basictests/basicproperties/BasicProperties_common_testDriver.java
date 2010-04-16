@@ -28,8 +28,8 @@ import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
-import fr.imag.adele.graphictests.test.GTTestCase;
 import fr.imag.adele.graphictests.test.GTPreferences;
+import fr.imag.adele.graphictests.test.GTTestCase;
 
 public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
@@ -232,8 +232,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 			}
 			else {
 				try {
-					findCadseField(shell, getAttributeName()).addValue(newValue,
-							GTPreferences.FAILING_ASSERT_TIMEOUT);
+					findCadseField(shell, getAttributeName()).addValue(newValue, GTPreferences.FAILING_ASSERT_TIMEOUT);
 					fail("It should be impossible to fill \"" + newValue + "\" for #" + i);
 				}
 				catch (Exception e) {
@@ -558,12 +557,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 		}
 
 		// Waits until refresh
-		try {
-			Thread.sleep(SWTBotPreferences.DEFAULT_POLL_DELAY);
-		}
-		catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
+		GTPreferences.sleep(SWTBotPreferences.DEFAULT_POLL_DELAY);
 
 		// Closes shell
 		if (isOkButtonActivated(i)) {
