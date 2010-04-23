@@ -110,6 +110,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	public void test_Item_Type() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ITEM_TYPE_lt_SUPER_TYPE",
 				"ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_" };
+
 		Object[] expected_creationVal = { "", "Item", false, true, true };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ITEM_TYPE_at_DEFAULT_INSTANCE_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_ICON_",
