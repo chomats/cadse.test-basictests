@@ -2,6 +2,8 @@ package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 
+import java.util.ArrayList;
+
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
 import fr.imag.adele.cadse.core.CadseGCST;
@@ -140,6 +142,66 @@ public class BasicProperties_boolean_testDriver extends BasicProperties_common_t
 		}
 		else {
 			throw new WidgetNotFoundException("No field in this dialog");
+		}
+	}
+
+	/**
+	 * Gets the initial visual value.
+	 * 
+	 * @param i
+	 *            the instance number
+	 * @return a string or a list of string
+	 */
+	@Override
+	public Object getInitialVisualValue(int i) {
+
+		boolean fieldInCP = sicpTab.get(i).getBoolean();
+		boolean isList = listTab.get(i).getBoolean();
+		Boolean defVal = (Boolean) executionOldTab.get(i).graphicalValue;
+		boolean cbu = cbuTab.get(i).getBoolean();
+
+		if (fieldInCP) {
+			if (isList) {
+				return new ArrayList<Object>();
+			}
+			else {
+				if (cbu == true && defVal == null) {
+					return new Boolean(false);
+				}
+				else {
+					return defVal;
+				}
+			}
+		}
+		else {
+			throw new WidgetNotFoundException("No field in this dialog");
+		}
+	}
+
+	/**
+	 * Gets the initial model value.
+	 * 
+	 * @param i
+	 *            the instance number
+	 * @return the initial model value
+	 */
+	@Override
+	public Object getInitialModelValue(int i) {
+
+		boolean isList = listTab.get(i).getBoolean();
+		Boolean defVal = (Boolean) executionOldTab.get(i).modelValue;
+		boolean cbu = cbuTab.get(i).getBoolean();
+
+		if (isList) {
+			return new ArrayList<Object>();
+		}
+		else {
+			if (cbu == true && defVal == null) {
+				return new Boolean(false);
+			}
+			else {
+				return defVal;
+			}
 		}
 	}
 }

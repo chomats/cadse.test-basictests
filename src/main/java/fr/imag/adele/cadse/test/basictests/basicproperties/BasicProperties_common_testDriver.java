@@ -17,13 +17,17 @@ import static fr.imag.adele.graphictests.cadse.test.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.test.KeyValue.simpKv;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
+import fr.imag.adele.cadse.core.Item;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.cadse.core.attribute.IAttributeType;
+import fr.imag.adele.cadse.core.impl.CadseCore;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
@@ -264,7 +268,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 		Object oldModelValue = (oldKv == null) ? null : oldKv.modelValue;
 
 		if (isList) { // def val is ignored with list attributes
-			if (newKv != null && newModelValue != null) {
+			if (fieldInCP && newKv != null && newModelValue != null) {
 				return new Object[] { newModelValue };
 			}
 			else {
@@ -559,6 +563,9 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 		// Waits until refresh
 		GTPreferences.sleep(SWTBotPreferences.DEFAULT_POLL_DELAY);
 
+		// Gets the UUID
+		UUID id = findCadseField(shell, CadseGCST.ITEM_at_NAME_).getRunningField().getSwtUiplatform().getItem().getId();
+
 		// Closes shell
 		if (isOkButtonActivated(i)) {
 			shell.close();
@@ -573,6 +580,18 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 			}
 			return;
 		}
+
+		/* ============== */
+		/* Model checking */
+		/* ============== */
+
+		Item item = CadseCore.getLogicalWorkspace().getItem(id);
+		assertNotNull(item);
+		IAttributeType<?> attr = item.getType().getAttributeType(getAttributeName());
+		assertNotNull(attr);
+		Object model_actual = item.getAttribute(attr);
+		Object model_expected = getFinalModelValue(i);
+		assertEqualsListValues("Error in model checking for #" + i, model_expected, model_actual);
 
 		/* ============= */
 		/* Property page */
