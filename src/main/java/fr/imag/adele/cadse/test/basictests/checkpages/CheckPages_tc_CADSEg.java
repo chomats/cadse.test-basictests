@@ -12,6 +12,7 @@ import static fr.imag.adele.graphictests.cadse.test.KeyValue.notAbstractKv;
 import static fr.imag.adele.graphictests.cadse.test.KeyValue.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.KeyValue.withContentKv;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
@@ -22,9 +23,11 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.core.attribute.IAttributeType;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseField;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseWorkbenchPart;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.gtworkbench_part.GTWorkbenchPart;
@@ -438,6 +441,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	private void checkCreationContentModel(String[] expected_creationCST, Object[] expected_creationVal,
 			GTTreePath sourceNode, String typeName, String projectName, Boolean hasSourceFolder, String className,
 			String packageName, String folderPath, String filePath, Boolean extendsClass) {
+
 		/* Creates content */
 		workspaceView.contextMenuNew(sourceNode, typeName).click();
 		GTShell shell = new GTShell(typeName);
@@ -445,6 +449,10 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		Object[] creationVal = findCadseWorkbenchPart(shell).findAttributeValues();
 		String creationCST_str = getStringDef(shell);
 		String creationVal_str = getStringVal(shell);
+
+		// Checkboxes checking
+		booleanFieldChecker.check(shell);
+
 		if (projectName != null && !projectName.isEmpty()) {
 			findCadseField(shell, CadseGCST.PROJECT_CONTENT_MODEL_at_PROJECT_NAME_).typeText(projectName);
 		}
@@ -535,6 +543,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	 */
 	private GTTreePath checkCreationPage(GTTreePath path, String attributeName, ItemType itConstant,
 			String[] expected_creationCST, Object[] expected_creationVal) {
+
 		// Creation
 		workspaceView.contextMenuNew(path, itConstant).click();
 		GTCadseShell shell = new GTCadseShell(itConstant);
@@ -542,6 +551,9 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		Object[] creationVal = findCadseWorkbenchPart(shell).findAttributeValues();
 		String creationCST_str = getStringDef(shell);
 		String creationVal_str = getStringVal(shell);
+
+		// Checkboxes checking
+		booleanFieldChecker.check(shell);
 
 		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText(attributeName);
 		if (itConstant == CadseGCST.LINK_TYPE) {
@@ -569,7 +581,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		}
 
 		// Assert item has been created
-		workspaceView.selectNode(completePath);
+		workspaceView.selectNode(completePath, GTPreferences.TIMEOUT);
 
 		// Performs test
 		if (isSameValues(creationCST, expected_creationCST) == false) {
@@ -643,6 +655,9 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 			throw new WidgetNotFoundException(
 					"The workbench part doesn't contains expected attributes. Expected String : " + modifStr);
 		}
+
+		// Check boolean field
+		booleanFieldChecker.check(propertiesView);
 	}
 
 	/**
@@ -762,5 +777,88 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		sb.append("};");
 
 		return sb.toString();
+	}
+
+	private abstract static class booleanFieldChecker {
+
+		private static List<KeyValue> list = initList();
+
+		/**
+		 * Performs initialization with expected result.
+		 * 
+		 * @return
+		 */
+		private static List<KeyValue> initList() {
+
+			List<KeyValue> list = new ArrayList<KeyValue>();
+
+			list.add(new KeyValue(CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, 2));
+			list.add(new KeyValue(CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, 2));
+			list.add(new KeyValue(CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, 2));
+			list.add(new KeyValue(CadseGCST.ITEM_TYPE_at_IS_INSTANCE_HIDDEN_, 2));
+			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, 2));
+			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_SHOW_IN_DEFAULT_CP_, 2));
+			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_SHOW_IN_DEFAULT_MP_, 2));
+			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_CANNOT_BE_UNDEFINED_, 2));
+			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_IS_LIST_, 2));
+			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_TWREV_SPECIFIC_, 2));
+			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_NATIF_, 2));
+			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_TRANSIENT_, 2));
+			list.add(new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, 2));
+			list.add(new KeyValue(CadseGCST.ENUM_TYPE_at_MUST_BE_GENERATED_, 2));
+			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_ANNOTATION_, 2));
+			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_AGGREGATION_, 2));
+			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_COMPOSITION_, 2));
+			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_PART_, 2));
+			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_REQUIRE_, 2));
+			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_MAPPING_, 2));
+			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_GROUP_, 2));
+			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_HIDDEN_, 2));
+			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_TWCOUPLED_, 2));
+			list.add(new KeyValue(CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_, 2));
+			list.add(new KeyValue(CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_, 2));
+
+			return list;
+		}
+
+		/**
+		 * Check all the checkboxes of a workbench part.
+		 * 
+		 * @param wp
+		 */
+		public static void check(GTWorkbenchPart wp) {
+
+			List<IAttributeType<?>> attrList = GTCadseFactory.findCadseWorkbenchPart(wp).findAttributeDefinition();
+
+			for (IAttributeType<?> attr : attrList) {
+				GTCadseField field = GTCadseFactory.findCadseField(wp, attr);
+
+				if (field.getUIfield().getType() == CadseGCST.DCHECK_BOX) {
+					assertChcekBoxHasCorrectStateNumber(field, attr);
+				}
+			}
+		}
+
+		/**
+		 * Assert chcek box has correct state number.
+		 * 
+		 * @param field
+		 *            the field
+		 * @param attr
+		 *            the attr
+		 */
+		static void assertChcekBoxHasCorrectStateNumber(GTCadseField field, IAttributeType<?> attr) {
+
+			for (KeyValue kv : list) {
+				if (kv.getAttributeType().equals(attr)) {
+					int expected = kv.getInteger();
+					int actual = field.getCheckBoxNumberOfStates();
+					assertEquals("States number for attribute " + attr.getCSTName(), expected, actual);
+					return;
+				}
+			}
+
+			throw new WidgetNotFoundException("Unknown attribute type : " + attr.getCSTName());
+		}
 	}
 }
