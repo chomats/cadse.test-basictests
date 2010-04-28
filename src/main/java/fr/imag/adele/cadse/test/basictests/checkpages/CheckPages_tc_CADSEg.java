@@ -796,7 +796,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 			list.add(new KeyValue(CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, 2));
 			list.add(new KeyValue(CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, 2));
 			list.add(new KeyValue(CadseGCST.ITEM_TYPE_at_IS_INSTANCE_HIDDEN_, 2));
-			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, 2));
+			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, 3)); // boolean attr can have a null dv
 			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_SHOW_IN_DEFAULT_CP_, 2));
 			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_SHOW_IN_DEFAULT_MP_, 2));
 			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_CANNOT_BE_UNDEFINED_, 2));
