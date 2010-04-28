@@ -170,6 +170,10 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 		return instance_prefix + i;
 	}
 
+	public KeyValue getCorrectedDefVal(int i) {
+		return executionOldTab.get(i);
+	}
+
 	/**
 	 * Gets the initial visual value.
 	 * 
@@ -181,13 +185,14 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
 		boolean fieldInCP = sicpTab.get(i).getBoolean();
 		boolean isList = listTab.get(i).getBoolean();
+		KeyValue defVal = getCorrectedDefVal(i);
 
 		if (fieldInCP) {
 			if (isList) {
 				return new String[] {};
 			}
 			else {
-				return executionOldTab.get(i).graphicalValue;
+				return defVal.graphicalValue;
 			}
 		}
 		else {
@@ -205,12 +210,13 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	public Object getInitialModelValue(int i) {
 
 		boolean isList = listTab.get(i).getBoolean();
+		KeyValue defVal = getCorrectedDefVal(i);
 
 		if (isList) {
 			return new ArrayList<Object>();
 		}
 		else {
-			return executionOldTab.get(i).modelValue;
+			return defVal.modelValue;
 		}
 	}
 
@@ -263,9 +269,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 		boolean fieldInCP = sicpTab.get(i).getBoolean();
 		boolean isList = listTab.get(i).getBoolean();
 		KeyValue newKv = executionNewTab.get(i);
-		KeyValue oldKv = executionOldTab.get(i);
 		Object newModelValue = (newKv == null) ? null : newKv.modelValue;
-		Object oldModelValue = (oldKv == null) ? null : oldKv.modelValue;
 
 		if (isList) { // def val is ignored with list attributes
 			if (fieldInCP && newKv != null && newModelValue != null) {
@@ -281,11 +285,11 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 					return newModelValue;
 				}
 				else {
-					return oldModelValue;
+					return getCorrectedDefVal(i).modelValue;
 				}
 			}
 			else {
-				return oldModelValue;
+				return getCorrectedDefVal(i).modelValue;
 			}
 		}
 	}
@@ -303,13 +307,11 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 		boolean isList = listTab.get(i).getBoolean();
 
 		KeyValue newKv = executionNewTab.get(i);
-		KeyValue oldKv = executionOldTab.get(i);
 		Object newGraphicalValue = (newKv == null) ? null : newKv.graphicalValue;
-		Object oldGraphicalValue = (oldKv == null) ? null : oldKv.graphicalValue;
 
 		if (fieldInCP) {
 			if (isList) { // default value is ignored with list
-				if (newKv != null && !newGraphicalValue.equals("")) {
+				if (newKv != null && newGraphicalValue != null && !newGraphicalValue.toString().equals("")) {
 					return new String[] { newGraphicalValue.toString() };
 				}
 				else {
@@ -321,7 +323,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 					return newGraphicalValue;
 				}
 				else {
-					return oldGraphicalValue; // no new value
+					return getCorrectedDefVal(i).graphicalValue;
 				}
 			}
 		}
@@ -377,7 +379,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 					return getFinalGraphicalValue(i);
 				}
 				else {
-					return defValCADSEgTab.get(i).graphicalValue;
+					return getCorrectedDefVal(i).graphicalValue;
 				}
 			}
 		}
@@ -406,7 +408,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 				return new Object[] {}; // default value is ignored with list attributes
 			}
 			else {
-				return defValCADSEgTab.get(i).modelValue;
+				return getCorrectedDefVal(i).modelValue;
 			}
 		}
 	}
@@ -489,6 +491,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 * At runtime, test if the CADSE has the correct behavior.
 	 */
 	public void testExecution() {
+
 		ArrayList<Integer> exclude = new ArrayList<Integer>();
 		testExecution(exclude);
 	}

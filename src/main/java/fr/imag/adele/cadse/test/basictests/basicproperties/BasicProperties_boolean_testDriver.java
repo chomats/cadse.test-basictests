@@ -2,8 +2,6 @@ package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 
-import java.util.ArrayList;
-
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
 import fr.imag.adele.cadse.core.CadseGCST;
@@ -104,104 +102,17 @@ public class BasicProperties_boolean_testDriver extends BasicProperties_common_t
 		return true; // success
 	}
 
-	/**
-	 * Gets the final graphical value.
-	 * 
-	 * @param i
-	 *            the instance number
-	 * @return the final graphical value
-	 */
 	@Override
-	public Object getFinalGraphicalValue(int i) {
+	public KeyValue getCorrectedDefVal(int i) {
 
-		boolean fieldInCP = sicpTab.get(i).getBoolean();
-		boolean isList = listTab.get(i).getBoolean();
-
-		KeyValue newKv = executionNewTab.get(i);
-		KeyValue oldKv = executionOldTab.get(i);
-		Object newGraphicalValue = (newKv == null) ? null : newKv.graphicalValue;
-		Object oldGraphicalValue = (oldKv == null) ? null : oldKv.graphicalValue;
-
-		if (fieldInCP) {
-			if (isList) { // default value is ignored with list
-				if (newKv != null && newGraphicalValue != null) {
-					return new String[] { newGraphicalValue.toString() };
-				}
-				else {
-					return new String[] {};
-				}
-			}
-			else {
-				if (newKv != null) {
-					return newGraphicalValue;
-				}
-				else {
-					return oldGraphicalValue; // no new value
-				}
-			}
-		}
-		else {
-			throw new WidgetNotFoundException("No field in this dialog");
-		}
-	}
-
-	/**
-	 * Gets the initial visual value.
-	 * 
-	 * @param i
-	 *            the instance number
-	 * @return a string or a list of string
-	 */
-	@Override
-	public Object getInitialVisualValue(int i) {
-
-		boolean fieldInCP = sicpTab.get(i).getBoolean();
-		boolean isList = listTab.get(i).getBoolean();
-		Boolean defVal = (Boolean) executionOldTab.get(i).graphicalValue;
 		boolean cbu = cbuTab.get(i).getBoolean();
+		KeyValue defVal = executionOldTab.get(i);
 
-		if (fieldInCP) {
-			if (isList) {
-				return new ArrayList<Object>();
-			}
-			else {
-				if (cbu == true && defVal == null) {
-					return new Boolean(false);
-				}
-				else {
-					return defVal;
-				}
-			}
+		if (cbu == true && defVal.modelValue == null) {
+			return new KeyValue("", false, false);
 		}
 		else {
-			throw new WidgetNotFoundException("No field in this dialog");
-		}
-	}
-
-	/**
-	 * Gets the initial model value.
-	 * 
-	 * @param i
-	 *            the instance number
-	 * @return the initial model value
-	 */
-	@Override
-	public Object getInitialModelValue(int i) {
-
-		boolean isList = listTab.get(i).getBoolean();
-		Boolean defVal = (Boolean) executionOldTab.get(i).modelValue;
-		boolean cbu = cbuTab.get(i).getBoolean();
-
-		if (isList) {
-			return new ArrayList<Object>();
-		}
-		else {
-			if (cbu == true && defVal == null) {
-				return new Boolean(false);
-			}
-			else {
-				return defVal;
-			}
+			return defVal;
 		}
 	}
 }
