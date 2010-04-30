@@ -782,6 +782,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	private abstract static class booleanFieldChecker {
 
 		private static List<KeyValue> list = initList();
+		private final static int defaultStateNumber = 2;
 
 		/**
 		 * Performs initialization with expected result.
@@ -792,31 +793,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 
 			List<KeyValue> list = new ArrayList<KeyValue>();
 
-			list.add(new KeyValue(CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, 2));
-			list.add(new KeyValue(CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_, 2));
-			list.add(new KeyValue(CadseGCST.ITEM_TYPE_at_HAS_CONTENT_, 2));
-			list.add(new KeyValue(CadseGCST.ITEM_TYPE_at_IS_INSTANCE_HIDDEN_, 2));
 			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, 3)); // boolean attr can have a null dv
-			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_SHOW_IN_DEFAULT_CP_, 2));
-			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_SHOW_IN_DEFAULT_MP_, 2));
-			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_CANNOT_BE_UNDEFINED_, 2));
-			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_IS_LIST_, 2));
-			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_TWREV_SPECIFIC_, 2));
-			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_NATIF_, 2));
-			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_TRANSIENT_, 2));
-			list.add(new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, 2));
-			list.add(new KeyValue(CadseGCST.ENUM_TYPE_at_MUST_BE_GENERATED_, 2));
-			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_ANNOTATION_, 2));
-			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_AGGREGATION_, 2));
-			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_COMPOSITION_, 2));
-			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_PART_, 2));
-			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_REQUIRE_, 2));
-			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_MAPPING_, 2));
-			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_GROUP_, 2));
-			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_HIDDEN_, 2));
-			list.add(new KeyValue(CadseGCST.LINK_TYPE_at_TWCOUPLED_, 2));
-			list.add(new KeyValue(CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_, 2));
-			list.add(new KeyValue(CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_, 2));
 
 			return list;
 		}
@@ -834,31 +811,33 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				GTCadseField field = GTCadseFactory.findCadseField(wp, attr);
 
 				if (field.getUIfield().getType() == CadseGCST.DCHECK_BOX) {
-					assertChcekBoxHasCorrectStateNumber(field, attr);
+					assertCheckBoxHasCorrectStateNumber(field, attr);
 				}
 			}
 		}
 
 		/**
-		 * Assert chcek box has correct state number.
+		 * Assert check box has correct state number.
 		 * 
 		 * @param field
 		 *            the field
 		 * @param attr
 		 *            the attr
 		 */
-		static void assertChcekBoxHasCorrectStateNumber(GTCadseField field, IAttributeType<?> attr) {
+		static void assertCheckBoxHasCorrectStateNumber(GTCadseField field, IAttributeType<?> attr) {
+
+			int actual = field.getCheckBoxNumberOfStates();
 
 			for (KeyValue kv : list) {
 				if (kv.getAttributeType().equals(attr)) {
 					int expected = kv.getInteger();
-					int actual = field.getCheckBoxNumberOfStates();
 					assertEquals("States number for attribute " + attr.getCSTName(), expected, actual);
 					return;
 				}
 			}
 
-			throw new WidgetNotFoundException("Unknown attribute type : " + attr.getCSTName());
+			int expected = defaultStateNumber;
+			assertEquals("States number for attribute " + attr.getCSTName(), expected, actual);
 		}
 	}
 }
