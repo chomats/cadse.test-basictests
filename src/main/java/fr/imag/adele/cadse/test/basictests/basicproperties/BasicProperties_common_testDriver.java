@@ -444,20 +444,62 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
 		System.out.println("Starting CADSEg #" + i);
 
+		/* Pre create */
+		preCreate(i);
+
 		/* Item type creation */
-		GTTreePath it_path = data_model.concat(getItName(i));
 		createItemType(data_model, getItName(i), notAbstractKv, rootKv);
 
 		/* Attribute creation */
-		GTTreePath attr_path = it_path.concat(getAttributeName());
-		createBasicAttribute(it_path, getItemTypeUnderTest(), getAttributeName(), defValCADSEgTab.get(i), sicpTab
-				.get(i), simpTab.get(i), cbuTab.get(i), listTab.get(i));
+		GTTreePath it_path = data_model.concat(getItName(i));
 
-		/* Assert item has been created */
-		workspaceView.selectNode(attr_path);
+		boolean success = true;
+		try {
+			createBasicAttribute(it_path, getItemTypeUnderTest(), getAttributeName(), getCreationKeyValues(i));
 
-		/* Post create */
-		postCreate(i, it_path, attr_path);
+			/* Assert item has been created */
+			GTTreePath attr_path = it_path.concat(getAttributeName());
+			workspaceView.selectNode(attr_path);
+
+			/* Post create */
+			postCreate(i, it_path, attr_path);
+		}
+		catch (Exception e) {
+			success = false;
+		}
+
+		boolean expected = attributeCreationSuccess(i);
+		assertEquals(expected, success);
+	}
+
+	/**
+	 * Returns true if the attribute can be created, false otherwise.
+	 * 
+	 * @param i
+	 * @return true if the attribute can be created, false otherwise.
+	 */
+	protected boolean attributeCreationSuccess(int i) {
+		return true;
+	}
+
+	/**
+	 * Performs actions before the item creation.
+	 * 
+	 * @param i
+	 *            the number of the item to be created
+	 */
+	protected void preCreate(int i) {
+	}
+
+	/**
+	 * Gets key values to fill creation page.
+	 * 
+	 * @param i
+	 *            the i
+	 * @return the creation key values
+	 */
+	protected KeyValue[] getCreationKeyValues(int i) {
+		return new KeyValue[] { defValCADSEgTab.get(i), sicpTab.get(i), simpTab.get(i), cbuTab.get(i), listTab.get(i) };
 	}
 
 	/**
@@ -501,121 +543,127 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 */
 	public void testExecution(int i) {
 
-		boolean fieldInCP = sicpTab.get(i).getBoolean();
-		boolean fieldInMP = simpTab.get(i).getBoolean();
-		KeyValue newValue = executionNewTab.get(i);
-
-		/* ============= */
-		/* Creation page */
-		/* ============= */
-
-		workspaceView.contextMenuNew(getItName(i)).click();
-		GTShell shell = new GTShell(getItName(i));
-
-		// is field present
-		boolean isFieldPresent = true;
-		try {
-			findCadseField(shell, getAttributeName());
-		}
-		catch (Exception e) {
-			isFieldPresent = false;
-		}
-		assertEquals("Presence of the attribute field is not as expected for #" + i, fieldInCP, isFieldPresent);
-
-		// initial visual value
-		if (fieldInCP) {
-			Object expected = getInitialVisualValue(i);
-			Object actual = findCadseField(shell, getAttributeName()).getValue();
-			assertEqualsListValues("Initial visual value error for #" + i, expected, actual);
-		}
-
-		// initial model value
-		if (fieldInCP) {
-			Object expected = getInitialModelValue(i);
-			Object actual = findCadseField(shell, getAttributeName()).getModelValue();
-			assertEqualsListValues("Initial model value error for #" + i, expected, actual);
-		}
-
-		// New Attribute Value
-		if (fieldInCP && newValue != null) {
-			if (!setNewGraphicalValue(i, shell)) {
-				// setting the new value has failed, as expected
-				shell.close(GTEclipseConstants.CANCEL_BUTTON);
-				return;
-			}
-		}
-
-		// name + CHANGES FOCUS!!!
-		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText(getInstanceName(i));
-
-		// final visual value
-		if (fieldInCP && newValue != null) {
-			Object expected = getFinalGraphicalValue(i);
-			Object actual = findCadseField(shell, getAttributeName()).getValue();
-			assertEqualsListValues("Error with final visual value for #" + i, expected, actual);
-		}
-
-		// final model value (okButtonActivated is important! if the value is not correct, the previous correct
-		// model value (default value) is locked even if the field displays another value.
-		if (fieldInCP && newValue != null && isOkButtonActivated(i)) {
-			Object expected = getFinalModelValue(i);
-			Object actual = findCadseField(shell, getAttributeName()).getModelValue();
-			assertEqualsListValues("Final model value error for #" + i, expected, actual);
-		}
-
-		// Waits until refresh
-		GTPreferences.sleep(SWTBotPreferences.DEFAULT_POLL_DELAY);
-
-		// Gets the UUID
-		UUID id = findCadseField(shell, CadseGCST.ITEM_at_NAME_).getRunningField().getSwtUiplatform().getItem().getId();
-
-		// Closes shell
-		if (isOkButtonActivated(i)) {
-			shell.close();
+		if (!attributeCreationSuccess(i)) {
+			System.out.println("Attribute #" + i + " haven't been created. Test skiped.");
 		}
 		else {
+			boolean fieldInCP = sicpTab.get(i).getBoolean();
+			boolean fieldInMP = simpTab.get(i).getBoolean();
+			KeyValue newValue = executionNewTab.get(i);
+
+			/* ============= */
+			/* Creation page */
+			/* ============= */
+
+			workspaceView.contextMenuNew(getItName(i)).click();
+			GTShell shell = new GTShell(getItName(i));
+
+			// is field present
+			boolean isFieldPresent = true;
 			try {
-				shell.close(GTPreferences.FAILING_ASSERT_TIMEOUT);
-				fail("OK button is activated whereas it shouldn't for #" + i);
+				findCadseField(shell, getAttributeName());
 			}
 			catch (Exception e) {
-				// SUCCESS
+				isFieldPresent = false;
 			}
-			return;
-		}
+			assertEquals("Presence of the attribute field is not as expected for #" + i, fieldInCP, isFieldPresent);
 
-		/* ============== */
-		/* Model checking */
-		/* ============== */
+			// initial visual value
+			if (fieldInCP) {
+				Object expected = getInitialVisualValue(i);
+				Object actual = findCadseField(shell, getAttributeName()).getValue();
+				assertEqualsListValues("Initial visual value error for #" + i, expected, actual);
+			}
 
-		Item item = CadseCore.getLogicalWorkspace().getItem(id);
-		assertNotNull(item);
-		IAttributeType<?> attr = item.getType().getAttributeType(getAttributeName());
-		assertNotNull(attr);
-		Object model_actual = item.getAttribute(attr);
-		Object model_expected = getFinalModelValue(i);
-		assertEqualsListValues("Error in model checking for #" + i, model_expected, model_actual);
+			// initial model value
+			if (fieldInCP) {
+				Object expected = getInitialModelValue(i);
+				Object actual = findCadseField(shell, getAttributeName()).getModelValue();
+				assertEqualsListValues("Initial model value error for #" + i, expected, actual);
+			}
 
-		/* ============= */
-		/* Property page */
-		/* ============= */
+			// New Attribute Value
+			if (fieldInCP && newValue != null) {
+				if (!setNewGraphicalValue(i, shell)) {
+					// setting the new value has failed, as expected
+					shell.close(GTEclipseConstants.CANCEL_BUTTON);
+					return;
+				}
+			}
 
-		workspaceView.selectNode(getInstanceName(i));
-		propertiesView.showTab(getItName(i));
+			// name + CHANGES FOCUS!!!
+			findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText(getInstanceName(i));
 
-		// Name
-		assertEquals(getInstanceName(i), findCadseField(propertiesView, CadseGCST.ITEM_at_NAME_).getText());
+			// final visual value
+			if (fieldInCP && newValue != null) {
+				Object expected = getFinalGraphicalValue(i);
+				Object actual = findCadseField(shell, getAttributeName()).getValue();
+				assertEqualsListValues("Error with final visual value for #" + i, expected, actual);
+			}
 
-		// Field value
-		if (fieldInMP) {
-			Object graphicalExpected = getPropertiesGraphicalValue(i);
-			Object graphicalActual = findCadseField(propertiesView, getAttributeName()).getValue();
-			assertEqualsListValues("Error in graphical modification page value for #" + i, graphicalExpected,
-					graphicalActual);
+			// final model value (okButtonActivated is important! if the value is not correct, the previous correct
+			// model value (default value) is locked even if the field displays another value.
+			if (fieldInCP && newValue != null && isOkButtonActivated(i)) {
+				Object expected = getFinalModelValue(i);
+				Object actual = findCadseField(shell, getAttributeName()).getModelValue();
+				assertEqualsListValues("Final model value error for #" + i, expected, actual);
+			}
 
-			Object modelExpected = getPropertiesModelValue(i);
-			Object modelActual = findCadseField(propertiesView, getAttributeName()).getModelValue();
-			assertEqualsListValues("Error in model modification page value for #" + i, modelExpected, modelActual);
+			// Waits until refresh
+			GTPreferences.sleep(SWTBotPreferences.DEFAULT_POLL_DELAY);
+
+			// Gets the UUID
+			UUID id = findCadseField(shell, CadseGCST.ITEM_at_NAME_).getRunningField().getSwtUiplatform().getItem()
+					.getId();
+
+			// Closes shell
+			if (isOkButtonActivated(i)) {
+				shell.close();
+			}
+			else {
+				try {
+					shell.close(GTPreferences.FAILING_ASSERT_TIMEOUT);
+					fail("OK button is activated whereas it shouldn't for #" + i);
+				}
+				catch (Exception e) {
+					// SUCCESS
+				}
+				return;
+			}
+
+			/* ============== */
+			/* Model checking */
+			/* ============== */
+
+			Item item = CadseCore.getLogicalWorkspace().getItem(id);
+			assertNotNull(item);
+			IAttributeType<?> attr = item.getType().getAttributeType(getAttributeName());
+			assertNotNull(attr);
+			Object model_actual = item.getAttribute(attr);
+			Object model_expected = getFinalModelValue(i);
+			assertEqualsListValues("Error in model checking for #" + i, model_expected, model_actual);
+
+			/* ============= */
+			/* Property page */
+			/* ============= */
+
+			workspaceView.selectNode(getInstanceName(i));
+			propertiesView.showTab(getItName(i));
+
+			// Name
+			assertEquals(getInstanceName(i), findCadseField(propertiesView, CadseGCST.ITEM_at_NAME_).getText());
+
+			// Field value
+			if (fieldInMP) {
+				Object graphicalExpected = getPropertiesGraphicalValue(i);
+				Object graphicalActual = findCadseField(propertiesView, getAttributeName()).getValue();
+				assertEqualsListValues("Error in graphical modification page value for #" + i, graphicalExpected,
+						graphicalActual);
+
+				Object modelExpected = getPropertiesModelValue(i);
+				Object modelActual = findCadseField(propertiesView, getAttributeName()).getModelValue();
+				assertEqualsListValues("Error in model modification page value for #" + i, modelExpected, modelActual);
+			}
 		}
 	}
 
@@ -664,6 +712,9 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 			for (int i = 0; i < t.length; i++) {
 				tab.add(t[i]);
 			}
+		}
+		else if (object instanceof Enum) {
+			tab.add(object.toString());
 		}
 		else {
 			tab.add(object);
