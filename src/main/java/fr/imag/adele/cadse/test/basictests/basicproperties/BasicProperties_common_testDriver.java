@@ -704,7 +704,12 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 
 		if (object instanceof ArrayList<?>) {
 			for (Object o : (ArrayList) object) {
-				tab.add(o);
+				if (o instanceof Enum) {
+					tab.add(o.toString());
+				}
+				else {
+					tab.add(o);
+				}
 			}
 		}
 		else if (object instanceof Object[]) {
