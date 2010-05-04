@@ -1,6 +1,7 @@
 package fr.imag.adele.cadse.test.basictests.checkpages;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseFieldName;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseWorkbenchPart;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
@@ -555,7 +556,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		// Checkboxes checking
 		booleanFieldChecker.check(shell);
 
-		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText(attributeName);
+		findCadseFieldName(shell).typeText(attributeName);
 		if (itConstant == CadseGCST.LINK_TYPE) {
 			findCadseField(shell, CadseGCST.LINK_TYPE_lt_DESTINATION).browser(cadse_name,
 					CadseDefinitionManager.DATA_MODEL, item_type_name);

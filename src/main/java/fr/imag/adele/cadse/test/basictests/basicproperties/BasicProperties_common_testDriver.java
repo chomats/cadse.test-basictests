@@ -1,6 +1,7 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseFieldName;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicAttribute;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
@@ -23,7 +24,6 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
-import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.core.attribute.IAttributeType;
@@ -592,7 +592,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 			}
 
 			// name + CHANGES FOCUS!!!
-			findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText(getInstanceName(i));
+			findCadseFieldName(shell).typeText(getInstanceName(i));
 
 			// final visual value
 			if (fieldInCP && newValue != null) {
@@ -613,8 +613,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 			GTPreferences.sleep(SWTBotPreferences.DEFAULT_POLL_DELAY);
 
 			// Gets the UUID
-			UUID id = findCadseField(shell, CadseGCST.ITEM_at_NAME_).getRunningField().getSwtUiplatform().getItem()
-					.getId();
+			UUID id = findCadseFieldName(shell).getRunningField().getSwtUiplatform().getItem().getId();
 
 			// Closes shell
 			if (isOkButtonActivated(i)) {
@@ -651,7 +650,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 			propertiesView.showTab(getItName(i));
 
 			// Name
-			assertEquals(getInstanceName(i), findCadseField(propertiesView, CadseGCST.ITEM_at_NAME_).getText());
+			assertEquals(getInstanceName(i), findCadseFieldName(propertiesView).getText());
 
 			// Field value
 			if (fieldInMP) {
