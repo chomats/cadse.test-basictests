@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
-import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTPreferences;
@@ -32,10 +31,11 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 
 		GTCadseShell shell;
 
+		initializeTables();
 		for (int i = 0; i < sicpTab.size(); i++) {
 
-			KeyValue sicp = sicpTab.get(i);
-			KeyValue simp = simpTab.get(i);
+			// KeyValue sicp = sicpTab.get(i); // always true
+			// KeyValue simp = simpTab.get(i); // always true
 
 			// ============== //
 			// First part : A //
@@ -49,7 +49,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 			String newValA = "new_val" + i;
 
 			// head creation
-			workspaceView.contextMenuNewHead(itSrcA);
+			workspaceView.contextMenuNewHead(itSrcA).click();
 			shell = new GTCadseShell(itSrcA);
 			GTCadseFactory.findCadseFieldName(shell).typeText(headA);
 			String visual = GTCadseFactory.findCadseField(shell, attr).getText();
@@ -66,7 +66,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 			assertEquals("#" + i, expected, visual);
 
 			// member creation
-			workspaceView.contextMenuNewMember(new GTTreePath(headA), headA, itDstA);
+			workspaceView.contextMenuNewMember(new GTTreePath(headA), headA, itDstA).click();
 			shell = new GTCadseShell(itDstA);
 			GTCadseFactory.findCadseFieldName(shell).typeText(memberA);
 			shell.waitUntilButtonEnabled(GTEclipseConstants.NEXT_BUTTON, GTPreferences.TIMEOUT);
@@ -78,10 +78,19 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 
 			// looking into properties pages
 			workspaceView.selectNode(memberA);
-			propertiesView.showTab(itSrcA);
+			propertiesView.showTab(headA);
 			visual = GTCadseFactory.findCadseField(propertiesView, attr).getText();
 			expected = newValA;
 			assertEquals("#" + i, expected, visual);
+
+			// Value modification in the head
+
+			// Assert value has changed in the member
+
+			// Adding field in the head
+
+			// ...
+
 		}
 	}
 }

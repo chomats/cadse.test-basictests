@@ -16,9 +16,9 @@ public class Group_basic_testDriver extends GTTestCase {
 	// ========================== //
 	protected interface CST {
 		/** Set of values for the Show in Creation Page property */
-		public KeyValue[] sicpValues = { KeyValue.sicpKv, KeyValue.notSicpKv };
+		public KeyValue[] sicpValues = { KeyValue.sicpKv };// , KeyValue.notSicpKv };
 		/** Set of values for the Show in Modification Page property */
-		public KeyValue[] simpValues = { KeyValue.simpKv, KeyValue.notSimpKv };
+		public KeyValue[] simpValues = { KeyValue.simpKv };// , KeyValue.notSimpKv };
 	}
 
 	// ======================================================= //
