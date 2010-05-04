@@ -64,7 +64,7 @@ public class Group_basic_tc_CADSEg extends Group_basic_testDriver {
 	public void test_basic() throws Exception {
 
 		createCadseDefinition(cadse_name, cadse_name, GTPreferences.TIMEOUT);
-		initializeTables(); // here to get more time to load CADSEgCST
+		initializeTables();
 
 		for (int i = 0; i < sicpTab.size(); i++) {
 
@@ -81,8 +81,8 @@ public class Group_basic_tc_CADSEg extends Group_basic_testDriver {
 			createItemType(dataModel, it_dstB.getDestinationName(), KeyValue.rootKv);
 			createLinkType("linkB", it_srcB, it_dstB, null, null, new KeyValue(CadseGCST.LINK_TYPE_at_GROUP, true));
 
-			createString(it_srcA, "attr_src" + i, sicpTab.get(i), simpTab.get(i), srcDefVal);
-			createString(it_dstB, "attr_dst" + i, sicpTab.get(i), simpTab.get(i), dstDefVal);
+			createString(it_srcA, "attr_src" + i, sicpTab.get(i), simpTab.get(i), CST.srcDefVal);
+			createString(it_dstB, "attr_dst" + i, sicpTab.get(i), simpTab.get(i), CST.dstDefVal);
 		}
 	}
 }

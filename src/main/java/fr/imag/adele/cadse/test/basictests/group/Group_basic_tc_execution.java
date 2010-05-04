@@ -53,7 +53,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 			shell = new GTCadseShell(itSrcA);
 			GTCadseFactory.findCadseFieldName(shell).typeText(headA);
 			String visual = GTCadseFactory.findCadseField(shell, attr).getText();
-			String expected = (String) srcDefVal.graphicalValue;
+			String expected = (String) CST.srcDefVal.graphicalValue;
 			assertEquals("#" + i, expected, visual);
 			GTCadseFactory.findCadseField(shell, attr).typeText(newValA);
 			shell.close();
