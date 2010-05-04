@@ -53,14 +53,14 @@ public class HasContent_tc_CADSEg extends GTTestCase {
 	public void test_preparation() throws Exception {
 
 		// Starts CADSEg
-		selectCadses(GTPreferences.TIMEOUT, GTCadseRTConstants.CADSEG_MODEL);
+		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
 
 		// Closes unless views
 		welcomeView.close();
 		workspaceView.show();
 
 		// Creates a new CADSE
-		createCadseDefinition(cadse_name, "model." + cadse_name, GTPreferences.TIMEOUT);
+		createCadseDefinition(cadse_name, "model." + cadse_name);
 	}
 
 	@Test
@@ -160,6 +160,6 @@ public class HasContent_tc_CADSEg extends GTTestCase {
 	 */
 	@Test
 	public void test_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model);
 	}
 }

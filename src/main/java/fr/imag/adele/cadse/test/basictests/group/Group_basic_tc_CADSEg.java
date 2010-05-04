@@ -14,7 +14,6 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.test.GTPreferences;
 
 /**
  * Tests basic properties for string attributes.
@@ -47,7 +46,7 @@ public class Group_basic_tc_CADSEg extends Group_basic_testDriver {
 	public void test_preparation() throws Exception {
 
 		// Starts CADSEg
-		selectCadses(GTPreferences.TIMEOUT, GTCadseRTConstants.CADSEG_MODEL);
+		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
 
 		// Closes unless views
 		welcomeView.close();
@@ -63,7 +62,7 @@ public class Group_basic_tc_CADSEg extends Group_basic_testDriver {
 	@Test
 	public void test_basic() throws Exception {
 
-		createCadseDefinition(cadse_name, cadse_name, GTPreferences.TIMEOUT);
+		createCadseDefinition(cadse_name, cadse_name);
 		initializeTables();
 
 		for (int i = 0; i < sicpTab.size(); i++) {

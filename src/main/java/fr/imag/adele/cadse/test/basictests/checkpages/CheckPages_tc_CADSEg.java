@@ -79,7 +79,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	public void test_preparation() throws Exception {
 
 		// Starts CADSEg
-		selectCadses(GTPreferences.TIMEOUT, GTCadseRTConstants.CADSEG_MODEL);
+		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
 
 		// Closes unless views
 		welcomeView.close();
@@ -337,7 +337,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				null, null, null, null, null);
 		checkModificationPage(mapping.concat("mapping_javaProject-manager").concat("content-item"),
 				CadseGCST.JAVA_PROJECT_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.FAILING_ASSERT_TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model);
 	}
 
 	/**
@@ -360,7 +360,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"fr.imag.adele.${#short-name}", null, null, null);
 		checkModificationPage(mapping.concat("mapping_JavaFile-manager").concat("content-item"),
 				CadseGCST.JAVA_FILE_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.FAILING_ASSERT_TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model);
 	}
 
 	/**
@@ -380,7 +380,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"FolderContentModel", null, null, null, null, "${#short-name}", null, null);
 		checkModificationPage(mapping.concat("mapping_folder-manager").concat("content-item"),
 				CadseGCST.FOLDER_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.FAILING_ASSERT_TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model);
 	}
 
 	/**
@@ -400,7 +400,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 				"FileContentModel", null, null, null, null, null, "${#short-name}.txt", null);
 		checkModificationPage(mapping.concat("mapping_file-manager").concat("content-item"),
 				CadseGCST.FILE_CONTENT_MODEL, expected_modifCST);
-		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.FAILING_ASSERT_TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model);
 	}
 
 	/**
@@ -524,7 +524,7 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		checkModificationPage(completePath, itConstant, expected_modifCST);
 
 		// The creation process shouldn't have induced compilation error/
-		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.FAILING_ASSERT_TIMEOUT);
+		checkCompilationErrors(workspaceView, cadse_model);
 	}
 
 	/**

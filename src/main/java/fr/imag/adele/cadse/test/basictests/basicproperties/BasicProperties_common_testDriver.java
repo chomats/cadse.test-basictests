@@ -431,7 +431,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 * Creates the CADSE.
 	 */
 	public void testCreateCadse() {
-		createCadseDefinition(cadse_name, "model." + cadse_name, GTPreferences.TIMEOUT);
+		createCadseDefinition(cadse_name, "model." + cadse_name);
 	}
 
 	/**

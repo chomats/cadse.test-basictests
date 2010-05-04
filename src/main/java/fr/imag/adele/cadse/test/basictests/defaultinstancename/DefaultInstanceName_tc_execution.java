@@ -7,7 +7,6 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspa
 import org.junit.Test;
 
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
-import fr.imag.adele.graphictests.test.GTPreferences;
 import fr.imag.adele.graphictests.test.GTTestCase;
 
 public class DefaultInstanceName_tc_execution extends GTTestCase {
@@ -18,7 +17,7 @@ public class DefaultInstanceName_tc_execution extends GTTestCase {
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses(GTPreferences.TIMEOUT, "Cadse Model.Workspace.CADSE_DefaultInstanceName");
+		selectCadses("Cadse Model.Workspace.CADSE_DefaultInstanceName");
 		welcomeView.close();
 		workspaceView.show();
 	}

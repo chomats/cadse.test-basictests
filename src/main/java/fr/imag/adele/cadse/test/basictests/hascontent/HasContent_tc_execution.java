@@ -18,7 +18,7 @@ public class HasContent_tc_execution extends GTTestCase {
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses(GTPreferences.TIMEOUT, "Cadse Model.Workspace.CADSE_HasContent");
+		selectCadses("Cadse Model.Workspace.CADSE_HasContent");
 		welcomeView.close();
 		workspaceView.show();
 	}

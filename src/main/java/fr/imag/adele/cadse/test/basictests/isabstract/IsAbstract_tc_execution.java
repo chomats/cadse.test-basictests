@@ -19,7 +19,7 @@ public class IsAbstract_tc_execution extends GTTestCase {
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses(GTPreferences.TIMEOUT, "Cadse Model.Workspace.CADSE_IsAbstract");
+		selectCadses("Cadse Model.Workspace.CADSE_IsAbstract");
 		welcomeView.close();
 		workspaceView.show();
 	}

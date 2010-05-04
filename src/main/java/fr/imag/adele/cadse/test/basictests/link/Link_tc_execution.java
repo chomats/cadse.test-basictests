@@ -25,7 +25,7 @@ public class Link_tc_execution extends GTTestCase {
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses(GTPreferences.TIMEOUT, "Cadse Model.Workspace.CADSE_Link");
+		selectCadses("Cadse Model.Workspace.CADSE_Link");
 		welcomeView.close();
 		workspaceView.show();
 	}

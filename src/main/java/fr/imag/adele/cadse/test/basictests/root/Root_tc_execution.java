@@ -19,7 +19,7 @@ public class Root_tc_execution extends GTTestCase {
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses(GTPreferences.TIMEOUT, "Cadse Model.Workspace.CADSE_Root");
+		selectCadses("Cadse Model.Workspace.CADSE_Root");
 		welcomeView.close();
 		workspaceView.show();
 	}

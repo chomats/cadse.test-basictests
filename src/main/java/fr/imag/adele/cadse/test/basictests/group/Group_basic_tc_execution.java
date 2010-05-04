@@ -9,7 +9,6 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
-import fr.imag.adele.graphictests.test.GTPreferences;
 
 /**
  */
@@ -21,7 +20,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses(GTPreferences.TIMEOUT, "Cadse Model.Workspace." + cadse_name);
+		selectCadses("Cadse Model.Workspace." + cadse_name);
 		welcomeView.close();
 		workspaceView.show();
 	}
@@ -69,7 +68,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 			workspaceView.contextMenuNewMember(new GTTreePath(headA), headA, itDstA).click();
 			shell = new GTCadseShell(itDstA);
 			GTCadseFactory.findCadseFieldName(shell).typeText(memberA);
-			shell.waitUntilButtonEnabled(GTEclipseConstants.NEXT_BUTTON, GTPreferences.TIMEOUT);
+			shell.waitUntilButtonEnabled(GTEclipseConstants.NEXT_BUTTON);
 			shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 			visual = GTCadseFactory.findCadseField(shell, attr).getText();
 			expected = newValA;
