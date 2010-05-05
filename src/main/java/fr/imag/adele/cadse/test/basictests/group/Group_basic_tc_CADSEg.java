@@ -5,6 +5,7 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createI
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createString;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.waitUntilWorkspaceStarted;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
 import org.junit.Test;
@@ -53,35 +54,33 @@ public class Group_basic_tc_CADSEg extends Group_basic_testDriver {
 		workspaceView.show();
 	}
 
-	/**
-	 * Creates a set of string attributes.
-	 * 
-	 * @throws Exception
-	 *             the exception
-	 */
 	@Test
-	public void test_basic() throws Exception {
+	public void test_create_cadse() throws Exception {
 
 		createCadseDefinition(cadse_name, cadse_name);
-		initializeTables();
+		waitUntilWorkspaceStarted();
 
-		for (int i = 0; i < sicpTab.size(); i++) {
+		for (int i = 1; i <= 3; i++) {
 
-			GTTreePath it_srcA = dataModel.concat("it_srcA" + i);
-			GTTreePath it_dstA = dataModel.concat("it_dstA" + i);
-			GTTreePath it_srcB = dataModel.concat("it_srcB" + i);
-			GTTreePath it_dstB = dataModel.concat("it_dstB" + i);
+			GTTreePath it_src = dataModel.concat("it_src" + i);
+			GTTreePath it_dst = dataModel.concat("it_dst" + i);
+			KeyValue defVal = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE, "def_val" + i);
+			createITandLink(it_src, it_dst);
 
-			createItemType(dataModel, it_srcA.getDestinationName(), KeyValue.rootKv);
-			createItemType(dataModel, it_dstA.getDestinationName(), KeyValue.rootKv);
-			createLinkType("linkA", it_srcA, it_dstA, null, null, new KeyValue(CadseGCST.LINK_TYPE_at_GROUP, true));
+			if (i == 1) {
+				createString(it_src, "attr" + i, defVal, KeyValue.sicpKv);
+			}
 
-			createItemType(dataModel, it_srcB.getDestinationName(), KeyValue.rootKv);
-			createItemType(dataModel, it_dstB.getDestinationName(), KeyValue.rootKv);
-			createLinkType("linkB", it_srcB, it_dstB, null, null, new KeyValue(CadseGCST.LINK_TYPE_at_GROUP, true));
-
-			createString(it_srcA, "attr_src" + i, sicpTab.get(i), simpTab.get(i), CST.srcDefVal);
-			createString(it_dstB, "attr_dst" + i, sicpTab.get(i), simpTab.get(i), CST.dstDefVal);
+			if (i == 2) {
+				createString(it_dst, "attr" + i, defVal, KeyValue.sicpKv);
+			}
 		}
+	}
+
+	public void createITandLink(GTTreePath it_src, GTTreePath it_dst) {
+
+		createItemType(dataModel, it_src.getDestinationName(), KeyValue.rootKv);
+		createItemType(dataModel, it_dst.getDestinationName(), KeyValue.rootKv);
+		createLinkType("link", it_src, it_dst, null, null, KeyValue.groupKv);
 	}
 }
