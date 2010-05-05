@@ -54,7 +54,7 @@ public class BasicProperties_boolean_testDriver extends BasicProperties_common_t
 	@Override
 	public boolean setNewGraphicalValue(int i, GTShell shell) {
 
-		Boolean newValue = (Boolean) executionNewTab.get(i).graphicalValue;
+		Boolean newValue = (Boolean) executionNewTab.get(i).visualValue;
 		boolean isList = listTab.get(i).getBoolean();
 		boolean cbu = cbuTab.get(i).getBoolean();
 

@@ -153,7 +153,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	@Override
 	public boolean setNewGraphicalValue(int i, GTShell shell) {
 
-		String newValue = (String) executionNewTab.get(i).graphicalValue;
+		String newValue = (String) executionNewTab.get(i).visualValue;
 		boolean isList = listTab.get(i).getBoolean();
 		boolean notEmpty = notEmptyTab.get(i).getBoolean();
 
@@ -196,8 +196,8 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 		boolean isList = listTab.get(i).getBoolean();
 		KeyValue newKv = executionNewTab.get(i);
 		KeyValue oldKv = executionOldTab.get(i);
-		Object newGraphicalValue = (newKv == null) ? null : newKv.graphicalValue;
-		Object oldGraphicalValue = (oldKv == null) ? null : oldKv.graphicalValue;
+		Object newGraphicalValue = (newKv == null) ? null : newKv.visualValue;
+		Object oldGraphicalValue = (oldKv == null) ? null : oldKv.visualValue;
 		boolean notEmpty = notEmptyTab.get(i).getBoolean();
 
 		if (fieldInCP) {

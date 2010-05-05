@@ -79,7 +79,7 @@ public class BasicProperties_enum_testDriver extends BasicProperties_common_test
 	 */
 	@Override
 	protected boolean attributeCreationSuccess(int i) {
-		String defVal = (String) defValCADSEgTab.get(i).graphicalValue;
+		String defVal = (String) defValCADSEgTab.get(i).visualValue;
 		if (defVal.equals("")) {
 			return false;
 		}

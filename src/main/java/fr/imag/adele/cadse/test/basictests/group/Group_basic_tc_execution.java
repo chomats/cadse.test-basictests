@@ -10,6 +10,7 @@ import org.junit.Test;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
@@ -50,16 +51,16 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		// head creation
 		workspaceView.contextMenuNewHead(itSrc).click();
 		shell = new GTCadseShell(itSrc);
-		defVal.assertEqualsValues("default value", shell);
+		GTCadseHelperMethods.assertFieldEquals("default value", defVal, shell);
 		newVal1.setValue(shell);
 		GTCadseFactory.findCadseFieldName(shell).typeText(head);
-		newVal1.assertEqualsValues("New value in creation page", shell);
+		GTCadseHelperMethods.assertFieldEquals("New value in creation page", newVal1, shell);
 		shell.close();
 
 		// looking into properties pages and changing value
 		workspaceView.selectNode(head);
 		propertiesView.showTab(itSrc);
-		newVal1.assertEqualsValues("New value in modification page", propertiesView);
+		GTCadseHelperMethods.assertFieldEquals("New value in modification page", newVal1, propertiesView);
 		newVal2.setValue(propertiesView);
 
 		// member creation
@@ -68,13 +69,13 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		GTCadseFactory.findCadseFieldName(shell).typeText(member);
 		shell.waitUntilButtonEnabled(GTEclipseConstants.NEXT_BUTTON);
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
-		newVal2.assertEqualsValues("New value in modification page", shell);
+		GTCadseHelperMethods.assertFieldEquals("New value in modification page", newVal2, shell);
 		shell.close();
 
 		// looking into properties pages
 		workspaceView.selectNode(member);
 		propertiesView.showTab(head);
-		newVal2.assertEqualsValues("New value in modification page", propertiesView);
+		GTCadseHelperMethods.assertFieldEquals("New value in modification page", newVal2, propertiesView);
 
 		// Value modification in the head
 
@@ -109,16 +110,16 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		// member creation
 		workspaceView.contextMenuNewMember(new GTTreePath(head), head, itDst).click();
 		shell = new GTCadseShell(itDst);
-		defVal.assertEqualsValues("Creation page", shell);
+		GTCadseHelperMethods.assertFieldEquals("Creation page", defVal, shell);
 		newVal1.setValue(shell);
 		GTCadseFactory.findCadseFieldName(shell).typeText(member);
-		newVal1.assertEqualsValues("newval", shell);
+		GTCadseHelperMethods.assertFieldEquals("newval", newVal1, shell);
 		shell.close();
 
 		// looking into properties pages
 		workspaceView.selectNode(member);
 		propertiesView.showTab(itDst);
-		newVal1.assertEqualsValues("New value in modification page", propertiesView);
+		GTCadseHelperMethods.assertFieldEquals("New value in modification page", newVal1, propertiesView);
 	}
 
 	@Test
@@ -153,7 +154,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		GTCadseFactory.findCadseFieldName(shell).typeText(member);
 		shell.waitUntilButtonEnabled(GTEclipseConstants.NEXT_BUTTON);
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
-		defVal.assertEqualsValues("member creation", shell);
+		GTCadseHelperMethods.assertFieldEquals("member creation", defVal, shell);
 		newVal1.setValue(shell);
 		shell.close();
 

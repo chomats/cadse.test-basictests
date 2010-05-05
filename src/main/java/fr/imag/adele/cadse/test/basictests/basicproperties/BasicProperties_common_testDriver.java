@@ -192,7 +192,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 				return new String[] {};
 			}
 			else {
-				return defVal.graphicalValue;
+				return defVal.visualValue;
 			}
 		}
 		else {
@@ -230,7 +230,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 	 */
 	public boolean setNewGraphicalValue(int i, GTShell shell) {
 
-		String newValue = (String) executionNewTab.get(i).graphicalValue;
+		String newValue = (String) executionNewTab.get(i).visualValue;
 		boolean isList = listTab.get(i).getBoolean();
 
 		if (isList) {
@@ -307,7 +307,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 		boolean isList = listTab.get(i).getBoolean();
 
 		KeyValue newKv = executionNewTab.get(i);
-		Object newGraphicalValue = (newKv == null) ? null : newKv.graphicalValue;
+		Object newGraphicalValue = (newKv == null) ? null : newKv.visualValue;
 
 		if (fieldInCP) {
 			if (isList) { // default value is ignored with list
@@ -323,7 +323,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 					return newGraphicalValue;
 				}
 				else {
-					return getCorrectedDefVal(i).graphicalValue;
+					return getCorrectedDefVal(i).visualValue;
 				}
 			}
 		}
@@ -379,7 +379,7 @@ public abstract class BasicProperties_common_testDriver extends GTTestCase {
 					return getFinalGraphicalValue(i);
 				}
 				else {
-					return getCorrectedDefVal(i).graphicalValue;
+					return getCorrectedDefVal(i).visualValue;
 				}
 			}
 		}
