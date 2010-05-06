@@ -8,7 +8,6 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspa
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
@@ -53,7 +52,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		shell = new GTCadseShell(itSrc);
 		GTCadseHelperMethods.assertFieldEquals("default value", defVal, shell);
 		newVal1.setValue(shell);
-		GTCadseFactory.findCadseFieldName(shell).typeText(head);
+		shell.findCadseFieldName().typeText(head);
 		GTCadseHelperMethods.assertFieldEquals("New value in creation page", newVal1, shell);
 		shell.close();
 
@@ -66,7 +65,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		// member creation
 		workspaceView.contextMenuNewMember(new GTTreePath(head), head, itDst).click();
 		shell = new GTCadseShell(itDst);
-		GTCadseFactory.findCadseFieldName(shell).typeText(member);
+		shell.findCadseFieldName().typeText(member);
 		shell.waitUntilButtonEnabled(GTEclipseConstants.NEXT_BUTTON);
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 		GTCadseHelperMethods.assertFieldEquals("New value in modification page", newVal2, shell);
@@ -104,7 +103,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		// head creation
 		workspaceView.contextMenuNewHead(itSrc).click();
 		shell = new GTCadseShell(itSrc);
-		GTCadseFactory.findCadseFieldName(shell).typeText(head);
+		shell.findCadseFieldName().typeText(head);
 		shell.close();
 
 		// member creation
@@ -112,7 +111,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		shell = new GTCadseShell(itDst);
 		GTCadseHelperMethods.assertFieldEquals("Creation page", defVal, shell);
 		newVal1.setValue(shell);
-		GTCadseFactory.findCadseFieldName(shell).typeText(member);
+		shell.findCadseFieldName().typeText(member);
 		GTCadseHelperMethods.assertFieldEquals("newval", newVal1, shell);
 		shell.close();
 
@@ -141,7 +140,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		// head creation
 		workspaceView.contextMenuNewHead(itSrc).click();
 		shell = new GTCadseShell(itSrc);
-		GTCadseFactory.findCadseFieldName(shell).typeText(head);
+		shell.findCadseFieldName().typeText(head);
 		shell.close();
 
 		// New attribute in the head
@@ -151,7 +150,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		// member creation
 		workspaceView.contextMenuNewMember(new GTTreePath(head), head, itDst).click();
 		shell = new GTCadseShell(itDst);
-		GTCadseFactory.findCadseFieldName(shell).typeText(member);
+		shell.findCadseFieldName().typeText(member);
 		shell.waitUntilButtonEnabled(GTEclipseConstants.NEXT_BUTTON);
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 		GTCadseHelperMethods.assertFieldEquals("member creation", defVal, shell);

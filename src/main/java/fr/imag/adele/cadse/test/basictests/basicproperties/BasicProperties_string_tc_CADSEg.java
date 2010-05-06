@@ -6,7 +6,7 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspa
 import org.junit.Test;
 
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.graphictests.test.GTTestCase;
+import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
 /**
  * Tests basic properties for string attributes.
@@ -17,7 +17,7 @@ import fr.imag.adele.graphictests.test.GTTestCase;
  * <li>cannot be undefined</li>
  * </ul>
  */
-public class BasicProperties_string_tc_CADSEg extends GTTestCase {
+public class BasicProperties_string_tc_CADSEg extends GTCadseTestCase {
 
 	/**
 	 * Makes a few things before the test starts.

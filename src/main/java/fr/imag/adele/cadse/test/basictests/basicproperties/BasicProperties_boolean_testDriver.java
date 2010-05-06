@@ -1,13 +1,11 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
-
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
-import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class BasicProperties_boolean_testDriver extends BasicProperties_common_testDriver {
@@ -52,7 +50,7 @@ public class BasicProperties_boolean_testDriver extends BasicProperties_common_t
 	 *            the shell
 	 */
 	@Override
-	public boolean setNewGraphicalValue(int i, GTShell shell) {
+	public boolean setNewGraphicalValue(int i, GTCadseShell shell) {
 
 		Boolean newValue = (Boolean) executionNewTab.get(i).visualValue;
 		boolean isList = listTab.get(i).getBoolean();
@@ -64,11 +62,11 @@ public class BasicProperties_boolean_testDriver extends BasicProperties_common_t
 				boolean expectedSuccess = !newValue.equals("");
 
 				if (expectedSuccess) {
-					findCadseField(shell, getAttributeName()).addValue(newValue.toString());
+					shell.findCadseField(getAttributeName()).addValue(newValue.toString());
 				}
 				else {
 					try {
-						findCadseField(shell, getAttributeName()).addValue(newValue.toString(),
+						shell.findCadseField(getAttributeName()).addValue(newValue.toString(),
 								GTPreferences.FAILING_ASSERT_TIMEOUT);
 						fail("It should be impossible to fill \"" + newValue + "\" for #" + i);
 					}
@@ -82,7 +80,7 @@ public class BasicProperties_boolean_testDriver extends BasicProperties_common_t
 			boolean ok;
 
 			try {
-				findCadseField(shell, getAttributeName()).check(newValue);
+				shell.findCadseField(getAttributeName()).check(newValue);
 				ok = true;
 			}
 			catch (Exception e) {

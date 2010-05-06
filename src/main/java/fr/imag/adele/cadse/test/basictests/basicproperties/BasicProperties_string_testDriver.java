@@ -1,6 +1,5 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 import static fr.imag.adele.graphictests.cadse.test.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.test.KeyValue.simpKv;
@@ -11,9 +10,9 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class BasicProperties_string_testDriver extends BasicProperties_common_testDriver {
@@ -151,7 +150,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	 *            the shell
 	 */
 	@Override
-	public boolean setNewGraphicalValue(int i, GTShell shell) {
+	public boolean setNewGraphicalValue(int i, GTCadseShell shell) {
 
 		String newValue = (String) executionNewTab.get(i).visualValue;
 		boolean isList = listTab.get(i).getBoolean();
@@ -162,12 +161,11 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 			boolean expectedSuccess = notEmpty ? !newValue.equals("") : true;
 
 			if (expectedSuccess) {
-				findCadseField(shell, getAttributeName()).addValue(newValue);
+				shell.findCadseField(getAttributeName()).addValue(newValue);
 			}
 			else {
 				try {
-					findCadseField(shell, getAttributeName()).addValue(newValue,
-							GTPreferences.FAILING_ASSERT_TIMEOUT);
+					shell.findCadseField(getAttributeName()).addValue(newValue, GTPreferences.FAILING_ASSERT_TIMEOUT);
 					fail("It should be impossible to fill \"" + newValue + "\" for #" + i);
 				}
 				catch (Exception e) {
@@ -176,7 +174,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 			}
 		}
 		else {
-			findCadseField(shell, getAttributeName()).typeText(newValue);
+			shell.findCadseField(getAttributeName()).typeText(newValue);
 		}
 
 		return true; // success

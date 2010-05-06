@@ -5,11 +5,11 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspa
 
 import org.junit.Test;
 
-import fr.imag.adele.graphictests.test.GTTestCase;
+import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
 /**
  */
-public class BasicProperties_enum_tc_execution extends GTTestCase {
+public class BasicProperties_enum_tc_execution extends GTCadseTestCase {
 
 	/**
 	 * Selects the CADSE to be executed and closes unless views.

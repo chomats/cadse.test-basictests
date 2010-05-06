@@ -1,15 +1,14 @@
 package fr.imag.adele.cadse.test.basictests.defaultinstancename;
 
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseFieldName;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
 import org.junit.Test;
 
-import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
-import fr.imag.adele.graphictests.test.GTTestCase;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
-public class DefaultInstanceName_tc_execution extends GTTestCase {
+public class DefaultInstanceName_tc_execution extends GTCadseTestCase {
 
 	/**
 	 * Selects the CADSE to be executed and closes unless views.
@@ -27,8 +26,8 @@ public class DefaultInstanceName_tc_execution extends GTTestCase {
 
 		/* Creates attribute */
 		workspaceView.contextMenuNew("my_item_type").click();
-		GTShell shell = new GTShell("my_item_type");
-		assertEquals("my_default_name", findCadseFieldName(shell).getText());
+		GTCadseShell shell = new GTCadseShell("my_item_type");
+		assertEquals("my_default_name", shell.findCadseFieldName().getText());
 		shell.close();
 
 		/* Assert item has been displayed */

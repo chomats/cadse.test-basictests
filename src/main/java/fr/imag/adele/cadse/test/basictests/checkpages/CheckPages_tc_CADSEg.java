@@ -1,8 +1,5 @@
 package fr.imag.adele.cadse.test.basictests.checkpages;
 
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseFieldName;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseWorkbenchPart;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.sectionLabel;
@@ -23,17 +20,14 @@ import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.core.attribute.IAttributeType;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseField;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseWorkbenchPart;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
-import fr.imag.adele.graphictests.gtworkbench_part.GTWorkbenchPart;
 import fr.imag.adele.graphictests.test.GTPreferences;
-import fr.imag.adele.graphictests.test.GTTestCase;
 
 /**
  * Checks whereas the creation and modification pages have the correct layout. The following items are tested:
@@ -55,7 +49,7 @@ import fr.imag.adele.graphictests.test.GTTestCase;
  * <li>File Content Model</li>
  * </ul>
  */
-public class CheckPages_tc_CADSEg extends GTTestCase {
+public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 
 	protected final String cadse_name = "CADSE_CheckPages";
 	protected final String item_type_name = "my_item_type";
@@ -445,9 +439,9 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 
 		/* Creates content */
 		workspaceView.contextMenuNew(sourceNode, typeName).click();
-		GTShell shell = new GTShell(typeName);
-		String[] creationCST = findCadseWorkbenchPart(shell).findAttributeConstants();
-		Object[] creationVal = findCadseWorkbenchPart(shell).findAttributeValues();
+		GTCadseShell shell = new GTCadseShell(typeName);
+		String[] creationCST = shell.findAttributeConstants();
+		Object[] creationVal = shell.findAttributeValues();
 		String creationCST_str = getStringDef(shell);
 		String creationVal_str = getStringVal(shell);
 
@@ -455,27 +449,25 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		booleanFieldChecker.check(shell);
 
 		if (projectName != null && !projectName.isEmpty()) {
-			findCadseField(shell, CadseGCST.PROJECT_CONTENT_MODEL_at_PROJECT_NAME_).typeText(projectName);
+			shell.findCadseField(CadseGCST.PROJECT_CONTENT_MODEL_at_PROJECT_NAME_).typeText(projectName);
 		}
 		if (hasSourceFolder != null) {
-			GTCadseFactory.findCadseField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(
-					hasSourceFolder);
+			shell.findCadseField(CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(hasSourceFolder);
 		}
 		if (className != null && !className.isEmpty()) {
-			GTCadseFactory.findCadseField(shell, CadseGCST.JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_).typeText(className);
+			shell.findCadseField(CadseGCST.JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_).typeText(className);
 		}
 		if (packageName != null && !packageName.isEmpty()) {
-			GTCadseFactory.findCadseField(shell, CadseGCST.JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_).typeText(
-					packageName);
+			shell.findCadseField(CadseGCST.JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_).typeText(packageName);
 		}
 		if (folderPath != null && !folderPath.isEmpty()) {
-			GTCadseFactory.findCadseField(shell, CadseGCST.FOLDER_CONTENT_MODEL_at_FOLDER_PATH_).typeText(folderPath);
+			shell.findCadseField(CadseGCST.FOLDER_CONTENT_MODEL_at_FOLDER_PATH_).typeText(folderPath);
 		}
 		if (filePath != null && !filePath.isEmpty()) {
-			GTCadseFactory.findCadseField(shell, CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_).typeText(filePath);
+			shell.findCadseField(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_).typeText(filePath);
 		}
 		if (extendsClass != null) {
-			GTCadseFactory.findCadseField(shell, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(extendsClass);
+			shell.findCadseField(CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(extendsClass);
 		}
 		shell.close();
 
@@ -548,27 +540,27 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		// Creation
 		workspaceView.contextMenuNew(path, itConstant).click();
 		GTCadseShell shell = new GTCadseShell(itConstant);
-		String[] creationCST = findCadseWorkbenchPart(shell).findAttributeConstants();
-		Object[] creationVal = findCadseWorkbenchPart(shell).findAttributeValues();
+		String[] creationCST = shell.findAttributeConstants();
+		Object[] creationVal = shell.findAttributeValues();
 		String creationCST_str = getStringDef(shell);
 		String creationVal_str = getStringVal(shell);
 
 		// Checkboxes checking
 		booleanFieldChecker.check(shell);
 
-		findCadseFieldName(shell).typeText(attributeName);
+		shell.findCadseFieldName().typeText(attributeName);
 		if (itConstant == CadseGCST.LINK_TYPE) {
-			findCadseField(shell, CadseGCST.LINK_TYPE_lt_DESTINATION).browser(cadse_name,
+			shell.findCadseField(CadseGCST.LINK_TYPE_lt_DESTINATION).browser(cadse_name,
 					CadseDefinitionManager.DATA_MODEL, item_type_name);
 		}
 		else if (itConstant == CadseGCST.CADSE_DEFINITION) {
-			findCadseField(shell, CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.myCadse");
+			shell.findCadseField(CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.myCadse");
 		}
 		else if (itConstant == CadseGCST.ENUM_TYPE) {
-			findCadseField(shell, CadseGCST.ENUM_TYPE_at_VALUES_).addBrowser("one", "two", "three");
+			shell.findCadseField(CadseGCST.ENUM_TYPE_at_VALUES_).addBrowser("one", "two", "three");
 		}
 		else if (itConstant == CadseGCST.ENUM) {
-			findCadseField(shell, CadseGCST.ENUM_lt_ENUM_TYPE).browser("my_enum_type");
+			shell.findCadseField(CadseGCST.ENUM_lt_ENUM_TYPE).browser("my_enum_type");
 		}
 		shell.close(GTPreferences.TIMEOUT); /* For CADSE Definition */
 
@@ -639,16 +631,15 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		}
 
 		// Section decoding
-		GTCadseWorkbenchPart wp;
+		String[] modifCST;
 		if (section != null) {
-			wp = findCadseWorkbenchPart(propertiesView.findSection(section));
+			modifCST = propertiesView.findSection(section).findAttributeConstants();
 		}
 		else {
-			wp = findCadseWorkbenchPart(propertiesView);
+			modifCST = propertiesView.findAttributeConstants();
 		}
 
 		// Gets attributes constants
-		String[] modifCST = wp.findAttributeConstants();
 		String modifStr = getStringDef(propertiesView.findSection(section));
 
 		// Attribute comparison
@@ -700,9 +691,9 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	 *            the workbench part for searching fields
 	 * @return the java code
 	 */
-	private String getStringDef(GTWorkbenchPart wp) {
+	private String getStringDef(GTCadseWorkbenchPart wp) {
 
-		List<IAttributeType<?>> attrlist = findCadseWorkbenchPart(wp).findAttributeDefinition();
+		List<IAttributeType<?>> attrlist = wp.findAttributeDefinition();
 
 		StringBuilder sb = new StringBuilder();
 		boolean begin = true;
@@ -732,9 +723,9 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 	 *            the workbench part for searching fields
 	 * @return the java code
 	 */
-	private String getStringVal(GTWorkbenchPart wp) {
+	private String getStringVal(GTCadseWorkbenchPart wp) {
 
-		Object[] values = findCadseWorkbenchPart(wp).findAttributeValues();
+		Object[] values = wp.findAttributeValues();
 
 		StringBuilder sb = new StringBuilder();
 		boolean begin = true;
@@ -804,12 +795,12 @@ public class CheckPages_tc_CADSEg extends GTTestCase {
 		 * 
 		 * @param wp
 		 */
-		public static void check(GTWorkbenchPart wp) {
+		public static void check(GTCadseWorkbenchPart wp) {
 
-			List<IAttributeType<?>> attrList = GTCadseFactory.findCadseWorkbenchPart(wp).findAttributeDefinition();
+			List<IAttributeType<?>> attrList = wp.findAttributeDefinition();
 
 			for (IAttributeType<?> attr : attrList) {
-				GTCadseField field = GTCadseFactory.findCadseField(wp, attr);
+				GTCadseField field = wp.findCadseField(attr);
 
 				if (field.getUIfield().getType() == CadseGCST.DCHECK_BOX) {
 					assertCheckBoxHasCorrectStateNumber(field, attr);
