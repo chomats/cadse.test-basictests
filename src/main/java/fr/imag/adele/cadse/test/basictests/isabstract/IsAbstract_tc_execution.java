@@ -1,17 +1,18 @@
 package fr.imag.adele.cadse.test.basictests.isabstract;
 
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.assertItemCantbeCreated;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicItem;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+import static fr.imag.adele.graphictests.gtworkbench_part.GTView.propertiesView;
+import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
 import org.junit.Test;
 
+import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTPreferences;
-import fr.imag.adele.graphictests.test.GTTestCase;
 
-public class IsAbstract_tc_execution extends GTTestCase {
+public class IsAbstract_tc_execution extends GTCadseTestCase {
 
 	/**
 	 * Selects the CADSE to be executed and closes unless views.

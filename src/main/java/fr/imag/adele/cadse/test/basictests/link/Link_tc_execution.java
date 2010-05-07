@@ -1,14 +1,13 @@
 package fr.imag.adele.cadse.test.basictests.link;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.propertiesView;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.addLink;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.assertItemCantbeCreated;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.assertLinkCantBeAdded;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.assertLinkCantBeRemoved;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicItem;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.deleteBasicItem;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.removeLink;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
 import org.junit.Test;
 

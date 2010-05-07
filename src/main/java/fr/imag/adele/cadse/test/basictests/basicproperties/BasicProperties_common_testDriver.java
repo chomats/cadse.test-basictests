@@ -1,5 +1,7 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.propertiesView;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.cbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
@@ -13,7 +15,6 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.si
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicAttribute;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
 import java.util.ArrayList;
 import java.util.UUID;

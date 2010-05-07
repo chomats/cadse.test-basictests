@@ -1,12 +1,12 @@
 package fr.imag.adele.cadse.test.basictests.group;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createString;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.waitUntilWorkspaceStarted;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
 import org.junit.Test;
 

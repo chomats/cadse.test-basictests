@@ -1,5 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.hascontent;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.jpcmSrcFolderKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.noContentKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
@@ -8,7 +9,6 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.no
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.partKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.withContentKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.assertItemCantbeCreated;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createFileContentModel;
@@ -18,7 +18,7 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createJ
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createJavaProjectContentModel;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
 import org.junit.Test;
 
@@ -26,11 +26,11 @@ import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTPreferences;
-import fr.imag.adele.graphictests.test.GTTestCase;
 
-public class HasContent_tc_CADSEg extends GTTestCase {
+public class HasContent_tc_CADSEg extends GTCadseTestCase {
 
 	protected final String cadse_name = "CADSE_HasContent";
 	protected final GTTreePath cadse_model = new GTTreePath(cadse_name);

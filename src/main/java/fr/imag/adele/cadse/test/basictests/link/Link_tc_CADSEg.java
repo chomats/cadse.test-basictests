@@ -1,5 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.link;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.partKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
@@ -8,7 +9,7 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createC
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
 import org.junit.Test;
 
@@ -16,10 +17,10 @@ import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.test.GTTestCase;
 
-public class Link_tc_CADSEg extends GTTestCase {
+public class Link_tc_CADSEg extends GTCadseTestCase {
 
 	protected final String cadse_name = "CADSE_Link";
 	protected GTTreePath cadse_model = new GTTreePath(cadse_name);
