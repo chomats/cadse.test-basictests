@@ -1,24 +1,24 @@
 package fr.imag.adele.cadse.test.basictests.isabstract;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.abstractKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createString;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
-import static fr.imag.adele.graphictests.cadse.test.KeyValue.abstractKv;
-import static fr.imag.adele.graphictests.cadse.test.KeyValue.notAbstractKv;
-import static fr.imag.adele.graphictests.cadse.test.KeyValue.notListKv;
-import static fr.imag.adele.graphictests.cadse.test.KeyValue.rootKv;
-import static fr.imag.adele.graphictests.cadse.test.KeyValue.sicpKv;
-import static fr.imag.adele.graphictests.cadse.test.KeyValue.simpKv;
 
 import org.junit.Test;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTTestCase;
 

@@ -1,8 +1,8 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
-import static fr.imag.adele.graphictests.cadse.test.KeyValue.sicpKv;
-import static fr.imag.adele.graphictests.cadse.test.KeyValue.simpKv;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
-import fr.imag.adele.graphictests.cadse.test.KeyValue;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
@@ -115,7 +115,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 		workspaceView.selectNode(attr_path);
 
 		propertiesView.showTab("String");
-		notEmptyTab.get(i).setValue(propertiesView);
+		propertiesView.setValue(notEmptyTab.get(i));
 	}
 
 	/**

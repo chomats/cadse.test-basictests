@@ -9,8 +9,8 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods;
-import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 
@@ -51,7 +51,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		workspaceView.contextMenuNewHead(itSrc).click();
 		shell = new GTCadseShell(itSrc);
 		GTCadseHelperMethods.assertFieldEquals("default value", defVal, shell);
-		newVal1.setValue(shell);
+		shell.setValue(newVal1);
 		shell.findCadseFieldName().typeText(head);
 		GTCadseHelperMethods.assertFieldEquals("New value in creation page", newVal1, shell);
 		shell.close();
@@ -60,7 +60,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		workspaceView.selectNode(head);
 		propertiesView.showTab(itSrc);
 		GTCadseHelperMethods.assertFieldEquals("New value in modification page", newVal1, propertiesView);
-		newVal2.setValue(propertiesView);
+		propertiesView.setValue(newVal2);
 
 		// member creation
 		workspaceView.contextMenuNewMember(new GTTreePath(head), head, itDst).click();
@@ -110,7 +110,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		workspaceView.contextMenuNewMember(new GTTreePath(head), head, itDst).click();
 		shell = new GTCadseShell(itDst);
 		GTCadseHelperMethods.assertFieldEquals("Creation page", defVal, shell);
-		newVal1.setValue(shell);
+		shell.setValue(newVal1);
 		shell.findCadseFieldName().typeText(member);
 		GTCadseHelperMethods.assertFieldEquals("newval", newVal1, shell);
 		shell.close();
@@ -154,7 +154,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		shell.waitUntilButtonEnabled(GTEclipseConstants.NEXT_BUTTON);
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 		GTCadseHelperMethods.assertFieldEquals("member creation", defVal, shell);
-		newVal1.setValue(shell);
+		shell.setValue(newVal1);
 		shell.close();
 
 		// looking into properties pages

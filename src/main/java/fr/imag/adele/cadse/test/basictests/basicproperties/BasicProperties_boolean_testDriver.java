@@ -5,7 +5,7 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
-import fr.imag.adele.graphictests.cadse.test.KeyValue;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class BasicProperties_boolean_testDriver extends BasicProperties_common_testDriver {

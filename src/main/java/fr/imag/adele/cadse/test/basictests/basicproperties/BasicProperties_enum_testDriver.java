@@ -1,10 +1,10 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
-import static fr.imag.adele.graphictests.cadse.test.KeyValue.cbuKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.cbuKv;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods;
-import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class BasicProperties_enum_testDriver extends BasicProperties_common_testDriver {

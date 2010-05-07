@@ -1,14 +1,14 @@
 package fr.imag.adele.cadse.test.basictests.checkpages;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.withContentKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.sectionLabel;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.tabLabel;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
-import static fr.imag.adele.graphictests.cadse.test.KeyValue.notAbstractKv;
-import static fr.imag.adele.graphictests.cadse.test.KeyValue.rootKv;
-import static fr.imag.adele.graphictests.cadse.test.KeyValue.withContentKv;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,9 @@ import fr.imag.adele.cadse.core.attribute.IAttributeType;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseField;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseWorkbenchPart;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
-import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
