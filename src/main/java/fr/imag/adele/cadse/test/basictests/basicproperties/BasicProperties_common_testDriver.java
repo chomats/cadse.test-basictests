@@ -180,42 +180,16 @@ public abstract class BasicProperties_common_testDriver extends GTCadseTestCase 
 	 *            the instance number
 	 * @return a string or a list of string
 	 */
-	public Object getInitialVisualValue(int i) {
-
-		boolean fieldInCP = sicpTab.get(i).getBoolean();
-		boolean isList = listTab.get(i).getBoolean();
-		KeyValue defVal = getCorrectedDefVal(i);
-
-		if (fieldInCP) {
-			if (isList) {
-				return new String[] {};
-			}
-			else {
-				return defVal.visualValue;
-			}
-		}
-		else {
-			throw new WidgetNotFoundException("No field in this dialog");
-		}
-	}
-
-	/**
-	 * Gets the initial model value.
-	 * 
-	 * @param i
-	 *            the instance number
-	 * @return the initial model value
-	 */
-	public Object getInitialModelValue(int i) {
+	public KeyValue getInitialValue(int i) {
 
 		boolean isList = listTab.get(i).getBoolean();
 		KeyValue defVal = getCorrectedDefVal(i);
 
 		if (isList) {
-			return new ArrayList<Object>();
+			return new KeyValue(getAttributeName(), new String[] {}, new ArrayList<Object>());
 		}
 		else {
-			return defVal.modelValue;
+			return defVal;
 		}
 	}
 
@@ -558,27 +532,18 @@ public abstract class BasicProperties_common_testDriver extends GTCadseTestCase 
 			GTCadseShell shell = new GTCadseShell(getItName(i));
 
 			// is field present
-			boolean isFieldPresent = true;
-			try {
-				shell.findCadseField(getAttributeName());
-			}
-			catch (Exception e) {
-				isFieldPresent = false;
-			}
+			boolean isFieldPresent = shell.fieldExists(getAttributeName());
 			assertEquals("Presence of the attribute field is not as expected for #" + i, fieldInCP, isFieldPresent);
 
-			// initial visual value
+			// initial value
 			if (fieldInCP) {
-				Object expected = getInitialVisualValue(i);
-				Object actual = shell.findCadseField(getAttributeName()).getValue();
-				assertEqualsListValues("Initial visual value error for #" + i, expected, actual);
-			}
+				KeyValue expected = getInitialValue(i);
 
-			// initial model value
-			if (fieldInCP) {
-				Object expected = getInitialModelValue(i);
-				Object actual = shell.findCadseField(getAttributeName()).getModelValue();
-				assertEqualsListValues("Initial model value error for #" + i, expected, actual);
+				Object actual_visual = shell.findCadseField(getAttributeName()).getValue();
+				assertEqualsListValues("Initial visual value error for #" + i, expected.visualValue, actual_visual);
+
+				Object actual_model = shell.findCadseField(getAttributeName()).getModelValue();
+				assertEqualsListValues("Initial model value error for #" + i, expected.modelValue, actual_model);
 			}
 
 			// New Attribute Value
