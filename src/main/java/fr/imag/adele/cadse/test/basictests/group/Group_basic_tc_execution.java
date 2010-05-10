@@ -45,6 +45,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		KeyValue defVal = new KeyValue(attr, "def_val" + i, "def_val" + i);
 		KeyValue newVal1 = new KeyValue(attr, "new_val1" + i, "new_val1" + i);
 		KeyValue newVal2 = new KeyValue(attr, "new_val2" + i, "new_val2" + i);
+		KeyValue newVal3 = new KeyValue(attr, "new_val3" + i, "new_val3" + i);
 
 		// head creation
 		workspaceView.contextMenuNewHead(itSrc).click();
@@ -75,13 +76,15 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		assertFieldEquals("New value in modification page", newVal2, propertiesView);
 
 		// Value modification in the head
+		workspaceView.selectNode(head);
+		propertiesView.showTab(itSrc);
+		assertFieldEquals("Value in modification page", newVal2, propertiesView);
+		propertiesView.setValue(newVal3);
 
 		// Assert value has changed in the member
-
-		// Adding field in the head
-
-		// ...
-
+		workspaceView.selectNode(member);
+		propertiesView.showTab(head);
+		assertFieldEquals("New value in modification page", newVal3, propertiesView);
 	}
 
 	@Test
