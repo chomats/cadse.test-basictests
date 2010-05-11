@@ -1,4 +1,4 @@
-package fr.imag.adele.cadse.test.basictests.group;
+package fr.imag.adele.cadse.test.basictests.group.basic;
 
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
