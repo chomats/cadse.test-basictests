@@ -1,4 +1,4 @@
-package fr.imag.adele.cadse.test.basictests.group;
+package fr.imag.adele.cadse.test.basictests.group.basic;
 
 import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;

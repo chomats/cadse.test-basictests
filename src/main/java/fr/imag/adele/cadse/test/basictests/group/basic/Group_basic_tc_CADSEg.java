@@ -1,4 +1,4 @@
-package fr.imag.adele.cadse.test.basictests.group;
+package fr.imag.adele.cadse.test.basictests.group.basic;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
