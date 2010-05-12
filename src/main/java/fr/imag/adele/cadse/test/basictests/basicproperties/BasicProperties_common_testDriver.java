@@ -442,7 +442,7 @@ public abstract class BasicProperties_common_testDriver extends GTCadseTestCase 
 		}
 
 		boolean expected = attributeCreationSuccess(i);
-		assertEquals(expected, success);
+		assertEquals("testCreation error with #" + i, expected, success);
 	}
 
 	/**
@@ -472,7 +472,14 @@ public abstract class BasicProperties_common_testDriver extends GTCadseTestCase 
 	 * @return the creation key values
 	 */
 	protected KeyValue[] getCreationKeyValues(int i) {
-		return new KeyValue[] { defValCADSEgTab.get(i), sicpTab.get(i), simpTab.get(i), cbuTab.get(i), listTab.get(i) };
+
+		if (defValCADSEgTab.get(i) != null) {
+			return new KeyValue[] { defValCADSEgTab.get(i), sicpTab.get(i), simpTab.get(i), cbuTab.get(i),
+					listTab.get(i) };
+		}
+		else {
+			return new KeyValue[] { sicpTab.get(i), simpTab.get(i), cbuTab.get(i), listTab.get(i) };
+		}
 	}
 
 	/**
