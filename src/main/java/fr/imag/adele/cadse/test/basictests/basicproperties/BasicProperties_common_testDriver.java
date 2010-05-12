@@ -473,13 +473,7 @@ public abstract class BasicProperties_common_testDriver extends GTCadseTestCase 
 	 */
 	protected KeyValue[] getCreationKeyValues(int i) {
 
-		if (defValCADSEgTab.get(i) != null) {
-			return new KeyValue[] { defValCADSEgTab.get(i), sicpTab.get(i), simpTab.get(i), cbuTab.get(i),
-					listTab.get(i) };
-		}
-		else {
-			return new KeyValue[] { sicpTab.get(i), simpTab.get(i), cbuTab.get(i), listTab.get(i) };
-		}
+		return new KeyValue[] { defValCADSEgTab.get(i), sicpTab.get(i), simpTab.get(i), cbuTab.get(i), listTab.get(i) };
 	}
 
 	/**
