@@ -208,7 +208,13 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 	 * @return the default value
 	 */
 	public KeyValue getDefaultValue(int i) {
-		return new KeyValue(getAttributeName(i), defaultValue.visualValue, defaultValue.modelValue);
+
+		if (listTab.get(i) == KeyValue.listKv) {
+			return new KeyValue(getAttributeName(i), new String[] {}, new String[] {});
+		}
+		else {
+			return new KeyValue(getAttributeName(i), defaultValue.visualValue, defaultValue.modelValue);
+		}
 	}
 
 	/**
@@ -221,7 +227,14 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 	public KeyValue getNewValue1(int i) {
 
 		if (sicpTab.get(i).getBoolean()) {
-			return new KeyValue(getAttributeName(i), newValue1.visualValue, newValue1.modelValue);
+
+			if (listTab.get(i) == KeyValue.listKv) {
+				return new KeyValue(getAttributeName(i), new String[] { newValue1.visualValue.toString() },
+						new String[] { newValue1.modelValue.toString() });
+			}
+			else {
+				return new KeyValue(getAttributeName(i), newValue1.visualValue, newValue1.modelValue);
+			}
 		}
 		else {
 			return getDefaultValue(i);
@@ -237,11 +250,34 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 	 */
 	public KeyValue getNewValue2(int i) {
 
-		if (simpTab.get(i).getBoolean()) {
-			return new KeyValue(getAttributeName(i), newValue2.visualValue, newValue2.modelValue);
+		if (listTab.get(i) == KeyValue.listKv) {
+
+			KeyValue kv = getNewValue1(i);
+
+			ArrayList<String> visual = new ArrayList<String>();
+			ArrayList<String> model = new ArrayList<String>();
+
+			for (int j = 0; j < ((String[]) kv.modelValue).length; j++) {
+				visual.add(((String[]) kv.modelValue)[j]);
+				model.add(((String[]) kv.visualValue)[j]);
+			}
+
+			if (simpTab.get(i) == KeyValue.simpKv) {
+				visual.add(newValue2.visualValue.toString());
+				model.add(newValue2.modelValue.toString());
+			}
+
+			return new KeyValue(getAttributeName(i), visual.toArray(new String[] {}), model.toArray(new String[] {}));
 		}
+
+		// not list
 		else {
-			return getNewValue1(i);
+			if (simpTab.get(i).getBoolean()) {
+				return new KeyValue(getAttributeName(i), newValue2.visualValue, newValue2.modelValue);
+			}
+			else {
+				return getNewValue1(i);
+			}
 		}
 	}
 
@@ -253,7 +289,36 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 	 * @return the third new value
 	 */
 	public KeyValue getNewValue3(int i) {
-		return new KeyValue(getAttributeName(i), newValue3.visualValue, newValue3.modelValue);
+
+		if (listTab.get(i) == KeyValue.listKv) {
+
+			KeyValue kv = getNewValue2(i);
+
+			ArrayList<String> visual = new ArrayList<String>();
+			ArrayList<String> model = new ArrayList<String>();
+
+			for (int j = 0; j < ((String[]) kv.modelValue).length; j++) {
+				visual.add(((String[]) kv.modelValue)[j]);
+				model.add(((String[]) kv.visualValue)[j]);
+			}
+
+			if (simpTab.get(i) == KeyValue.simpKv) {
+				visual.add(newValue3.visualValue.toString());
+				model.add(newValue3.modelValue.toString());
+			}
+
+			return new KeyValue(getAttributeName(i), visual.toArray(new String[] {}), model.toArray(new String[] {}));
+		}
+
+		// not list
+		else {
+			if (simpTab.get(i).getBoolean()) {
+				return new KeyValue(getAttributeName(i), newValue3.visualValue, newValue3.modelValue);
+			}
+			else {
+				return getNewValue2(i);
+			}
+		}
 	}
 
 	/**
@@ -374,6 +439,11 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 		boolean fieldInCP = sicpTab.get(i).getBoolean();
 		boolean fieldInMP = simpTab.get(i).getBoolean();
 
+		// Values used to set fields
+		KeyValue val1 = new KeyValue(getAttributeName(i), newValue1.visualValue, newValue1.modelValue);
+		KeyValue val2 = new KeyValue(getAttributeName(i), newValue2.visualValue, newValue2.modelValue);
+		KeyValue val3 = new KeyValue(getAttributeName(i), newValue3.visualValue, newValue3.modelValue);
+
 		/* ============= */
 		/* Head creation */
 		/* ============= */
@@ -385,7 +455,7 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 		boolean isFieldPresent = shell.fieldExists(getAttributeName(i));
 		assertEquals("Presence of the attribute field is not as expected for #" + i, fieldInCP, isFieldPresent);
 
-		// initial value
+		// GET initial value
 		if (fieldInCP) {
 			KeyValue expected = getDefaultValue(i);
 
@@ -396,24 +466,13 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 			assertEqualsListValues("Initial model value error for #" + i, expected.modelValue, actualModel);
 		}
 
-		// New Value 1
+		// SET New Value 1
 		if (fieldInCP) {
-			shell.setValue(getNewValue1(i));
+			shell.setValue(val1);
 		}
 
 		// name + CHANGES FOCUS!!!
 		shell.findCadseFieldName().typeText(getInstanceSrcName(i));
-
-		// final visual value
-		if (fieldInCP) {
-			KeyValue expected = getNewValue1(i);
-
-			Object actualVisual = shell.findCadseField(getAttributeName(i)).getValue();
-			assertEqualsListValues("Error with final visual value for #" + i, expected.visualValue, actualVisual);
-
-			Object actualModel = shell.findCadseField(getAttributeName(i)).getModelValue();
-			assertEqualsListValues("Error with final visual value for #" + i, expected.visualValue, actualModel);
-		}
 
 		// Waits until refresh
 		GTPreferences.sleep(SWTBotPreferences.DEFAULT_POLL_DELAY);
@@ -430,7 +489,11 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 		// Name
 		assertEquals(getInstanceSrcName(i), propertiesView.findCadseFieldName().getText());
 
-		// Field value checking
+		// is field present
+		isFieldPresent = propertiesView.fieldExists(getAttributeName(i));
+		assertEquals("Presence of the attribute field is not as expected for #" + i, fieldInMP, isFieldPresent);
+
+		// GET New Value 1
 		if (fieldInMP) {
 			KeyValue expected = getNewValue1(i);
 
@@ -441,9 +504,9 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 			assertEqualsListValues("Error with final visual value for #" + i, expected.visualValue, actualModel);
 		}
 
-		// Field value modification
+		// SET New Value 2
 		if (fieldInMP) {
-			propertiesView.setValue(getNewValue2(i));
+			propertiesView.setValue(val2);
 		}
 
 		/* =============== */
@@ -454,7 +517,7 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 		shell = new GTCadseShell(getItDstName(i));
 		shell.findCadseFieldName().typeText(getInstanceDstName(i));
 
-		// Field value
+		// GET NewValue 2
 		if (fieldInCP) {
 
 			shell.next();
@@ -467,23 +530,43 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 			Object actualModel = shell.findCadseField(getAttributeName(i)).getModelValue();
 			assertEqualsListValues("Error with final visual value for #" + i, expected.visualValue, actualModel);
 		}
+		else {
+
+			try {
+				shell.next();
+				fail("It should be impossible to find and click on next button");
+			}
+			catch (Exception e) {
+				// success
+			}
+		}
+
 		shell.close();
 
 		/* ======================= */
 		/* Head value modification */
 		/* ======================= */
 
-		// Field value modification
+		// is field present
+		isFieldPresent = propertiesView.fieldExists(getAttributeName(i));
+		assertEquals("Presence of the attribute field is not as expected for #" + i, fieldInMP, isFieldPresent);
+
+		// SET New Value 3
 		if (fieldInMP) {
 			workspaceView.selectNode(getInstanceSrcName(i));
 			propertiesView.showTab(getItSrcName(i));
-			propertiesView.setValue(getNewValue3(i));
+			propertiesView.setValue(val3);
 		}
 
 		/* ================================= */
 		/* Member modification page checking */
 		/* ================================= */
 
+		// is field present
+		isFieldPresent = propertiesView.fieldExists(getAttributeName(i));
+		assertEquals("Presence of the attribute field is not as expected for #" + i, fieldInMP, isFieldPresent);
+
+		// GET New Value 3
 		if (fieldInMP) {
 
 			workspaceView.selectNode(getInstanceDstName(i));
