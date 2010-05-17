@@ -16,7 +16,7 @@ public class Test1_Integer_tc_execution extends GTCadseTestCase {
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses("Cadse Model.Workspace.CADSE_Test1_Integer");
+		selectCadses("Cadse Model.Workspace.CADSE_group_test1_Integer");
 		welcomeView.close();
 		workspaceView.show();
 	}
