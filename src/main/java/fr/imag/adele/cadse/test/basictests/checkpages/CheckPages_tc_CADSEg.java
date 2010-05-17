@@ -368,7 +368,8 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	public void test_FolderContentModel() throws Exception {
 		String[] expected_creationCST = { "FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 		Object[] expected_creationVal = { "", false };
-		String[] expected_modifCST = { "FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
+		String[] expected_modifCST = { "FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_",
+				"FOLDER_CONTENT_MODEL_at_REQUIRE_FOLDER_" };
 
 		createItemType(data_model, "mapping_folder", notAbstractKv, rootKv, withContentKv);
 
