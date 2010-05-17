@@ -27,5 +27,4 @@ public class Test1_Integer_tc_execution extends GTCadseTestCase {
 		Test1_Integer_testDriver stringTest = new Test1_Integer_testDriver();
 		stringTest.testExecution();
 	}
-
 }
