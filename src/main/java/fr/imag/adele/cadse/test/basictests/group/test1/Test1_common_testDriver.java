@@ -253,7 +253,7 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 	 * @return the third new value
 	 */
 	public KeyValue getNewValue3(int i) {
-		return null;
+		return new KeyValue(getAttributeName(i), newValue3.visualValue, newValue3.modelValue);
 	}
 
 	/**
@@ -378,7 +378,7 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 		/* Head creation */
 		/* ============= */
 
-		workspaceView.contextMenuNew(getItSrcName(i)).click();
+		workspaceView.contextMenuNewHead(getItSrcName(i)).click();
 		GTCadseShell shell = new GTCadseShell(getItSrcName(i));
 
 		// is field present
@@ -450,19 +450,52 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 		/* Member creation */
 		/* =============== */
 
-		System.out.println("Create a member!!!");
-		while (true) {
-			;
+		workspaceView.contextMenuNewMember(new GTTreePath(getInstanceSrcName(i)), getItDstName(i)).click();
+		shell = new GTCadseShell(getItDstName(i));
+		shell.findCadseFieldName().typeText(getInstanceDstName(i));
+
+		// Field value
+		if (fieldInCP) {
+
+			shell.next();
+
+			KeyValue expected = getNewValue2(i);
+
+			Object actualVisual = shell.findCadseField(getAttributeName(i)).getValue();
+			assertEqualsListValues("Error with final visual value for #" + i, expected.visualValue, actualVisual);
+
+			Object actualModel = shell.findCadseField(getAttributeName(i)).getModelValue();
+			assertEqualsListValues("Error with final visual value for #" + i, expected.visualValue, actualModel);
 		}
+		shell.close();
 
 		/* ======================= */
 		/* Head value modification */
 		/* ======================= */
 
+		// Field value modification
+		if (fieldInMP) {
+			workspaceView.selectNode(getInstanceSrcName(i));
+			propertiesView.showTab(getItSrcName(i));
+			propertiesView.setValue(getNewValue3(i));
+		}
+
 		/* ================================= */
 		/* Member modification page checking */
 		/* ================================= */
 
+		if (fieldInMP) {
+
+			workspaceView.selectNode(getInstanceDstName(i));
+			propertiesView.showTab(getInstanceSrcName(i));
+			KeyValue expected = getNewValue3(i);
+
+			Object actualVisual = propertiesView.findCadseField(getAttributeName(i)).getValue();
+			assertEqualsListValues("Error with final visual value for #" + i, expected.visualValue, actualVisual);
+
+			Object actualModel = propertiesView.findCadseField(getAttributeName(i)).getModelValue();
+			assertEqualsListValues("Error with final visual value for #" + i, expected.visualValue, actualModel);
+		}
 	}
 
 	/**
@@ -487,7 +520,16 @@ public abstract class Test1_common_testDriver extends GTCadseTestCase {
 		}
 
 		for (int i = 0; i < tab1.size(); i++) {
-			assertEquals(tab1.get(i), tab2.get(i));
+
+			Object val1 = tab1.get(i);
+			Object val2 = tab2.get(i);
+
+			if (val1 instanceof String || val2 instanceof String) {
+				assertEquals(val1.toString(), val2.toString());
+			}
+			else {
+				assertEquals(val1, val2);
+			}
 		}
 	}
 

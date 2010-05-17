@@ -67,7 +67,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		propertiesView.setValue(newVal2);
 
 		// member creation
-		workspaceView.contextMenuNewMember(new GTTreePath(head), head, itDst).click();
+		workspaceView.contextMenuNewMember(new GTTreePath(head), itDst).click();
 		shell = new GTCadseShell(itDst);
 		shell.findCadseFieldName().typeText(member);
 		shell.next();
@@ -112,7 +112,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		shell.close();
 
 		// member creation
-		workspaceView.contextMenuNewMember(new GTTreePath(head), head, itDst).click();
+		workspaceView.contextMenuNewMember(new GTTreePath(head), itDst).click();
 		shell = new GTCadseShell(itDst);
 		assertFieldEquals("Creation page", defVal, shell);
 		shell.setValue(newVal1);
@@ -153,7 +153,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		createString(headPath, attr, dv, KeyValue.sicpKv);
 
 		// member creation
-		workspaceView.contextMenuNewMember(new GTTreePath(head), head, itDst).click();
+		workspaceView.contextMenuNewMember(new GTTreePath(head), itDst).click();
 		shell = new GTCadseShell(itDst);
 
 		// check default value in model.
