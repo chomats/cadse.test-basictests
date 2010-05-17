@@ -9,12 +9,10 @@ import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.core.Item;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.core.attribute.IAttributeType;
 import fr.imag.adele.cadse.core.transaction.delta.ItemDelta;
 import fr.imag.adele.cadse.si.workspace.uiplatform.swt.SWTUIPlatform;
-import fr.imag.adele.cadse.si.workspace.uiplatform.swt.UIRunningField;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
@@ -142,7 +140,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 
 		KeyValue defVal = new KeyValue(attr, "def_val" + i, "def_val" + i);
 		KeyValue newVal1 = new KeyValue(attr, "new_val1" + i, "new_val1" + i);
-		KeyValue newVal2 = new KeyValue(attr, "new_val2" + i, "new_val2" + i);
+		// KeyValue newVal2 = new KeyValue(attr, "new_val2" + i, "new_val2" + i);
 
 		// head creation
 		workspaceView.contextMenuNewHead(itSrc).click();
@@ -157,7 +155,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		// member creation
 		workspaceView.contextMenuNewMember(new GTTreePath(head), head, itDst).click();
 		shell = new GTCadseShell(itDst);
-		
+
 		// check default value in model.
 		SWTUIPlatform swtuiPlatform = shell.getSwtUIPlatform();
 		final ItemDelta currentItem = (ItemDelta) swtuiPlatform.getItem();
@@ -167,10 +165,10 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		assertNotNull(attrType);
 		Object value = currentItem.getAttribute(attrType, false);
 		assertEquals(defVal.getString(), value);
-		
+
 		shell.findCadseFieldName().typeText(member);
 		shell.next();
-	
+
 		assertFieldEquals("member creation", defVal, shell);
 		shell.setValue(newVal1);
 		shell.close();
