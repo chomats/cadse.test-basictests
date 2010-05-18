@@ -8,9 +8,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses(value = { BasicProperties_enum_tc_execution.class })
-public class BasicProperties_enum_ts_execution {
+@SuiteClasses(value = { BasicProperties_String_tc_CADSEg.class })
+public class BasicProperties_String_ts_CADSEg {
 	public static Test suite() {
-		return new JUnit4TestAdapter(BasicProperties_enum_ts_execution.class);
+		return new JUnit4TestAdapter(BasicProperties_String_ts_CADSEg.class);
 	}
 }

@@ -7,11 +7,11 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
-public class BasicProperties_enum_testDriver extends BasicProperties_common_testDriver {
+public class BasicProperties_Enum_testDriver extends BasicProperties_Common_testDriver {
 
 	String enumTypeName = "my_enum";
 
-	public BasicProperties_enum_testDriver() {
+	public BasicProperties_Enum_testDriver() {
 
 		/* Values given into CADSEg */
 		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "", null);

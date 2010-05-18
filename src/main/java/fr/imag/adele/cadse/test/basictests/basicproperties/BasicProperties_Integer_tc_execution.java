@@ -9,10 +9,10 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
 /**
  */
-public class BasicProperties_long_tc_execution extends GTCadseTestCase {
+public class BasicProperties_Integer_tc_execution extends GTCadseTestCase {
 
 	/** The test driver */
-	BasicProperties_long_testDriver driver = new BasicProperties_long_testDriver();
+	BasicProperties_Integer_testDriver driver = new BasicProperties_Integer_testDriver();
 
 	/**
 	 * Selects the CADSE to be executed and closes unless views.
@@ -25,7 +25,7 @@ public class BasicProperties_long_tc_execution extends GTCadseTestCase {
 	}
 
 	@Test
-	public void test_long() throws Exception {
+	public void test_integer() throws Exception {
 		driver.testExecution();
 	}
 }

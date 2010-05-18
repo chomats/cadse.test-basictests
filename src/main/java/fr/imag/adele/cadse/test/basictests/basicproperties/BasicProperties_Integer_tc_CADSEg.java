@@ -10,7 +10,7 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
 /**
- * Tests basic properties for boolean attributes.
+ * Tests basic properties for integer attributes.
  * <ul>
  * <li>default value</li>
  * <li>hidden in computed pages</li>
@@ -18,7 +18,7 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
  * <li>cannot be undefined</li>
  * </ul>
  */
-public class BasicProperties_boolean_tc_CADSEg extends GTCadseTestCase {
+public class BasicProperties_Integer_tc_CADSEg extends GTCadseTestCase {
 
 	/**
 	 * Makes a few things before the test starts.
@@ -43,14 +43,14 @@ public class BasicProperties_boolean_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Creates a set of boolean attributes.
+	 * Creates a set of integer attributes.
 	 * 
 	 * @throws Exception
 	 *             the exception
 	 */
 	@Test
-	public void test_boolean() throws Exception {
-		BasicProperties_boolean_testDriver data = new BasicProperties_boolean_testDriver();
+	public void test_integer() throws Exception {
+		BasicProperties_Integer_testDriver data = new BasicProperties_Integer_testDriver();
 		data.testCreation();
 	}
 }

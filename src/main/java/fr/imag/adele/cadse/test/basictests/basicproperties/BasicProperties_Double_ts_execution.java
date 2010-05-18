@@ -8,9 +8,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses(value = { BasicProperties_integer_tc_execution.class })
-public class BasicProperties_integer_ts_execution {
+@SuiteClasses(value = { BasicProperties_Double_tc_execution.class })
+public class BasicProperties_Double_ts_execution {
 	public static Test suite() {
-		return new JUnit4TestAdapter(BasicProperties_integer_ts_execution.class);
+		return new JUnit4TestAdapter(BasicProperties_Double_ts_execution.class);
 	}
 }

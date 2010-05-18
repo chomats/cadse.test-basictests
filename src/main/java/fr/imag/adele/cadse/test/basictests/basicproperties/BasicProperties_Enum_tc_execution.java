@@ -9,10 +9,10 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
 /**
  */
-public class BasicProperties_enum_tc_execution extends GTCadseTestCase {
+public class BasicProperties_Enum_tc_execution extends GTCadseTestCase {
 
 	/** The test driver */
-	BasicProperties_enum_testDriver driver = new BasicProperties_enum_testDriver();
+	BasicProperties_Enum_testDriver driver = new BasicProperties_Enum_testDriver();
 
 	/**
 	 * Selects the CADSE to be executed and closes unless views.

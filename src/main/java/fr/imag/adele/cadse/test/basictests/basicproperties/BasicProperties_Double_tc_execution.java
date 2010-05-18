@@ -9,10 +9,10 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
 /**
  */
-public class BasicProperties_double_tc_execution extends GTCadseTestCase {
+public class BasicProperties_Double_tc_execution extends GTCadseTestCase {
 
 	/** The test driver */
-	BasicProperties_double_testDriver driver = new BasicProperties_double_testDriver();
+	BasicProperties_Double_testDriver driver = new BasicProperties_Double_testDriver();
 
 	/**
 	 * Selects the CADSE to be executed and closes unless views.
