@@ -8,6 +8,7 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.no
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 
 import java.util.ArrayList;
 
@@ -76,6 +77,10 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 
 	/** The List property value for all the instances */
 	protected final ArrayList<KeyValue> listTab = new ArrayList<KeyValue>();
+
+	public void selectCadse() {
+		selectCadses("Cadse Model.Workspace." + cadseName);
+	}
 
 	/**
 	 * Gets the item type under test.

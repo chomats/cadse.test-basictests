@@ -1,7 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
 import org.junit.Test;
@@ -20,8 +19,7 @@ public class BasicProperties_string_tc_execution extends GTCadseTestCase {
 	 */
 	@Test
 	public void test_preparation() throws Exception {
-
-		selectCadses("Cadse Model.Workspace." + driver.cadseName);
+		driver.selectCadse();
 		welcomeView.close();
 		workspaceView.show();
 	}
