@@ -8,6 +8,7 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.no
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 
 import java.util.ArrayList;
@@ -20,31 +21,34 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public abstract class GTCommonTestDriver extends GTCadseTestCase {
 
+	// ====== //
+	// PREFIX //
+	// ====== //
+
+	/** CADSE prefix, used to compute CADSE name */
+	public final String CADSEPrefix = "CADSE";
+
+	/** Item type prefix used to compute the item types names */
+	public final String itPrefix = "it";
+
+	/** Attribute prefix used to compute the attributes names */
+	public final String attrPrefix = "attr";
+
+	/** Instance prefix used to compute the names */
+	public final String instancePrefix = "instance";
+
 	// ================ //
 	// CADSE DEFINITION //
 	// ================ //
 
-	/** The CADSE definition name */
-	public final String cadseName = "CADSE_" + getTestName() + "_" + getTypeUnderTest();
+	/** The CADSE name */
+	public final String cadseName = CADSEPrefix + getTestName() + getTypeUnderTest();
 
 	/** A path to the CADSE definition */
 	public final GTTreePath cadseModel = new GTTreePath(cadseName);
 
 	/** A path to the data model */
 	public final GTTreePath dataModel = cadseModel.concat(CadseDefinitionManager.DATA_MODEL);
-
-	// ====== //
-	// PREFIX //
-	// ====== //
-
-	/** Item type prefix used to compute the names */
-	protected final String itPrefix = "it";
-
-	/** Attribute prefix used to compute the names */
-	protected final String attrPrefix = "attr_";
-
-	/** Instance prefix used to compute the names */
-	protected final String instancePrefix = "instance";
 
 	// ========================== //
 	// PROPERTIES POSSIBLE VALUES //
@@ -78,14 +82,10 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	/** The List property value for all the instances */
 	protected final ArrayList<KeyValue> listTab = new ArrayList<KeyValue>();
 
-	public void selectCadse() {
-		selectCadses("Cadse Model.Workspace." + cadseName);
-	}
-
 	/**
-	 * Gets the item type under test.
+	 * Gets the name of the test. This is a general name, without reference to any type, such as boolean.
 	 * 
-	 * @return the item type under test
+	 * @return the name of the test.
 	 */
 	protected abstract String getTestName();
 
@@ -97,11 +97,41 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	protected abstract ItemType getItemTypeUnderTest();
 
 	/**
+	 * Creates the configuration #i.
+	 * 
+	 * @param configuration
+	 *            number
+	 */
+	public abstract void testCreation(int i);
+
+	/**
+	 * At runtime, test the configuration #i.
+	 * 
+	 * @param configuration
+	 *            number
+	 */
+	public abstract void testExecution(int i);
+
+	/**
+	 * At startup, selects the CADSE created before.
+	 */
+	public void selectCadse() {
+		selectCadses("Cadse Model.Workspace." + cadseName);
+	}
+
+	/**
+	 * Creates the CADSE.
+	 */
+	private void createCadse() {
+		createCadseDefinition(cadseName, "model." + cadseName);
+	}
+
+	/**
 	 * Returns name of the type under test.
 	 * 
-	 * @return the type under test
+	 * @return the name of the type under test
 	 */
-	protected String getTypeUnderTest() {
+	private String getTypeUnderTest() {
 		return getItemTypeUnderTest().getName();
 	}
 
@@ -112,6 +142,42 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 */
 	protected String getAttributeName() {
 		return attrPrefix + getTypeUnderTest();
+	}
+
+	/**
+	 * Creates the CADSE, the items type and all the attributes in CADSEg.
+	 */
+	public void testCreation() {
+
+		/* Creates the CADSE */
+		createCadse();
+
+		/* Creates the item types and attributes */
+		for (int i = 0; i < simpTab.size(); i++) {
+			testCreation(i);
+		}
+	}
+
+	/**
+	 * At runtime, test if the CADSE has the correct behavior. Excludes the tests with numbers in the list in parameter.
+	 * 
+	 * @param exclude
+	 */
+	public void testExecution(ArrayList<Integer> exclude) {
+		for (int i = 0; i < simpTab.size(); i++) {
+			if (!exclude.contains(new Integer(i))) {
+				System.out.println("Starting execution #" + i);
+				testExecution(i);
+			}
+		}
+	}
+
+	/**
+	 * At runtime, test if the CADSE has the correct behavior.
+	 */
+	public void testExecution() {
+		ArrayList<Integer> exclude = new ArrayList<Integer>();
+		testExecution(exclude);
 	}
 
 	/**

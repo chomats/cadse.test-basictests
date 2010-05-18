@@ -27,8 +27,12 @@ public class BasicProperties_integer_testDriver extends BasicProperties_common_t
 		initializeTables();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getItemTypeUnderTest()
+	 */
 	@Override
-	public ItemType getItemTypeUnderTest() {
+	protected ItemType getItemTypeUnderTest() {
 		return CadseGCST.INTEGER;
 	}
 }

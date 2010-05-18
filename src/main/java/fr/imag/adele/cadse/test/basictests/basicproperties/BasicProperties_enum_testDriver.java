@@ -36,7 +36,7 @@ public class BasicProperties_enum_testDriver extends BasicProperties_common_test
 	}
 
 	@Override
-	public ItemType getItemTypeUnderTest() {
+	protected ItemType getItemTypeUnderTest() {
 		return CadseGCST.ENUM;
 	}
 

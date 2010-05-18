@@ -32,7 +32,7 @@ public class BasicProperties_boolean_testDriver extends BasicProperties_common_t
 	}
 
 	@Override
-	public ItemType getItemTypeUnderTest() {
+	protected ItemType getItemTypeUnderTest() {
 		return CadseGCST.BOOLEAN;
 	}
 
@@ -45,7 +45,7 @@ public class BasicProperties_boolean_testDriver extends BasicProperties_common_t
 	 *            the shell
 	 */
 	@Override
-	public boolean setNewGraphicalValue(int i, GTCadseShell shell) {
+	protected boolean setNewGraphicalValue(int i, GTCadseShell shell) {
 
 		Boolean newValue = (Boolean) executionNewTab.get(i).visualValue;
 		boolean isList = listTab.get(i).getBoolean();
@@ -96,7 +96,7 @@ public class BasicProperties_boolean_testDriver extends BasicProperties_common_t
 	}
 
 	@Override
-	public KeyValue getCorrectedDefVal(int i) {
+	protected KeyValue getCorrectedDefVal(int i) {
 
 		boolean cbu = cbuTab.get(i).getBoolean();
 		KeyValue defVal = executionOldTab.get(i);

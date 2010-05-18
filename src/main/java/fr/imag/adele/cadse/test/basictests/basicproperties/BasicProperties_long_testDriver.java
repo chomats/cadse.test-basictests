@@ -28,7 +28,7 @@ public class BasicProperties_long_testDriver extends BasicProperties_common_test
 	}
 
 	@Override
-	public ItemType getItemTypeUnderTest() {
+	protected ItemType getItemTypeUnderTest() {
 		return CadseGCST.LONG;
 	}
 }

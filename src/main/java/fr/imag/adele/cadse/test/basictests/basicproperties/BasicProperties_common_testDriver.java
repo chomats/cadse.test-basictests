@@ -5,7 +5,6 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicAttribute;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 
 import java.util.ArrayList;
@@ -51,7 +50,7 @@ public abstract class BasicProperties_common_testDriver extends GTCommonTestDriv
 	/**
 	 * Performs table initializations
 	 */
-	public void initializeTables() {
+	protected void initializeTables() {
 
 		for (int j = 0; j < defValCADSEgValues.length; j++) {
 			for (int k = 0; k < executionNewValues.length; k++) {
@@ -75,7 +74,7 @@ public abstract class BasicProperties_common_testDriver extends GTCommonTestDriv
 	}
 
 	@Override
-	public String getTestName() {
+	protected String getTestName() {
 		return "BasicProperties";
 	}
 
@@ -86,7 +85,7 @@ public abstract class BasicProperties_common_testDriver extends GTCommonTestDriv
 	 *            the instance number
 	 * @return the it name
 	 */
-	public String getItName(int i) {
+	protected String getItName(int i) {
 		return itPrefix + i;
 	}
 
@@ -97,11 +96,11 @@ public abstract class BasicProperties_common_testDriver extends GTCommonTestDriv
 	 *            the instance number
 	 * @return the instance name
 	 */
-	public String getInstanceName(int i) {
+	protected String getInstanceName(int i) {
 		return instancePrefix + i;
 	}
 
-	public KeyValue getCorrectedDefVal(int i) {
+	protected KeyValue getCorrectedDefVal(int i) {
 		return executionOldTab.get(i);
 	}
 
@@ -112,7 +111,7 @@ public abstract class BasicProperties_common_testDriver extends GTCommonTestDriv
 	 *            the instance number
 	 * @return a string or a list of string
 	 */
-	public KeyValue getInitialValue(int i) {
+	protected KeyValue getInitialValue(int i) {
 
 		boolean isList = listTab.get(i).getBoolean();
 		KeyValue defVal = getCorrectedDefVal(i);
@@ -133,7 +132,7 @@ public abstract class BasicProperties_common_testDriver extends GTCommonTestDriv
 	 * @param shell
 	 *            the shell
 	 */
-	public boolean setNewGraphicalValue(int i, GTCadseShell shell) {
+	protected boolean setNewGraphicalValue(int i, GTCadseShell shell) {
 
 		String newValue = (String) executionNewTab.get(i).visualValue;
 		boolean isList = listTab.get(i).getBoolean();
@@ -169,7 +168,7 @@ public abstract class BasicProperties_common_testDriver extends GTCommonTestDriv
 	 *            the instance number
 	 * @return the final model value
 	 */
-	public Object getFinalModelValue(int i) {
+	protected Object getFinalModelValue(int i) {
 
 		boolean fieldInCP = sicpTab.get(i).getBoolean();
 		boolean isList = listTab.get(i).getBoolean();
@@ -206,7 +205,7 @@ public abstract class BasicProperties_common_testDriver extends GTCommonTestDriv
 	 *            the instance number
 	 * @return the final graphical value
 	 */
-	public Object getFinalGraphicalValue(int i) {
+	protected Object getFinalGraphicalValue(int i) {
 
 		boolean fieldInCP = sicpTab.get(i).getBoolean();
 		boolean isList = listTab.get(i).getBoolean();
@@ -244,7 +243,7 @@ public abstract class BasicProperties_common_testDriver extends GTCommonTestDriv
 	 *            the instance number
 	 * @return true, if is ok button is activated
 	 */
-	public boolean isOkButtonActivated(int i) {
+	protected boolean isOkButtonActivated(int i) {
 
 		boolean cbu = cbuTab.get(i).getBoolean();
 		boolean isList = listTab.get(i).getBoolean();
@@ -264,7 +263,7 @@ public abstract class BasicProperties_common_testDriver extends GTCommonTestDriv
 	 *            the instance number
 	 * @return the attribute graphical value in the property view.
 	 */
-	public Object getPropertiesGraphicalValue(int i) {
+	protected Object getPropertiesGraphicalValue(int i) {
 
 		boolean fieldInCP = sicpTab.get(i).getBoolean();
 		boolean fieldInMP = simpTab.get(i).getBoolean();
@@ -300,7 +299,7 @@ public abstract class BasicProperties_common_testDriver extends GTCommonTestDriv
 	 *            the instance number
 	 * @return the attribute model value in the property view.
 	 */
-	public Object getPropertiesModelValue(int i) {
+	protected Object getPropertiesModelValue(int i) {
 
 		boolean fieldInCP = sicpTab.get(i).getBoolean();
 		boolean isList = listTab.get(i).getBoolean();
@@ -318,33 +317,11 @@ public abstract class BasicProperties_common_testDriver extends GTCommonTestDriv
 		}
 	}
 
-	/**
-	 * Creates the CADSE, the items type and all the attributes in CADSEg.
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#testCreation(int)
 	 */
-	public void testCreation() {
-
-		/* Creates the CADSE */
-		testCreateCadse();
-
-		/* Creates the item types and attributes */
-		for (int i = 0; i < defValCADSEgTab.size(); i++) {
-			testCreation(i);
-		}
-	}
-
-	/**
-	 * Creates the CADSE.
-	 */
-	public void testCreateCadse() {
-		createCadseDefinition(cadseName, "model." + cadseName);
-	}
-
-	/**
-	 * Creates the attribute number i.
-	 * 
-	 * @param i
-	 *            the attribute number to be created.
-	 */
+	@Override
 	public void testCreation(int i) {
 
 		System.out.println("Starting CADSEg #" + i);
@@ -421,32 +398,11 @@ public abstract class BasicProperties_common_testDriver extends GTCommonTestDriv
 	protected void postCreate(int i, GTTreePath it_path, GTTreePath attr_path) {
 	}
 
-	/**
-	 * At runtime, test if the CADSE has the correct behavior. Excludes the tests with numbers in the list in parameter.
-	 * 
-	 * @param exclude
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#testExecution(int)
 	 */
-	public void testExecution(ArrayList<Integer> exclude) {
-		for (int i = 0; i < sicpTab.size(); i++) {
-			if (!exclude.contains(new Integer(i))) {
-				System.out.println("Starting execution #" + i);
-				testExecution(i);
-			}
-		}
-	}
-
-	/**
-	 * At runtime, test if the CADSE has the correct behavior.
-	 */
-	public void testExecution() {
-
-		ArrayList<Integer> exclude = new ArrayList<Integer>();
-		testExecution(exclude);
-	}
-
-	/**
-	 * At runtime, test if an item type has the correct behavior.
-	 */
+	@Override
 	public void testExecution(int i) {
 
 		if (!attributeCreationSuccess(i)) {
