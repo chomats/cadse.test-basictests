@@ -4,9 +4,9 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
-public class BasicProperties_double_testDriver extends BasicProperties_common_testDriver {
+public class BasicProperties_Double_testDriver extends BasicProperties_Common_testDriver {
 
-	public BasicProperties_double_testDriver() {
+	public BasicProperties_Double_testDriver() {
 
 		/* Values given into CADSEg */
 		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "", null);

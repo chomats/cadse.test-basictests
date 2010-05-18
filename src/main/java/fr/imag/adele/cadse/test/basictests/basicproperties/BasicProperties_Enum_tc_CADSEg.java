@@ -10,7 +10,7 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
 /**
- * Tests basic properties for string attributes.
+ * Tests basic properties for enum attributes.
  * <ul>
  * <li>default value</li>
  * <li>hidden in computed pages</li>
@@ -18,7 +18,7 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
  * <li>cannot be undefined</li>
  * </ul>
  */
-public class BasicProperties_string_tc_CADSEg extends GTCadseTestCase {
+public class BasicProperties_Enum_tc_CADSEg extends GTCadseTestCase {
 
 	/**
 	 * Makes a few things before the test starts.
@@ -43,14 +43,14 @@ public class BasicProperties_string_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Creates a set of string attributes.
+	 * Creates a set of enum attributes.
 	 * 
 	 * @throws Exception
 	 *             the exception
 	 */
 	@Test
-	public void test_string() throws Exception {
-		BasicProperties_string_testDriver data = new BasicProperties_string_testDriver();
+	public void test_enum() throws Exception {
+		BasicProperties_Enum_testDriver data = new BasicProperties_Enum_testDriver();
 		data.testCreation();
 	}
 }

@@ -16,7 +16,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
-public class BasicProperties_string_testDriver extends BasicProperties_common_testDriver {
+public class BasicProperties_String_testDriver extends BasicProperties_Common_testDriver {
 
 	/* Not Empty attribute : True value */
 	KeyValue notEmptyTrue = new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, true, true);
@@ -28,7 +28,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	/** The notEmpty property value for all the instances */
 	protected final ArrayList<KeyValue> notEmptyTab = new ArrayList<KeyValue>();
 
-	public BasicProperties_string_testDriver() {
+	public BasicProperties_String_testDriver() {
 
 		/* Values given into CADSEg */
 		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null, null);

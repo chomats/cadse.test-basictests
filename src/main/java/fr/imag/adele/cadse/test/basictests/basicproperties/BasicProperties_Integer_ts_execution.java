@@ -8,9 +8,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses(value = { BasicProperties_integer_tc_CADSEg.class })
-public class BasicProperties_integer_ts_CADSEg {
+@SuiteClasses(value = { BasicProperties_Integer_tc_execution.class })
+public class BasicProperties_Integer_ts_execution {
 	public static Test suite() {
-		return new JUnit4TestAdapter(BasicProperties_integer_ts_CADSEg.class);
+		return new JUnit4TestAdapter(BasicProperties_Integer_ts_execution.class);
 	}
 }

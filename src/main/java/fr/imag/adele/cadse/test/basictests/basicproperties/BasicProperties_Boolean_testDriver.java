@@ -8,9 +8,9 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
-public class BasicProperties_boolean_testDriver extends BasicProperties_common_testDriver {
+public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_testDriver {
 
-	public BasicProperties_boolean_testDriver() {
+	public BasicProperties_Boolean_testDriver() {
 
 		/* Values given into CADSEg */
 		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, true, true);

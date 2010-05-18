@@ -23,7 +23,7 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
-public abstract class BasicProperties_common_testDriver extends GTCommonTestDriver {
+public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriver {
 
 	// ========================== //
 	// PROPERTIES POSSIBLE VALUES //
