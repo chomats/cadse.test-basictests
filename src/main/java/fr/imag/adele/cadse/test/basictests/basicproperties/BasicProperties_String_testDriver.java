@@ -18,16 +18,18 @@ import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class BasicProperties_String_testDriver extends BasicProperties_Common_testDriver {
 
-	/* Not Empty attribute : True value */
+	/** Not Empty attribute : True value */
 	KeyValue notEmptyTrue = new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, true, true);
-	/* Not Empty attribute : False value */
+	/** Not Empty attribute : False value */
 	KeyValue notEmptyFalse = new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, false, false);
 	/** Set of values for the notEmpty property */
 	protected final KeyValue[] notEmptyValues = { notEmptyTrue, notEmptyFalse };
-
 	/** The notEmpty property value for all the instances */
 	protected final ArrayList<KeyValue> notEmptyTab = new ArrayList<KeyValue>();
 
+	/**
+	 * Instantiates a new basic properties_ string_test driver.
+	 */
 	public BasicProperties_String_testDriver() {
 
 		/* Values given into CADSEg */
@@ -54,13 +56,18 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		initializeTables();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getItemTypeUnderTest()
+	 */
 	@Override
 	protected ItemType getItemTypeUnderTest() {
 		return CadseGCST.STRING;
 	}
 
-	/**
-	 * Performs table initializations
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#initializeTables()
 	 */
 	@Override
 	protected void initializeTables() {
@@ -89,15 +96,10 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		}
 	}
 
-	/**
-	 * Performs actions after the item creation.
-	 * 
-	 * @param i
-	 *            the number of the item to be created
-	 * @param it_path
-	 *            the item type path
-	 * @param attr_path
-	 *            the attribute path
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#postCreate(int,
+	 * fr.imag.adele.graphictests.gttree.GTTreePath, fr.imag.adele.graphictests.gttree.GTTreePath)
 	 */
 	@Override
 	protected void postCreate(int i, GTTreePath it_path, GTTreePath attr_path) {
@@ -109,12 +111,10 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		propertiesView.setValue(notEmptyTab.get(i));
 	}
 
-	/**
-	 * Checks if is ok button is activated.
-	 * 
-	 * @param i
-	 *            the instance number
-	 * @return true, if is ok button is activated
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#isOkButtonActivated(int)
 	 */
 	@Override
 	protected boolean isOkButtonActivated(int i) {
@@ -132,13 +132,11 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		}
 	}
 
-	/**
-	 * Sets the new graphical value.
-	 * 
-	 * @param i
-	 *            the instance number
-	 * @param shell
-	 *            the shell
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#setNewGraphicalValue(int,
+	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell)
 	 */
 	@Override
 	protected boolean setNewGraphicalValue(int i, GTCadseShell shell) {
@@ -171,12 +169,10 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		return true; // success
 	}
 
-	/**
-	 * Gets the final graphical value.
-	 * 
-	 * @param i
-	 *            the instance number
-	 * @return the final graphical value
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getFinalGraphicalValue(int)
 	 */
 	@Override
 	protected Object getFinalGraphicalValue(int i) {
@@ -217,12 +213,10 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		}
 	}
 
-	/**
-	 * Gets the final model value.
-	 * 
-	 * @param i
-	 *            the instance number
-	 * @return the final model value
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getFinalModelValue(int)
 	 */
 	@Override
 	protected Object getFinalModelValue(int i) {

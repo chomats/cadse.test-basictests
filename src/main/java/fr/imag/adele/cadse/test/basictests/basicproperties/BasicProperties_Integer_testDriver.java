@@ -6,6 +6,9 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class BasicProperties_Integer_testDriver extends BasicProperties_Common_testDriver {
 
+	/**
+	 * Instantiates a new basic properties_ integer_test driver.
+	 */
 	public BasicProperties_Integer_testDriver() {
 
 		/* Values given into CADSEg */

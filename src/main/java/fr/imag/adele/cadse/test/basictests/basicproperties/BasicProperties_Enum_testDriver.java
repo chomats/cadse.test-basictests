@@ -11,6 +11,9 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 
 	String enumTypeName = "my_enum";
 
+	/**
+	 * Instantiates a new basic properties_ enum_test driver.
+	 */
 	public BasicProperties_Enum_testDriver() {
 
 		/* Values given into CADSEg */
@@ -35,16 +38,18 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		initializeTables();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getItemTypeUnderTest()
+	 */
 	@Override
 	protected ItemType getItemTypeUnderTest() {
 		return CadseGCST.ENUM;
 	}
 
-	/**
-	 * Performs actions before the item creation.
-	 * 
-	 * @param i
-	 *            the number of the item to be created
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#preCreate(int)
 	 */
 	@Override
 	protected void preCreate(int i) {
@@ -53,12 +58,10 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		}
 	}
 
-	/**
-	 * Gets key values to fill creation page.
-	 * 
-	 * @param i
-	 *            the i
-	 * @return the creation key values
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getCreationKeyValues(int)
 	 */
 	@Override
 	protected KeyValue[] getCreationKeyValues(int i) {
@@ -66,11 +69,11 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		return new KeyValue[] { enumTypeKv, defValCADSEgTab.get(i), sicpTab.get(i), simpTab.get(i), listTab.get(i) };
 	}
 
-	/**
-	 * Returns true if the attribute can be created, false otherwise.
-	 * 
-	 * @param i
-	 * @return true if the attribute can be created, false otherwise.
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#attributeCreationSuccess
+	 * (int)
 	 */
 	@Override
 	protected boolean attributeCreationSuccess(int i) {

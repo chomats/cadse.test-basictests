@@ -6,6 +6,9 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class Test1_Integer_testDriver extends Test1_common_testDriver {
 
+	/**
+	 * Instantiates a new test1_ integer_test driver.
+	 */
 	public Test1_Integer_testDriver() {
 		defaultValue = new KeyValue(new String(), 10, 10);
 		newValue1 = new KeyValue(new String(), 11, 11);
