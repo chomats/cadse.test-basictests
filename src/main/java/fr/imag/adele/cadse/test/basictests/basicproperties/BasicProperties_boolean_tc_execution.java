@@ -12,20 +12,22 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
  */
 public class BasicProperties_boolean_tc_execution extends GTCadseTestCase {
 
+	/** The test driver */
+	BasicProperties_boolean_testDriver driver = new BasicProperties_boolean_testDriver();
+
 	/**
 	 * Selects the CADSE to be executed and closes unless views.
 	 */
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses("Cadse Model.Workspace.CADSE_BasicProperties_boolean");
+		selectCadses("Cadse Model.Workspace." + driver.cadseName);
 		welcomeView.close();
 		workspaceView.show();
 	}
 
 	@Test
 	public void test_boolean() throws Exception {
-		BasicProperties_boolean_testDriver booleanTest = new BasicProperties_boolean_testDriver();
-		booleanTest.testExecution();
+		driver.testExecution();
 	}
 }

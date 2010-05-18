@@ -36,11 +36,6 @@ public class BasicProperties_enum_testDriver extends BasicProperties_common_test
 	}
 
 	@Override
-	public String getTypeUnderTest() {
-		return "enum";
-	}
-
-	@Override
 	public ItemType getItemTypeUnderTest() {
 		return CadseGCST.ENUM;
 	}
@@ -54,7 +49,7 @@ public class BasicProperties_enum_testDriver extends BasicProperties_common_test
 	@Override
 	protected void preCreate(int i) {
 		if (i == 0) {
-			GTCadseHelperMethods.createEnumType(data_model, enumTypeName, "one", "two", "three", "four");
+			GTCadseHelperMethods.createEnumType(dataModel, enumTypeName, "one", "two", "three", "four");
 		}
 	}
 

@@ -12,13 +12,16 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
  */
 public class BasicProperties_integer_tc_execution extends GTCadseTestCase {
 
+	/** The test driver */
+	BasicProperties_integer_testDriver driver = new BasicProperties_integer_testDriver();
+
 	/**
 	 * Selects the CADSE to be executed and closes unless views.
 	 */
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses("Cadse Model.Workspace.CADSE_BasicProperties_integer");
+		selectCadses("Cadse Model.Workspace." + driver.cadseName);
 		welcomeView.close();
 		workspaceView.show();
 	}
@@ -26,7 +29,6 @@ public class BasicProperties_integer_tc_execution extends GTCadseTestCase {
 	@Test
 	public void test_integer() throws Exception {
 
-		BasicProperties_integer_testDriver integerTest = new BasicProperties_integer_testDriver();
-		integerTest.testExecution();
+		driver.testExecution();
 	}
 }

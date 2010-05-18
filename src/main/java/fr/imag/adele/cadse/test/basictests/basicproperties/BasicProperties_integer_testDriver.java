@@ -28,11 +28,6 @@ public class BasicProperties_integer_testDriver extends BasicProperties_common_t
 	}
 
 	@Override
-	public String getTypeUnderTest() {
-		return "integer";
-	}
-
-	@Override
 	public ItemType getItemTypeUnderTest() {
 		return CadseGCST.INTEGER;
 	}

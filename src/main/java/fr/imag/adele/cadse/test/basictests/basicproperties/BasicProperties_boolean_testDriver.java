@@ -32,11 +32,6 @@ public class BasicProperties_boolean_testDriver extends BasicProperties_common_t
 	}
 
 	@Override
-	public String getTypeUnderTest() {
-		return "boolean";
-	}
-
-	@Override
 	public ItemType getItemTypeUnderTest() {
 		return CadseGCST.BOOLEAN;
 	}
