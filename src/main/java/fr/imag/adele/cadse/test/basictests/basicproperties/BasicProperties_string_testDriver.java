@@ -55,7 +55,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	}
 
 	@Override
-	public ItemType getItemTypeUnderTest() {
+	protected ItemType getItemTypeUnderTest() {
 		return CadseGCST.STRING;
 	}
 
@@ -63,7 +63,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	 * Performs table initializations
 	 */
 	@Override
-	public void initializeTables() {
+	protected void initializeTables() {
 
 		for (KeyValue notEmpty : notEmptyValues) {
 			for (int j = 0; j < defValCADSEgValues.length; j++) {
@@ -117,7 +117,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	 * @return true, if is ok button is activated
 	 */
 	@Override
-	public boolean isOkButtonActivated(int i) {
+	protected boolean isOkButtonActivated(int i) {
 		if (listTab.get(i).getBoolean()) {
 			return true;
 		}
@@ -141,7 +141,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	 *            the shell
 	 */
 	@Override
-	public boolean setNewGraphicalValue(int i, GTCadseShell shell) {
+	protected boolean setNewGraphicalValue(int i, GTCadseShell shell) {
 
 		String newValue = (String) executionNewTab.get(i).visualValue;
 		boolean isList = listTab.get(i).getBoolean();
@@ -179,7 +179,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	 * @return the final graphical value
 	 */
 	@Override
-	public Object getFinalGraphicalValue(int i) {
+	protected Object getFinalGraphicalValue(int i) {
 
 		boolean fieldInCP = sicpTab.get(i).getBoolean();
 		boolean isList = listTab.get(i).getBoolean();
@@ -225,7 +225,7 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 	 * @return the final model value
 	 */
 	@Override
-	public Object getFinalModelValue(int i) {
+	protected Object getFinalModelValue(int i) {
 
 		boolean fieldInCP = sicpTab.get(i).getBoolean();
 		boolean isList = listTab.get(i).getBoolean();

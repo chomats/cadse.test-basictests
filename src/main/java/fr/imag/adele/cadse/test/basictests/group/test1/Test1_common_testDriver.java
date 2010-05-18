@@ -5,7 +5,6 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicAttribute;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
 
@@ -234,32 +233,12 @@ public abstract class Test1_common_testDriver extends GTCommonTestDriver {
 	}
 
 	/**
-	 * Creates the CADSE, the items type and all the attributes in CADSEg.
-	 */
-	public void testCreation() {
-
-		/* Creates the CADSE */
-		testCreateCadse();
-
-		/* Creates the item types and attributes */
-		for (int i = 0; i < sicpTab.size(); i++) {
-			testCreation(i);
-		}
-	}
-
-	/**
-	 * Creates the CADSE.
-	 */
-	public void testCreateCadse() {
-		createCadseDefinition(cadseName, "model." + cadseName);
-	}
-
-	/**
 	 * Creates the attribute number i.
 	 * 
 	 * @param i
 	 *            the attribute number to be created.
 	 */
+	@Override
 	public void testCreation(int i) {
 
 		System.out.println("Starting CADSEg #" + i);
@@ -321,31 +300,9 @@ public abstract class Test1_common_testDriver extends GTCommonTestDriver {
 	}
 
 	/**
-	 * At runtime, test if the CADSE has the correct behavior. Excludes the tests with numbers in the list in parameter.
-	 * 
-	 * @param exclude
-	 */
-	public void testExecution(ArrayList<Integer> exclude) {
-		for (int i = 0; i < sicpTab.size(); i++) {
-			if (!exclude.contains(new Integer(i))) {
-				System.out.println("Starting execution #" + i);
-				testExecution(i);
-			}
-		}
-	}
-
-	/**
-	 * At runtime, test if the CADSE has the correct behavior.
-	 */
-	public void testExecution() {
-
-		ArrayList<Integer> exclude = new ArrayList<Integer>();
-		testExecution(exclude);
-	}
-
-	/**
 	 * At runtime, test if an item type has the correct behavior.
 	 */
+	@Override
 	public void testExecution(int i) {
 
 		boolean fieldInCP = sicpTab.get(i).getBoolean();
