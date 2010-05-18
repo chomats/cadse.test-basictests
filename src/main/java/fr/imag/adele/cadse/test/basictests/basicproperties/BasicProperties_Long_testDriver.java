@@ -38,4 +38,13 @@ public class BasicProperties_Long_testDriver extends BasicProperties_Common_test
 	protected ItemType getItemTypeUnderTest() {
 		return CadseGCST.LONG;
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
+	 */
+	@Override
+	protected String getTypeNameUnderTest() {
+		return "Long";
+	}
 }

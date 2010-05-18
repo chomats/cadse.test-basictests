@@ -42,7 +42,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	// ================ //
 
 	/** The CADSE name */
-	public final String cadseName = CADSEPrefix + getTestName() + getTypeUnderTest();
+	public final String cadseName = CADSEPrefix + getTestName() + getTypeNameUnderTest();
 
 	/** A path to the CADSE definition */
 	public final GTTreePath cadseModel = new GTTreePath(cadseName);
@@ -127,13 +127,12 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	}
 
 	/**
-	 * Returns name of the type under test.
+	 * Returns name of the type under test. This value musn't be computed from the CADSEG constant, because it will be
+	 * used for selecting the CADSE at startup.
 	 * 
 	 * @return the name of the type under test
 	 */
-	private String getTypeUnderTest() {
-		return getItemTypeUnderTest().getName();
-	}
+	protected abstract String getTypeNameUnderTest();
 
 	/**
 	 * Gets the attribute name.
@@ -141,7 +140,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * @return the attribute name
 	 */
 	protected String getAttributeName() {
-		return attrPrefix + getTypeUnderTest();
+		return attrPrefix + getTypeNameUnderTest();
 	}
 
 	/**

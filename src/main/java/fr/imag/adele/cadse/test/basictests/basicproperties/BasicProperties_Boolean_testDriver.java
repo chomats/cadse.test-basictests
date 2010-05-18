@@ -45,6 +45,15 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 
 	/*
 	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
+	 */
+	@Override
+	protected String getTypeNameUnderTest() {
+		return "Boolean";
+	}
+
+	/*
+	 * (non-Javadoc)
 	 * @see
 	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#setNewGraphicalValue(int,
 	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell)
