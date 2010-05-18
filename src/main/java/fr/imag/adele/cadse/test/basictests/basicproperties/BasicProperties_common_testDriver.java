@@ -2,16 +2,8 @@ package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.propertiesView;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.cbuKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notCbuKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSicpKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicAttribute;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
@@ -22,54 +14,21 @@ import java.util.UUID;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 
-import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.Item;
-import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.core.attribute.IAttributeType;
 import fr.imag.adele.cadse.core.impl.CadseCore;
+import fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
-import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
-public abstract class BasicProperties_common_testDriver extends GTCadseTestCase {
-
-	// ====== //
-	// PREFIX //
-	// ====== //
-
-	/** A prefix, to compute the attributes name */
-	private final String attr_prefix = "attr_";
-	/** A prefix, to compute the item type name */
-	private final String it_prefix = "it_" + getTypeUnderTest();
-	/** A prefix, to compute the instances name */
-	private final String instance_prefix = "instance_";
-
-	// ================ //
-	// CADSE DEFINITION //
-	// ================ //
-
-	/** The CADSE definition name */
-	protected final String cadse_name = "CADSE_BasicProperties_" + getTypeUnderTest();
-	/** A path to the CADSE definition */
-	protected final GTTreePath cadse_model = new GTTreePath(cadse_name);
-	/** A path to the data model */
-	protected final GTTreePath data_model = cadse_model.concat(CadseDefinitionManager.DATA_MODEL);
+public abstract class BasicProperties_common_testDriver extends GTCommonTestDriver {
 
 	// ========================== //
 	// PROPERTIES POSSIBLE VALUES //
 	// ========================== //
-
-	/** Set of values for the Show in Creation Page property */
-	protected KeyValue[] sicpValues = { sicpKv, notSicpKv };
-	/** Set of values for the Show in Modification Page property */
-	protected KeyValue[] simpValues = { simpKv, notSimpKv };
-	/** Set of values for the Cannot be undefined property */
-	protected KeyValue[] cbuValues = { cbuKv, notCbuKv };
-	/** Set of values for the List property */
-	protected KeyValue[] listValues = { listKv, notListKv };
 
 	/** Set of values for the default value in CADSEg */
 	protected KeyValue[] defValCADSEgValues;
@@ -81,15 +40,6 @@ public abstract class BasicProperties_common_testDriver extends GTCadseTestCase 
 	// ======================================================= //
 	// TABLES USED FOR PROPERTIES VALUES FOR ALL THE INSTANCES //
 	// ======================================================= //
-
-	/** The Show in Creation Page property value for all the instances */
-	protected final ArrayList<KeyValue> sicpTab = new ArrayList<KeyValue>();
-	/** The Show in Modification Page property value for all the instances */
-	protected final ArrayList<KeyValue> simpTab = new ArrayList<KeyValue>();
-	/** The Cannot be undefined property value for all the instances */
-	protected final ArrayList<KeyValue> cbuTab = new ArrayList<KeyValue>();
-	/** The List property value for all the instances */
-	protected final ArrayList<KeyValue> listTab = new ArrayList<KeyValue>();
 
 	/** The default value for all the instances */
 	protected final ArrayList<KeyValue> defValCADSEgTab = new ArrayList<KeyValue>();
@@ -124,27 +74,9 @@ public abstract class BasicProperties_common_testDriver extends GTCadseTestCase 
 		}
 	}
 
-	/**
-	 * Returns the type under test.
-	 * 
-	 * @return the type under test
-	 */
-	abstract public String getTypeUnderTest();
-
-	/**
-	 * Gets the item type under test.
-	 * 
-	 * @return the item type under test
-	 */
-	abstract public ItemType getItemTypeUnderTest();
-
-	/**
-	 * Gets the attribute name.
-	 * 
-	 * @return the attribute name
-	 */
-	public String getAttributeName() {
-		return attr_prefix + getTypeUnderTest();
+	@Override
+	public String getTestName() {
+		return "BasicProperties";
 	}
 
 	/**
@@ -155,7 +87,7 @@ public abstract class BasicProperties_common_testDriver extends GTCadseTestCase 
 	 * @return the it name
 	 */
 	public String getItName(int i) {
-		return it_prefix + i;
+		return itPrefix + i;
 	}
 
 	/**
@@ -166,7 +98,7 @@ public abstract class BasicProperties_common_testDriver extends GTCadseTestCase 
 	 * @return the instance name
 	 */
 	public String getInstanceName(int i) {
-		return instance_prefix + i;
+		return instancePrefix + i;
 	}
 
 	public KeyValue getCorrectedDefVal(int i) {
@@ -404,7 +336,7 @@ public abstract class BasicProperties_common_testDriver extends GTCadseTestCase 
 	 * Creates the CADSE.
 	 */
 	public void testCreateCadse() {
-		createCadseDefinition(cadse_name, "model." + cadse_name);
+		createCadseDefinition(cadseName, "model." + cadseName);
 	}
 
 	/**
@@ -421,10 +353,10 @@ public abstract class BasicProperties_common_testDriver extends GTCadseTestCase 
 		preCreate(i);
 
 		/* Item type creation */
-		createItemType(data_model, getItName(i), notAbstractKv, rootKv);
+		createItemType(dataModel, getItName(i), notAbstractKv, rootKv);
 
 		/* Attribute creation */
-		GTTreePath it_path = data_model.concat(getItName(i));
+		GTTreePath it_path = dataModel.concat(getItName(i));
 
 		boolean success = true;
 		try {
@@ -630,65 +562,4 @@ public abstract class BasicProperties_common_testDriver extends GTCadseTestCase 
 			}
 		}
 	}
-
-	/**
-	 * Assert visual values are String or String[] and are equals.
-	 * 
-	 * @param message
-	 *            a failing message
-	 * @param expected
-	 * @param actual
-	 */
-	private void assertEqualsListValues(String message, Object expected, Object actual) {
-
-		ArrayList<Object> tab1 = generateArray(expected);
-		ArrayList<Object> tab2 = generateArray(actual);
-
-		if (expected == null && actual == null) {
-			return;
-		}
-
-		if (tab1.size() != tab2.size()) {
-			fail(message);
-		}
-
-		for (int i = 0; i < tab1.size(); i++) {
-			assertEquals(tab1.get(i), tab2.get(i));
-		}
-	}
-
-	@SuppressWarnings("unchecked")
-	private ArrayList<Object> generateArray(Object object) {
-
-		ArrayList<Object> tab = new ArrayList<Object>();
-
-		if (object == null) {
-			return tab;
-		}
-
-		if (object instanceof ArrayList<?>) {
-			for (Object o : (ArrayList) object) {
-				if (o instanceof Enum) {
-					tab.add(o.toString());
-				}
-				else {
-					tab.add(o);
-				}
-			}
-		}
-		else if (object instanceof Object[]) {
-			Object[] t = (Object[]) object;
-			for (int i = 0; i < t.length; i++) {
-				tab.add(t[i]);
-			}
-		}
-		else if (object instanceof Enum) {
-			tab.add(object.toString());
-		}
-		else {
-			tab.add(object);
-		}
-		return tab;
-	}
-
 }

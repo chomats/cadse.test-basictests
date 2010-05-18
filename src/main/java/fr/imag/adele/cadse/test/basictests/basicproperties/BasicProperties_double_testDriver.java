@@ -28,11 +28,6 @@ public class BasicProperties_double_testDriver extends BasicProperties_common_te
 	}
 
 	@Override
-	public String getTypeUnderTest() {
-		return "double";
-	}
-
-	@Override
 	public ItemType getItemTypeUnderTest() {
 		return CadseGCST.DOUBLE;
 	}

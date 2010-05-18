@@ -12,13 +12,16 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
  */
 public class BasicProperties_enum_tc_execution extends GTCadseTestCase {
 
+	/** The test driver */
+	BasicProperties_enum_testDriver driver = new BasicProperties_enum_testDriver();
+
 	/**
 	 * Selects the CADSE to be executed and closes unless views.
 	 */
 	@Test
 	public void test_preparation() throws Exception {
 
-		selectCadses("Cadse Model.Workspace.CADSE_BasicProperties_enum");
+		selectCadses("Cadse Model.Workspace." + driver.cadseName);
 		welcomeView.close();
 		workspaceView.show();
 	}
@@ -26,7 +29,6 @@ public class BasicProperties_enum_tc_execution extends GTCadseTestCase {
 	@Test
 	public void test_enum() throws Exception {
 
-		BasicProperties_enum_testDriver enumTest = new BasicProperties_enum_testDriver();
-		enumTest.testExecution();
+		driver.testExecution();
 	}
 }

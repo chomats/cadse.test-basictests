@@ -54,16 +54,6 @@ public class BasicProperties_string_testDriver extends BasicProperties_common_te
 		initializeTables();
 	}
 
-	/**
-	 * Returns the type under test.
-	 * 
-	 * @return the type under test
-	 */
-	@Override
-	public String getTypeUnderTest() {
-		return "string";
-	}
-
 	@Override
 	public ItemType getItemTypeUnderTest() {
 		return CadseGCST.STRING;
