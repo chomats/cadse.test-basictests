@@ -49,6 +49,15 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 
 	/*
 	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
+	 */
+	@Override
+	protected String getTypeNameUnderTest() {
+		return "Enum";
+	}
+
+	/*
+	 * (non-Javadoc)
 	 * @see fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#preCreate(int)
 	 */
 	@Override

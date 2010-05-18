@@ -26,4 +26,13 @@ public class Test1_Integer_testDriver extends Test1_common_testDriver {
 	protected ItemType getItemTypeUnderTest() {
 		return CadseGCST.INTEGER;
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
+	 */
+	@Override
+	protected String getTypeNameUnderTest() {
+		return "Integer";
+	}
 }

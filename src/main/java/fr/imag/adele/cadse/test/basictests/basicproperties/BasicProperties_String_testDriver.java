@@ -67,6 +67,15 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 
 	/*
 	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
+	 */
+	@Override
+	protected String getTypeNameUnderTest() {
+		return "String";
+	}
+
+	/*
+	 * (non-Javadoc)
 	 * @see fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#initializeTables()
 	 */
 	@Override
