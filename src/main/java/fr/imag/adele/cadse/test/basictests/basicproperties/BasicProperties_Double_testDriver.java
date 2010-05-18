@@ -6,6 +6,9 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class BasicProperties_Double_testDriver extends BasicProperties_Common_testDriver {
 
+	/**
+	 * Instantiates a new basic properties_ double_test driver.
+	 */
 	public BasicProperties_Double_testDriver() {
 
 		/* Values given into CADSEg */
@@ -27,6 +30,10 @@ public class BasicProperties_Double_testDriver extends BasicProperties_Common_te
 		initializeTables();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getItemTypeUnderTest()
+	 */
 	@Override
 	protected ItemType getItemTypeUnderTest() {
 		return CadseGCST.DOUBLE;

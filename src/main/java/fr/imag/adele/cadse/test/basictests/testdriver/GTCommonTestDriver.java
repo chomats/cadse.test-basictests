@@ -181,12 +181,14 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	}
 
 	/**
-	 * Assert visual values are String or String[] and are equals.
+	 * Assert values are String or String[] and are equals.
 	 * 
 	 * @param message
 	 *            a failing message
 	 * @param expected
+	 *            the expected list
 	 * @param actual
+	 *            the actual list
 	 */
 	protected void assertEqualsListValues(String message, Object expected, Object actual) {
 
@@ -206,6 +208,13 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 		}
 	}
 
+	/**
+	 * Convert the object into parameter to an Array.
+	 * 
+	 * @param object
+	 *            the source object
+	 * @return an array list
+	 */
 	@SuppressWarnings("unchecked")
 	private ArrayList<Object> generateArray(Object object) {
 

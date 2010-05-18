@@ -73,6 +73,10 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTestName()
+	 */
 	@Override
 	protected String getTestName() {
 		return "BasicProperties";

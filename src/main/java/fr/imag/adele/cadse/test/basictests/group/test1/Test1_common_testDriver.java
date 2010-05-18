@@ -24,13 +24,13 @@ public abstract class Test1_common_testDriver extends GTCommonTestDriver {
 	/** Link prefix used to compute the names */
 	protected final String linkName = "link";
 
-	// ====== //
-	// VALUES //
-	// ====== //
-
+	/** The default value. */
 	protected KeyValue defaultValue;
+	/** The new value1. */
 	protected KeyValue newValue1;
+	/** The new value2. */
 	protected KeyValue newValue2;
+	/** The new value3. */
 	protected KeyValue newValue3;
 
 	/**
@@ -51,24 +51,28 @@ public abstract class Test1_common_testDriver extends GTCommonTestDriver {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTestName()
+	 */
 	@Override
 	public String getTestName() {
 		return "group_test1";
 	}
 
 	/**
-	 * Gets the it name, for a given instance
+	 * Gets the source it name, for a given instance
 	 * 
 	 * @param i
 	 *            the instance number
-	 * @return the it name
+	 * @return the source it name
 	 */
 	public String getItSrcName(int i) {
 		return itPrefix + "Src" + i;
 	}
 
 	/**
-	 * Gets the link name.
+	 * Gets the link name, for a given instance
 	 * 
 	 * @param i
 	 *            the instance number
@@ -79,33 +83,33 @@ public abstract class Test1_common_testDriver extends GTCommonTestDriver {
 	}
 
 	/**
-	 * Gets the it name, for a given instance
+	 * Gets the it destination name, for a given instance
 	 * 
 	 * @param i
 	 *            the instance number
-	 * @return the it name
+	 * @return the destination it name
 	 */
 	public String getItDstName(int i) {
 		return itPrefix + "Dst" + i;
 	}
 
 	/**
-	 * Gets the instance name.
+	 * Gets the source instance name.
 	 * 
 	 * @param i
 	 *            the instance number
-	 * @return the instance name
+	 * @return the source instance name
 	 */
 	public String getInstanceSrcName(int i) {
 		return instancePrefix + "Src" + i;
 	}
 
 	/**
-	 * Gets the instance name.
+	 * Gets the destination instance name.
 	 * 
 	 * @param i
 	 *            the instance number
-	 * @return the instance name
+	 * @return the destination instance name
 	 */
 	public String getInstanceDstName(int i) {
 		return instancePrefix + "Dst" + i;
@@ -232,11 +236,9 @@ public abstract class Test1_common_testDriver extends GTCommonTestDriver {
 		}
 	}
 
-	/**
-	 * Creates the attribute number i.
-	 * 
-	 * @param i
-	 *            the attribute number to be created.
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#testCreation(int)
 	 */
 	@Override
 	public void testCreation(int i) {
@@ -299,8 +301,9 @@ public abstract class Test1_common_testDriver extends GTCommonTestDriver {
 	protected void postCreate(int i, GTTreePath it_path, GTTreePath attr_path) {
 	}
 
-	/**
-	 * At runtime, test if an item type has the correct behavior.
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#testExecution(int)
 	 */
 	@Override
 	public void testExecution(int i) {

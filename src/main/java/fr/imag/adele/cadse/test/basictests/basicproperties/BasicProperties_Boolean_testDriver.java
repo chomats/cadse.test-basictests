@@ -10,6 +10,9 @@ import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_testDriver {
 
+	/**
+	 * Instantiates a new basic properties_ boolean_test driver.
+	 */
 	public BasicProperties_Boolean_testDriver() {
 
 		/* Values given into CADSEg */
@@ -31,18 +34,20 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 		initializeTables();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getItemTypeUnderTest()
+	 */
 	@Override
 	protected ItemType getItemTypeUnderTest() {
 		return CadseGCST.BOOLEAN;
 	}
 
-	/**
-	 * Sets the new graphical value.
-	 * 
-	 * @param i
-	 *            the instance number
-	 * @param shell
-	 *            the shell
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#setNewGraphicalValue(int,
+	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell)
 	 */
 	@Override
 	protected boolean setNewGraphicalValue(int i, GTCadseShell shell) {
@@ -95,6 +100,11 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 		return true; // success
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getCorrectedDefVal(int)
+	 */
 	@Override
 	protected KeyValue getCorrectedDefVal(int i) {
 
