@@ -25,7 +25,7 @@ public class BasicProperties_Long_tc_execution extends GTCadseTestCase {
 	}
 
 	@Test
-	public void test_long() throws Exception {
+	public void test_execution() throws Exception {
 		driver.testExecution();
 	}
 }

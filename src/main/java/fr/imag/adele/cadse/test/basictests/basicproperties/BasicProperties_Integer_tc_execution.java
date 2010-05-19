@@ -25,7 +25,7 @@ public class BasicProperties_Integer_tc_execution extends GTCadseTestCase {
 	}
 
 	@Test
-	public void test_integer() throws Exception {
+	public void test_execution() throws Exception {
 		driver.testExecution();
 	}
 }

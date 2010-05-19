@@ -22,7 +22,7 @@ public class Test1_Integer_tc_execution extends GTCadseTestCase {
 	}
 
 	@Test
-	public void test_string() throws Exception {
+	public void test_execution() throws Exception {
 		driver.testExecution();
 	}
 }
