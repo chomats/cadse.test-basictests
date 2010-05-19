@@ -404,8 +404,8 @@ public abstract class Test1_common_testDriver extends GTCommonTestDriver {
 			assertEqualsListValues("Error with final visual value for #" + i, expected.visualValue, actualModel);
 		}
 		else {
-			assertCadseFieldDoesNotExist(shell, getAttributeName(), GTPreferences.FAILING_ASSERT_TIMEOUT);
-			assertButtonDoesNotExist(shell, GTEclipseConstants.NEXT_BUTTON, GTPreferences.FAILING_ASSERT_TIMEOUT);
+			assertCadseFieldDoesNotExist(shell, getAttributeName(), 0);
+			assertButtonDoesNotExist(shell, GTEclipseConstants.NEXT_BUTTON, 0);
 		}
 
 		shell.close();
