@@ -9,7 +9,7 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class BasicProperties_Enum_testDriver extends BasicProperties_Common_testDriver {
 
-	String enumTypeName = "my_enum";
+	String enumTypeName = "myEnum";
 
 	/**
 	 * Instantiates a new basic properties_ enum_test driver.
