@@ -203,7 +203,15 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 		}
 
 		for (int i = 0; i < tab1.size(); i++) {
-			assertEquals(tab1.get(i), tab2.get(i));
+			Object val1 = tab1.get(i);
+			Object val2 = tab2.get(i);
+
+			if (val1 instanceof String || val2 instanceof String) {
+				val1 = val1.toString();
+				val2 = val2.toString();
+			}
+
+			assertEquals(val1, val2);
 		}
 	}
 
