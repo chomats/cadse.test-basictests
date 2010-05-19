@@ -10,10 +10,13 @@ public class Test1_Boolean_testDriver extends Test1_common_testDriver {
 	 * Instantiates a new test1_ integer_test driver.
 	 */
 	public Test1_Boolean_testDriver() {
-		defaultValue = new KeyValue(new String(), 10, 10);
-		newValue1 = new KeyValue(new String(), 11, 11);
-		newValue2 = new KeyValue(new String(), 12, 12);
-		newValue3 = new KeyValue(new String(), 13, 13);
+		defaultValue = new KeyValue(new String(), true, true);
+		newValue1 = new KeyValue(new String(), false, false);
+		newValue2 = new KeyValue(new String(), null, null);
+		newValue3 = new KeyValue(new String(), true, true);
+
+		// Initializes CBU
+		cbuValues = new KeyValue[] { KeyValue.notCbuKv };
 
 		initializeTables();
 	}
