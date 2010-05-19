@@ -1,7 +1,5 @@
 package fr.imag.adele.cadse.test.basictests.group.test1;
 
-import java.util.ArrayList;
-
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
@@ -60,16 +58,11 @@ public class Test1_Enum_testDriver extends Test1_common_testDriver {
 	@Override
 	public KeyValue[] getAttributeCreationKeyValues(int i) {
 
-		KeyValue[] kvList = super.getAttributeCreationKeyValues(i);
 		KeyValue enumTypeKv = new KeyValue(CadseGCST.ENUM_lt_ENUM_TYPE, new GTTreePath(enumTypeName));
 
-		ArrayList<KeyValue> retval = new ArrayList<KeyValue>();
-		retval.add(enumTypeKv);
+		KeyValue dv = defaultValue;
+		KeyValue kv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, dv.visualValue, dv.modelValue);
 
-		for (KeyValue kv : kvList) {
-			retval.add(kv);
-		}
-
-		return (KeyValue[]) retval.toArray();
+		return new KeyValue[] { enumTypeKv, sicpTab.get(i), simpTab.get(i), listTab.get(i), kv };
 	}
 }
