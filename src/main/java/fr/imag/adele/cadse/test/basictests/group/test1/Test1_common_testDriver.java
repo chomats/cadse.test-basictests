@@ -17,6 +17,7 @@ import fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
+import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
 public abstract class Test1_common_testDriver extends GTCommonTestDriver {
@@ -273,7 +274,7 @@ public abstract class Test1_common_testDriver extends GTCommonTestDriver {
 	 */
 	public KeyValue[] getAttributeCreationKeyValues(int i) {
 
-		KeyValue dv = getDefaultValue(i);
+		KeyValue dv = defaultValue;
 		KeyValue kv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, dv.visualValue, dv.modelValue);
 
 		return new KeyValue[] { sicpTab.get(i), simpTab.get(i), cbuTab.get(i), listTab.get(i), kv };
@@ -403,14 +404,8 @@ public abstract class Test1_common_testDriver extends GTCommonTestDriver {
 			assertEqualsListValues("Error with final visual value for #" + i, expected.visualValue, actualModel);
 		}
 		else {
-
-			try {
-				shell.next();
-				fail("It should be impossible to find and click on next button");
-			}
-			catch (Exception e) {
-				// success
-			}
+			assertCadseFieldDoesNotExist(shell, getAttributeName(), GTPreferences.FAILING_ASSERT_TIMEOUT);
+			assertButtonDoesNotExist(shell, GTEclipseConstants.NEXT_BUTTON, GTPreferences.FAILING_ASSERT_TIMEOUT);
 		}
 
 		shell.close();
