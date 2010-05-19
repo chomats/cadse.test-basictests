@@ -10,10 +10,10 @@ public class Test1_Double_testDriver extends Test1_common_testDriver {
 	 * Instantiates a new test1_ integer_test driver.
 	 */
 	public Test1_Double_testDriver() {
-		defaultValue = new KeyValue(new String(), 10, 10);
-		newValue1 = new KeyValue(new String(), 11, 11);
-		newValue2 = new KeyValue(new String(), 12, 12);
-		newValue3 = new KeyValue(new String(), 13, 13);
+		defaultValue = new KeyValue(new String(), 10d, 10d);
+		newValue1 = new KeyValue(new String(), 11d, 11d);
+		newValue2 = new KeyValue(new String(), 12d, 12d);
+		newValue3 = new KeyValue(new String(), 13d, 13d);
 
 		initializeTables();
 	}
