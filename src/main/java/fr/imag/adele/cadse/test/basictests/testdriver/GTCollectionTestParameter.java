@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
-public class GTCommonTestParameter {
+public class GTCollectionTestParameter {
 
 	/** The list of available parameters */
 	protected HashMap<String, KeyValue[]> parameters = new HashMap<String, KeyValue[]>();
@@ -17,7 +17,7 @@ public class GTCommonTestParameter {
 	/**
 	 * Instantiates a new GTCommonTestParameter
 	 */
-	public GTCommonTestParameter() {
+	public GTCollectionTestParameter() {
 	}
 
 	/*
@@ -44,13 +44,7 @@ public class GTCommonTestParameter {
 		// Displays Tests
 		sb.append("Tests:\n");
 		for (int i = 0; i < numberOfTests(); i++) {
-			sb.append("  + test #" + i + "\n");
-			HashMap<String, KeyValue> test = tests.get(i);
-			for (Entry<String, KeyValue> e : test.entrySet()) {
-				String key = e.getKey();
-				KeyValue value = e.getValue();
-				sb.append("    - [" + key + "] " + value.visualValue.toString() + "\n");
-			}
+			sb.append(getTestParameters(i).toString());
 		}
 		sb.append("\n");
 
@@ -77,8 +71,8 @@ public class GTCommonTestParameter {
 	 *            the test number
 	 * @return the test
 	 */
-	public HashMap<String, KeyValue> getTest(int i) {
-		return tests.get(i);
+	public GTTestParameter getTestParameters(int i) {
+		return new GTTestParameter(i, tests.get(i));
 	}
 
 	/**
