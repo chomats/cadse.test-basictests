@@ -1,12 +1,20 @@
 package fr.imag.adele.cadse.test.basictests.group.test1;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notCbuKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSicpKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
-public class Test1_Enum_testDriver extends Test1_common_testDriver {
+public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 
 	String enumTypeName = "myEnum";
 
@@ -14,12 +22,49 @@ public class Test1_Enum_testDriver extends Test1_common_testDriver {
 	 * Instantiates a new test1_ integer_test driver.
 	 */
 	public Test1_Enum_testDriver() {
-		defaultValue = new KeyValue(new String(), "four", "four");
-		newValue1 = new KeyValue(new String(), "one", "one");
-		newValue2 = new KeyValue(new String(), "two", "two");
-		newValue3 = new KeyValue(new String(), "three", "three");
+		initializeTestParameters();
+	}
 
-		initializeTables();
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#initializeTestParameters()
+	 */
+	@Override
+	protected void initializeTestParameters() {
+
+		/* =========== */
+		/* DEFINITIONS */
+		/* =========== */
+
+		/* Common parameters */
+		KeyValue[] sicpValues = { sicpKv, notSicpKv };
+		KeyValue[] simpValues = { simpKv, notSimpKv };
+		KeyValue[] cbuValues = { /* cbuKv, */notCbuKv };
+		KeyValue[] listValues = { notListKv, listKv };
+
+		KeyValue defValKv = new KeyValue(new String(), "four", "four");
+		KeyValue newValue1Kv = new KeyValue(new String(), "one", "one");
+		KeyValue newValue2Kv = new KeyValue(new String(), "two", "two");
+		KeyValue newValue3Kv = new KeyValue(new String(), "three", "three");
+
+		KeyValue[] defVal = new KeyValue[] { defValKv };
+		KeyValue[] newValue1 = new KeyValue[] { newValue1Kv };
+		KeyValue[] newValue2 = new KeyValue[] { newValue2Kv };
+		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv };
+
+		/* ==== */
+		/* INIT */
+		/* ==== */
+
+		ctp.addParameter("sicp", sicpValues);
+		ctp.addParameter("simp", simpValues);
+		ctp.addParameter("cbu", cbuValues);
+		ctp.addParameter("list", listValues);
+
+		ctp.addParameter("defVal", defVal);
+		ctp.addParameter("newValue1", newValue1);
+		ctp.addParameter("newValue2", newValue2);
+		ctp.addParameter("newValue3", newValue3);
 	}
 
 	/*
@@ -45,8 +90,8 @@ public class Test1_Enum_testDriver extends Test1_common_testDriver {
 	 * @see fr.imag.adele.cadse.test.basictests.group.test1.Test1_common_testDriver#preCreate(int)
 	 */
 	@Override
-	protected void preCreate(int i) {
-		if (i == 0) {
+	protected void preCreate(GTTestParameter tp) {
+		if (tp.testNumber == 0) {
 			GTCadseHelperMethods.createEnumType(dataModel, enumTypeName, "one", "two", "three", "four");
 		}
 	}
@@ -56,13 +101,18 @@ public class Test1_Enum_testDriver extends Test1_common_testDriver {
 	 * @see fr.imag.adele.cadse.test.basictests.group.test1.Test1_common_testDriver#getAttributeCreationKeyValues(int)
 	 */
 	@Override
-	public KeyValue[] getAttributeCreationKeyValues(int i) {
+	public KeyValue[] getAttributeCreationKeyValues(GTTestParameter tp) {
 
 		KeyValue enumTypeKv = new KeyValue(CadseGCST.ENUM_lt_ENUM_TYPE, new GTTreePath(enumTypeName));
 
-		KeyValue dv = defaultValue;
-		KeyValue kv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, dv.visualValue, dv.modelValue);
+		KeyValue dv = tp.getValue("defVal");
+		KeyValue defVal = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, dv.visualValue, dv.modelValue);
 
-		return new KeyValue[] { enumTypeKv, sicpTab.get(i), simpTab.get(i), listTab.get(i), kv };
+		KeyValue sicp = tp.getValue("sicp");
+		KeyValue simp = tp.getValue("simp");
+		KeyValue cbu = tp.getValue("cbu");
+		KeyValue isList = tp.getValue("list");
+
+		return new KeyValue[] { enumTypeKv, sicp, simp, cbu, isList, defVal };
 	}
 }

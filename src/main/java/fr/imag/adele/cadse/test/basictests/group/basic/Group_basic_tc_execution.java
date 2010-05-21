@@ -117,7 +117,7 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		assertFieldEquals("Creation page", defVal, shell);
 		shell.setValue(newVal1);
 		shell.findCadseFieldName().typeText(member);
-		assertFieldEquals("newval", newVal1, shell);
+		assertFieldEquals("newValue", newVal1, shell);
 		shell.close();
 
 		// looking into properties pages
