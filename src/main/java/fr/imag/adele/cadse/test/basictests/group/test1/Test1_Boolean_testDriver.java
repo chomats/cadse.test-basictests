@@ -37,7 +37,7 @@ public class Test1_Boolean_testDriver extends Test1_Common_testDriver {
 		KeyValue[] cbuValues = { /* cbuKv, */notCbuKv };
 		KeyValue[] listValues = { notListKv, listKv };
 
-		KeyValue defValKv = new KeyValue(new String(), true, true);
+		KeyValue defValKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, true, true);
 		KeyValue newValue1Kv = new KeyValue(new String(), false, false);
 		KeyValue newValue2Kv = new KeyValue(new String(), null, null);
 		KeyValue newValue3Kv = new KeyValue(new String(), true, true);

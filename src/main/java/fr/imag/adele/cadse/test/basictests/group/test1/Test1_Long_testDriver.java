@@ -37,7 +37,7 @@ public class Test1_Long_testDriver extends Test1_Common_testDriver {
 		KeyValue[] cbuValues = { /* cbuKv, */notCbuKv };
 		KeyValue[] listValues = { notListKv, listKv };
 
-		KeyValue defValKv = new KeyValue(new String(), 10l, 10l);
+		KeyValue defValKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, 10l, 10l);
 		KeyValue newValue1Kv = new KeyValue(new String(), 11l, 11l);
 		KeyValue newValue2Kv = new KeyValue(new String(), 12l, 12l);
 		KeyValue newValue3Kv = new KeyValue(new String(), 13l, 13l);

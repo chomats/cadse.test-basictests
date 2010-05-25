@@ -81,10 +81,8 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 		ctp.addParameter("simp", simpValues);
 		ctp.addParameter("cbu", cbuValues);
 		ctp.addParameter("list", listValues);
-
 		ctp.addParameter("defVal", defVal);
 		ctp.addParameter("newValue", newVal);
-
 	}
 
 	/*
