@@ -106,8 +106,7 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 	 */
 	@Override
 	protected KeyValue[] getCreationKeyValues(GTTestParameter tp) {
-		return new KeyValue[] { tp.getValue("enumType"), tp.getValue("defVal"), tp.getValue("sicp"),
-				tp.getValue("simp"), tp.getValue("list") };
+		return tp.getValues("enumType", "defVal", "sicp", "simp", /* "cbu", */"list");
 	}
 
 	/*

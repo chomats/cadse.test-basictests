@@ -347,9 +347,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 * @return the creation key values
 	 */
 	protected KeyValue[] getCreationKeyValues(GTTestParameter tp) {
-
-		return new KeyValue[] { tp.getValue("defVal"), tp.getValue("sicp"), tp.getValue("simp"), tp.getValue("cbu"),
-				tp.getValue("list") };
+		return tp.getValues("defVal", "sicp", "simp", "cbu", "list");
 	}
 
 	/**
