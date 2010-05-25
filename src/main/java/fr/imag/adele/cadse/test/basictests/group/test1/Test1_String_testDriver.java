@@ -38,9 +38,9 @@ public class Test1_String_testDriver extends Test1_Common_testDriver {
 		KeyValue[] listValues = { notListKv, listKv };
 
 		KeyValue defValKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "defaultStr", "defaultStr");
-		KeyValue newValue1Kv = new KeyValue(new String(), "strOne", "strOne");
-		KeyValue newValue2Kv = new KeyValue(new String(), "strTwo", "strTwo");
-		KeyValue newValue3Kv = new KeyValue(new String(), "strThree", "strThree");
+		KeyValue newValue1Kv = new KeyValue(getAttributeName(), "strOne", "strOne");
+		KeyValue newValue2Kv = new KeyValue(getAttributeName(), "strTwo", "strTwo");
+		KeyValue newValue3Kv = new KeyValue(getAttributeName(), "strThree", "strThree");
 
 		KeyValue[] defVal = new KeyValue[] { defValKv };
 		KeyValue[] newValue1 = new KeyValue[] { newValue1Kv };
