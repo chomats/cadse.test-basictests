@@ -52,6 +52,10 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 		KeyValue[] newValue2 = new KeyValue[] { newValue2Kv };
 		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv };
 
+		/* Enum Type */
+		KeyValue enumTypeKv = new KeyValue(CadseGCST.ENUM_lt_ENUM_TYPE, new GTTreePath(enumTypeName));
+		KeyValue[] enumType = new KeyValue[] { enumTypeKv };
+
 		/* ==== */
 		/* INIT */
 		/* ==== */
@@ -65,6 +69,8 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 		ctp.addParameter("newValue1", newValue1);
 		ctp.addParameter("newValue2", newValue2);
 		ctp.addParameter("newValue3", newValue3);
+
+		ctp.addParameter("enumType", enumType);
 	}
 
 	/*
@@ -102,15 +108,6 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 	 */
 	@Override
 	public KeyValue[] getAttributeCreationKeyValues(GTTestParameter tp) {
-
-		KeyValue enumTypeKv = new KeyValue(CadseGCST.ENUM_lt_ENUM_TYPE, new GTTreePath(enumTypeName));
-
-		KeyValue defVal = tp.getValue("defVal");
-		KeyValue sicp = tp.getValue("sicp");
-		KeyValue simp = tp.getValue("simp");
-		KeyValue cbu = tp.getValue("cbu");
-		KeyValue isList = tp.getValue("list");
-
-		return new KeyValue[] { enumTypeKv, sicp, simp, cbu, isList, defVal };
+		return tp.getValues("enumType", "sicp", "simp", "cbu", "list", "defVal");
 	}
 }
