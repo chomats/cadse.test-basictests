@@ -1,5 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.testdriver;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -35,6 +36,23 @@ public class GTTestParameter {
 	 */
 	public KeyValue getValue(String key) {
 		return params.get(key);
+	}
+
+	/**
+	 * Gets the KeyValue object from its key reference.
+	 * 
+	 * @param key
+	 *            the key
+	 * @return the KeyValue object.
+	 */
+	public KeyValue[] getValues(String... keys) {
+
+		ArrayList<KeyValue> list = new ArrayList<KeyValue>();
+		for (String key : keys) {
+			list.add(params.get(key));
+		}
+
+		return (KeyValue[]) list.toArray();
 	}
 
 	/**
