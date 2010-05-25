@@ -259,14 +259,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * @return the attribute creation key values
 	 */
 	public KeyValue[] getAttributeCreationKeyValues(GTTestParameter tp) {
-
-		KeyValue defVal = tp.getValue("defVal");
-		KeyValue sicp = tp.getValue("sicp");
-		KeyValue simp = tp.getValue("simp");
-		KeyValue cbu = tp.getValue("cbu");
-		KeyValue isList = tp.getValue("list");
-
-		return new KeyValue[] { sicp, simp, cbu, isList, defVal };
+		return tp.getValues("sicp", "simp", "cbu", "list", "defVal");
 	}
 
 	/**
