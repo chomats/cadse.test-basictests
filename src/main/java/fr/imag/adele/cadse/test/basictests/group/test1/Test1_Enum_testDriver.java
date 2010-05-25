@@ -42,7 +42,7 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 		KeyValue[] cbuValues = { /* cbuKv, */notCbuKv };
 		KeyValue[] listValues = { notListKv, listKv };
 
-		KeyValue defValKv = new KeyValue(new String(), "four", "four");
+		KeyValue defValKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "four", "four");
 		KeyValue newValue1Kv = new KeyValue(new String(), "one", "one");
 		KeyValue newValue2Kv = new KeyValue(new String(), "two", "two");
 		KeyValue newValue3Kv = new KeyValue(new String(), "three", "three");
@@ -105,9 +105,7 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 
 		KeyValue enumTypeKv = new KeyValue(CadseGCST.ENUM_lt_ENUM_TYPE, new GTTreePath(enumTypeName));
 
-		KeyValue dv = tp.getValue("defVal");
-		KeyValue defVal = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, dv.visualValue, dv.modelValue);
-
+		KeyValue defVal = tp.getValue("defVal");
 		KeyValue sicp = tp.getValue("sicp");
 		KeyValue simp = tp.getValue("simp");
 		KeyValue cbu = tp.getValue("cbu");

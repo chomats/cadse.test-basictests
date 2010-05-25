@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 
-import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver;
 import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
@@ -262,9 +261,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 */
 	public KeyValue[] getAttributeCreationKeyValues(GTTestParameter tp) {
 
-		KeyValue dv = tp.getValue("defVal");
-		KeyValue defVal = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, dv.visualValue, dv.modelValue);
-
+		KeyValue defVal = tp.getValue("defVal");
 		KeyValue sicp = tp.getValue("sicp");
 		KeyValue simp = tp.getValue("simp");
 		KeyValue cbu = tp.getValue("cbu");
@@ -322,8 +319,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		// is field present
 		boolean isFieldPresent = shell.fieldExists(getAttributeName());
-		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, sicp,
-				isFieldPresent);
+		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, sicp, isFieldPresent);
 
 		// GET initial value
 		if (sicp) {
@@ -362,8 +358,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		// is field present
 		isFieldPresent = propertiesView.fieldExists(getAttributeName());
-		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, simp,
-				isFieldPresent);
+		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, simp, isFieldPresent);
 
 		// GET New Value 1
 		if (simp) {
@@ -419,8 +414,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		// is field present
 		isFieldPresent = propertiesView.fieldExists(getAttributeName());
-		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, simp,
-				isFieldPresent);
+		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, simp, isFieldPresent);
 
 		// SET New Value 3
 		if (simp) {
@@ -435,8 +429,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		// is field present
 		isFieldPresent = propertiesView.fieldExists(getAttributeName());
-		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, simp,
-				isFieldPresent);
+		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, simp, isFieldPresent);
 
 		// GET New Value 3
 		if (simp) {
