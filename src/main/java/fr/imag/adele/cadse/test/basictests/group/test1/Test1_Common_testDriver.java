@@ -127,8 +127,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 								.getValue("newValue1").modelValue.toString() });
 			}
 			else {
-				return new KeyValue(getAttributeName(), tp.getValue("newValue1").visualValue,
-						tp.getValue("newValue1").modelValue);
+				return tp.getValue("newValue1");
 			}
 		}
 		else {
@@ -303,12 +302,9 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		boolean simp = tp.getBoolean("simp");
 
 		// Values used to set fields
-		KeyValue val1 = new KeyValue(getAttributeName(), tp.getValue("newValue1").visualValue,
-				tp.getValue("newValue1").modelValue);
-		KeyValue val2 = new KeyValue(getAttributeName(), tp.getValue("newValue2").visualValue,
-				tp.getValue("newValue2").modelValue);
-		KeyValue val3 = new KeyValue(getAttributeName(), tp.getValue("newValue3").visualValue,
-				tp.getValue("newValue3").modelValue);
+		KeyValue val1 = tp.getValue("newValue1");
+		KeyValue val2 = tp.getValue("newValue2");
+		KeyValue val3 = tp.getValue("newValue3");
 
 		/* ============= */
 		/* Head creation */
