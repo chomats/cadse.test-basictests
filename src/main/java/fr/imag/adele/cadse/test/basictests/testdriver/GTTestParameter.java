@@ -52,7 +52,7 @@ public class GTTestParameter {
 			list.add(params.get(key));
 		}
 
-		return (KeyValue[]) list.toArray();
+		return list.toArray(new KeyValue[0]);
 	}
 
 	/**
