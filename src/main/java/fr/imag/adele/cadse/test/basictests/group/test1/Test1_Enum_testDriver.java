@@ -108,6 +108,6 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 	 */
 	@Override
 	public KeyValue[] getAttributeCreationKeyValues(GTTestParameter tp) {
-		return tp.getValues("enumType", "sicp", "simp", "cbu", "list", "defVal");
+		return tp.getValues("enumType", "sicp", "simp", /* "cbu", */"list", "defVal");
 	}
 }
