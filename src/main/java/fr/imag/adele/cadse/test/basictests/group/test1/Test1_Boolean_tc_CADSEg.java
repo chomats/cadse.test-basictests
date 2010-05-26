@@ -42,6 +42,6 @@ public class Test1_Boolean_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_Boolean() throws Exception {
 		Test1_Boolean_testDriver data = new Test1_Boolean_testDriver();
-		data.testCreation();
+		data.testCreation(0);
 	}
 }
