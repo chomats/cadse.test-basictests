@@ -130,18 +130,45 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 */
 	public void testCreation(ArrayList<Integer> exclude) {
 
-		/* Creates the CADSE */
-		createCadse();
+		boolean createCadse = true;
 
 		/* Creates the item types and attributes */
 		for (int i = 0; i < getNbTest(); i++) {
 			if (!exclude.contains(new Integer(i))) {
-				GTTestParameter tp = ctp.getTestParameters(i);
-				System.out.println("CADSEg - running " + ctp.numberOfTests() + " tests.");
-				System.out.println(tp.toString());
-				testCreation(tp);
+				testCreation(i, createCadse);
+				createCadse = false;
 			}
 		}
+	}
+
+	/**
+	 * Creates the CADSE, the items type and all the attributes in CADSEg.
+	 * 
+	 * @param i
+	 *            sub test number
+	 */
+	public void testCreation(int i, boolean createCadse) {
+
+		/* Creates the CADSE */
+		if (createCadse) {
+			createCadse();
+		}
+
+		/* Creates the item types and attributes */
+		GTTestParameter tp = ctp.getTestParameters(i);
+		System.out.println("CADSEg - running " + ctp.numberOfTests() + " tests.");
+		System.out.println(tp.toString());
+		testCreation(tp);
+	}
+
+	/**
+	 * Creates the CADSE, the items type and all the attributes in CADSEg.
+	 * 
+	 * @param i
+	 *            sub test number
+	 */
+	public void testCreation(int i) {
+		testCreation(i, true);
 	}
 
 	/**
@@ -161,10 +188,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	public void testExecution(ArrayList<Integer> exclude) {
 		for (int i = 0; i < getNbTest(); i++) {
 			if (!exclude.contains(new Integer(i))) {
-				GTTestParameter tp = ctp.getTestParameters(i);
-				System.out.println("Execution - running " + ctp.numberOfTests() + " tests.");
-				System.out.println(tp.toString());
-				testExecution(tp);
+				testExecution(i);
 			}
 		}
 	}
@@ -182,10 +206,13 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * parameter.
 	 * 
 	 * @param i
-	 *            the sub test number
+	 *            sub test number
 	 */
 	public void testExecution(int i) {
-		testExecution(ctp.getTestParameters(i));
+		GTTestParameter tp = ctp.getTestParameters(i);
+		System.out.println("Execution - running " + ctp.numberOfTests() + " tests.");
+		System.out.println(tp.toString());
+		testExecution(tp);
 	}
 
 	/**
