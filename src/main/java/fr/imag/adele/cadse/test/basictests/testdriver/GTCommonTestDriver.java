@@ -124,19 +124,32 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 
 	/**
 	 * Creates the CADSE, the items type and all the attributes in CADSEg.
+	 * 
+	 * @param exclude
+	 *            the exclude
 	 */
-	public void testCreation() {
+	public void testCreation(ArrayList<Integer> exclude) {
 
 		/* Creates the CADSE */
 		createCadse();
 
 		/* Creates the item types and attributes */
 		for (int i = 0; i < getNbTest(); i++) {
-			GTTestParameter tp = ctp.getTestParameters(i);
-			System.out.println("CADSEg - running " + ctp.numberOfTests() + " tests.");
-			System.out.println(tp.toString());
-			testCreation(tp);
+			if (!exclude.contains(new Integer(i))) {
+				GTTestParameter tp = ctp.getTestParameters(i);
+				System.out.println("CADSEg - running " + ctp.numberOfTests() + " tests.");
+				System.out.println(tp.toString());
+				testCreation(tp);
+			}
 		}
+	}
+
+	/**
+	 * Creates the CADSE, the items type and all the attributes in CADSEg.
+	 */
+	public void testCreation() {
+		ArrayList<Integer> exclude = new ArrayList<Integer>();
+		testCreation(exclude);
 	}
 
 	/**
