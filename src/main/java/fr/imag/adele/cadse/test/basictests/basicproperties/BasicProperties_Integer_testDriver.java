@@ -67,7 +67,7 @@ public class BasicProperties_Integer_testDriver extends BasicProperties_Common_t
 	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getItemTypeUnderTest()
 	 */
 	@Override
-	protected ItemType getItemTypeUnderTest() {
+	protected ItemType getAttributeTypeUnderTest() {
 		return CadseGCST.INTEGER;
 	}
 
@@ -76,7 +76,7 @@ public class BasicProperties_Integer_testDriver extends BasicProperties_Common_t
 	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
 	 */
 	@Override
-	protected String getTypeNameUnderTest() {
+	protected String getAttributeNameUnderTest() {
 		return "Integer";
 	}
 }

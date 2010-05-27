@@ -15,7 +15,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 public class BasicProperties_Long_testDriver extends BasicProperties_Common_testDriver {
 
 	/**
-	 * Instantiates a new basic properties_ long_test driver.
+	 * Instantiates a new testDriver
 	 */
 	public BasicProperties_Long_testDriver() {
 		initializeTestParameters();
@@ -23,22 +23,8 @@ public class BasicProperties_Long_testDriver extends BasicProperties_Common_test
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getItemTypeUnderTest()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#initializeTestParameters()
 	 */
-	@Override
-	protected ItemType getItemTypeUnderTest() {
-		return CadseGCST.LONG;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
-	 */
-	@Override
-	protected String getTypeNameUnderTest() {
-		return "Long";
-	}
-
 	@Override
 	protected void initializeTestParameters() {
 
@@ -74,5 +60,23 @@ public class BasicProperties_Long_testDriver extends BasicProperties_Common_test
 
 		ctp.addParameter("defVal", defVal);
 		ctp.addParameter("newValue", newVal);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
+	 */
+	@Override
+	protected ItemType getAttributeTypeUnderTest() {
+		return CadseGCST.LONG;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
+	 */
+	@Override
+	protected String getAttributeNameUnderTest() {
+		return "Long";
 	}
 }

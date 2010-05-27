@@ -21,7 +21,7 @@ import fr.imag.adele.graphictests.test.GTPreferences;
 public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_testDriver {
 
 	/**
-	 * Instantiates a new basic properties_ boolean_test driver.
+	 * Instantiates a new testDriver
 	 */
 	public BasicProperties_Boolean_testDriver() {
 		initializeTestParameters();
@@ -29,19 +29,19 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getItemTypeUnderTest()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
 	 */
 	@Override
-	protected ItemType getItemTypeUnderTest() {
+	protected ItemType getAttributeTypeUnderTest() {
 		return CadseGCST.BOOLEAN;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
 	 */
 	@Override
-	protected String getTypeNameUnderTest() {
+	protected String getAttributeNameUnderTest() {
 		return "Boolean";
 	}
 
@@ -88,7 +88,8 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#setNewGraphicalValue(int,
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#setNewGraphicalValue(fr
+	 * .imag.adele.cadse.test.basictests.testdriver.GTTestParameter,
 	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell)
 	 */
 	@Override
@@ -146,7 +147,8 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getCorrectedDefVal(int)
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getCorrectedDefVal(fr.imag
+	 * .adele.cadse.test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
 	protected KeyValue getCorrectedDefVal(GTTestParameter tp) {

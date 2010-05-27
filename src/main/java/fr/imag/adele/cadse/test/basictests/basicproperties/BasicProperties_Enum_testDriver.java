@@ -15,10 +15,11 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class BasicProperties_Enum_testDriver extends BasicProperties_Common_testDriver {
 
+	/** Enum type name */
 	String enumTypeName = "myEnum";
 
 	/**
-	 * Instantiates a new basic properties_ enum_test driver.
+	 * Instantiates a new testDriver
 	 */
 	public BasicProperties_Enum_testDriver() {
 		initializeTestParameters();
@@ -26,19 +27,19 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getItemTypeUnderTest()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
 	 */
 	@Override
-	protected ItemType getItemTypeUnderTest() {
+	protected ItemType getAttributeTypeUnderTest() {
 		return CadseGCST.ENUM;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
 	 */
 	@Override
-	protected String getTypeNameUnderTest() {
+	protected String getAttributeNameUnderTest() {
 		return "Enum";
 	}
 
@@ -90,7 +91,9 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#preCreate(int)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#preCreate(fr.imag.adele.cadse.test.basictests
+	 * .testdriver.GTTestParameter)
 	 */
 	@Override
 	protected void preCreate(GTTestParameter tp) {
@@ -102,7 +105,8 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getCreationKeyValues(int)
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getCreationKeyValues(fr
+	 * .imag.adele.cadse.test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
 	protected KeyValue[] getCreationKeyValues(GTTestParameter tp) {
@@ -112,8 +116,8 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#attributeCreationSuccess
-	 * (int)
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#attributeCreationSuccess(fr.imag.adele.cadse
+	 * .test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
 	protected boolean attributeCreationSuccess(GTTestParameter tp) {
