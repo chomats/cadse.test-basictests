@@ -1,5 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.testdriver;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicAttribute;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
@@ -39,7 +41,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	// ================ //
 
 	/** The CADSE name. */
-	public final String cadseName = CADSEPrefix + getTestName() + getTypeNameUnderTest();
+	public final String cadseName = CADSEPrefix + getTestName() + getAttributeNameUnderTest();
 
 	/** A path to the CADSE definition. */
 	public final GTTreePath cadseModel = new GTTreePath(cadseName);
@@ -55,78 +57,38 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	protected abstract String getTestName();
 
 	/**
-	 * Gets the item type under test.
+	 * Gets the attribute type under test.
 	 * 
-	 * @return the item type under test
+	 * @return the attribute item type.
 	 */
-	protected abstract ItemType getItemTypeUnderTest();
+	protected abstract ItemType getAttributeTypeUnderTest();
 
 	/**
-	 * Returns name of the type under test. This value musn't be computed from the CADSEG constant, because it will be
-	 * used for selecting the CADSE at startup.
+	 * Returns name of the attribute under test. This value musn't be computed from the CADSEG constant, because it will
+	 * be used for selecting the CADSE at startup.
 	 * 
-	 * @return the name of the type under test
+	 * @return the name of the attribute type under test
 	 */
-	protected abstract String getTypeNameUnderTest();
+	protected abstract String getAttributeNameUnderTest();
 
 	/**
-	 * Initialize test parameters.
+	 * This method is used to set properties into the GTCollectionTestParameter.
 	 */
 	protected abstract void initializeTestParameters();
 
 	/**
-	 * Creates the configuration #i.
-	 * 
-	 * @param tp
-	 *            the test parameter
+	 * Creates the CADSE, the items type and all the attributes in CADSEg.
 	 */
-	public abstract void testCreation(GTTestParameter tp);
-
-	/**
-	 * At runtime, test the configuration #i.
-	 * 
-	 * @param tp
-	 *            the test parameter
-	 */
-	public abstract void testExecution(GTTestParameter tp);
-
-	/**
-	 * At startup, selects the CADSE created before.
-	 */
-	public void selectCadse() {
-		selectCadses("Cadse Model.Workspace." + cadseName);
-	}
-
-	/**
-	 * Creates the CADSE.
-	 */
-	private void createCadse() {
-		createCadseDefinition(cadseName, "model." + cadseName);
-	}
-
-	/**
-	 * Gets the attribute name.
-	 * 
-	 * @return the attribute name
-	 */
-	protected String getAttributeName() {
-		return attrPrefix + getTypeNameUnderTest();
-	}
-
-	/**
-	 * Gets the nb test.
-	 * 
-	 * @return the nb test
-	 */
-	public int getNbTest() {
-		return ctp.numberOfTests();
+	public void testCreation() {
+		ArrayList<Integer> exclude = new ArrayList<Integer>();
+		testCreation(exclude);
 	}
 
 	/**
 	 * Creates the CADSE, the items type and all the attributes in CADSEg.
 	 * 
 	 * @param exclude
-	 *            the exclude
+	 *            the set of test to be excluded from creation.
 	 */
 	public void testCreation(ArrayList<Integer> exclude) {
 
@@ -147,6 +109,18 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * @param i
 	 *            sub test number
 	 */
+	public void testCreation(int i) {
+		testCreation(i, true);
+	}
+
+	/**
+	 * Creates the CADSE, the items type and all the attributes in CADSEg.
+	 * 
+	 * @param i
+	 *            sub test number.
+	 * @param createCadse
+	 *            true if the CADSE should be created, false otherwise.
+	 */
 	public void testCreation(int i, boolean createCadse) {
 
 		/* Creates the CADSE */
@@ -154,36 +128,157 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 			createCadse();
 		}
 
-		/* Creates the item types and attributes */
+		/* Debug information */
 		GTTestParameter tp = ctp.getTestParameters(i);
 		System.out.println("CADSEg - running " + ctp.numberOfTests() + " tests.");
 		System.out.println(tp.toString());
+
+		/* Creates the item types and attributes */
 		testCreation(tp);
 	}
 
 	/**
-	 * Creates the CADSE, the items type and all the attributes in CADSEg.
+	 * Creates a specific the configuration.
 	 * 
-	 * @param i
-	 *            sub test number
+	 * @param tp
+	 *            the test parameter
 	 */
-	public void testCreation(int i) {
-		testCreation(i, true);
+	protected void testCreation(GTTestParameter tp) {
+
+		/* Pre create */
+		preCreate(tp);
+
+		/* Item type and link creation */
+		GTTreePath typePath = createTypes(tp);
+
+		/* Attributes creation */
+		boolean success = createAttributes(tp, typePath);
+
+		boolean expected = attributeCreationSuccess(tp);
+		assertEquals("testCreation error with #" + tp.testNumber, expected, success);
+
+		/* Post create */
+		if (success) {
+			GTTreePath attrPath = typePath.concat(getAttributeName());
+			postCreate(tp, typePath, attrPath);
+		}
 	}
 
 	/**
-	 * Creates the CADSE, the items type and all the attributes in CADSEg.
+	 * Performs actions before the item creation.
+	 * 
+	 * @param tp
+	 *            the test parameter
 	 */
-	public void testCreation() {
-		ArrayList<Integer> exclude = new ArrayList<Integer>();
-		testCreation(exclude);
+	protected void preCreate(GTTestParameter tp) {
+	}
+
+	/**
+	 * Creates the types.
+	 * 
+	 * @param tp
+	 *            the test parameter
+	 * @return a path to the type from which attributes will be created
+	 */
+	abstract protected GTTreePath createTypes(GTTestParameter tp);
+
+	/**
+	 * Creates the attributes.
+	 * 
+	 * @param tp
+	 *            the test parameter
+	 * @param typePath
+	 *            a path to the type on which attributes should be created
+	 * @return true, if successful
+	 */
+	protected boolean createAttributes(GTTestParameter tp, GTTreePath typePath) {
+		try {
+			createBasicAttribute(typePath, getAttributeTypeUnderTest(), getAttributeName(), getCreationKeyValues(tp));
+			return true;
+		}
+		catch (Exception e) {
+			return false;
+		}
+	}
+
+	/**
+	 * Gets the creation key values.
+	 * 
+	 * @param tp
+	 *            the test parameter
+	 * @return the list of KeyValues for creating the attribute.
+	 */
+	abstract protected KeyValue[] getCreationKeyValues(GTTestParameter tp);
+
+	/**
+	 * Returns true if the attribute can be created, false otherwise.
+	 * 
+	 * @param tp
+	 *            the test parameter
+	 * @return true if the attribute can be created, false otherwise.
+	 */
+	protected boolean attributeCreationSuccess(GTTestParameter tp) {
+		return true;
+	}
+
+	/**
+	 * Performs actions after the item creation.
+	 * 
+	 * @param tp
+	 *            the test parameter
+	 * @param itPath
+	 *            the item type path
+	 * @param attrPath
+	 *            the attribute path
+	 */
+	protected void postCreate(GTTestParameter tp, GTTreePath itPath, GTTreePath attrPath) {
+	}
+
+	/**
+	 * Creates the CADSE.
+	 */
+	private void createCadse() {
+		createCadseDefinition(cadseName, "model." + cadseName);
+	}
+
+	/**
+	 * Gets the attribute name.
+	 * 
+	 * @return the attribute name
+	 */
+	protected String getAttributeName() {
+		return attrPrefix + getAttributeNameUnderTest();
+	}
+
+	/**
+	 * Gets the nb test.
+	 * 
+	 * @return the nb test
+	 */
+	public int getNbTest() {
+		return ctp.numberOfTests();
+	}
+
+	/**
+	 * At runtime, test the configuration tp.
+	 * 
+	 * @param tp
+	 *            the test parameter
+	 */
+	protected abstract void testExecution(GTTestParameter tp);
+
+	/**
+	 * At startup, selects the CADSE created before.
+	 */
+	public void selectCadse() {
+		selectCadses("Cadse Model.Workspace." + cadseName);
 	}
 
 	/**
 	 * At runtime, test if the CADSE has the correct behavior. Excludes the tests with numbers in the list in parameter.
 	 * 
 	 * @param exclude
-	 *            the exclude
+	 *            the exclude list
 	 */
 	public void testExecution(ArrayList<Integer> exclude) {
 		for (int i = 0; i < getNbTest(); i++) {
@@ -202,7 +297,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	}
 
 	/**
-	 * At runtime, test if the CADSE has the correct behavior with only the subtest which number is given into
+	 * At runtime, test if the CADSE has the correct behavior only with the subtest which number is given into
 	 * parameter.
 	 * 
 	 * @param i
