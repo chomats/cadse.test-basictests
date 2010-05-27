@@ -14,7 +14,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 public class Test1_Long_testDriver extends Test1_Common_testDriver {
 
 	/**
-	 * Instantiates a new test1_ integer_test driver.
+	 * Instantiates a new testDriver
 	 */
 	public Test1_Long_testDriver() {
 		initializeTestParameters();
@@ -64,19 +64,19 @@ public class Test1_Long_testDriver extends Test1_Common_testDriver {
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.group.test1.Test1_common_testDriver#getItemTypeUnderTest()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
 	 */
 	@Override
-	protected ItemType getItemTypeUnderTest() {
+	protected ItemType getAttributeTypeUnderTest() {
 		return CadseGCST.LONG;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
 	 */
 	@Override
-	protected String getTypeNameUnderTest() {
+	protected String getAttributeNameUnderTest() {
 		return "Long";
 	}
 }

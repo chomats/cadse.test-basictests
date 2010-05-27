@@ -16,10 +16,11 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 
+	/** Enum Type name */
 	String enumTypeName = "myEnum";
 
 	/**
-	 * Instantiates a new test1_ integer_test driver.
+	 * Instantiates a new testDriver
 	 */
 	public Test1_Enum_testDriver() {
 		initializeTestParameters();
@@ -75,25 +76,27 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.group.test1.Test1_common_testDriver#getItemTypeUnderTest()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
 	 */
 	@Override
-	protected ItemType getItemTypeUnderTest() {
+	protected ItemType getAttributeTypeUnderTest() {
 		return CadseGCST.ENUM;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
 	 */
 	@Override
-	protected String getTypeNameUnderTest() {
+	protected String getAttributeNameUnderTest() {
 		return "Enum";
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.group.test1.Test1_common_testDriver#preCreate(int)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#preCreate(fr.imag.adele.cadse.test.basictests
+	 * .testdriver.GTTestParameter)
 	 */
 	@Override
 	protected void preCreate(GTTestParameter tp) {
@@ -104,10 +107,12 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.group.test1.Test1_common_testDriver#getAttributeCreationKeyValues(int)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.group.test1.Test1_Common_testDriver#getCreationKeyValues(fr.imag.adele.cadse
+	 * .test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
-	public KeyValue[] getAttributeCreationKeyValues(GTTestParameter tp) {
+	public KeyValue[] getCreationKeyValues(GTTestParameter tp) {
 		return tp.getValues("enumType", "sicp", "simp", /* "cbu", */"list", "defVal");
 	}
 }

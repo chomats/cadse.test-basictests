@@ -4,7 +4,6 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicAttribute;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
 
@@ -35,68 +34,68 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	}
 
 	/**
-	 * Gets the source it name, for a given instance
+	 * Gets the source it name, for a given instance.
 	 * 
-	 * @param i
-	 *            the instance number
+	 * @param tp
+	 *            the test parameter
 	 * @return the source it name
 	 */
-	public String getItSrcName(GTTestParameter tp) {
+	protected String getItSrcName(GTTestParameter tp) {
 		return itPrefix + "Src" + tp.testNumber;
 	}
 
 	/**
 	 * Gets the link name, for a given instance
 	 * 
-	 * @param i
-	 *            the instance number
+	 * @param tp
+	 *            the test parameter
 	 * @return the link name
 	 */
-	public String getLinkName(GTTestParameter tp) {
+	protected String getLinkName(GTTestParameter tp) {
 		return linkName;
 	}
 
 	/**
 	 * Gets the it destination name, for a given instance
 	 * 
-	 * @param i
-	 *            the instance number
+	 * @param tp
+	 *            the test parameter
 	 * @return the destination it name
 	 */
-	public String getItDstName(GTTestParameter tp) {
+	protected String getItDstName(GTTestParameter tp) {
 		return itPrefix + "Dst" + tp.testNumber;
 	}
 
 	/**
 	 * Gets the source instance name.
 	 * 
-	 * @param i
-	 *            the instance number
+	 * @param tp
+	 *            the test parameter
 	 * @return the source instance name
 	 */
-	public String getInstanceSrcName(GTTestParameter tp) {
+	protected String getInstanceSrcName(GTTestParameter tp) {
 		return instancePrefix + "Src" + tp.testNumber;
 	}
 
 	/**
 	 * Gets the destination instance name.
 	 * 
-	 * @param i
-	 *            the instance number
+	 * @param tp
+	 *            the test parameter
 	 * @return the destination instance name
 	 */
-	public String getInstanceDstName(GTTestParameter tp) {
+	protected String getInstanceDstName(GTTestParameter tp) {
 		return instancePrefix + "Dst" + tp.testNumber;
 	}
 
 	/**
 	 * Gets the default value.
 	 * 
-	 * @param i
-	 *            the instance number.
+	 * @param tp
+	 *            the test parameter
 	 * @return the default value
 	 */
-	public KeyValue getDefaultValue(GTTestParameter tp) {
+	protected KeyValue getDefaultValue(GTTestParameter tp) {
 
 		boolean isList = tp.getBoolean("list");
 
@@ -111,11 +110,11 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	/**
 	 * Gets the first new value.
 	 * 
-	 * @param i
-	 *            the instance number.
+	 * @param tp
+	 *            the test parameter
 	 * @return the first new value
 	 */
-	public KeyValue getNewValue1(GTTestParameter tp) {
+	protected KeyValue getNewValue1(GTTestParameter tp) {
 
 		boolean isList = tp.getBoolean("list");
 		boolean sicp = tp.getBoolean("sicp");
@@ -138,11 +137,11 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	/**
 	 * Gets the second new value.
 	 * 
-	 * @param i
-	 *            the instance number.
+	 * @param tp
+	 *            the test parameter
 	 * @return the second new value
 	 */
-	public KeyValue getNewValue2(GTTestParameter tp) {
+	protected KeyValue getNewValue2(GTTestParameter tp) {
 
 		boolean isList = tp.getBoolean("list");
 		boolean simp = tp.getBoolean("simp");
@@ -182,11 +181,11 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	/**
 	 * Gets the third new value.
 	 * 
-	 * @param i
-	 *            the instance number.
+	 * @param tp
+	 *            the test parameter
 	 * @return the third new value
 	 */
-	public KeyValue getNewValue3(GTTestParameter tp) {
+	protected KeyValue getNewValue3(GTTestParameter tp) {
 
 		boolean isList = tp.getBoolean("list");
 		boolean simp = tp.getBoolean("simp");
@@ -225,17 +224,12 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#testCreation(int)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#createTypes(fr.imag.adele.cadse.test.basictests
+	 * .testdriver.GTTestParameter)
 	 */
 	@Override
-	public void testCreation(GTTestParameter tp) {
-
-		System.out.println("Starting CADSEg #" + tp.testNumber);
-
-		/* Pre create */
-		preCreate(tp);
-
-		/* Item type and link creation */
+	protected GTTreePath createTypes(GTTestParameter tp) {
 		GTTreePath src = dataModel.concat(getItSrcName(tp));
 		GTTreePath dst = dataModel.concat(getItDstName(tp));
 
@@ -243,53 +237,28 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		createItemType(dataModel, dst.getDestinationName(), notAbstractKv, rootKv);
 		createLinkType(getLinkName(tp), src, dst, null, null, KeyValue.groupKv);
 
-		/* Attribute creation */
-		createBasicAttribute(src, getItemTypeUnderTest(), getAttributeName(), getAttributeCreationKeyValues(tp));
-
-		/* Post create */
-		GTTreePath attr = src.concat(getAttributeName());
-		postCreate(tp, src, attr);
-	}
-
-	/**
-	 * Gets a list of key values used to create the attribute.
-	 * 
-	 * @param i
-	 *            the i
-	 * @return the attribute creation key values
-	 */
-	public KeyValue[] getAttributeCreationKeyValues(GTTestParameter tp) {
-		return tp.getValues("sicp", "simp", "cbu", "list", "defVal");
-	}
-
-	/**
-	 * Performs actions before the item creation.
-	 * 
-	 * @param i
-	 *            the number of the item to be created
-	 */
-	protected void preCreate(GTTestParameter tp) {
-	}
-
-	/**
-	 * Performs actions after the item creation.
-	 * 
-	 * @param i
-	 *            the number of the item to be created
-	 * @param it_path
-	 *            the item type path
-	 * @param attr_path
-	 *            the attribute path
-	 */
-	protected void postCreate(GTTestParameter tp, GTTreePath it_path, GTTreePath attr_path) {
+		return src;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#testExecution(int)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getCreationKeyValues(fr.imag.adele.cadse.test
+	 * .basictests.testdriver.GTTestParameter)
 	 */
 	@Override
-	public void testExecution(GTTestParameter tp) {
+	protected KeyValue[] getCreationKeyValues(GTTestParameter tp) {
+		return tp.getValues("sicp", "simp", "cbu", "list", "defVal");
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#testExecution(fr.imag.adele.cadse.test.basictests
+	 * .testdriver.GTTestParameter)
+	 */
+	@Override
+	protected void testExecution(GTTestParameter tp) {
 
 		boolean sicp = tp.getBoolean("sicp");
 		boolean simp = tp.getBoolean("simp");
