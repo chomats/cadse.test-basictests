@@ -51,6 +51,6 @@ public class BasicProperties_String_tc_CADSEg extends GTCadseTestCase {
 	@Test
 	public void test_string() throws Exception {
 		BasicProperties_String_testDriver data = new BasicProperties_String_testDriver();
-		data.testCreation(1);
+		data.testCreation();
 	}
 }

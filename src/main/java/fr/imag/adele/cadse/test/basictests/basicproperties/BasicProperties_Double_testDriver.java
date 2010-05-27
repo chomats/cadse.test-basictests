@@ -15,7 +15,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 public class BasicProperties_Double_testDriver extends BasicProperties_Common_testDriver {
 
 	/**
-	 * Instantiates a new basic properties_ double_test driver.
+	 * Instantiates a new testDriver
 	 */
 	public BasicProperties_Double_testDriver() {
 		initializeTestParameters();
@@ -23,19 +23,19 @@ public class BasicProperties_Double_testDriver extends BasicProperties_Common_te
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getItemTypeUnderTest()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
 	 */
 	@Override
-	protected ItemType getItemTypeUnderTest() {
+	protected ItemType getAttributeTypeUnderTest() {
 		return CadseGCST.DOUBLE;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
 	 */
 	@Override
-	protected String getTypeNameUnderTest() {
+	protected String getAttributeNameUnderTest() {
 		return "Double";
 	}
 

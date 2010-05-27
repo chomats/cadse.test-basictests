@@ -4,7 +4,6 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicAttribute;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 
 import java.util.ArrayList;
@@ -285,82 +284,24 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#testCreation(fr.imag.adele.cadse.test.basictests
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#createTypes(fr.imag.adele.cadse.test.basictests
 	 * .testdriver.GTTestParameter)
 	 */
 	@Override
-	public void testCreation(GTTestParameter tp) {
-
-		/* Pre create */
-		preCreate(tp);
-
-		/* Item type creation */
+	protected GTTreePath createTypes(GTTestParameter tp) {
 		createItemType(dataModel, getItName(tp), notAbstractKv, rootKv);
-
-		/* Attribute creation */
-		GTTreePath it_path = dataModel.concat(getItName(tp));
-
-		boolean success = true;
-		try {
-			createBasicAttribute(it_path, getItemTypeUnderTest(), getAttributeName(), getCreationKeyValues(tp));
-
-			/* Assert item has been created */
-			GTTreePath attr_path = it_path.concat(getAttributeName());
-			workspaceView.selectNode(attr_path);
-
-			/* Post create */
-			postCreate(tp, it_path, attr_path);
-		}
-		catch (Exception e) {
-			success = false;
-		}
-
-		boolean expected = attributeCreationSuccess(tp);
-		assertEquals("testCreation error with #" + tp.testNumber, expected, success);
+		return dataModel.concat(getItName(tp));
 	}
 
-	/**
-	 * Returns true if the attribute can be created, false otherwise.
-	 * 
-	 * @param tp
-	 *            the test parameter
-	 * @return true if the attribute can be created, false otherwise.
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getCreationKeyValues(fr.imag.adele.cadse.test
+	 * .basictests.testdriver.GTTestParameter)
 	 */
-	protected boolean attributeCreationSuccess(GTTestParameter tp) {
-		return true;
-	}
-
-	/**
-	 * Performs actions before the item creation.
-	 * 
-	 * @param tp
-	 *            the test parameter
-	 */
-	protected void preCreate(GTTestParameter tp) {
-	}
-
-	/**
-	 * Gets key values to fill creation page.
-	 * 
-	 * @param i
-	 *            the i
-	 * @return the creation key values
-	 */
+	@Override
 	protected KeyValue[] getCreationKeyValues(GTTestParameter tp) {
 		return tp.getValues("defVal", "sicp", "simp", "cbu", "list");
-	}
-
-	/**
-	 * Performs actions after the item creation.
-	 * 
-	 * @param tp
-	 *            the test parameter
-	 * @param it_path
-	 *            the item type path
-	 * @param attr_path
-	 *            the attribute path
-	 */
-	protected void postCreate(GTTestParameter tp, GTTreePath it_path, GTTreePath attr_path) {
 	}
 
 	/*
@@ -370,7 +311,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 * .testdriver.GTTestParameter)
 	 */
 	@Override
-	public void testExecution(GTTestParameter tp) {
+	protected void testExecution(GTTestParameter tp) {
 
 		boolean sicp = tp.getBoolean("sicp");
 		boolean simp = tp.getBoolean("simp");
@@ -396,12 +337,12 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		if (fieldInCP) {
 			KeyValue expected = getInitialValue(tp);
 
-			Object actual_visual = shell.findCadseField(getAttributeName()).getValue();
+			Object actualVisual = shell.findCadseField(getAttributeName()).getValue();
 			assertEqualsListValues("Initial visual value error for #" + tp.testNumber, expected.visualValue,
-					actual_visual);
+					actualVisual);
 
-			Object actual_model = shell.findCadseField(getAttributeName()).getModelValue();
-			assertEqualsListValues("Initial model value error for #" + tp.testNumber, expected.modelValue, actual_model);
+			Object actualModel = shell.findCadseField(getAttributeName()).getModelValue();
+			assertEqualsListValues("Initial model value error for #" + tp.testNumber, expected.modelValue, actualModel);
 		}
 
 		// New Attribute Value
@@ -461,9 +402,9 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 			assertNotNull(item);
 			IAttributeType<?> attr = item.getType().getAttributeType(getAttributeName());
 			assertNotNull(attr);
-			Object model_actual = item.getAttribute(attr);
-			Object model_expected = getFinalModelValue(tp);
-			assertEqualsListValues("Error in model checking for #" + tp.testNumber, model_expected, model_actual);
+			Object actualModel = item.getAttribute(attr);
+			Object expectedModel = getFinalModelValue(tp);
+			assertEqualsListValues("Error in model checking for #" + tp.testNumber, expectedModel, actualModel);
 		}
 
 		/* ============= */
@@ -478,15 +419,15 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 		// Field value
 		if (fieldInMP) {
-			Object graphicalExpected = getPropertiesGraphicalValue(tp);
-			Object graphicalActual = propertiesView.findCadseField(getAttributeName()).getValue();
+			Object expectedGraphical = getPropertiesGraphicalValue(tp);
+			Object actualGraphical = propertiesView.findCadseField(getAttributeName()).getValue();
 			assertEqualsListValues("Error in graphical modification page value for #" + tp.testNumber,
-					graphicalExpected, graphicalActual);
+					expectedGraphical, actualGraphical);
 
-			Object modelExpected = getPropertiesModelValue(tp);
-			Object modelActual = propertiesView.findCadseField(getAttributeName()).getModelValue();
-			assertEqualsListValues("Error in model modification page value for #" + tp.testNumber, modelExpected,
-					modelActual);
+			Object expectedModel = getPropertiesModelValue(tp);
+			Object actualModel = propertiesView.findCadseField(getAttributeName()).getModelValue();
+			assertEqualsListValues("Error in model modification page value for #" + tp.testNumber, expectedModel,
+					actualModel);
 		}
 	}
 }

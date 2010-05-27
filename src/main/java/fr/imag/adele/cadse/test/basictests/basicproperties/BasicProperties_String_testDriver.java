@@ -22,28 +22,10 @@ import fr.imag.adele.graphictests.test.GTPreferences;
 public class BasicProperties_String_testDriver extends BasicProperties_Common_testDriver {
 
 	/**
-	 * Instantiates a new basic properties_ string_test driver.
+	 * Instantiates a new testDriver
 	 */
 	public BasicProperties_String_testDriver() {
 		initializeTestParameters();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getItemTypeUnderTest()
-	 */
-	@Override
-	protected ItemType getItemTypeUnderTest() {
-		return CadseGCST.STRING;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
-	 */
-	@Override
-	protected String getTypeNameUnderTest() {
-		return "String";
 	}
 
 	/*
@@ -96,14 +78,32 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#postCreate(int,
-	 * fr.imag.adele.graphictests.gttree.GTTreePath, fr.imag.adele.graphictests.gttree.GTTreePath)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
 	 */
 	@Override
-	protected void postCreate(GTTestParameter tp, GTTreePath it_path, GTTreePath attr_path) {
+	protected ItemType getAttributeTypeUnderTest() {
+		return CadseGCST.STRING;
+	}
 
-		/* selects the node in the workspace view */
-		workspaceView.selectNode(attr_path);
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
+	 */
+	@Override
+	protected String getAttributeNameUnderTest() {
+		return "String";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#postCreate(fr.imag.adele.cadse.test.basictests
+	 * .testdriver.GTTestParameter, fr.imag.adele.graphictests.gttree.GTTreePath,
+	 * fr.imag.adele.graphictests.gttree.GTTreePath)
+	 */
+	@Override
+	protected void postCreate(GTTestParameter tp, GTTreePath itPath, GTTreePath attrPath) {
+		workspaceView.selectNode(attrPath);
 		propertiesView.showTab("String");
 		propertiesView.setValue(tp.getValue("notEmpty"));
 	}
@@ -111,7 +111,8 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#isOkButtonActivated(int)
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#isOkButtonActivated(fr.
+	 * imag.adele.cadse.test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
 	protected boolean isOkButtonActivated(GTTestParameter tp) {
@@ -134,7 +135,8 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#setNewGraphicalValue(int,
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#setNewGraphicalValue(fr
+	 * .imag.adele.cadse.test.basictests.testdriver.GTTestParameter,
 	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell)
 	 */
 	@Override
@@ -170,7 +172,8 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getFinalGraphicalValue(int)
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getFinalGraphicalValue(
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
 	protected Object getFinalGraphicalValue(GTTestParameter tp) {
@@ -214,7 +217,8 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getFinalModelValue(int)
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getFinalModelValue(fr.imag
+	 * .adele.cadse.test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
 	protected Object getFinalModelValue(GTTestParameter tp) {
