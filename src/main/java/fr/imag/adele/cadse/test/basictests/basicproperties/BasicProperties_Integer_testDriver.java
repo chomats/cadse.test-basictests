@@ -15,7 +15,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 public class BasicProperties_Integer_testDriver extends BasicProperties_Common_testDriver {
 
 	/**
-	 * Instantiates a new basic properties_ integer_test driver.
+	 * Instantiates a new testDriver
 	 */
 	public BasicProperties_Integer_testDriver() {
 		initializeTestParameters();
@@ -64,7 +64,7 @@ public class BasicProperties_Integer_testDriver extends BasicProperties_Common_t
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getItemTypeUnderTest()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
 	 */
 	@Override
 	protected ItemType getAttributeTypeUnderTest() {
@@ -73,7 +73,7 @@ public class BasicProperties_Integer_testDriver extends BasicProperties_Common_t
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTypeNameUnderTest()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
 	 */
 	@Override
 	protected String getAttributeNameUnderTest() {
