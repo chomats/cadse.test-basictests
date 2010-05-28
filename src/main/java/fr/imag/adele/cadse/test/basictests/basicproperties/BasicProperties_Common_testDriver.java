@@ -337,11 +337,11 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		if (fieldInCP) {
 			KeyValue expected = getInitialValue(tp);
 
-			final Object actual_defaultvalue = shell.findCadseField(getAttributeName()).getAttribute().getDefaultValue();
-			assertEqualsListValues("Initial default value error for #" + tp.testNumber, expected.modelValue, 
-					actual_defaultvalue);
-			
-			Object actual_visual = shell.findCadseField(getAttributeName()).getValue();
+			final Object attributeDefaultvalue = shell.findCadseField(getAttributeName()).getAttribute().getDefaultValue();
+			assertEqualsListValues("Initial default value error for #" + tp.testNumber, expected.modelValue,
+					attributeDefaultvalue);
+
+			Object actualVisual = shell.findCadseField(getAttributeName()).getValue();
 			assertEqualsListValues("Initial visual value error for #" + tp.testNumber, expected.visualValue,
 					actualVisual);
 
