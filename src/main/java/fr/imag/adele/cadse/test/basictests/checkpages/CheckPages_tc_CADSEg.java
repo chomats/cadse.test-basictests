@@ -259,7 +259,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				"ATTRIBUTE_at_SHOW_IN_DEFAULT_CP_", "ATTRIBUTE_at_SHOW_IN_DEFAULT_MP_", "ATTRIBUTE_at_IS_LIST_",
 				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
 				"ATTRIBUTE_at_TWUPDATE_KIND_" };
-		Object[] expected_creationVal = { "", "", "", false, true, false, "Create new revision", "Abort", true,
+		Object[] expected_creationVal = { "", null, "", false, true, false, "Create new revision", "Abort", true,
 				"Generic merge values" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_SHOW_IN_DEFAULT_CP_",
@@ -284,7 +284,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				"ATTRIBUTE_at_SHOW_IN_DEFAULT_MP_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_",
 				"ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "LINK_TYPE_at_TWCOUPLED_",
 				"LINK_TYPE_at_TWDEST_EVOL_" };
-		Object[] expected_creationVal = { "", "", false, true, false, false, false, false, false, false, "0",
+		Object[] expected_creationVal = { "", null, false, true, false, false, false, false, false, false, "0",
 				"unbounded", false, true, "Create new revision", "Abort", true, "Generic merge values", false,
 				"Create new revision" };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
@@ -671,14 +671,18 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		}
 
 		for (int i = 0; i < provided.length; i++) {
-			if (provided[i] instanceof Object[] && expected[i] instanceof Object[]) {
+
+			if (provided[i] == null && expected[i] != null || provided[i] != null && expected[i] == null) {
+				return false;
+			}
+			else if (provided[i] instanceof Object[] && expected[i] instanceof Object[]) {
 				Object[] tab1 = (Object[]) provided[i];
 				Object[] tab2 = (Object[]) expected[i];
 				if (isSameValues(tab1, tab2) == false) {
 					return false;
 				}
 			}
-			else if (!provided[i].equals(expected[i])) {
+			else if (provided[i] != null && !provided[i].equals(expected[i])) {
 				return false;
 			}
 		}
@@ -742,7 +746,10 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 				sb.append(", ");
 			}
 
-			if (value instanceof String) {
+			if (value == null) {
+				sb.append("null");
+			}
+			else if (value instanceof String) {
 				sb.append("\"");
 				sb.append(value);
 				sb.append("\"");
