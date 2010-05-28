@@ -12,7 +12,6 @@ import java.util.UUID;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 
-import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
 import fr.imag.adele.cadse.core.attribute.IAttributeType;
 import fr.imag.adele.cadse.core.impl.CadseCore;
@@ -59,22 +58,37 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 	/**
 	 * Gets the the default value as it appears in the creation page. This value is the default value, corrected by
-	 * CADSEg to batch all the constraints.
+	 * CADSEg to match all the constraints.
 	 * 
 	 * @param tp
 	 *            the test parameter
 	 * @return the corrected def val
 	 */
 	protected KeyValue getCorrectedDefVal(GTTestParameter tp) {
+		return adaptedValue(tp.getValue("defVal"));
+	}
 
-		KeyValue defVal = tp.getValue("defVal");
-		KeyValue nullVall = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null, null);
+	/**
+	 * Gets the the new value as it appears in the modification page. This value is the default value, corrected by
+	 * CADSEg to match all the constraints.
+	 * 
+	 * @param tp
+	 *            the test parameter
+	 * @return the corrected def val
+	 */
+	protected KeyValue getCorrectedNewVal(GTTestParameter tp) {
+		return adaptedValue(tp.getValue("newValue"));
+	}
 
-		if (defVal.visualValue instanceof String && defVal.getString().isEmpty()) {
-			return nullVall;
+	private KeyValue adaptedValue(KeyValue kv) {
+
+		KeyValue nullVal = new KeyValue(kv, null, null);
+
+		if (kv.visualValue instanceof String && kv.getString().isEmpty()) {
+			return nullVal;
 		}
 		else {
-			return defVal;
+			return kv;
 		}
 	}
 
@@ -113,7 +127,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 		if (isList) {
 
-			boolean expectedSuccess = !newValue.equals("");
+			boolean expectedSuccess = newValue != null && !newValue.equals("");
 
 			if (expectedSuccess) {
 				shell.findCadseField(getAttributeName()).addValue(newValue);
@@ -158,7 +172,12 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 			}
 		}
 		else {
-			return getCorrectedDefVal(tp).modelValue;
+			if (newKv != null) {
+				return getCorrectedNewVal(tp).modelValue;
+			}
+			else {
+				return getCorrectedDefVal(tp).modelValue;
+			}
 		}
 	}
 
@@ -243,12 +262,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 				}
 			}
 			else {
-				if (sicp) {
-					return getFinalGraphicalValue(tp);
-				}
-				else {
-					return getCorrectedDefVal(tp).visualValue;
-				}
+				return getFinalModelValue(tp);
 			}
 		}
 		else {
