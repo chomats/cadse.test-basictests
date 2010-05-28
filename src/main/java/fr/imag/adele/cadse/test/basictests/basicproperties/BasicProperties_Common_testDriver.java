@@ -12,6 +12,7 @@ import java.util.UUID;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 
+import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
 import fr.imag.adele.cadse.core.attribute.IAttributeType;
 import fr.imag.adele.cadse.core.impl.CadseCore;
@@ -65,7 +66,16 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 * @return the corrected def val
 	 */
 	protected KeyValue getCorrectedDefVal(GTTestParameter tp) {
-		return tp.getValue("defVal");
+
+		KeyValue defVal = tp.getValue("defVal");
+		KeyValue nullVall = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null, null);
+
+		if (defVal.visualValue instanceof String && defVal.getString().isEmpty()) {
+			return nullVall;
+		}
+		else {
+			return defVal;
+		}
 	}
 
 	/**
@@ -148,17 +158,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 			}
 		}
 		else {
-			if (sicp) {
-				if (newKv != null) { // in case graphic = "" and model = null
-					return newModelValue;
-				}
-				else {
-					return getCorrectedDefVal(tp).modelValue;
-				}
-			}
-			else {
-				return getCorrectedDefVal(tp).modelValue;
-			}
+			return getCorrectedDefVal(tp).modelValue;
 		}
 	}
 
@@ -337,7 +337,8 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		if (fieldInCP) {
 			KeyValue expected = getInitialValue(tp);
 
-			final Object attributeDefaultvalue = shell.findCadseField(getAttributeName()).getAttribute().getDefaultValue();
+			final Object attributeDefaultvalue = shell.findCadseField(getAttributeName()).getAttribute()
+					.getDefaultValue();
 			assertEqualsListValues("Initial default value error for #" + tp.testNumber, expected.modelValue,
 					attributeDefaultvalue);
 
