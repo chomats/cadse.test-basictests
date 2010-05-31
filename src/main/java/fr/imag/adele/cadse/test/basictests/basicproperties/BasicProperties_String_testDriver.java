@@ -125,10 +125,18 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 			return true;
 		}
 		else {
-			boolean cbuResult = cbu ? (getFinalModelValue(tp) != null) : true;
-			boolean notEmptyResult = notEmpty ? (!getFinalModelValue(tp).equals("")) : true;
 
-			return cbuResult && notEmptyResult;
+			// Checking cbu constraint
+			if (cbu && getFinalModelValue(tp) == null) {
+				return false;
+			}
+
+			// Checking not empty constraint
+			if (notEmpty && getFinalModelValue(tp) != null && getFinalModelValue(tp).equals("")) {
+				return false;
+			}
+
+			return true;
 		}
 	}
 
@@ -182,9 +190,9 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		boolean isList = tp.getBoolean("list");
 		boolean notEmpty = tp.getBoolean("notEmpty");
 		KeyValue newKv = tp.getValue("newValue");
-		KeyValue oldKv = tp.getValue("defVal"); // TODO ERROR it was OLD value!
+		KeyValue defValKv = tp.getValue("defVal");
 		Object newGraphicalValue = (newKv == null) ? null : newKv.visualValue;
-		Object oldGraphicalValue = (oldKv == null) ? null : oldKv.visualValue;
+		Object defValGraphicalValue = (defValKv == null) ? null : defValKv.visualValue;
 
 		if (fieldInCP) {
 			if (isList) { // default value is ignored with list
@@ -205,7 +213,7 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 					return newGraphicalValue;
 				}
 				else {
-					return oldGraphicalValue; // no new value
+					return defValGraphicalValue; // no new value
 				}
 			}
 		}
@@ -227,10 +235,10 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		boolean isList = tp.getBoolean("list");
 		boolean notEmpty = tp.getBoolean("notEmpty");
 		KeyValue newKv = tp.getValue("newValue");
-		KeyValue oldKv = tp.getValue("defVal"); // TODO ERROR it was OLD value!
+		KeyValue defValKv = tp.getValue("defVal");
 
 		Object newModelValue = (newKv == null) ? null : newKv.modelValue;
-		Object oldModelValue = (oldKv == null) ? null : oldKv.modelValue;
+		Object defValModelValue = (defValKv == null) ? null : defValKv.modelValue;
 
 		if (isList) { // def val is ignored with list attributes
 			if (newKv != null && newModelValue != null) {
@@ -252,11 +260,11 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 					return newModelValue;
 				}
 				else {
-					return oldModelValue;
+					return defValModelValue;
 				}
 			}
 			else {
-				return oldModelValue;
+				return defValModelValue;
 			}
 		}
 	}

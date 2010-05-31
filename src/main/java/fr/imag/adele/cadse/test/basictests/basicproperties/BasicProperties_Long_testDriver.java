@@ -4,8 +4,6 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.cb
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notCbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSicpKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
@@ -33,15 +31,16 @@ public class BasicProperties_Long_testDriver extends BasicProperties_Common_test
 		/* =========== */
 
 		// Common parameters
-		KeyValue[] sicpValues = { sicpKv, notSicpKv };
-		KeyValue[] simpValues = { simpKv, notSimpKv };
+		KeyValue[] sicpValues = { sicpKv /* , notSicpKv */};
+		KeyValue[] simpValues = { simpKv /* , notSimpKv */};
 		KeyValue[] cbuValues = { cbuKv, notCbuKv };
 		KeyValue[] listValues = { notListKv, listKv };
 
 		/* Values given into CADSEg */
-		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "", null);
-		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "123", 123l);
-		KeyValue[] defVal = new KeyValue[] { kv11, kv12 };
+		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "", "");
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null, null);
+		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "123", 123l);
+		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
 
 		/* Execution : new value */
 		KeyValue kv31 = new KeyValue(getAttributeName(), "", null);

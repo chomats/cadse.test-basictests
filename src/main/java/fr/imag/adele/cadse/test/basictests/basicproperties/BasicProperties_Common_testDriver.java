@@ -102,7 +102,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	protected KeyValue getInitialValue(GTTestParameter tp) {
 
 		boolean isList = tp.getBoolean("list");
-		KeyValue defVal = getCorrectedDefVal(tp);
+		KeyValue defVal = tp.getValue("defVal");
 
 		if (isList) {
 			return new KeyValue(getAttributeName(), new String[] {}, new ArrayList<Object>());
