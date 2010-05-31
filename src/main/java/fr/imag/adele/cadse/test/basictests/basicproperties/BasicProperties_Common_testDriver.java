@@ -81,15 +81,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	}
 
 	protected KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
-
-		KeyValue nullVal = new KeyValue(kv, null, null);
-
-		if (kv.visualValue instanceof String && kv.getString().isEmpty()) {
-			return nullVal;
-		}
-		else {
-			return kv;
-		}
+		return kv;
 	}
 
 	/**
