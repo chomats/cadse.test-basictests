@@ -147,20 +147,20 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getCorrectedDefVal(fr.imag
-	 * .adele.cadse.test.basictests.testdriver.GTTestParameter)
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#adaptedValue(fr.imag.adele
+	 * .cadse.test.basictests.testdriver.GTTestParameter,
+	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue)
 	 */
 	@Override
-	protected KeyValue getCorrectedDefVal(GTTestParameter tp) {
+	protected KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
 
 		boolean cbu = tp.getBoolean("cbu");
-		KeyValue defVal = tp.getValue("defVal");
 
-		if (cbu == true && defVal.modelValue == null) {
+		if (cbu == true && kv.modelValue == null) {
 			return new KeyValue("", false, false);
 		}
 		else {
-			return defVal;
+			return kv;
 		}
 	}
 }

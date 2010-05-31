@@ -65,7 +65,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 * @return the corrected def val
 	 */
 	protected KeyValue getCorrectedDefVal(GTTestParameter tp) {
-		return adaptedValue(tp.getValue("defVal"));
+		return adaptedValue(tp, tp.getValue("defVal"));
 	}
 
 	/**
@@ -77,10 +77,10 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 * @return the corrected def val
 	 */
 	protected KeyValue getCorrectedNewVal(GTTestParameter tp) {
-		return adaptedValue(tp.getValue("newValue"));
+		return adaptedValue(tp, tp.getValue("newValue"));
 	}
 
-	private KeyValue adaptedValue(KeyValue kv) {
+	protected KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
 
 		KeyValue nullVal = new KeyValue(kv, null, null);
 
@@ -102,13 +102,12 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	protected KeyValue getInitialValue(GTTestParameter tp) {
 
 		boolean isList = tp.getBoolean("list");
-		KeyValue defVal = tp.getValue("defVal");
 
 		if (isList) {
 			return new KeyValue(getAttributeName(), new String[] {}, new ArrayList<Object>());
 		}
 		else {
-			return defVal;
+			return getCorrectedDefVal(tp);
 		}
 	}
 
@@ -172,7 +171,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 			}
 		}
 		else {
-			if (newKv != null) {
+			if (sicp && newKv != null) {
 				return getCorrectedNewVal(tp).modelValue;
 			}
 			else {
