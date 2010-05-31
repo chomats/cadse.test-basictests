@@ -272,20 +272,20 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getCorrectedDefVal(fr.imag
-	 * .adele.cadse.test.basictests.testdriver.GTTestParameter)
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#adaptedValue(fr.imag.adele
+	 * .cadse.test.basictests.testdriver.GTTestParameter,
+	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue)
 	 */
 	@Override
-	protected KeyValue getCorrectedDefVal(GTTestParameter tp) {
+	protected KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
 
-		KeyValue defValKv = tp.getValue("defVal");
 		Boolean cbu = tp.getBoolean("cbu");
 
-		if (cbu && (defValKv == null || defValKv.getString() == null || defValKv.getString().isEmpty())) {
-			return new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE, "", "");
+		if (cbu && (kv == null || kv.getString() == null || kv.getString().isEmpty())) {
+			return new KeyValue(kv, "", "");
 		}
 		else {
-			return defValKv;
+			return kv;
 		}
 	}
 }
