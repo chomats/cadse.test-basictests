@@ -2,8 +2,6 @@ package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSicpKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
@@ -55,15 +53,17 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		/* =========== */
 
 		/* Common parameters */
-		KeyValue[] sicpValues = { sicpKv, notSicpKv };
-		KeyValue[] simpValues = { simpKv, notSimpKv };
+		KeyValue[] sicpValues = { sicpKv /* , notSicpKv */};
+		KeyValue[] simpValues = { simpKv /* , notSimpKv */};
 		/* KeyValue[] cbuValues = { cbuKv, notCbuKv }; CBU = this attribute does not exists with enum type */
 		KeyValue[] listValues = { notListKv, listKv };
 
 		/* Default Value */
-		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "", null);
-		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "two", "two");
-		KeyValue[] defVal = new KeyValue[] { kv11, kv12 };
+
+		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "", "");
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null, null);
+		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "two", "two");
+		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
 
 		/* Enum Type */
 		KeyValue enumTypeKv = new KeyValue(CadseGCST.ENUM_lt_ENUM_TYPE, new GTTreePath(enumTypeName));
