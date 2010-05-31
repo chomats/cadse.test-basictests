@@ -59,7 +59,6 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		KeyValue[] listValues = { notListKv, listKv };
 
 		/* Default Value */
-
 		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "", "");
 		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null, null);
 		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "two", "two");
@@ -70,7 +69,7 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		KeyValue[] enumType = new KeyValue[] { enumTypeKv };
 
 		/* Execution : new value */
-		KeyValue kv31 = new KeyValue(getAttributeName(), "", null);
+		KeyValue kv31 = new KeyValue(getAttributeName(), null, null);
 		KeyValue kv32 = new KeyValue(getAttributeName(), "one", "one");
 		KeyValue kv33 = null; // null stands for leave unchanged
 		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33 };
@@ -123,7 +122,7 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 	protected boolean attributeCreationSuccess(GTTestParameter tp) {
 
 		String defVal = tp.getString("defVal");
-		if (defVal.equals("")) {
+		if (defVal == null || defVal.equals("")) {
 			return false;
 		}
 		else {
@@ -146,7 +145,7 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 
 		// Attribute haven't been created : no problem for creating the item type (!)
 		// or attribute not displayed in Creation page
-		if (!sicp || defVal.isEmpty()) {
+		if (!sicp || defVal == null || defVal.isEmpty()) {
 			return true;
 		}
 
