@@ -2,6 +2,7 @@ package fr.imag.adele.cadse.test.basictests.basicproperties;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
@@ -53,7 +54,7 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		/* =========== */
 
 		/* Common parameters */
-		KeyValue[] sicpValues = { sicpKv /* , notSicpKv */};
+		KeyValue[] sicpValues = { sicpKv, notSicpKv };
 		KeyValue[] simpValues = { simpKv /* , notSimpKv */};
 		/* KeyValue[] cbuValues = { cbuKv, notCbuKv }; CBU = this attribute does not exists with enum type */
 		KeyValue[] listValues = { notListKv, listKv };
