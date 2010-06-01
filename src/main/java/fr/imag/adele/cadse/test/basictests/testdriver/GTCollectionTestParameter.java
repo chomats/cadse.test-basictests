@@ -36,7 +36,7 @@ public class GTCollectionTestParameter {
 			sb.append("  + " + key + "\n");
 			KeyValue[] values = e.getValue();
 			for (KeyValue value : values) {
-				sb.append("    - " + value.visualValue.toString() + "\n");
+				sb.append("    - " + value.value.toString() + "\n");
 			}
 		}
 		sb.append("\n");

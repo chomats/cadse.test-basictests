@@ -156,7 +156,7 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 
 		boolean cbu = tp.getBoolean("cbu");
 
-		if (cbu == true && kv.visualValue == null) {
+		if (cbu == true && kv.value == null) {
 			return new KeyValue("", false, false);
 		}
 		else {
