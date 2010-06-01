@@ -773,7 +773,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 
 			}
 			else {
-				throw new WidgetNotFoundException("Unsupported element");
+				throw new WidgetNotFoundException("Unsupported element.");
 			}
 		}
 		sb.append("};");
