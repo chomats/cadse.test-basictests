@@ -56,15 +56,15 @@ public class BasicProperties_Double_testDriver extends BasicProperties_Common_te
 		KeyValue[] listValues = { notListKv, listKv };
 
 		/* Values given into CADSEg */
-		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "", "");
-		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null, null);
-		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "123.0", 123d);
+		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
+		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, new Double(123));
 		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
 
 		/* Execution : new value */
-		KeyValue kv31 = new KeyValue(getAttributeName(), "", "");
-		KeyValue kv32 = new KeyValue(getAttributeName(), null, null);
-		KeyValue kv33 = new KeyValue(getAttributeName(), "456.0", 456d);
+		KeyValue kv31 = new KeyValue(getAttributeName(), "");
+		KeyValue kv32 = new KeyValue(getAttributeName(), null);
+		KeyValue kv33 = new KeyValue(getAttributeName(), new Double(456));
 		KeyValue kv34 = null; // null stands for leave unchanged
 		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33, kv34 };
 

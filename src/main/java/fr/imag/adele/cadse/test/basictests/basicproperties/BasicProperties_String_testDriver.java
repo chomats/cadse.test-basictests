@@ -47,20 +47,20 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		KeyValue[] listValues = { notListKv, listKv };
 
 		/* Values given into CADSEg */
-		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null, null);
-		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "", "");
-		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "my_dv", "my_dv");
+		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
+		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "my_dv");
 		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
 
 		/* Execution : new value */
-		KeyValue kv31 = new KeyValue(getAttributeName(), "", "");
-		KeyValue kv32 = new KeyValue(getAttributeName(), "new_val", "new_val");
+		KeyValue kv31 = new KeyValue(getAttributeName(), "");
+		KeyValue kv32 = new KeyValue(getAttributeName(), "new_val");
 		KeyValue kv33 = null; // null stands for leave unchanged
 		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33 };
 
 		/* Not Empty Attribute */
-		KeyValue notEmptyTrue = new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, true, true);
-		KeyValue notEmptyFalse = new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, false, false);
+		KeyValue notEmptyTrue = new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, true);
+		KeyValue notEmptyFalse = new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, false);
 		KeyValue[] notEmpty = { notEmptyTrue, notEmptyFalse };
 
 		/* ==== */
@@ -238,8 +238,8 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		KeyValue newKv = tp.getValue("newValue");
 		KeyValue defValKv = tp.getValue("defVal");
 
-		Object newModelValue = (newKv == null) ? null : newKv.modelValue;
-		Object defValModelValue = (defValKv == null) ? null : defValKv.modelValue;
+		Object newModelValue = (newKv == null) ? null : newKv.visualValue;
+		Object defValModelValue = (defValKv == null) ? null : defValKv.visualValue;
 
 		if (isList) { // def val is ignored with list attributes
 			if (newKv != null && newModelValue != null) {

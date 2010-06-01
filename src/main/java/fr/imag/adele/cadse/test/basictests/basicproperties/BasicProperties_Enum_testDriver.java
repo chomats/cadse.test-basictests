@@ -60,9 +60,9 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		KeyValue[] listValues = { notListKv, listKv };
 
 		/* Default Value */
-		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "", "");
-		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null, null);
-		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "two", "two");
+		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
+		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "two");
 		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
 
 		/* Enum Type */
@@ -70,8 +70,8 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		KeyValue[] enumType = new KeyValue[] { enumTypeKv };
 
 		/* Execution : new value */
-		KeyValue kv31 = new KeyValue(getAttributeName(), null, null);
-		KeyValue kv32 = new KeyValue(getAttributeName(), "one", "one");
+		KeyValue kv31 = new KeyValue(getAttributeName(), null);
+		KeyValue kv32 = new KeyValue(getAttributeName(), "one");
 		KeyValue kv33 = null; // null stands for leave unchanged
 		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33 };
 
@@ -156,7 +156,7 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		}
 
 		// Empty new value is forbidden
-		else if (newVal.modelValue == null || newVal.getString().isEmpty()) {
+		else if (newVal.visualValue == null || newVal.getString().isEmpty()) {
 			return false;
 		}
 		else {
