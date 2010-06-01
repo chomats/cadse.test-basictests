@@ -156,7 +156,7 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		}
 
 		// Empty new value is forbidden
-		else if (newVal.getString().isEmpty()) {
+		else if (newVal.modelValue == null || newVal.getString().isEmpty()) {
 			return false;
 		}
 		else {
