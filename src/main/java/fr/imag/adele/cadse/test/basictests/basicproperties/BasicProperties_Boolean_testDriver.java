@@ -63,13 +63,13 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 		KeyValue[] listValues = { notListKv, listKv };
 
 		/* Values given into CADSEg */
-		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, true, true);
-		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null, null);
+		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, new Boolean(true));
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
 		KeyValue[] defVal = new KeyValue[] { kv11, kv12 };
 
 		/* Execution : new value */
-		KeyValue kv31 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, false, false);
-		KeyValue kv32 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null, null);
+		KeyValue kv31 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, new Boolean(false));
+		KeyValue kv32 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
 		KeyValue kv33 = null; // null stands for leave unchanged
 		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33 };
 
@@ -156,7 +156,7 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 
 		boolean cbu = tp.getBoolean("cbu");
 
-		if (cbu == true && kv.modelValue == null) {
+		if (cbu == true && kv.visualValue == null) {
 			return new KeyValue("", false, false);
 		}
 		else {
