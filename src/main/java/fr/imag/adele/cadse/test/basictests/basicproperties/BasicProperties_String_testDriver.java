@@ -192,8 +192,8 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		boolean notEmpty = tp.getBoolean("notEmpty");
 		KeyValue newKv = tp.getValue("newValue");
 		KeyValue defValKv = tp.getValue("defVal");
-		Object newGraphicalValue = (newKv == null) ? null : newKv.visualValue;
-		Object defValGraphicalValue = (defValKv == null) ? null : defValKv.visualValue;
+		Object newGraphicalValue = (newKv == null) ? null : newKv.value;
+		Object defValGraphicalValue = (defValKv == null) ? null : defValKv.value;
 
 		if (fieldInCP) {
 			if (isList) { // default value is ignored with list
@@ -238,8 +238,8 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		KeyValue newKv = tp.getValue("newValue");
 		KeyValue defValKv = tp.getValue("defVal");
 
-		Object newModelValue = (newKv == null) ? null : newKv.visualValue;
-		Object defValModelValue = (defValKv == null) ? null : defValKv.visualValue;
+		Object newModelValue = (newKv == null) ? null : newKv.value;
+		Object defValModelValue = (defValKv == null) ? null : defValKv.value;
 
 		if (isList) { // def val is ignored with list attributes
 			if (newKv != null && newModelValue != null) {

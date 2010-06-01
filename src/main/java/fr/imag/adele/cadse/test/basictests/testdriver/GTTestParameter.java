@@ -101,14 +101,14 @@ public class GTTestParameter {
 			if (value == null) {
 				sb.append("    - [" + key + "] " + "<<NULL KEY_VALUE>>" + "\n");
 			}
-			else if (value.visualValue == null) {
+			else if (value.value == null) {
 				sb.append("    - [" + key + "] " + "<<NULL VALUE>>" + "\n");
 			}
-			else if (value.visualValue.toString().isEmpty()) {
+			else if (value.value.toString().isEmpty()) {
 				sb.append("    - [" + key + "] " + "<<EMPTY>>" + "\n");
 			}
 			else {
-				sb.append("    - [" + key + "] " + value.visualValue.toString() + "\n");
+				sb.append("    - [" + key + "] " + value.value.toString() + "\n");
 			}
 		}
 		return sb.toString();

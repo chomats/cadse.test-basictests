@@ -112,7 +112,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 */
 	protected boolean setNewGraphicalValue(GTTestParameter tp, GTCadseShell shell) {
 
-		String newValue = tp.getValue("newValue").visualValue == null ? null : tp.getValue("newValue").visualValue
+		String newValue = tp.getValue("newValue").value == null ? null : tp.getValue("newValue").value
 				.toString();
 		boolean isList = tp.getBoolean("list");
 
@@ -152,7 +152,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		boolean sicp = tp.getBoolean("sicp");
 		boolean isList = tp.getBoolean("list");
 		KeyValue newKv = tp.getValue("newValue");
-		Object newModelValue = (newKv == null) ? null : newKv.visualValue;
+		Object newModelValue = (newKv == null) ? null : newKv.value;
 
 		if (isList) { // def val is ignored with list attributes
 			if (sicp && newKv != null && newModelValue != null) {
@@ -164,10 +164,10 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		}
 		else {
 			if (sicp && newKv != null) {
-				return getCorrectedNewVal(tp).visualValue;
+				return getCorrectedNewVal(tp).value;
 			}
 			else {
-				return getCorrectedDefVal(tp).visualValue;
+				return getCorrectedDefVal(tp).value;
 			}
 		}
 	}
@@ -185,7 +185,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		boolean isList = tp.getBoolean("list");
 
 		KeyValue newKv = tp.getValue("newValue");
-		Object newGraphicalValue = (newKv == null) ? null : newKv.visualValue;
+		Object newGraphicalValue = (newKv == null) ? null : newKv.value;
 
 		if (sicp) {
 			if (isList) { // default value is ignored with list
@@ -201,7 +201,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 					return newGraphicalValue;
 				}
 				else {
-					return getCorrectedDefVal(tp).visualValue;
+					return getCorrectedDefVal(tp).value;
 				}
 			}
 		}
@@ -281,7 +281,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 				return new Object[] {}; // default value is ignored with list attributes
 			}
 			else {
-				return getCorrectedDefVal(tp).visualValue;
+				return getCorrectedDefVal(tp).value;
 			}
 		}
 	}
@@ -344,15 +344,15 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 			final Object attributeDefaultvalue = shell.findCadseField(getAttributeName()).getAttribute()
 					.getDefaultValue();
-			assertEqualsListValues("Initial default value error for #" + tp.testNumber, expected.visualValue,
+			assertEqualsListValues("Initial default value error for #" + tp.testNumber, expected.value,
 					attributeDefaultvalue);
 
 			Object actualVisual = shell.findCadseField(getAttributeName()).getValue();
-			assertEqualsListValues("Initial visual value error for #" + tp.testNumber, expected.visualValue,
+			assertEqualsListValues("Initial visual value error for #" + tp.testNumber, expected.value,
 					actualVisual);
 
 			Object actualModel = shell.findCadseField(getAttributeName()).getModelValue();
-			assertEqualsListValues("Initial model value error for #" + tp.testNumber, expected.visualValue, actualModel);
+			assertEqualsListValues("Initial model value error for #" + tp.testNumber, expected.value, actualModel);
 		}
 
 		// New Attribute Value
