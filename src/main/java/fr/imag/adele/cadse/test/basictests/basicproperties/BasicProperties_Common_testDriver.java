@@ -79,8 +79,8 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		return adaptedValue(tp, tp.getValue("newValue"));
 	}
 
-	
 	protected KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
+
 		if (kv.value instanceof String && kv.getString().isEmpty()) {
 			return new KeyValue(kv, null);
 		}
@@ -118,8 +118,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 */
 	protected boolean setNewGraphicalValue(GTTestParameter tp, GTCadseShell shell) {
 
-		String newValue = tp.getValue("newValue").value == null ? null : tp.getValue("newValue").value
-				.toString();
+		String newValue = tp.getValue("newValue").value == null ? null : tp.getValue("newValue").value.toString();
 		boolean isList = tp.getBoolean("list");
 
 		if (isList) {
@@ -354,8 +353,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 					attributeDefaultvalue);
 
 			Object actualVisual = shell.findCadseField(getAttributeName()).getValue();
-			assertEqualsListValues("Initial visual value error for #" + tp.testNumber, expected.value,
-					actualVisual);
+			assertEqualsListValues("Initial visual value error for #" + tp.testNumber, expected.value, actualVisual);
 
 			Object actualModel = shell.findCadseField(getAttributeName()).getModelValue();
 			assertEqualsListValues("Initial model value error for #" + tp.testNumber, expected.value, actualModel);
