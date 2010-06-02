@@ -43,10 +43,10 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 		KeyValue[] cbuValues = { /* cbuKv, */notCbuKv };
 		KeyValue[] listValues = { notListKv, listKv };
 
-		KeyValue defValKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "four", "four");
-		KeyValue newValue1Kv = new KeyValue(getAttributeName(), "one", "one");
-		KeyValue newValue2Kv = new KeyValue(getAttributeName(), "two", "two");
-		KeyValue newValue3Kv = new KeyValue(getAttributeName(), "three", "three");
+		KeyValue defValKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "four");
+		KeyValue newValue1Kv = new KeyValue(getAttributeName(), "one");
+		KeyValue newValue2Kv = new KeyValue(getAttributeName(), "two");
+		KeyValue newValue3Kv = new KeyValue(getAttributeName(), "three");
 
 		KeyValue[] defVal = new KeyValue[] { defValKv };
 		KeyValue[] newValue1 = new KeyValue[] { newValue1Kv };
