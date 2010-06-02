@@ -84,7 +84,7 @@ public class BasicProperties_Integer_testDriver extends BasicProperties_Common_t
 	@Override
 	protected KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
 		if (kv.value instanceof String && kv.getString().isEmpty()) {
-			return new KeyValue(kv, null, null);
+			return new KeyValue(kv, null);
 		}
 		else {
 			return kv;
