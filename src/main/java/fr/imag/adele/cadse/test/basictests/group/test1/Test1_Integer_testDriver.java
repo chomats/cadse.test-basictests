@@ -11,10 +11,6 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class Test1_Integer_testDriver.
- */
 public class Test1_Integer_testDriver extends Test1_Common_testDriver {
 
 	/**
