@@ -46,10 +46,10 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		String head = "head" + i;
 		String member = "member" + i;
 
-		KeyValue defVal = new KeyValue(attr, "def_val" + i, "def_val" + i);
-		KeyValue newVal1 = new KeyValue(attr, "new_val1" + i, "new_val1" + i);
-		KeyValue newVal2 = new KeyValue(attr, "new_val2" + i, "new_val2" + i);
-		KeyValue newVal3 = new KeyValue(attr, "new_val3" + i, "new_val3" + i);
+		KeyValue defVal = new KeyValue(attr, "def_val" + i);
+		KeyValue newVal1 = new KeyValue(attr, "new_val1" + i);
+		KeyValue newVal2 = new KeyValue(attr, "new_val2" + i);
+		KeyValue newVal3 = new KeyValue(attr, "new_val3" + i);
 
 		// head creation
 		workspaceView.contextMenuNewHead(itSrc).click();
@@ -102,8 +102,8 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		String head = "head" + i;
 		String member = "member" + i;
 
-		KeyValue defVal = new KeyValue(attr, "def_val" + i, "def_val" + i);
-		KeyValue newVal1 = new KeyValue(attr, "new_val1" + i, "new_val1" + i);
+		KeyValue defVal = new KeyValue(attr, "def_val" + i);
+		KeyValue newVal1 = new KeyValue(attr, "new_val1" + i);
 
 		// head creation
 		workspaceView.contextMenuNewHead(itSrc).click();
@@ -138,9 +138,9 @@ public class Group_basic_tc_execution extends Group_basic_testDriver {
 		GTTreePath headPath = new GTTreePath(head);
 		String member = "member" + i;
 
-		KeyValue defVal = new KeyValue(attr, "def_val" + i, "def_val" + i);
-		KeyValue newVal1 = new KeyValue(attr, "new_val1" + i, "new_val1" + i);
-		// KeyValue newVal2 = new KeyValue(attr, "new_val2" + i, "new_val2" + i);
+		KeyValue defVal = new KeyValue(attr, "def_val" + i);
+		KeyValue newVal1 = new KeyValue(attr, "new_val1" + i);
+		// KeyValue newVal2 = new KeyValue(attr, "new_val2" + i);
 
 		// head creation
 		workspaceView.contextMenuNewHead(itSrc).click();

@@ -192,14 +192,14 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		boolean notEmpty = tp.getBoolean("notEmpty");
 		KeyValue newKv = tp.getValue("newValue");
 		KeyValue defValKv = tp.getValue("defVal");
-		Object newGraphicalValue = (newKv == null) ? null : newKv.value;
-		Object defValGraphicalValue = (defValKv == null) ? null : defValKv.value;
+		Object newValue = (newKv == null) ? null : newKv.value;
+		Object defVal = (defValKv == null) ? null : defValKv.value;
 
 		if (fieldInCP) {
 			if (isList) { // default value is ignored with list
 				if (newKv != null) {
-					if (!newGraphicalValue.equals("") || !notEmpty) {
-						return new String[] { newGraphicalValue.toString() };
+					if (!newValue.equals("") || !notEmpty) {
+						return new String[] { newValue.toString() };
 					}
 					else {
 						return new String[] {};
@@ -211,10 +211,10 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 			}
 			else {
 				if (newKv != null) {
-					return newGraphicalValue;
+					return newValue;
 				}
 				else {
-					return defValGraphicalValue; // no new value
+					return defVal; // no new value
 				}
 			}
 		}
@@ -243,17 +243,17 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		KeyValue newKv = tp.getValue("newValue");
 		KeyValue defValKv = tp.getValue("defVal");
 
-		Object newModelValue = (newKv == null) ? null : newKv.value;
-		Object defValModelValue = (defValKv == null) ? null : defValKv.value;
+		Object newValue = (newKv == null) ? null : newKv.value;
+		Object defVal = (defValKv == null) ? null : defValKv.value;
 
 		if (isList) { // def val is ignored with list attributes
-			if (newKv != null && newModelValue != null) {
+			if (fieldInCP && newKv != null && newValue != null) {
 
-				if (notEmpty && newModelValue.equals("")) {
+				if (notEmpty && newValue.equals("")) {
 					return new Object[] {};
 				}
 				else {
-					return new Object[] { newModelValue };
+					return new Object[] { newValue };
 				}
 			}
 			else {
@@ -263,14 +263,14 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		else {
 			if (fieldInCP) {
 				if (newKv != null) { // in case graphic = "" and model = null
-					return newModelValue;
+					return newValue;
 				}
 				else {
-					return defValModelValue;
+					return defVal;
 				}
 			}
 			else {
-				return defValModelValue;
+				return defVal;
 			}
 		}
 	}

@@ -100,10 +100,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		boolean isList = tp.getBoolean("list");
 
 		if (isList) {
-			return new KeyValue(getAttributeName(), new String[] {}, new String[] {});
+			return new KeyValue(getAttributeName(), new String[] {});
 		}
 		else {
-			return new KeyValue(getAttributeName(), tp.getValue("defVal").value, tp.getValue("defVal").modelValue);
+			return new KeyValue(getAttributeName(), tp.getValue("defVal").value);
 		}
 	}
 
@@ -121,9 +121,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		if (sicp) {
 			if (isList) {
-				return new KeyValue(getAttributeName(),
-						new String[] { tp.getValue("newValue1").value.toString() }, new String[] { tp
-								.getValue("newValue1").modelValue.toString() });
+				return new KeyValue(getAttributeName(), new String[] { tp.getValue("newValue1").value.toString() });
 			}
 			else {
 				return tp.getValue("newValue1");
@@ -153,24 +151,23 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			ArrayList<String> visual = new ArrayList<String>();
 			ArrayList<String> model = new ArrayList<String>();
 
-			for (int j = 0; j < ((String[]) kv.modelValue).length; j++) {
-				visual.add(((String[]) kv.modelValue)[j]);
+			for (int j = 0; j < ((String[]) kv.value).length; j++) {
+				visual.add(((String[]) kv.value)[j]);
 				model.add(((String[]) kv.value)[j]);
 			}
 
 			if (simp) {
 				visual.add(tp.getValue("newValue2").value.toString());
-				model.add(tp.getValue("newValue2").modelValue.toString());
+				model.add(tp.getValue("newValue2").value.toString());
 			}
 
-			return new KeyValue(getAttributeName(), visual.toArray(new String[] {}), model.toArray(new String[] {}));
+			return new KeyValue(getAttributeName(), visual.toArray(new String[] {}));
 		}
 
 		// not list
 		else {
 			if (simp) {
-				return new KeyValue(getAttributeName(), tp.getValue("newValue2").value,
-						tp.getValue("newValue2").modelValue);
+				return new KeyValue(getAttributeName(), tp.getValue("newValue2").value);
 			}
 			else {
 				return getNewValue1(tp);
@@ -197,24 +194,23 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			ArrayList<String> visual = new ArrayList<String>();
 			ArrayList<String> model = new ArrayList<String>();
 
-			for (int j = 0; j < ((String[]) kv.modelValue).length; j++) {
-				visual.add(((String[]) kv.modelValue)[j]);
+			for (int j = 0; j < ((String[]) kv.value).length; j++) {
+				visual.add(((String[]) kv.value)[j]);
 				model.add(((String[]) kv.value)[j]);
 			}
 
 			if (simp) {
 				visual.add(tp.getValue("newValue3").value.toString());
-				model.add(tp.getValue("newValue3").modelValue.toString());
+				model.add(tp.getValue("newValue3").value.toString());
 			}
 
-			return new KeyValue(getAttributeName(), visual.toArray(new String[] {}), model.toArray(new String[] {}));
+			return new KeyValue(getAttributeName(), visual.toArray(new String[] {}));
 		}
 
 		// not list
 		else {
 			if (simp) {
-				return new KeyValue(getAttributeName(), tp.getValue("newValue3").value,
-						tp.getValue("newValue3").modelValue);
+				return new KeyValue(getAttributeName(), tp.getValue("newValue3").value);
 			}
 			else {
 				return getNewValue2(tp);
@@ -284,11 +280,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			KeyValue expected = getDefaultValue(tp);
 
 			Object actualVisual = shell.findCadseField(getAttributeName()).getValue();
-			assertEqualsListValues("Initial visual value error for #" + tp.testNumber, expected.value,
-					actualVisual);
+			assertEqualsListValues("Initial visual value error for #" + tp.testNumber, expected.value, actualVisual);
 
 			Object actualModel = shell.findCadseField(getAttributeName()).getModelValue();
-			assertEqualsListValues("Initial model value error for #" + tp.testNumber, expected.modelValue, actualModel);
+			assertEqualsListValues("Initial model value error for #" + tp.testNumber, expected.value, actualModel);
 		}
 
 		// SET New Value 1
@@ -323,12 +318,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			KeyValue expected = getNewValue1(tp);
 
 			Object actualVisual = propertiesView.findCadseField(getAttributeName()).getValue();
-			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value,
-					actualVisual);
+			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value, actualVisual);
 
 			Object actualModel = propertiesView.findCadseField(getAttributeName()).getModelValue();
-			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value,
-					actualModel);
+			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value, actualModel);
 		}
 
 		// SET New Value 2
@@ -352,12 +345,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			KeyValue expected = getNewValue2(tp);
 
 			Object actualVisual = shell.findCadseField(getAttributeName()).getValue();
-			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value,
-					actualVisual);
+			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value, actualVisual);
 
 			Object actualModel = shell.findCadseField(getAttributeName()).getModelValue();
-			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value,
-					actualModel);
+			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value, actualModel);
 		}
 		else {
 			assertCadseFieldDoesNotExist(shell, getAttributeName(), 0);
@@ -397,12 +388,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			KeyValue expected = getNewValue3(tp);
 
 			Object actualVisual = propertiesView.findCadseField(getAttributeName()).getValue();
-			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value,
-					actualVisual);
+			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value, actualVisual);
 
 			Object actualModel = propertiesView.findCadseField(getAttributeName()).getModelValue();
-			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value,
-					actualModel);
+			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value, actualModel);
 		}
 	}
 }
