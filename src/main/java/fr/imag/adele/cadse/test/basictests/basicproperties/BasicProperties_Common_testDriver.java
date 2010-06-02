@@ -96,15 +96,15 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 *            the test parameter
 	 * @return a string or a list of string
 	 */
-	protected KeyValue getInitialValue(GTTestParameter tp) {
+	protected Object getInitialValue(GTTestParameter tp) {
 
 		boolean isList = tp.getBoolean("list");
 
 		if (isList) {
-			return new KeyValue(getAttributeName(), new String[] {});
+			return new String[] {};
 		}
 		else {
-			return getCorrectedDefVal(tp);
+			return getCorrectedDefVal(tp).value;
 		}
 	}
 
@@ -345,18 +345,16 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 		// initial value
 		if (fieldInCP) {
-			KeyValue expected = getInitialValue(tp);
+			Object expected = getInitialValue(tp);
 
-			final Object attributeDefaultvalue = shell.findCadseField(getAttributeName()).getAttribute()
-					.getDefaultValue();
-			assertEqualsListValues("Initial default value error for #" + tp.testNumber, expected.value,
-					attributeDefaultvalue);
+			Object attrDefVal = shell.findCadseField(getAttributeName()).getAttribute().getDefaultValue();
+			assertEqualsListValues("Initial default value error for #" + tp.testNumber, expected, attrDefVal);
 
 			Object actualVisual = shell.findCadseField(getAttributeName()).getValue();
-			assertEqualsListValues("Initial visual value error for #" + tp.testNumber, expected.value, actualVisual);
+			assertEqualsListValues("Initial visual value error for #" + tp.testNumber, expected, actualVisual);
 
 			Object actualModel = shell.findCadseField(getAttributeName()).getModelValue();
-			assertEqualsListValues("Initial model value error for #" + tp.testNumber, expected.value, actualModel);
+			assertEqualsListValues("Initial model value error for #" + tp.testNumber, expected, actualModel);
 		}
 
 		// New Attribute Value
@@ -435,13 +433,12 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		if (fieldInMP) {
 			Object expectedGraphical = getPropertiesGraphicalValue(tp);
 			Object actualGraphical = propertiesView.findCadseField(getAttributeName()).getValue();
-			assertEqualsListValues("Error in graphical modification page value for #" + tp.testNumber,
-					expectedGraphical, actualGraphical);
+			assertEqualsListValues("Error in graphical modification page for #" + tp.testNumber, expectedGraphical,
+					actualGraphical);
 
 			Object expectedModel = getPropertiesModelValue(tp);
 			Object actualModel = propertiesView.findCadseField(getAttributeName()).getModelValue();
-			assertEqualsListValues("Error in model modification page value for #" + tp.testNumber, expectedModel,
-					actualModel);
+			assertEqualsListValues("Error in model modification page for #" + tp.testNumber, expectedModel, actualModel);
 		}
 	}
 }
