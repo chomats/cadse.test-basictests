@@ -157,11 +157,11 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		boolean sicp = tp.getBoolean("sicp");
 		boolean isList = tp.getBoolean("list");
 		KeyValue newKv = tp.getValue("newValue");
-		Object newModelValue = (newKv == null) ? null : newKv.value;
+		Object newValue = (newKv == null) ? null : newKv.value;
 
 		if (isList) { // def val is ignored with list attributes
-			if (sicp && newKv != null && newModelValue != null) {
-				return new Object[] { newModelValue };
+			if (sicp && newKv != null && newValue != null) {
+				return new Object[] { newValue };
 			}
 			else {
 				return new Object[] {};
@@ -190,12 +190,12 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		boolean isList = tp.getBoolean("list");
 
 		KeyValue newKv = tp.getValue("newValue");
-		Object newGraphicalValue = (newKv == null) ? null : newKv.value;
+		Object newValue = (newKv == null) ? null : newKv.value;
 
 		if (sicp) {
 			if (isList) { // default value is ignored with list
-				if (newKv != null && newGraphicalValue != null && !newGraphicalValue.toString().equals("")) {
-					return new String[] { newGraphicalValue.toString() };
+				if (newKv != null && newValue != null && !newValue.toString().equals("")) {
+					return new String[] { newValue.toString() };
 				}
 				else {
 					return new String[] {};
@@ -203,7 +203,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 			}
 			else {
 				if (newKv != null) {
-					return newGraphicalValue;
+					return newValue;
 				}
 				else {
 					return getCorrectedDefVal(tp).value;
