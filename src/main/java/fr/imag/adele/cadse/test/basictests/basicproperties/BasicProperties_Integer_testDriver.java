@@ -9,7 +9,6 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.si
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
-import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class BasicProperties_Integer_testDriver extends BasicProperties_Common_testDriver {
@@ -79,15 +78,5 @@ public class BasicProperties_Integer_testDriver extends BasicProperties_Common_t
 	@Override
 	protected String getAttributeNameUnderTest() {
 		return "Integer";
-	}
-
-	@Override
-	protected KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
-		if (kv.value instanceof String && kv.getString().isEmpty()) {
-			return new KeyValue(kv, null);
-		}
-		else {
-			return kv;
-		}
 	}
 }
