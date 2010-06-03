@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseWorkbenchPart;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
@@ -308,6 +309,46 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 		System.out.println("Execution - running " + ctp.numberOfTests() + " tests.");
 		System.out.println(tp.toString());
 		testExecution(tp);
+	}
+
+	/**
+	 * Set values into a GTCadseWorkbenchPart.
+	 * 
+	 * @param wp
+	 *            the GTCadseWorkbenchPart
+	 * @param values
+	 *            the values
+	 * @return true, if sets the values
+	 */
+	protected boolean setValues(GTCadseWorkbenchPart wp, KeyValue... values) {
+		try {
+			wp.setValue(values);
+			return true;
+		}
+		catch (Exception e) {
+			return false;
+		}
+	}
+
+	/**
+	 * Checks if it should be possible to set a value.
+	 * 
+	 * @param tp
+	 *            the tp
+	 * @param value
+	 *            the value
+	 * @return true, if the value can be set
+	 */
+	protected boolean isSettableValue(GTTestParameter tp, KeyValue kv) {
+
+		boolean isList = tp.getBoolean("list");
+
+		if (isList) {
+			return kv != null && kv.value != null && !kv.value.toString().equals("");
+		}
+		else {
+			return true;
+		}
 	}
 
 	/**

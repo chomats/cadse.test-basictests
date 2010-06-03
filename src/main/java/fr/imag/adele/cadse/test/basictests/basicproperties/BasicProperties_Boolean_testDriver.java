@@ -8,15 +8,10 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.no
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
-
-import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
-
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
-import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_testDriver {
 
@@ -83,65 +78,6 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 	@Override
 	protected String getAttributeNameUnderTest() {
 		return "Boolean";
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#setNewGraphicalValue(fr
-	 * .imag.adele.cadse.test.basictests.testdriver.GTTestParameter,
-	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell)
-	 */
-	@Override
-	protected boolean setNewGraphicalValue(GTTestParameter tp, GTCadseShell shell) {
-
-		Boolean newValue = tp.getBoolean("newValue");
-		boolean isList = tp.getBoolean("list");
-		boolean cbu = tp.getBoolean("cbu");
-
-		if (isList) {
-
-			if (newValue != null) {
-				boolean expectedSuccess = !newValue.equals("");
-
-				if (expectedSuccess) {
-					shell.findCadseField(getAttributeName()).addValue(newValue.toString());
-				}
-				else {
-					try {
-						shell.findCadseField(getAttributeName()).addValue(newValue.toString(),
-								GTPreferences.FAILING_ASSERT_TIMEOUT);
-						fail("It should be impossible to fill \"" + newValue + "\" for #" + tp.testNumber);
-					}
-					catch (Exception e) {
-						// success
-					}
-				}
-			}
-		}
-		else {
-			boolean ok;
-
-			try {
-				shell.findCadseField(getAttributeName()).check(newValue);
-				ok = true;
-			}
-			catch (Exception e) {
-				ok = false;
-			}
-
-			if (ok == false) {
-				if (newValue == null && cbu == true) {
-					return false;
-				}
-				else {
-					throw new WidgetNotFoundException("It should be possible to fill \"" + newValue + "\" for #"
-							+ tp.testNumber);
-				}
-			}
-		}
-
-		return true; // success
 	}
 
 	/*

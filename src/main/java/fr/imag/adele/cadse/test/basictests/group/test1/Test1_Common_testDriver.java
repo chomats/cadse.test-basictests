@@ -287,7 +287,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		}
 
 		// SET New Value 1
-		if (sicp) {
+		if (sicp && val1 != null) {
 			shell.setValue(val1);
 		}
 
@@ -325,8 +325,15 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		}
 
 		// SET New Value 2
-		if (simp) {
-			propertiesView.setValue(val2);
+		if (simp && val2 != null) {
+			boolean expectedSuccess = isSettableValue(tp, val2);
+			boolean actualSuccess = setValues(propertiesView, val2);
+			assertEquals("Success or failure is not as expected", expectedSuccess, actualSuccess);
+
+			// setting the new value has failed, as expected
+			if (!actualSuccess) {
+				return;
+			}
 		}
 
 		/* =============== */
@@ -366,7 +373,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, simp, isFieldPresent);
 
 		// SET New Value 3
-		if (simp) {
+		if (simp && val3 != null) {
 			workspaceView.selectNode(getInstanceSrcName(tp));
 			propertiesView.showTab(getItSrcName(tp));
 			propertiesView.setValue(val3);

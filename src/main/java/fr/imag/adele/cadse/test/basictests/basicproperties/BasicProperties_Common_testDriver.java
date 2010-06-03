@@ -109,43 +109,6 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	}
 
 	/**
-	 * Sets the new graphical value.
-	 * 
-	 * @param tp
-	 *            the test parameter
-	 * @param shell
-	 *            the shell
-	 */
-	protected boolean setNewGraphicalValue(GTTestParameter tp, GTCadseShell shell) {
-
-		String newValue = tp.getValue("newValue").value == null ? null : tp.getValue("newValue").value.toString();
-		boolean isList = tp.getBoolean("list");
-
-		if (isList) {
-
-			boolean expectedSuccess = newValue != null && !newValue.equals("");
-
-			if (expectedSuccess) {
-				shell.findCadseField(getAttributeName()).addValue(newValue);
-			}
-			else {
-				try {
-					shell.findCadseField(getAttributeName()).addValue(newValue, GTPreferences.FAILING_ASSERT_TIMEOUT);
-					fail("It should be impossible to fill \"" + newValue + "\" for #" + tp.testNumber);
-				}
-				catch (Exception e) {
-					return false; // success : it's impossible to fill a non allowed value
-				}
-			}
-		}
-		else {
-			shell.findCadseField(getAttributeName()).typeText(newValue);
-		}
-
-		return true; // success
-	}
-
-	/**
 	 * Gets the final model value.
 	 * 
 	 * @param tp
@@ -325,6 +288,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 		boolean sicp = tp.getBoolean("sicp");
 		boolean simp = tp.getBoolean("simp");
+		boolean isList = tp.getBoolean("list");
 
 		boolean fieldInCP = sicp && attributeCreationSuccess(tp);
 		boolean fieldInMP = simp && attributeCreationSuccess(tp);
@@ -359,8 +323,13 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 		// New Attribute Value
 		if (fieldInCP && newValue != null) {
-			if (!setNewGraphicalValue(tp, shell)) {
-				// setting the new value has failed, as expected
+
+			boolean expectedSuccess = isSettableValue(tp, newValue);
+			boolean actualSuccess = setValues(shell, newValue);
+			assertEquals("Success or failure is not as expected", expectedSuccess, actualSuccess);
+
+			// setting the new value has failed, as expected
+			if (!actualSuccess) {
 				shell.close(GTEclipseConstants.CANCEL_BUTTON);
 				return;
 			}
