@@ -32,7 +32,10 @@ public class BasicProperties_String_tc_execution extends GTCadseTestCase {
 		exclude.add(15);
 		exclude.add(19);
 		exclude.add(23);
-		exclude.add(27);
+
+		exclude.add(159);
+		exclude.add(163);
+		exclude.add(167);
 
 		driver.testExecution(exclude);
 	}

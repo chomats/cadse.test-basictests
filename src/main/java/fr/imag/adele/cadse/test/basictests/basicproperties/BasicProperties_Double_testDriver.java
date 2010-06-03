@@ -5,6 +5,7 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.li
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notCbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSicpKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
@@ -22,24 +23,6 @@ public class BasicProperties_Double_testDriver extends BasicProperties_Common_te
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
-	 */
-	@Override
-	protected ItemType getAttributeTypeUnderTest() {
-		return CadseGCST.DOUBLE;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
-	 */
-	@Override
-	protected String getAttributeNameUnderTest() {
-		return "Double";
-	}
-
-	/*
-	 * (non-Javadoc)
 	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#initializeTestParameters()
 	 */
 	@Override
@@ -51,7 +34,7 @@ public class BasicProperties_Double_testDriver extends BasicProperties_Common_te
 
 		// Common parameters
 		KeyValue[] sicpValues = { sicpKv, notSicpKv };
-		KeyValue[] simpValues = { simpKv /* , notSimpKv */};
+		KeyValue[] simpValues = { simpKv, notSimpKv };
 		KeyValue[] cbuValues = { cbuKv, notCbuKv };
 		KeyValue[] listValues = { notListKv, listKv };
 
@@ -79,5 +62,23 @@ public class BasicProperties_Double_testDriver extends BasicProperties_Common_te
 
 		ctp.addParameter("defVal", defVal);
 		ctp.addParameter("newValue", newVal);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
+	 */
+	@Override
+	protected ItemType getAttributeTypeUnderTest() {
+		return CadseGCST.DOUBLE;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
+	 */
+	@Override
+	protected String getAttributeNameUnderTest() {
+		return "Double";
 	}
 }

@@ -29,24 +29,6 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
-	 */
-	@Override
-	protected ItemType getAttributeTypeUnderTest() {
-		return CadseGCST.BOOLEAN;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
-	 */
-	@Override
-	protected String getAttributeNameUnderTest() {
-		return "Boolean";
-	}
-
-	/*
-	 * (non-Javadoc)
 	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#initializeTestParameters()
 	 */
 	@Override
@@ -83,6 +65,24 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 		ctp.addParameter("list", listValues);
 		ctp.addParameter("defVal", defVal);
 		ctp.addParameter("newValue", newVal);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
+	 */
+	@Override
+	protected ItemType getAttributeTypeUnderTest() {
+		return CadseGCST.BOOLEAN;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
+	 */
+	@Override
+	protected String getAttributeNameUnderTest() {
+		return "Boolean";
 	}
 
 	/*
