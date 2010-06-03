@@ -53,10 +53,10 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		KeyValue[] enumType = new KeyValue[] { enumTypeKv };
 
 		/* Execution : new value */
-		KeyValue kv31 = new KeyValue(getAttributeName(), null);
-		KeyValue kv32 = new KeyValue(getAttributeName(), "one");
-		KeyValue kv33 = null; // null stands for leave unchanged
-		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33 };
+		KeyValue kv31 = new KeyValue(getAttributeName(), "one");
+		KeyValue kv32 = null; // null stands for leave unchanged
+		// KeyValue kv33 = new KeyValue(getAttributeName(), null); // no plus value with null value
+		KeyValue[] newVal = new KeyValue[] { kv31, kv32 /* , kv33 */};
 
 		/* ==== */
 		/* INIT */
