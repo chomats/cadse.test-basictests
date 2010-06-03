@@ -27,24 +27,6 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
-	 */
-	@Override
-	protected ItemType getAttributeTypeUnderTest() {
-		return CadseGCST.ENUM;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
-	 */
-	@Override
-	protected String getAttributeNameUnderTest() {
-		return "Enum";
-	}
-
-	/*
-	 * (non-Javadoc)
 	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#initializeTestParameters()
 	 */
 	@Override
@@ -88,6 +70,24 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		ctp.addParameter("defVal", defVal);
 		ctp.addParameter("newValue", newVal);
 		ctp.addParameter("enumType", enumType);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
+	 */
+	@Override
+	protected ItemType getAttributeTypeUnderTest() {
+		return CadseGCST.ENUM;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
+	 */
+	@Override
+	protected String getAttributeNameUnderTest() {
+		return "Enum";
 	}
 
 	/*
