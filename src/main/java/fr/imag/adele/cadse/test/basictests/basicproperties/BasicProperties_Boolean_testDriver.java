@@ -99,4 +99,29 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 			return kv;
 		}
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#isSettableValue(fr.imag.adele.cadse.test.basictests
+	 * .testdriver.GTTestParameter, fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue)
+	 */
+	@Override
+	protected boolean isSettableValue(GTTestParameter tp, KeyValue kv) {
+
+		boolean isList = tp.getBoolean("list");
+		boolean cbu = tp.getBoolean("cbu");
+
+		if (isList) {
+			return kv != null && kv.value != null && !kv.value.toString().equals("");
+		}
+		else {
+			if (cbu && kv != null && kv.value == null) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+	}
 }
