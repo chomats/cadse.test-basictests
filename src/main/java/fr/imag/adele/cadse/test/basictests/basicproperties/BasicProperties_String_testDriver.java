@@ -16,10 +16,8 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class BasicProperties_String_testDriver extends BasicProperties_Common_testDriver {
 
@@ -150,33 +148,17 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell)
 	 */
 	@Override
-	protected boolean setNewGraphicalValue(GTTestParameter tp, GTCadseShell shell) {
+	protected boolean isSettableValue(GTTestParameter tp, KeyValue kv) {
 
 		boolean isList = tp.getBoolean("list");
 		boolean notEmpty = tp.getBoolean("notEmpty");
-		String newValue = tp.getString("newValue");
 
 		if (isList) {
-			boolean expectedSuccess = notEmpty ? !newValue.equals("") : true;
-
-			if (expectedSuccess) {
-				shell.findCadseField(getAttributeName()).addValue(newValue);
-			}
-			else {
-				try {
-					shell.findCadseField(getAttributeName()).addValue(newValue, GTPreferences.FAILING_ASSERT_TIMEOUT);
-					fail("It should be impossible to fill \"" + newValue + "\" for #" + tp.testNumber);
-				}
-				catch (Exception e) {
-					// success
-				}
-			}
+			return notEmpty ? !kv.getString().equals("") : true;
 		}
 		else {
-			shell.findCadseField(getAttributeName()).typeText(newValue);
+			return true;
 		}
-
-		return true; // success
 	}
 
 	/*
