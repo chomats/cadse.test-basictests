@@ -324,8 +324,8 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		// New Attribute Value
 		if (fieldInCP && newValue != null) {
 
-			boolean expectedSuccess = isSettableValue(tp, newValue);
 			boolean actualSuccess = setValues(shell, newValue);
+			boolean expectedSuccess = isSettableValue(tp, newValue);
 			assertEquals("Success or failure is not as expected", expectedSuccess, actualSuccess);
 
 			// setting the new value has failed, as expected
