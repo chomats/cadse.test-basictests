@@ -288,7 +288,6 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 		boolean sicp = tp.getBoolean("sicp");
 		boolean simp = tp.getBoolean("simp");
-		boolean isList = tp.getBoolean("list");
 
 		boolean fieldInCP = sicp && attributeCreationSuccess(tp);
 		boolean fieldInMP = simp && attributeCreationSuccess(tp);

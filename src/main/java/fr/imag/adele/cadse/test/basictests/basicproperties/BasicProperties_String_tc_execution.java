@@ -3,8 +3,6 @@ package fr.imag.adele.cadse.test.basictests.basicproperties;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
@@ -28,15 +26,6 @@ public class BasicProperties_String_tc_execution extends GTCadseTestCase {
 
 	@Test
 	public void test_execution() throws Exception {
-		ArrayList<Integer> exclude = new ArrayList<Integer>();
-		exclude.add(15);
-		exclude.add(19);
-		exclude.add(23);
-
-		exclude.add(159);
-		exclude.add(163);
-		exclude.add(167);
-
-		driver.testExecution(exclude);
+		driver.testExecution();
 	}
 }
