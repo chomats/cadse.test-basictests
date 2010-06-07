@@ -19,6 +19,7 @@ public class BasicProperties_String_tc_execution extends GTCadseTestCase {
 	 */
 	@Test
 	public void test_preparation() throws Exception {
+
 		driver.selectCadse();
 		welcomeView.close();
 		workspaceView.show();
