@@ -66,6 +66,7 @@ public class HasContent_tc_execution extends GTCadseTestCase {
 
 		createBasicItem(workspaceView, root_project_node, "file_content", "my_file_content", root_project_node
 				.concat("my_file_content"));
+		Thread.sleep(100);
 		packageExplorerView.selectNode(root_project_node.concat("my_file_content.txt"));
 
 		// ================== //
