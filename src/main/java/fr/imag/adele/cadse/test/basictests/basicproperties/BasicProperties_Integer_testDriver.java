@@ -45,10 +45,11 @@ public class BasicProperties_Integer_testDriver extends BasicProperties_Common_t
 		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
 
 		/* Execution : new value */
-		KeyValue kv31 = new KeyValue(getAttributeName(), null);
-		KeyValue kv32 = new KeyValue(getAttributeName(), new Integer(456));
-		KeyValue kv33 = null; // null stands for leave unchanged
-		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33 };
+		KeyValue kv31 = new KeyValue(getAttributeName(), "");
+		KeyValue kv32 = new KeyValue(getAttributeName(), null);
+		KeyValue kv33 = new KeyValue(getAttributeName(), new Integer(456));
+		KeyValue kv34 = null; // null stands for leave unchanged
+		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33, kv34 };
 
 		/* ==== */
 		/* INIT */
