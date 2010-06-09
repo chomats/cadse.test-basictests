@@ -1,5 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.group.test1;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.cbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notCbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
@@ -34,18 +35,28 @@ public class Test1_Boolean_testDriver extends Test1_Common_testDriver {
 		/* Common parameters */
 		KeyValue[] sicpValues = { sicpKv, notSicpKv };
 		KeyValue[] simpValues = { simpKv, notSimpKv };
-		KeyValue[] cbuValues = { /* cbuKv, */notCbuKv };
+		KeyValue[] cbuValues = { cbuKv, notCbuKv };
 		KeyValue[] listValues = { notListKv, listKv };
 
-		KeyValue defValKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, true);
-		KeyValue newValue1Kv = new KeyValue(getAttributeName(), false);
-		KeyValue newValue2Kv = new KeyValue(getAttributeName(), null);
-		KeyValue newValue3Kv = new KeyValue(getAttributeName(), true);
+		/* Default value given into CADSEg */
+		KeyValue defValKv1 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, new Boolean(true));
+		KeyValue defValKv2 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
+		KeyValue[] defVal = new KeyValue[] { defValKv1, defValKv2 };
 
-		KeyValue[] defVal = new KeyValue[] { defValKv };
-		KeyValue[] newValue1 = new KeyValue[] { newValue1Kv };
-		KeyValue[] newValue2 = new KeyValue[] { newValue2Kv };
-		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv };
+		/* Value used for head creation */
+		KeyValue newValue1Kv1 = new KeyValue(getAttributeName(), new Boolean(false));
+		KeyValue newValue1Kv2 = new KeyValue(getAttributeName(), null);
+		KeyValue[] newValue1 = new KeyValue[] { newValue1Kv1, newValue1Kv2 };
+
+		/* Value used for member creation */
+		KeyValue newValue2Kv1 = new KeyValue(getAttributeName(), new Boolean(true));
+		KeyValue newValue2Kv2 = new KeyValue(getAttributeName(), null);
+		KeyValue[] newValue2 = new KeyValue[] { newValue2Kv1, newValue2Kv2 };
+
+		/* Value used to modify head after member creation */
+		KeyValue newValue3Kv1 = new KeyValue(getAttributeName(), new Boolean(false));
+		KeyValue newValue3Kv2 = new KeyValue(getAttributeName(), null);
+		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv1, newValue3Kv2 };
 
 		/* ==== */
 		/* INIT */
