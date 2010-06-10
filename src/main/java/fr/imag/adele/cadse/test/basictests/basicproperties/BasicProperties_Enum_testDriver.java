@@ -44,19 +44,18 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 
 		/* Default Value */
 		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
-		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
-		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "two");
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "two");
+		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
 		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
-
-		/* Enum Type */
-		KeyValue enumTypeKv = new KeyValue(CadseGCST.ENUM_lt_ENUM_TYPE, new GTTreePath(enumTypeName));
-		KeyValue[] enumType = new KeyValue[] { enumTypeKv };
 
 		/* Execution : new value */
 		KeyValue kv31 = new KeyValue(getAttributeName(), "one");
 		KeyValue kv32 = null; // null stands for leave unchanged
-		// KeyValue kv33 = new KeyValue(getAttributeName(), null); // no plus value with null value
-		KeyValue[] newVal = new KeyValue[] { kv31, kv32 /* , kv33 */};
+		KeyValue[] newVal = new KeyValue[] { kv31, kv32 };
+
+		/* Enum Type */
+		KeyValue enumTypeKv = new KeyValue(CadseGCST.ENUM_lt_ENUM_TYPE, new GTTreePath(enumTypeName));
+		KeyValue[] enumType = new KeyValue[] { enumTypeKv };
 
 		/* ==== */
 		/* INIT */
@@ -99,7 +98,7 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 	@Override
 	protected void preCreate(GTTestParameter tp) {
 		if (tp.testNumber == 0) {
-			GTCadseHelperMethods.createEnumType(dataModel, enumTypeName, "one", "two", "three", "four");
+			GTCadseHelperMethods.createEnumType(dataModel, enumTypeName, "one", "two", "three", "four", "five");
 		}
 	}
 
@@ -126,8 +125,7 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		String defVal = tp.getString("defVal");
 		if (defVal == null || defVal.equals("")) {
 			return false;
-		}
-		else {
+		} else {
 			return true;
 		}
 	}
@@ -159,8 +157,7 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		// Empty new value is forbidden
 		else if (newVal.value == null || newVal.getString().isEmpty()) {
 			return false;
-		}
-		else {
+		} else {
 			return true;
 		}
 	}

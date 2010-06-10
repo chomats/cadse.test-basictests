@@ -1,5 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.group.test1;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.cbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notCbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
@@ -34,18 +35,37 @@ public class Test1_String_testDriver extends Test1_Common_testDriver {
 		/* Common parameters */
 		KeyValue[] sicpValues = { sicpKv, notSicpKv };
 		KeyValue[] simpValues = { simpKv, notSimpKv };
-		KeyValue[] cbuValues = { /* cbuKv, */notCbuKv };
+		KeyValue[] cbuValues = { cbuKv, notCbuKv };
 		KeyValue[] listValues = { notListKv, listKv };
 
-		KeyValue defValKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "defaultStr");
-		KeyValue newValue1Kv = new KeyValue(getAttributeName(), "strOne");
-		KeyValue newValue2Kv = new KeyValue(getAttributeName(), "strTwo");
-		KeyValue newValue3Kv = new KeyValue(getAttributeName(), "strThree");
+		/* Default value given into CADSEg */
+		KeyValue defValKv1 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
+		KeyValue defValKv2 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "strDv");
+		KeyValue defValKv3 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
+		KeyValue[] defVal = new KeyValue[] { defValKv1, defValKv2, defValKv3 };
 
-		KeyValue[] defVal = new KeyValue[] { defValKv };
-		KeyValue[] newValue1 = new KeyValue[] { newValue1Kv };
-		KeyValue[] newValue2 = new KeyValue[] { newValue2Kv };
-		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv };
+		/* Value used for head creation */
+		KeyValue newValue1Kv1 = new KeyValue(getAttributeName(), "");
+		KeyValue newValue1Kv2 = new KeyValue(getAttributeName(), "str1");
+		KeyValue newValue1Kv3 = new KeyValue(getAttributeName(), null);
+		KeyValue[] newValue1 = new KeyValue[] { newValue1Kv1, newValue1Kv2, newValue1Kv3 };
+
+		/* Value used for member creation */
+		KeyValue newValue2Kv1 = new KeyValue(getAttributeName(), "");
+		KeyValue newValue2Kv2 = new KeyValue(getAttributeName(), "str2");
+		KeyValue newValue2Kv3 = new KeyValue(getAttributeName(), null);
+		KeyValue[] newValue2 = new KeyValue[] { newValue2Kv1, newValue2Kv2, newValue2Kv3 };
+
+		/* Value used to modify head after member creation */
+		KeyValue newValue3Kv1 = new KeyValue(getAttributeName(), "");
+		KeyValue newValue3Kv2 = new KeyValue(getAttributeName(), "str3");
+		KeyValue newValue3Kv3 = new KeyValue(getAttributeName(), null);
+		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv1, newValue3Kv2, newValue3Kv3 };
+
+		/* Not Empty Attribute */
+		KeyValue notEmptyTrue = new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, true);
+		KeyValue notEmptyFalse = new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, false);
+		KeyValue[] notEmpty = { notEmptyTrue, notEmptyFalse };
 
 		/* ==== */
 		/* INIT */
@@ -60,6 +80,7 @@ public class Test1_String_testDriver extends Test1_Common_testDriver {
 		ctp.addParameter("newValue1", newValue1);
 		ctp.addParameter("newValue2", newValue2);
 		ctp.addParameter("newValue3", newValue3);
+		ctp.addParameter("notEmpty", notEmpty);
 	}
 
 	/*

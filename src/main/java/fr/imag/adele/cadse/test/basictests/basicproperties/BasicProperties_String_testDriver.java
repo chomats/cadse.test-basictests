@@ -47,14 +47,14 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 
 		/* Values given into CADSEg */
 		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
-		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
-		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "my_dv");
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "my_dv");
+		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
 		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
 
 		/* Execution : new value */
 		KeyValue kv31 = new KeyValue(getAttributeName(), "");
-		KeyValue kv32 = new KeyValue(getAttributeName(), null);
-		KeyValue kv33 = new KeyValue(getAttributeName(), "new_val");
+		KeyValue kv32 = new KeyValue(getAttributeName(), "new_val");
+		KeyValue kv33 = new KeyValue(getAttributeName(), null);
 		KeyValue kv34 = null; // null stands for leave unchanged
 		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33, kv34 };
 
@@ -124,8 +124,7 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 
 		if (isList) {
 			return true;
-		}
-		else {
+		} else {
 
 			// Checking cbu constraint
 			if (cbu && getFinalModelValue(tp) == null) {
@@ -156,8 +155,7 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 
 		if (isList) {
 			return notEmpty ? !kv.getString().equals("") : true;
-		}
-		else {
+		} else {
 			return true;
 		}
 	}
@@ -184,25 +182,20 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 				if (newKv != null) {
 					if (!newValue.equals("") || !notEmpty) {
 						return new String[] { newValue.toString() };
-					}
-					else {
+					} else {
 						return new String[] {};
 					}
-				}
-				else {
+				} else {
 					return new String[] {};
 				}
-			}
-			else {
+			} else {
 				if (newKv != null) {
 					return newValue;
-				}
-				else {
+				} else {
 					return defVal; // no new value
 				}
 			}
-		}
-		else {
+		} else {
 			throw new WidgetNotFoundException("No field in this dialog");
 		}
 	}
@@ -235,25 +228,20 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 
 				if (notEmpty && newValue.equals("")) {
 					return new Object[] {};
-				}
-				else {
+				} else {
 					return new Object[] { newValue };
 				}
-			}
-			else {
+			} else {
 				return new Object[] {};
 			}
-		}
-		else {
+		} else {
 			if (fieldInCP) {
 				if (newKv != null) { // in case graphic = "" and model = null
 					return newValue;
-				}
-				else {
+				} else {
 					return defVal;
 				}
-			}
-			else {
+			} else {
 				return defVal;
 			}
 		}
