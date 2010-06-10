@@ -1,7 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.group.test1;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notCbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
@@ -40,18 +39,29 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 		/* Common parameters */
 		KeyValue[] sicpValues = { sicpKv, notSicpKv };
 		KeyValue[] simpValues = { simpKv, notSimpKv };
-		KeyValue[] cbuValues = { /* cbuKv, */notCbuKv };
+		/* KeyValue[] cbuValues = { cbuKv, notCbuKv }; CBU = this attribute does not exists with enum type */
 		KeyValue[] listValues = { notListKv, listKv };
 
-		KeyValue defValKv = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "four");
-		KeyValue newValue1Kv = new KeyValue(getAttributeName(), "one");
-		KeyValue newValue2Kv = new KeyValue(getAttributeName(), "two");
-		KeyValue newValue3Kv = new KeyValue(getAttributeName(), "three");
+		/* Default value given into CADSEg */
+		KeyValue defValKv1 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
+		KeyValue defValKv2 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "two");
+		KeyValue defValKv3 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
+		KeyValue[] defVal = new KeyValue[] { defValKv1, defValKv2, defValKv3 };
 
-		KeyValue[] defVal = new KeyValue[] { defValKv };
-		KeyValue[] newValue1 = new KeyValue[] { newValue1Kv };
-		KeyValue[] newValue2 = new KeyValue[] { newValue2Kv };
-		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv };
+		/* Value used for head creation */
+		KeyValue newValue1Kv1 = new KeyValue(getAttributeName(), "three");
+		KeyValue newValue1Kv2 = new KeyValue(getAttributeName(), null);
+		KeyValue[] newValue1 = new KeyValue[] { newValue1Kv1, newValue1Kv2 };
+
+		/* Value used for member creation */
+		KeyValue newValue2Kv1 = new KeyValue(getAttributeName(), "four");
+		KeyValue newValue2Kv2 = new KeyValue(getAttributeName(), null);
+		KeyValue[] newValue2 = new KeyValue[] { newValue2Kv1, newValue2Kv2 };
+
+		/* Value used to modify head after member creation */
+		KeyValue newValue3Kv1 = new KeyValue(getAttributeName(), "five");
+		KeyValue newValue3Kv2 = new KeyValue(getAttributeName(), null);
+		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv1, newValue3Kv2 };
 
 		/* Enum Type */
 		KeyValue enumTypeKv = new KeyValue(CadseGCST.ENUM_lt_ENUM_TYPE, new GTTreePath(enumTypeName));
@@ -63,7 +73,7 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 
 		ctp.addParameter("sicp", sicpValues);
 		ctp.addParameter("simp", simpValues);
-		ctp.addParameter("cbu", cbuValues);
+		/* ctp.addParameter("cbu", cbuValues); CBU = this attribute does not exists with enum type */
 		ctp.addParameter("list", listValues);
 
 		ctp.addParameter("defVal", defVal);
@@ -101,7 +111,7 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 	@Override
 	protected void preCreate(GTTestParameter tp) {
 		if (tp.testNumber == 0) {
-			GTCadseHelperMethods.createEnumType(dataModel, enumTypeName, "one", "two", "three", "four");
+			GTCadseHelperMethods.createEnumType(dataModel, enumTypeName, "one", "two", "three", "four", "five");
 		}
 	}
 
