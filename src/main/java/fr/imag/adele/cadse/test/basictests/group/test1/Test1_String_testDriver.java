@@ -4,7 +4,7 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.cb
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notCbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
@@ -32,8 +32,8 @@ public class Test1_String_testDriver extends Test1_Common_testDriver {
 		/* =========== */
 
 		/* Common parameters */
-		KeyValue[] sicpValues = { sicpKv /* , notSicpKv */};
-		KeyValue[] simpValues = { simpKv, notSimpKv };
+		KeyValue[] sicpValues = { sicpKv, notSicpKv };
+		KeyValue[] simpValues = { simpKv /* , notSimpKv */};
 		KeyValue[] cbuValues = { cbuKv, notCbuKv };
 		KeyValue[] listValues = { notListKv, listKv };
 
@@ -50,15 +50,12 @@ public class Test1_String_testDriver extends Test1_Common_testDriver {
 		KeyValue[] newValue1 = new KeyValue[] { newValue1Kv1, newValue1Kv2, newValue1Kv3 };
 
 		/* Value used for member creation */
-		KeyValue newValue2Kv1 = new KeyValue(getAttributeName(), "");
-		KeyValue newValue2Kv2 = new KeyValue(getAttributeName(), "str2");
-		KeyValue newValue2Kv3 = new KeyValue(getAttributeName(), null);
-		KeyValue[] newValue2 = new KeyValue[] { newValue2Kv1, newValue2Kv2, newValue2Kv3 };
+		KeyValue newValue2Kv = new KeyValue(getAttributeName(), "str2");
+		KeyValue[] newValue2 = new KeyValue[] { newValue2Kv };
 
 		/* Value used to modify head after member creation */
-		KeyValue newValue3Kv1 = new KeyValue(getAttributeName(), "");
-		KeyValue newValue3Kv2 = new KeyValue(getAttributeName(), "str3");
-		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv1, newValue3Kv2 };
+		KeyValue newValue3Kv = new KeyValue(getAttributeName(), "str3");
+		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv };
 
 		/* Not Empty Attribute */
 		KeyValue notEmptyTrue = new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, true);
