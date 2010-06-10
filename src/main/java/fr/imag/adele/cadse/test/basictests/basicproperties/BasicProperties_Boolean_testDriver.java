@@ -41,13 +41,15 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 
 		/* Values given into CADSEg */
 		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, new Boolean(true));
-		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
-		KeyValue[] defVal = new KeyValue[] { kv11, kv12 };
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, new Boolean(false));
+		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
+		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
 
 		/* Execution : new value */
-		KeyValue kv31 = new KeyValue(getAttributeName(), new Boolean(false));
-		KeyValue kv32 = new KeyValue(getAttributeName(), null);
-		KeyValue[] newVal = new KeyValue[] { kv31, kv32 };
+		KeyValue kv21 = new KeyValue(getAttributeName(), new Boolean(true));
+		KeyValue kv22 = new KeyValue(getAttributeName(), new Boolean(false));
+		KeyValue kv23 = new KeyValue(getAttributeName(), null);
+		KeyValue[] newVal = new KeyValue[] { kv21, kv22, kv23 };
 
 		/* ==== */
 		/* INIT */

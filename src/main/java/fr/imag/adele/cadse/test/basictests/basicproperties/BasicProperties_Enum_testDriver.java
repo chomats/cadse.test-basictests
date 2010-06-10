@@ -49,8 +49,10 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
 
 		/* Execution : new value */
-		KeyValue kv31 = new KeyValue(getAttributeName(), "one");
-		KeyValue[] newVal = new KeyValue[] { kv31 };
+		KeyValue kv21 = new KeyValue(getAttributeName(), "");
+		KeyValue kv22 = new KeyValue(getAttributeName(), "three");
+		KeyValue kv23 = new KeyValue(getAttributeName(), null);
+		KeyValue[] newVal = new KeyValue[] { kv21, kv22, kv23 };
 
 		/* Enum Type */
 		KeyValue enumTypeKv = new KeyValue(CadseGCST.ENUM_lt_ENUM_TYPE, new GTTreePath(enumTypeName));
