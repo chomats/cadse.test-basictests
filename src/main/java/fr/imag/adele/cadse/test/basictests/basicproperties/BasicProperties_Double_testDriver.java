@@ -48,8 +48,7 @@ public class BasicProperties_Double_testDriver extends BasicProperties_Common_te
 		KeyValue kv31 = new KeyValue(getAttributeName(), "");
 		KeyValue kv32 = new KeyValue(getAttributeName(), new Double(456));
 		KeyValue kv33 = new KeyValue(getAttributeName(), null);
-		KeyValue kv34 = null; // null stands for leave unchanged
-		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33, kv34 };
+		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33 };
 
 		/* ==== */
 		/* INIT */

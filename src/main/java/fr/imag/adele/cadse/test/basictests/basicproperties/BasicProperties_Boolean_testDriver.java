@@ -47,8 +47,7 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 		/* Execution : new value */
 		KeyValue kv31 = new KeyValue(getAttributeName(), new Boolean(false));
 		KeyValue kv32 = new KeyValue(getAttributeName(), null);
-		KeyValue kv33 = null; // null stands for leave unchanged
-		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33 };
+		KeyValue[] newVal = new KeyValue[] { kv31, kv32 };
 
 		/* ==== */
 		/* INIT */
@@ -94,8 +93,7 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 
 		if (cbu == true && kv.value == null) {
 			return new KeyValue("", false);
-		}
-		else {
+		} else {
 			return kv;
 		}
 	}
@@ -114,12 +112,10 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 
 		if (isList) {
 			return kv != null && kv.value != null && !kv.value.toString().equals("");
-		}
-		else {
+		} else {
 			if (cbu && kv != null && kv.value == null) {
 				return false;
-			}
-			else {
+			} else {
 				return true;
 			}
 		}
