@@ -4,7 +4,6 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.cb
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notCbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
@@ -33,7 +32,7 @@ public class Test1_String_testDriver extends Test1_Common_testDriver {
 		/* =========== */
 
 		/* Common parameters */
-		KeyValue[] sicpValues = { sicpKv, notSicpKv };
+		KeyValue[] sicpValues = { sicpKv /* , notSicpKv */};
 		KeyValue[] simpValues = { simpKv, notSimpKv };
 		KeyValue[] cbuValues = { cbuKv, notCbuKv };
 		KeyValue[] listValues = { notListKv, listKv };
@@ -59,8 +58,7 @@ public class Test1_String_testDriver extends Test1_Common_testDriver {
 		/* Value used to modify head after member creation */
 		KeyValue newValue3Kv1 = new KeyValue(getAttributeName(), "");
 		KeyValue newValue3Kv2 = new KeyValue(getAttributeName(), "str3");
-		KeyValue newValue3Kv3 = new KeyValue(getAttributeName(), null);
-		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv1, newValue3Kv2, newValue3Kv3 };
+		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv1, newValue3Kv2 };
 
 		/* Not Empty Attribute */
 		KeyValue notEmptyTrue = new KeyValue(CadseGCST.STRING_at_NOT_EMPTY_, true);
