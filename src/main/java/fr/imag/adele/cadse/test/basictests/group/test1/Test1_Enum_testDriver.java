@@ -48,18 +48,18 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 		KeyValue[] defVal = new KeyValue[] { defValKv1, defValKv2, defValKv3 };
 
 		/* Value used for head creation */
-		KeyValue newValue1Kv1 = new KeyValue(getAttributeName(), "three");
-		KeyValue newValue1Kv2 = new KeyValue(getAttributeName(), null);
+		KeyValue newValue1Kv1 = new KeyValue(getAttributeName(), "");
+		KeyValue newValue1Kv2 = new KeyValue(getAttributeName(), "three");
 		KeyValue[] newValue1 = new KeyValue[] { newValue1Kv1, newValue1Kv2 };
 
 		/* Value used for member creation */
-		KeyValue newValue2Kv1 = new KeyValue(getAttributeName(), "four");
-		KeyValue newValue2Kv2 = new KeyValue(getAttributeName(), null);
+		KeyValue newValue2Kv1 = new KeyValue(getAttributeName(), "");
+		KeyValue newValue2Kv2 = new KeyValue(getAttributeName(), "four");
 		KeyValue[] newValue2 = new KeyValue[] { newValue2Kv1, newValue2Kv2 };
 
 		/* Value used to modify head after member creation */
-		KeyValue newValue3Kv1 = new KeyValue(getAttributeName(), "five");
-		KeyValue newValue3Kv2 = new KeyValue(getAttributeName(), null);
+		KeyValue newValue3Kv1 = new KeyValue(getAttributeName(), "");
+		KeyValue newValue3Kv2 = new KeyValue(getAttributeName(), "five");
 		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv1, newValue3Kv2 };
 
 		/* Enum Type */
