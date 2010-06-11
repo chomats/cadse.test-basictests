@@ -45,14 +45,12 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		/* Default Value */
 		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
 		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "two");
-		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
-		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
+		KeyValue[] defVal = new KeyValue[] { kv11, kv12 };
 
 		/* Execution : new value */
 		KeyValue kv21 = new KeyValue(getAttributeName(), "");
 		KeyValue kv22 = new KeyValue(getAttributeName(), "three");
-		KeyValue kv23 = new KeyValue(getAttributeName(), null);
-		KeyValue[] newVal = new KeyValue[] { kv21, kv22, kv23 };
+		KeyValue[] newVal = new KeyValue[] { kv21, kv22 };
 
 		/* Enum Type */
 		KeyValue enumTypeKv = new KeyValue(CadseGCST.ENUM_lt_ENUM_TYPE, new GTTreePath(enumTypeName));
@@ -162,4 +160,24 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 			return true;
 		}
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getFinalGraphicalValue(
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter)
+	 */
+	@Override
+	protected Object getFinalGraphicalValue(GTTestParameter tp) {
+		Object superVal = super.getFinalGraphicalValue(tp);
+
+		if (superVal instanceof String) {
+			String val = (String) superVal;
+			if (val != null && val.equals(""))
+				return null;
+		}
+
+		return superVal;
+	}
+
 }
