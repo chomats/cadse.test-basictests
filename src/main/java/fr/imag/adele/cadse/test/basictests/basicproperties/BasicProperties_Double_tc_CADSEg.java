@@ -29,7 +29,7 @@ public class BasicProperties_Double_tc_CADSEg extends GTCadseTestCase {
 	 * </ul>
 	 * 
 	 * @throws Exception
-	 *             the exception
+	 *         the exception
 	 */
 	@Test
 	public void test_preparation() throws Exception {
@@ -46,7 +46,7 @@ public class BasicProperties_Double_tc_CADSEg extends GTCadseTestCase {
 	 * Creates a set of double attributes.
 	 * 
 	 * @throws Exception
-	 *             the exception
+	 *         the exception
 	 */
 	@Test
 	public void test_double() throws Exception {
