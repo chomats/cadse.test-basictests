@@ -305,7 +305,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 			boolean actualSuccess = setValues(shell, newValue);
 			boolean expectedSuccess = isSettableValue(tp, newValue);
-			assertEquals("Success or failure is not as expected", expectedSuccess, actualSuccess);
+			assertEquals("Success or failure is not as expected for #" + tp.testNumber, expectedSuccess, actualSuccess);
 
 			// setting the new value has failed, as expected
 			if (!actualSuccess) {
