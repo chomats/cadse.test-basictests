@@ -124,4 +124,22 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 	public KeyValue[] getCreationKeyValues(GTTestParameter tp) {
 		return tp.getValues("enumType", "sicp", "simp", /* "cbu", */"list", "defVal");
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#attributeCreationSuccess(fr.imag.adele.cadse
+	 * .test.basictests.testdriver.GTTestParameter)
+	 */
+	@Override
+	protected boolean attributeCreationSuccess(GTTestParameter tp) {
+
+		String defVal = tp.getString("defVal");
+		if (defVal == null || defVal.equals("")) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
 }
