@@ -20,7 +20,7 @@ public class Test1_Double_tc_CADSEg extends GTCadseTestCase {
 	 * </ul>
 	 * 
 	 * @throws Exception
-	 *             the exception
+	 *         the exception
 	 */
 	@Test
 	public void test_preparation() throws Exception {
@@ -37,7 +37,7 @@ public class Test1_Double_tc_CADSEg extends GTCadseTestCase {
 	 * Creates a set of integer attributes.
 	 * 
 	 * @throws Exception
-	 *             the exception
+	 *         the exception
 	 */
 	@Test
 	public void test_Double() throws Exception {

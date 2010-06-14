@@ -37,7 +37,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the source it name, for a given instance.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the source it name
 	 */
 	protected String getItSrcName(GTTestParameter tp) {
@@ -48,7 +48,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the link name, for a given instance
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the link name
 	 */
 	protected String getLinkName(GTTestParameter tp) {
@@ -59,7 +59,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the it destination name, for a given instance
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the destination it name
 	 */
 	protected String getItDstName(GTTestParameter tp) {
@@ -70,7 +70,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the source instance name.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the source instance name
 	 */
 	protected String getInstanceSrcName(GTTestParameter tp) {
@@ -81,7 +81,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the destination instance name.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the destination instance name
 	 */
 	protected String getInstanceDstName(GTTestParameter tp) {
@@ -92,7 +92,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the default value.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the default value
 	 */
 	protected KeyValue getDefaultValue(GTTestParameter tp) {
@@ -111,7 +111,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the first new value.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the first new value
 	 */
 	protected KeyValue getNewValue1(GTTestParameter tp) {
@@ -136,7 +136,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the second new value.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the second new value
 	 */
 	protected KeyValue getNewValue2(GTTestParameter tp) {
@@ -179,13 +179,15 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the third new value.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the third new value
 	 */
 	protected KeyValue getNewValue3(GTTestParameter tp) {
 
 		boolean isList = tp.getBoolean("list");
 		boolean simp = tp.getBoolean("simp");
+		boolean cbu = tp.getBoolean("cbu");
+		Object newVal = tp.getValue("newValue3").value;
 
 		if (isList) {
 
@@ -200,8 +202,8 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			}
 
 			if (simp) {
-				visual.add(tp.getValue("newValue3").value.toString());
-				model.add(tp.getValue("newValue3").value.toString());
+				visual.add(newVal.toString());
+				model.add(newVal.toString());
 			}
 
 			return new KeyValue(getAttributeName(), visual.toArray(new String[] {}));
@@ -210,7 +212,12 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		// not list
 		else {
 			if (simp) {
-				return new KeyValue(getAttributeName(), tp.getValue("newValue3").value);
+				if (newVal == null && cbu == true) {
+					return getNewValue2(tp);
+				}
+				else {
+					return new KeyValue(getAttributeName(), newVal);
+				}
 			}
 			else {
 				return getNewValue2(tp);
