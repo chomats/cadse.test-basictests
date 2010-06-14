@@ -37,7 +37,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 * Gets the it name, for a given instance
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the it name
 	 */
 	protected String getItName(GTTestParameter tp) {
@@ -48,7 +48,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 * Gets the instance name.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the instance name
 	 */
 	protected String getInstanceName(GTTestParameter tp) {
@@ -60,7 +60,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 * CADSEg to match all the constraints.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the corrected def val
 	 */
 	protected KeyValue getCorrectedDefVal(GTTestParameter tp) {
@@ -72,7 +72,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 * CADSEg to match all the constraints.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the corrected def val
 	 */
 	protected KeyValue getCorrectedNewVal(GTTestParameter tp) {
@@ -93,7 +93,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 * Gets the initial visual value.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return a string or a list of string
 	 */
 	protected Object getInitialValue(GTTestParameter tp) {
@@ -112,7 +112,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 * Gets the final model value.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the final model value
 	 */
 	protected Object getFinalModelValue(GTTestParameter tp) {
@@ -144,7 +144,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 * Gets the final graphical value.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the final graphical value
 	 */
 	protected Object getFinalGraphicalValue(GTTestParameter tp) {
@@ -179,30 +179,10 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	}
 
 	/**
-	 * Checks if is ok button is activated.
-	 * 
-	 * @param tp
-	 *            the test parameter
-	 * @return true, if is ok button is activated
-	 */
-	protected boolean isOkButtonActivated(GTTestParameter tp) {
-
-		boolean cbu = tp.getBoolean("cbu");
-		boolean isList = tp.getBoolean("list");
-
-		if (isList) {
-			return true;
-		}
-		else {
-			return cbu ? (getFinalModelValue(tp) != null) : true;
-		}
-	}
-
-	/**
 	 * Gets the attribute graphical value in the property view.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the attribute graphical value in the property view.
 	 */
 	protected Object getPropertiesGraphicalValue(GTTestParameter tp) {
@@ -233,7 +213,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 * Gets the attribute model value in the property view.
 	 * 
 	 * @param tp
-	 *            the test parameter
+	 *        the test parameter
 	 * @return the attribute model value in the property view.
 	 */
 	protected Object getPropertiesModelValue(GTTestParameter tp) {
@@ -289,8 +269,8 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		boolean sicp = tp.getBoolean("sicp");
 		boolean simp = tp.getBoolean("simp");
 
-		boolean fieldInCP = sicp && attributeCreationSuccess(tp);
-		boolean fieldInMP = simp && attributeCreationSuccess(tp);
+		boolean fieldInCP = sicp && isAttributeCreationSuccess(tp);
+		boolean fieldInMP = simp && isAttributeCreationSuccess(tp);
 
 		KeyValue newValue = tp.getValue("newValue");
 
@@ -346,7 +326,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 		// final model value (okButtonActivated is important! if the value is not correct, the previous correct
 		// model value (default value) is locked even if the field displays another value.
-		if (fieldInCP && newValue != null && isOkButtonActivated(tp)) {
+		if (fieldInCP && newValue != null && isValidValue(tp, getFinalModelValue(tp))) {
 			Object expected = getFinalModelValue(tp);
 			Object actual = shell.findCadseField(getAttributeName()).getModelValue();
 			assertEqualsListValues("Final model value error for #" + tp.testNumber, expected, actual);
@@ -359,25 +339,24 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		UUID id = shell.findCadseFieldName().getRunningField().getSwtUiplatform().getItem().getId();
 
 		// Closes shell
-		if (isOkButtonActivated(tp)) {
+		if (isValidValue(tp, getFinalModelValue(tp))) {
 			shell.close();
 		}
 		else {
 			try {
 				shell.close(GTPreferences.FAILING_ASSERT_TIMEOUT);
 				fail("OK button is activated whereas it shouldn't for #" + tp.testNumber);
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				// SUCCESS
+				return;
 			}
-			return;
 		}
 
 		/* ============== */
 		/* Model checking */
 		/* ============== */
 
-		if (attributeCreationSuccess(tp)) {
+		if (isAttributeCreationSuccess(tp)) {
 			Item item = CadseCore.getLogicalWorkspace().getItem(id);
 			assertNotNull(item);
 			IAttributeType<?> attr = item.getType().getAttributeType(getAttributeName());
