@@ -119,12 +119,13 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 	 * .test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
-	protected boolean attributeCreationSuccess(GTTestParameter tp) {
+	protected boolean isAttributeCreationSuccess(GTTestParameter tp) {
 
 		String defVal = tp.getString("defVal");
 		if (defVal == null || defVal.equals("")) {
 			return false;
-		} else {
+		}
+		else {
 			return true;
 		}
 	}
@@ -136,9 +137,8 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 	 * imag.adele.cadse.test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
-	protected boolean isOkButtonActivated(GTTestParameter tp) {
+	protected boolean isValidValue(GTTestParameter tp, Object value) {
 
-		KeyValue newVal = tp.getValue("newValue"); // careful : NULL = leave unchanged
 		String defVal = tp.getString("defVal");
 		boolean sicp = tp.getBoolean("sicp");
 
@@ -149,14 +149,15 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 		}
 
 		// Attribute created and leave unchanged
-		else if (newVal == null) {
+		else if (value == null) {
 			return true;
 		}
 
 		// Empty new value is forbidden
-		else if (newVal.value == null || newVal.getString().isEmpty()) {
+		else if (value == null || value.toString().isEmpty()) {
 			return false;
-		} else {
+		}
+		else {
 			return true;
 		}
 	}
@@ -179,5 +180,4 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 
 		return superVal;
 	}
-
 }

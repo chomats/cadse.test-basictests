@@ -132,7 +132,7 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 	 * .test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
-	protected boolean attributeCreationSuccess(GTTestParameter tp) {
+	protected boolean isAttributeCreationSuccess(GTTestParameter tp) {
 
 		String defVal = tp.getString("defVal");
 		if (defVal == null || defVal.equals("")) {
@@ -142,4 +142,37 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 			return true;
 		}
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#isOkButtonActivated(fr.
+	 * imag.adele.cadse.test.basictests.testdriver.GTTestParameter)
+	 */
+	@Override
+	protected boolean isValidValue(GTTestParameter tp, Object value) {
+
+		String defVal = tp.getString("defVal");
+		boolean sicp = tp.getBoolean("sicp");
+
+		// Attribute haven't been created : no problem for creating the item type (!)
+		// or attribute not displayed in Creation page
+		if (!sicp || defVal == null || defVal.isEmpty()) {
+			return true;
+		}
+
+		// Attribute created and leave unchanged
+		else if (value == null) {
+			return true;
+		}
+
+		// Empty new value is forbidden
+		else if (value == null || value.toString().isEmpty()) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+
 }

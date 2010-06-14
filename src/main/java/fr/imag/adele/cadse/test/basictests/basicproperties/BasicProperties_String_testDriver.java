@@ -114,7 +114,7 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 	 * imag.adele.cadse.test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
-	protected boolean isOkButtonActivated(GTTestParameter tp) {
+	protected boolean isValidValue(GTTestParameter tp, Object value) {
 
 		boolean isList = tp.getBoolean("list");
 		boolean cbu = tp.getBoolean("cbu");
@@ -122,15 +122,16 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 
 		if (isList) {
 			return true;
-		} else {
+		}
+		else {
 
 			// Checking cbu constraint
-			if (cbu && getFinalModelValue(tp) == null) {
+			if (cbu && value == null) {
 				return false;
 			}
 
 			// Checking not empty constraint
-			if (notEmpty && getFinalModelValue(tp) != null && getFinalModelValue(tp).equals("")) {
+			if (notEmpty && value != null && value.toString().equals("")) {
 				return false;
 			}
 
@@ -153,7 +154,8 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 
 		if (isList) {
 			return notEmpty ? !kv.getString().equals("") : true;
-		} else {
+		}
+		else {
 			return true;
 		}
 	}
@@ -180,20 +182,25 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 				if (newKv != null) {
 					if (!newValue.equals("") || !notEmpty) {
 						return new String[] { newValue.toString() };
-					} else {
+					}
+					else {
 						return new String[] {};
 					}
-				} else {
+				}
+				else {
 					return new String[] {};
 				}
-			} else {
+			}
+			else {
 				if (newKv != null) {
 					return newValue;
-				} else {
+				}
+				else {
 					return defVal; // no new value
 				}
 			}
-		} else {
+		}
+		else {
 			throw new WidgetNotFoundException("No field in this dialog");
 		}
 	}
@@ -226,20 +233,25 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 
 				if (notEmpty && newValue.equals("")) {
 					return new Object[] {};
-				} else {
+				}
+				else {
 					return new Object[] { newValue };
 				}
-			} else {
+			}
+			else {
 				return new Object[] {};
 			}
-		} else {
+		}
+		else {
 			if (fieldInCP) {
 				if (newKv != null) { // in case graphic = "" and model = null
 					return newValue;
-				} else {
+				}
+				else {
 					return defVal;
 				}
-			} else {
+			}
+			else {
 				return defVal;
 			}
 		}

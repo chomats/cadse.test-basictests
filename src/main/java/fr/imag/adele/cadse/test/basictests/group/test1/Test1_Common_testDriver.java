@@ -143,6 +143,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		boolean isList = tp.getBoolean("list");
 		boolean simp = tp.getBoolean("simp");
+		Object val2 = tp.getValue("newValue2").value;
 
 		if (isList) {
 
@@ -157,8 +158,8 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			}
 
 			if (simp) {
-				visual.add(tp.getValue("newValue2").value.toString());
-				model.add(tp.getValue("newValue2").value.toString());
+				visual.add(val2.toString());
+				model.add(val2.toString());
 			}
 
 			return new KeyValue(getAttributeName(), visual.toArray(new String[] {}));
@@ -167,7 +168,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		// not list
 		else {
 			if (simp) {
-				return new KeyValue(getAttributeName(), tp.getValue("newValue2").value);
+				if (isValidValue(tp, val2))
+					return new KeyValue(getAttributeName(), val2);
+				else
+					return getNewValue1(tp);
 			}
 			else {
 				return getNewValue1(tp);
@@ -186,7 +190,6 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		boolean isList = tp.getBoolean("list");
 		boolean simp = tp.getBoolean("simp");
-		boolean cbu = tp.getBoolean("cbu");
 		Object newVal = tp.getValue("newValue3").value;
 
 		if (isList) {
@@ -212,11 +215,11 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		// not list
 		else {
 			if (simp) {
-				if (newVal == null && cbu == true) {
-					return getNewValue2(tp);
+				if (isValidValue(tp, newVal)) {
+					return new KeyValue(getAttributeName(), newVal);
 				}
 				else {
-					return new KeyValue(getAttributeName(), newVal);
+					return getNewValue2(tp);
 				}
 			}
 			else {
@@ -266,6 +269,9 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		boolean sicp = tp.getBoolean("sicp");
 		boolean simp = tp.getBoolean("simp");
 
+		boolean fieldInCP = sicp && isAttributeCreationSuccess(tp);
+		boolean fieldInMP = simp && isAttributeCreationSuccess(tp);
+
 		// Values used to set fields
 		KeyValue val1 = tp.getValue("newValue1");
 		KeyValue val2 = tp.getValue("newValue2");
@@ -280,10 +286,11 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		// is field present
 		boolean isFieldPresent = shell.fieldExists(getAttributeName());
-		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, sicp, isFieldPresent);
+		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, fieldInCP,
+				isFieldPresent);
 
 		// GET initial value
-		if (sicp) {
+		if (fieldInCP) {
 			KeyValue expected = getDefaultValue(tp);
 
 			Object actualVisual = shell.findCadseField(getAttributeName()).getValue();
@@ -293,9 +300,17 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			assertEqualsListValues("Initial model value error for #" + tp.testNumber, expected.value, actualModel);
 		}
 
-		// SET New Value 1
-		if (sicp && val1 != null) {
-			shell.setValue(val1);
+		// SET Value1
+		if (fieldInCP && val1 != null) {
+			boolean actualSuccess = setValues(shell, val1);
+			boolean expectedSuccess = isSettableValue(tp, val1);
+			assertEquals("Success or failure is not as expected", expectedSuccess, actualSuccess);
+
+			// setting the new value has failed, as expected
+			if (!actualSuccess) {
+				shell.close(GTEclipseConstants.CANCEL_BUTTON);
+				return;
+			}
 		}
 
 		// name + CHANGES FOCUS!!!
@@ -304,7 +319,19 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		// Waits until refresh
 		GTPreferences.sleep(SWTBotPreferences.DEFAULT_POLL_DELAY);
 
-		shell.close();
+		// Closes shell
+		if (isValidValue(tp, val1.value)) {
+			shell.close();
+		}
+		else {
+			try {
+				shell.close(GTPreferences.FAILING_ASSERT_TIMEOUT);
+				fail("OK button is activated whereas it shouldn't for #" + tp.testNumber);
+			} catch (Exception e) {
+				// SUCCESS
+				return;
+			}
+		}
 
 		/* ============= */
 		/* Property page */
@@ -318,10 +345,11 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		// is field present
 		isFieldPresent = propertiesView.fieldExists(getAttributeName());
-		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, simp, isFieldPresent);
+		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, fieldInMP,
+				isFieldPresent);
 
 		// GET New Value 1
-		if (simp) {
+		if (fieldInMP) {
 			KeyValue expected = getNewValue1(tp);
 
 			Object actualVisual = propertiesView.findCadseField(getAttributeName()).getValue();
@@ -332,7 +360,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		}
 
 		// SET New Value 2
-		if (simp && val2 != null) {
+		if (fieldInMP && val2 != null) {
 			boolean expectedSuccess = isSettableValue(tp, val2);
 			boolean actualSuccess = setValues(propertiesView, val2);
 			assertEquals("Success or failure is not as expected", expectedSuccess, actualSuccess);
@@ -352,7 +380,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		shell.findCadseFieldName().typeText(getInstanceDstName(tp));
 
 		// GET NewValue 2
-		if (sicp) {
+		if (fieldInCP) {
 
 			shell.next();
 
@@ -377,13 +405,21 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		// is field present
 		isFieldPresent = propertiesView.fieldExists(getAttributeName());
-		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, simp, isFieldPresent);
+		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, fieldInMP,
+				isFieldPresent);
 
-		// SET New Value 3
-		if (simp && val3 != null) {
+		// SET New Value 2
+		if (fieldInMP && val3 != null) {
+			boolean expectedSuccess = isSettableValue(tp, val3);
 			workspaceView.selectNode(getInstanceSrcName(tp));
 			propertiesView.showTab(getItSrcName(tp));
-			propertiesView.setValue(val3);
+			boolean actualSuccess = setValues(propertiesView, val3);
+			assertEquals("Success or failure is not as expected", expectedSuccess, actualSuccess);
+
+			// setting the new value has failed, as expected
+			if (!actualSuccess) {
+				return;
+			}
 		}
 
 		/* ================================= */
@@ -392,10 +428,11 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		// is field present
 		isFieldPresent = propertiesView.fieldExists(getAttributeName());
-		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, simp, isFieldPresent);
+		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, fieldInMP,
+				isFieldPresent);
 
 		// GET New Value 3
-		if (simp) {
+		if (fieldInMP) {
 
 			workspaceView.selectNode(getInstanceDstName(tp));
 			propertiesView.showTab(getInstanceSrcName(tp));
