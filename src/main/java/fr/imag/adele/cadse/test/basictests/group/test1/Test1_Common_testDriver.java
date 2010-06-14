@@ -304,7 +304,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		if (fieldInCP && val1 != null) {
 			boolean actualSuccess = setValues(shell, val1);
 			boolean expectedSuccess = isSettableValue(tp, val1);
-			assertEquals("Success or failure is not as expected", expectedSuccess, actualSuccess);
+			assertEquals("Success or failure is not as expected for #" + tp.testNumber, expectedSuccess, actualSuccess);
 
 			// setting the new value has failed, as expected
 			if (!actualSuccess) {
@@ -363,7 +363,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		if (fieldInMP && val2 != null) {
 			boolean expectedSuccess = isSettableValue(tp, val2);
 			boolean actualSuccess = setValues(propertiesView, val2);
-			assertEquals("Success or failure is not as expected", expectedSuccess, actualSuccess);
+			assertEquals("Success or failure is not as expected for #" + tp.testNumber, expectedSuccess, actualSuccess);
 
 			// setting the new value has failed, as expected
 			if (!actualSuccess) {
@@ -414,7 +414,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			workspaceView.selectNode(getInstanceSrcName(tp));
 			propertiesView.showTab(getItSrcName(tp));
 			boolean actualSuccess = setValues(propertiesView, val3);
-			assertEquals("Success or failure is not as expected", expectedSuccess, actualSuccess);
+			assertEquals("Success or failure is not as expected for #" + tp.testNumber, expectedSuccess, actualSuccess);
 
 			// setting the new value has failed, as expected
 			if (!actualSuccess) {
