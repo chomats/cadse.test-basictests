@@ -372,6 +372,14 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	}
 
 	/**
+	 * true if the creation page ok button is activated.
+	 * 
+	 * @param tp
+	 * @return
+	 */
+	protected abstract boolean isOkButtonActivated(GTTestParameter tp);
+
+	/**
 	 * Assert values are String or String[] and are equals.
 	 * 
 	 * @param message

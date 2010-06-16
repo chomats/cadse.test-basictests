@@ -260,6 +260,17 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	/*
 	 * (non-Javadoc)
 	 * @see
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#isOkButtonActivated(fr.imag.adele.cadse.test
+	 * .basictests.testdriver.GTTestParameter)
+	 */
+	@Override
+	protected boolean isOkButtonActivated(GTTestParameter tp) {
+		return isValidValue(tp, tp.getValue("newValue1").value);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
 	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#testExecution(fr.imag.adele.cadse.test.basictests
 	 * .testdriver.GTTestParameter)
 	 */
@@ -320,7 +331,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		GTPreferences.sleep(SWTBotPreferences.DEFAULT_POLL_DELAY);
 
 		// Closes shell
-		if (isValidValue(tp, val1.value)) {
+		if (isOkButtonActivated(tp)) {
 			shell.close();
 		}
 		else {
