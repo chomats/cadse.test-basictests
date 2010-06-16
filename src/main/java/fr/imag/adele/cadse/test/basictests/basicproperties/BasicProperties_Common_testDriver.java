@@ -131,7 +131,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 			}
 		}
 		else {
-			if (sicp && newKv != null) {
+			if (sicp && newKv != null && isValidValue(tp, newKv.value)) {
 				return getCorrectedNewVal(tp).value;
 			}
 			else {
@@ -260,6 +260,21 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	/*
 	 * (non-Javadoc)
 	 * @see
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#isOkButtonActivated(fr.imag.adele.cadse.test
+	 * .basictests.testdriver.GTTestParameter)
+	 */
+	@Override
+	protected boolean isOkButtonActivated(GTTestParameter tp) {
+		boolean sicp = tp.getBoolean("sicp");
+		if (sicp)
+			return isValidValue(tp, getFinalGraphicalValue(tp));
+		else
+			return isValidValue(tp, getFinalModelValue(tp));
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
 	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#testExecution(fr.imag.adele.cadse.test.basictests
 	 * .testdriver.GTTestParameter)
 	 */
@@ -339,7 +354,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		UUID id = shell.findCadseFieldName().getRunningField().getSwtUiplatform().getItem().getId();
 
 		// Closes shell
-		if (isValidValue(tp, getFinalModelValue(tp))) {
+		if (isOkButtonActivated(tp)) {
 			shell.close();
 		}
 		else {

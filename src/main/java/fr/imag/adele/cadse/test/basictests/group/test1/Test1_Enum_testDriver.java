@@ -161,12 +161,7 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 			return true;
 		}
 
-		// Attribute created and leave unchanged
-		else if (value == null) {
-			return true;
-		}
-
-		// Empty new value is forbidden
+		// Null or empty new value is forbidden
 		else if (value == null || value.toString().isEmpty()) {
 			return false;
 		}
@@ -174,5 +169,4 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 			return true;
 		}
 	}
-
 }

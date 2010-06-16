@@ -148,12 +148,7 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 			return true;
 		}
 
-		// Attribute created and leave unchanged
-		else if (value == null) {
-			return true;
-		}
-
-		// Empty new value is forbidden
+		// Null or empty new value is forbidden
 		else if (value == null || value.toString().isEmpty()) {
 			return false;
 		}
