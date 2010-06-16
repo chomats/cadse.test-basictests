@@ -153,7 +153,10 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		boolean notEmpty = tp.getBoolean("notEmpty");
 
 		if (isList) {
-			return notEmpty ? !kv.getString().equals("") : true;
+			if (kv.value == null)
+				return false;
+			else
+				return notEmpty ? !kv.getString().equals("") : true;
 		}
 		else {
 			return true;
