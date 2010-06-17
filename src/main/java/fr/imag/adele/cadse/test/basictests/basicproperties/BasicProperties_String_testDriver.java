@@ -9,9 +9,6 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.no
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
-
-import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
-
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
@@ -163,51 +160,6 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getFinalGraphicalValue(
-	 * fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter)
-	 */
-	@Override
-	protected Object getFinalGraphicalValue(GTTestParameter tp) {
-
-		boolean fieldInCP = tp.getBoolean("sicp");
-		boolean isList = tp.getBoolean("list");
-		boolean notEmpty = tp.getBoolean("notEmpty");
-		KeyValue newKv = tp.getValue("newValue");
-		KeyValue defValKv = tp.getValue("defVal");
-		Object newValue = (newKv == null) ? null : newKv.value;
-		Object defVal = (defValKv == null) ? null : defValKv.value;
-
-		if (fieldInCP) {
-			if (isList) { // default value is ignored with list
-				if (newKv != null) {
-					if (!newValue.equals("") || !notEmpty) {
-						return new String[] { newValue.toString() };
-					}
-					else {
-						return new String[] {};
-					}
-				}
-				else {
-					return new String[] {};
-				}
-			}
-			else {
-				if (newKv != null) {
-					return newValue;
-				}
-				else {
-					return defVal; // no new value
-				}
-			}
-		}
-		else {
-			throw new WidgetNotFoundException("No field in this dialog");
-		}
-	}
-
 	@Override
 	protected KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
 		return kv;
@@ -220,7 +172,7 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 	 * .adele.cadse.test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
-	protected Object getFinalModelValue(GTTestParameter tp) {
+	protected Object getFinalValue(GTTestParameter tp) {
 
 		boolean fieldInCP = tp.getBoolean("sicp");
 		boolean isList = tp.getBoolean("list");

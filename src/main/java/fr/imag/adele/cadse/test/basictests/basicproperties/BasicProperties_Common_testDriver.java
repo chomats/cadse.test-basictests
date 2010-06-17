@@ -101,7 +101,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		boolean isList = tp.getBoolean("list");
 
 		if (isList) {
-			return new String[] {};
+			return new Object[] {};
 		}
 		else {
 			return getCorrectedDefVal(tp).value;
@@ -115,16 +115,15 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	 *        the test parameter
 	 * @return the final model value
 	 */
-	protected Object getFinalModelValue(GTTestParameter tp) {
+	protected Object getFinalValue(GTTestParameter tp) {
 
 		boolean sicp = tp.getBoolean("sicp");
 		boolean isList = tp.getBoolean("list");
 		KeyValue newKv = tp.getValue("newValue");
-		Object newValue = (newKv == null) ? null : newKv.value;
 
 		if (isList) { // def val is ignored with list attributes
-			if (sicp && newKv != null && newValue != null) {
-				return new Object[] { newValue };
+			if (sicp && newKv != null && isValidValue(tp, newKv.value)) {
+				return new Object[] { newKv.value };
 			}
 			else {
 				return new Object[] {};
@@ -137,44 +136,6 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 			else {
 				return getCorrectedDefVal(tp).value;
 			}
-		}
-	}
-
-	/**
-	 * Gets the final graphical value.
-	 * 
-	 * @param tp
-	 *        the test parameter
-	 * @return the final graphical value
-	 */
-	protected Object getFinalGraphicalValue(GTTestParameter tp) {
-
-		boolean sicp = tp.getBoolean("sicp");
-		boolean isList = tp.getBoolean("list");
-
-		KeyValue newKv = tp.getValue("newValue");
-		Object newValue = (newKv == null) ? null : newKv.value;
-
-		if (sicp) {
-			if (isList) { // default value is ignored with list
-				if (newKv != null && newValue != null && !newValue.toString().equals("")) {
-					return new String[] { newValue.toString() };
-				}
-				else {
-					return new String[] {};
-				}
-			}
-			else {
-				if (newKv != null) {
-					return newValue;
-				}
-				else {
-					return getCorrectedDefVal(tp).value;
-				}
-			}
-		}
-		else {
-			throw new WidgetNotFoundException("No field in this dialog");
 		}
 	}
 
@@ -194,14 +155,14 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		if (simp) {
 			if (isList) {
 				if (sicp) {
-					return getFinalGraphicalValue(tp);
+					return getFinalValue(tp);
 				}
 				else {
 					return new String[] {}; // the default value is ignored for list attributes
 				}
 			}
 			else {
-				return getFinalModelValue(tp);
+				return getFinalValue(tp);
 			}
 		}
 		else {
@@ -222,7 +183,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		boolean isList = tp.getBoolean("list");
 
 		if (sicp) {
-			return getFinalModelValue(tp);
+			return getFinalValue(tp);
 		}
 		else {
 			if (isList) {
@@ -267,9 +228,9 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 	protected boolean isOkButtonActivated(GTTestParameter tp) {
 		boolean sicp = tp.getBoolean("sicp");
 		if (sicp)
-			return isValidValue(tp, getFinalGraphicalValue(tp));
+			return isValidValue(tp, tp.getValue("newValue").value);
 		else
-			return isValidValue(tp, getFinalModelValue(tp));
+			return isValidValue(tp, tp.getValue("defVal").value);
 	}
 
 	/*
@@ -332,17 +293,10 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		// name + CHANGES FOCUS!!!
 		shell.findCadseFieldName().typeText(getInstanceName(tp));
 
-		// final visual value
-		if (fieldInCP && newValue != null) {
-			Object expected = getFinalGraphicalValue(tp);
-			Object actual = shell.findCadseField(getAttributeName()).getValue();
-			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected, actual);
-		}
-
 		// final model value (okButtonActivated is important! if the value is not correct, the previous correct
 		// model value (default value) is locked even if the field displays another value.
-		if (fieldInCP && newValue != null && isValidValue(tp, getFinalModelValue(tp))) {
-			Object expected = getFinalModelValue(tp);
+		if (fieldInCP && newValue != null && isValidValue(tp, getFinalValue(tp))) {
+			Object expected = getFinalValue(tp);
 			Object actual = shell.findCadseField(getAttributeName()).getModelValue();
 			assertEqualsListValues("Final model value error for #" + tp.testNumber, expected, actual);
 		}
@@ -377,7 +331,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 			IAttributeType<?> attr = item.getType().getAttributeType(getAttributeName());
 			assertNotNull(attr);
 			Object actualModel = item.getAttribute(attr);
-			Object expectedModel = getFinalModelValue(tp);
+			Object expectedModel = getFinalValue(tp);
 			assertEqualsListValues("Error in model checking for #" + tp.testNumber, expectedModel, actualModel);
 		}
 

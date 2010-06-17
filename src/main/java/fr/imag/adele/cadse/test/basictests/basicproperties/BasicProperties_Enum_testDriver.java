@@ -156,23 +156,4 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 			return true;
 		}
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getFinalGraphicalValue(
-	 * fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter)
-	 */
-	@Override
-	protected Object getFinalGraphicalValue(GTTestParameter tp) {
-		Object superVal = super.getFinalGraphicalValue(tp);
-
-		if (superVal instanceof String) {
-			String val = (String) superVal;
-			if (val != null && val.equals(""))
-				return null;
-		}
-
-		return superVal;
-	}
 }
