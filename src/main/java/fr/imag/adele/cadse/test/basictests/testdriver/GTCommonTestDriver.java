@@ -367,7 +367,12 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 			return true;
 		}
 		else {
-			return cbu ? (value != null) : true;
+			if (cbu == true && (value == null || value.toString().isEmpty())) {
+				return false;
+			}
+			else {
+				return true;
+			}
 		}
 	}
 
