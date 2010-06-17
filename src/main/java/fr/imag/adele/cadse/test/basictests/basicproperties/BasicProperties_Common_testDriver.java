@@ -8,7 +8,6 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createI
 
 import java.util.UUID;
 
-import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 
 import fr.imag.adele.cadse.core.Item;
@@ -132,62 +131,6 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		else {
 			if (sicp && newKv != null && isValidValue(tp, newKv.value)) {
 				return getCorrectedNewVal(tp).value;
-			}
-			else {
-				return getCorrectedDefVal(tp).value;
-			}
-		}
-	}
-
-	/**
-	 * Gets the attribute graphical value in the property view.
-	 * 
-	 * @param tp
-	 *        the test parameter
-	 * @return the attribute graphical value in the property view.
-	 */
-	protected Object getPropertiesGraphicalValue(GTTestParameter tp) {
-
-		boolean sicp = tp.getBoolean("sicp");
-		boolean simp = tp.getBoolean("simp");
-		boolean isList = tp.getBoolean("list");
-
-		if (simp) {
-			if (isList) {
-				if (sicp) {
-					return getFinalValue(tp);
-				}
-				else {
-					return new String[] {}; // the default value is ignored for list attributes
-				}
-			}
-			else {
-				return getFinalValue(tp);
-			}
-		}
-		else {
-			throw new WidgetNotFoundException("No field in this dialog");
-		}
-	}
-
-	/**
-	 * Gets the attribute model value in the property view.
-	 * 
-	 * @param tp
-	 *        the test parameter
-	 * @return the attribute model value in the property view.
-	 */
-	protected Object getPropertiesModelValue(GTTestParameter tp) {
-
-		boolean sicp = tp.getBoolean("sicp");
-		boolean isList = tp.getBoolean("list");
-
-		if (sicp) {
-			return getFinalValue(tp);
-		}
-		else {
-			if (isList) {
-				return new Object[] {}; // default value is ignored with list attributes
 			}
 			else {
 				return getCorrectedDefVal(tp).value;
@@ -347,12 +290,12 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 		// Field value
 		if (fieldInMP) {
-			Object expectedGraphical = getPropertiesGraphicalValue(tp);
+			Object expectedGraphical = getFinalValue(tp);
 			Object actualGraphical = propertiesView.findCadseField(getAttributeName()).getValue();
 			assertEqualsListValues("Error in graphical modification page for #" + tp.testNumber, expectedGraphical,
 					actualGraphical);
 
-			Object expectedModel = getPropertiesModelValue(tp);
+			Object expectedModel = getFinalValue(tp);
 			Object actualModel = propertiesView.findCadseField(getAttributeName()).getModelValue();
 			assertEqualsListValues("Error in model modification page for #" + tp.testNumber, expectedModel, actualModel);
 		}
