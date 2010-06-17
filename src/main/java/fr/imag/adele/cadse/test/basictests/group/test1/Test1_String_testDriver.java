@@ -9,6 +9,7 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.si
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class Test1_String_testDriver extends Test1_Common_testDriver {
@@ -94,5 +95,37 @@ public class Test1_String_testDriver extends Test1_Common_testDriver {
 	@Override
 	protected String getAttributeNameUnderTest() {
 		return "String";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#isValidValue(fr.imag.adele.cadse.test.basictests
+	 * .testdriver.GTTestParameter, java.lang.Object)
+	 */
+	@Override
+	protected boolean isValidValue(GTTestParameter tp, Object value) {
+
+		boolean isList = tp.getBoolean("list");
+		boolean cbu = tp.getBoolean("cbu");
+		boolean notEmpty = tp.getBoolean("notEmpty");
+
+		if (isList) {
+			return true;
+		}
+		else {
+
+			// Checking cbu constraint
+			if (cbu && value == null) {
+				return false;
+			}
+
+			// Checking not empty constraint
+			if (notEmpty && value != null && value.toString().equals("")) {
+				return false;
+			}
+
+			return true;
+		}
 	}
 }
