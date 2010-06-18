@@ -95,21 +95,10 @@ public class BasicUI_tc_CADSEg extends GTCadseTestCase {
 		propertiesView.findCadseField(CadseGCST.ITEM_TYPE_at_DEFAULT_INSTANCE_NAME_).typeText("my_default_name");
 		
 		workspaceView.findTree().doubleClick(data_model.concat("it_B"));
-		GTTextEditor editor = new GTTextEditor("it_BManager.java");
+		GTTextEditor editor = new GTTextEditor("It_BManager.java");
 		editor.show();
-		editor.typeText();
+		//editor.typeText();
 		
 	}
 	
-	/**
-	 * Creates a set of boolean attributes.
-	 * 
-	 * @throws Exception
-	 *         the exception
-	 */
-	@Test
-	public void test_boolean() throws Exception {
-		String cadseName = "UI";
-		createCadseDefinition(cadseName , "model.ui");
-	}
 }
