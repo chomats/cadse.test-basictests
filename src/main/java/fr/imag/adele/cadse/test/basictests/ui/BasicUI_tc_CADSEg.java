@@ -9,9 +9,18 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createI
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaCore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -20,6 +29,7 @@ import org.junit.runners.Parameterized.Parameters;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
+import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttext.GTText;
@@ -94,11 +104,46 @@ public class BasicUI_tc_CADSEg extends GTCadseTestCase {
 		propertiesView.showTab("Item type");
 		propertiesView.findCadseField(CadseGCST.ITEM_TYPE_at_DEFAULT_INSTANCE_NAME_).typeText("my_default_name");
 		
+		GTCadseHelperMethods.addImportOnManifest("Model.Workspace.CADSE_DefaultInstanceName", 
+				"fr.imag.adele.cadse.core.impl.ui", "fr.imag.adele.cadse.core.ui", 
+				"fr.imag.adele.cadse.cadseg.pages.ic",
+				"fr.imag.adele.cadse.cadseg.pages.mc",
+				"fr.imag.adele.cadse.core.impl.ui.mc",
+				"fr.imag.adele.cadse.core.impl.ui.ic",
+				"fr.imag.adele.cadse.si.workspace.uiplatform.swt",
+				"fr.imag.adele.cadse.si.workspace.uiplatform.swt.mc",
+				"fr.imag.adele.cadse.si.workspace.uiplatform.swt.ui");
+		
 		workspaceView.findTree().doubleClick(data_model.concat("it_B"));
+		
 		GTTextEditor editor = new GTTextEditor("It_BManager.java");
 		editor.show();
-		//editor.typeText();
+		editor.selectAll();
+		editor.typeText(getText(getClass().getResource("itB_manager_java.txt")));
+		editor.save();
 		
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("Model.Workspace.CADSE_DefaultInstanceName");
+		assertNotNull(project);
+		IJavaProject jp = JavaCore.create(project);
+		assertNotNull(jp);
+		GTCadseHelperMethods.checkError(jp, null);
+		
+	}
+
+	private String getText(URL url) throws IOException {
+           // Read all of the text returned by the HTTP server
+            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+
+            StringBuilder text = new StringBuilder();
+            String str ;
+            while ((str = in.readLine()) != null) {
+               text.append(str);
+               text.append("\n");
+            }
+
+            in.close();
+            return text.toString();
+       
 	}
 	
 }
