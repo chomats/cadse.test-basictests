@@ -1,0 +1,99 @@
+package model.CADSE_DefaultInstanceName.managers;
+
+
+import java.util.UUID;
+
+import fr.imag.adele.cadse.core.CadseGCST;
+import fr.imag.adele.cadse.core.InitAction;
+import fr.imag.adele.cadse.core.Item;
+import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.cadse.core.LinkType;
+import fr.imag.adele.cadse.core.ui.EPosLabel;
+import fr.imag.adele.cadse.core.ui.IPage;
+import fr.imag.adele.cadse.core.ui.RuningInteractionController;
+import fr.imag.adele.cadse.core.ui.UIField;
+import fr.imag.adele.cadse.core.util.CreatedObjectManager;
+import model.CADSE_DefaultInstanceName.CADSE_DefaultInstanceNameCST;
+import fr.imag.adele.cadse.core.impl.ui.PageImpl;
+import fr.imag.adele.cadse.core.impl.ui.UIFieldImpl;
+import fr.imag.adele.cadse.core.impl.ui.ic.IC_Descriptor;
+import fr.imag.adele.cadse.core.impl.ui.mc.MC_Descriptor;
+import fr.imag.adele.cadse.si.workspace.uiplatform.swt.SWTUIPlatform;
+import fr.imag.adele.cadse.si.workspace.uiplatform.swt.ui.DTextUI;
+
+
+/**
+    @generated
+*/
+public class It_BManager extends It_AManager implements InitAction {
+
+	/**
+	    @generated
+	*/
+	public It_BManager() {
+		super();
+	}
+
+	/**
+		@generated
+	*/
+	@Override
+	public String computeQualifiedName(Item item, String name, Item parent, LinkType lt) {
+		StringBuilder sb = new StringBuilder();
+		try {
+			Object value;
+			Item currentItem;
+			if (sb.length() != 0) {
+				sb.append(".");
+			}
+			sb.append(name);
+			return sb.toString();
+		} catch (Throwable e) {
+			e.printStackTrace();
+			return "error";
+		}
+	}
+
+	/**
+		@generated
+	*/
+	@Override
+	public String getDisplayName(Item item) {
+		try {
+			Object value;
+			if (item != null) {
+				return item.getName();
+			}
+			return "";
+		} catch (Throwable e) {
+			e.printStackTrace();
+			return "error";
+		}
+	}
+	static class MyClass extends DTextUI<RuningInteractionController> {
+		
+	}
+
+	@Override
+	public void init() {
+		
+		{
+			UIField field = new UIFieldImpl(CadseGCST.DTEXT, UUID.randomUUID(),
+					CADSE_DefaultInstanceNameCST.IT_A_at_ATTR_, "attr:", EPosLabel.left, new MC_Descriptor(
+							CadseGCST.MC_INTEGER), null);
+			CreatedObjectManager.register(SWTUIPlatform.getPlatform(), field, MyClass.class);
+			CadseGCST.ITEM_TYPE.addField(field);
+			
+		}
+		
+		// Hidden attributes for ContentLT
+		IPage cltHiddenAttributes = new PageImpl(UUID.randomUUID(), "Hidden attributes", "Hidden attributes",
+				"Hidden attributes", "Hidden attributes", false, null);
+		cltHiddenAttributes.addHiddenAttributes(CADSE_DefaultInstanceNameCST.IT_A_at_ATTR_);
+		CADSE_DefaultInstanceNameCST.IT_B.addModificationPages(cltHiddenAttributes);
+		CADSE_DefaultInstanceNameCST.IT_B.addCreationPages(cltHiddenAttributes);
+		
+		
+	}
+
+}
