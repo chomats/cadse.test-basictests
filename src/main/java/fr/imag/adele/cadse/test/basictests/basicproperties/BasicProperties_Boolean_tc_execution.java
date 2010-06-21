@@ -26,6 +26,6 @@ public class BasicProperties_Boolean_tc_execution extends GTCadseTestCase {
 
 	@Test
 	public void test_execution() throws Exception {
-		driver.testExecution(26);
+		driver.testExecution();
 	}
 }
