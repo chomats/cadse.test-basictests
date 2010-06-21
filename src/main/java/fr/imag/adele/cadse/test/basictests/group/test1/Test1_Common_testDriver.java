@@ -168,10 +168,12 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		// not list
 		else {
 			if (simp) {
-				if (isValidValue(tp, val2))
+				if (isValidValue(tp, val2)) {
 					return new KeyValue(getAttributeName(), val2);
-				else
+				}
+				else {
 					return getNewValue1(tp);
+				}
 			}
 			else {
 				return getNewValue1(tp);
@@ -265,7 +267,12 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 */
 	@Override
 	protected boolean isOkButtonActivated(GTTestParameter tp) {
-		return isValidValue(tp, tp.getValue("newValue1").value);
+		if (isAttributeCreationSuccess(tp)) {
+			return isValidValue(tp, tp.getValue("newValue1").value);
+		}
+		else {
+			return true;
+		}
 	}
 
 	/*
