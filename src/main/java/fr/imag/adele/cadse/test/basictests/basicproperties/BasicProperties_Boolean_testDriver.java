@@ -136,8 +136,9 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 	protected boolean isAttributeCreationSuccess(GTTestParameter tp) {
 		boolean cbu = tp.getBoolean("cbu");
 		Boolean defVal = tp.getBoolean("defVal");
+		boolean isList = tp.getBoolean("list");
 
-		if (defVal == null && cbu == true) {
+		if (defVal == null && cbu == true && !isList) {
 			return false;
 		}
 		else {
