@@ -95,7 +95,8 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 
 		if (cbu == true && kv.value == null) {
 			return new KeyValue("", false);
-		} else {
+		}
+		else {
 			return kv;
 		}
 	}
@@ -114,12 +115,33 @@ public class BasicProperties_Boolean_testDriver extends BasicProperties_Common_t
 
 		if (isList) {
 			return kv != null && kv.value != null && !kv.value.toString().equals("");
-		} else {
+		}
+		else {
 			if (cbu && kv != null && kv.value == null) {
 				return false;
-			} else {
+			}
+			else {
 				return true;
 			}
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#isAttributeCreationSuccess(fr.imag.adele.cadse
+	 * .test.basictests.testdriver.GTTestParameter)
+	 */
+	@Override
+	protected boolean isAttributeCreationSuccess(GTTestParameter tp) {
+		boolean cbu = tp.getBoolean("cbu");
+		Boolean defVal = tp.getBoolean("defVal");
+
+		if (defVal == null && cbu == true) {
+			return false;
+		}
+		else {
+			return true;
 		}
 	}
 }
