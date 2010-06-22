@@ -207,8 +207,12 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			}
 
 			if (simp) {
-				visual.add(newVal.toString());
-				model.add(newVal.toString());
+				if (!visual.contains(newVal.toString())) {
+					visual.add(newVal.toString());
+				}
+				if (!model.contains(newVal.toString())) {
+					model.add(newVal.toString());
+				}
 			}
 
 			return new KeyValue(getAttributeName(), visual.toArray(new String[] {}));
