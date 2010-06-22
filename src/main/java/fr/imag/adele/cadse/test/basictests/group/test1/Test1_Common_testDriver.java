@@ -271,8 +271,16 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 */
 	@Override
 	protected boolean isOkButtonActivated(GTTestParameter tp) {
+
+		boolean sicp = tp.getBoolean("sicp");
+
 		if (isAttributeCreationSuccess(tp)) {
-			return isValidValue(tp, tp.getValue("newValue1").value);
+			if (sicp) {
+				return isValidValue(tp, tp.getValue("newValue1").value);
+			}
+			else {
+				return isValidValue(tp, tp.getValue("defVal").value);
+			}
 		}
 		else {
 			return true;
