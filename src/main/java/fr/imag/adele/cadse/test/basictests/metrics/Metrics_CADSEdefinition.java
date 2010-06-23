@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 
-public class Metrics_CADSEg extends Metrics_common {
+public class Metrics_CADSEdefinition extends Metrics_common {
 
 	/*
 	 * (non-Javadoc)
