@@ -37,7 +37,7 @@ public class Metrics_Integer extends Metrics_common {
 	protected final static GTTreePath itemType = dataModel.concat(itemTypeName);
 
 	/** Number of runs */
-	protected final static int numberOfRuns = 1000;
+	protected final static int numberOfRuns = 10; // 00;
 	/** Instance number */
 	protected final int instanceNumber;
 
