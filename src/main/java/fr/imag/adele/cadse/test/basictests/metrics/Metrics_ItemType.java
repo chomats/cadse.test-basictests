@@ -23,7 +23,7 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 public class Metrics_ItemType extends Metrics_common {
 
 	/** Test name */
-	protected final static String testName = "ItemType";
+	protected final static String testName = "MetricsItemType";
 	/** The CADSE name. */
 	protected final static String cadseName = "CADSE" + testName;
 	/** A path to the CADSE definition. */
