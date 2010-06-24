@@ -5,50 +5,61 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createC
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 
+@RunWith(value = Parameterized.class)
 public class Metrics_CADSEdefinition extends Metrics_common {
 
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.metrics.Metrics_common#getNbTests()
-	 */
-	@Override
-	public int getNbTests() {
-		return 1000;
-	}
+	/** Number of runs */
+	protected final static int numberOfRuns = 1000;
+	/** Instance number */
+	protected final int instanceNumber;
 
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.metrics.Metrics_common#executionTest(int)
-	 */
-	@Override
-	public void executionTest(int i) {
-		String cadse_name = "CADSE" + i;
-		createCadseDefinition(cadse_name, "model." + cadse_name);
+	@Parameters
+	public static Collection<Object[]> data() {
+
+		ArrayList<Object[]> params = new ArrayList<Object[]>();
+		for (int i = 0; i < numberOfRuns; i++) {
+			params.add(new Object[] { i });
+		}
+		return params;
 	}
 
 	/**
-	 * Performs initializations.
+	 * Constructor.
 	 * 
-	 * @throws Exception
+	 * @param number
+	 *        the instance number.
 	 */
-	@Test
-	public void testPreparation() throws Exception {
+	public Metrics_CADSEdefinition(int number) {
+		instanceNumber = number;
+	}
+
+	/**
+	 * Creates the test context.
+	 */
+	@BeforeClass
+	public static void createContext() {
 		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
 		welcomeView.close();
 		workspaceView.show();
 	}
 
 	/**
-	 * Starts the test.
-	 * 
-	 * @throws Exception
+	 * Performs the test itself.
 	 */
 	@Test
-	public void testRun() throws Exception {
-		executionTest();
+	public void testRunner() {
+		String cadse_name = "CADSE" + instanceNumber;
+		createCadseDefinition(cadse_name, "model." + cadse_name);
 	}
 }
