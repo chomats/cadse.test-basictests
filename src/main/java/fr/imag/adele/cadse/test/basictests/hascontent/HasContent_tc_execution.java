@@ -6,20 +6,21 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectC
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.packageExplorerView;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
+@RunWith(JUnit4.class)
 public class HasContent_tc_execution extends GTCadseTestCase {
 
-	/**
-	 * Selects the CADSE to be executed and closes unless views.
-	 */
-	@Test
-	public void test_preparation() throws Exception {
-
+	/** Performs initializations */
+	@BeforeClass
+	public static void createContext() throws Exception {
 		selectCadses("Cadse Model.Workspace.CADSE_HasContent");
 		welcomeView.close();
 		workspaceView.show();
