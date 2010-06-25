@@ -77,7 +77,6 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 */
 	@BeforeClass
 	public static void createContext() {
-
 		// Starts CADSEg
 		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
 		welcomeView.close();
