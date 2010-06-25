@@ -10,7 +10,10 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createI
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
@@ -19,31 +22,18 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
+@RunWith(JUnit4.class)
 public class Root_tc_CADSEg extends GTCadseTestCase {
 
-	protected final String cadse_name = "CADSE_Root";
+	protected static final String cadse_name = "CADSE_Root";
 	protected GTTreePath cadse_model = new GTTreePath(cadse_name);
 	protected GTTreePath build_model = cadse_model.concat(CadseDefinitionManager.BUILD_MODEL);
 	protected GTTreePath data_model = cadse_model.concat(CadseDefinitionManager.DATA_MODEL);
 
-	/**
-	 * Makes a few things before the test starts.
-	 * <ul>
-	 * <li>Starts CADSEg</li>
-	 * <li>Closes unless views</li>
-	 * <li>Creates a new CADSE</li>
-	 * </ul>
-	 * 
-	 * @throws Exception
-	 *             the exception
-	 */
-	@Test
-	public void test_preparation() throws Exception {
-
-		// Starts CADSEg
+	/** Performs initializations */
+	@BeforeClass
+	public static void createContext() throws Exception {
 		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
-
-		// Closes unless views
 		welcomeView.close();
 		workspaceView.show();
 
