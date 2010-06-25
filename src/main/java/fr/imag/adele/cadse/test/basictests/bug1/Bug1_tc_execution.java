@@ -7,9 +7,12 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectC
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
+@RunWith(JUnit4.class)
 public class Bug1_tc_execution extends Bug1_Common {
 
 	@Test

@@ -10,12 +10,15 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectC
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
+@RunWith(JUnit4.class)
 public class Bug1_tc_CADSEg extends Bug1_Common {
 
 	/** A path to the CADSE definition. */
