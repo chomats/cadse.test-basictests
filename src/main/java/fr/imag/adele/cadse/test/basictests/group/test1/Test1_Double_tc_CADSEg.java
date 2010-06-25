@@ -4,31 +4,21 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
+@RunWith(JUnit4.class)
 public class Test1_Double_tc_CADSEg extends GTCadseTestCase {
 
-	/**
-	 * Makes a few things before the test starts.
-	 * <ul>
-	 * <li>Starts CADSEg</li>
-	 * <li>Closes unless views</li>
-	 * <li>Creates a new CADSE</li>
-	 * </ul>
-	 * 
-	 * @throws Exception
-	 *         the exception
-	 */
-	@Test
-	public void test_preparation() throws Exception {
-
-		// Starts CADSEg
+	/** Performs initializations */
+	@BeforeClass
+	public static void createContext() throws Exception {
 		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
-
-		// Closes unless views
 		welcomeView.close();
 		workspaceView.show();
 	}
