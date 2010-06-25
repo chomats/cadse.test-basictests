@@ -1,7 +1,7 @@
 package fr.imag.adele.cadse.test.basictests.bug1;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicItem;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicHead;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createInteger;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
@@ -21,8 +21,8 @@ public class Bug1_tc_execution extends Bug1_Common {
 		welcomeView.close();
 		workspaceView.show();
 
-		createBasicItem(workspaceView, null, "ItSrc", "s1", new GTTreePath("s1"));
-		createBasicItem(workspaceView, null, "ItSrc", "s2", new GTTreePath("s2"));
+		createBasicHead(workspaceView, null, "ItSrc", "s1", new GTTreePath("s1"));
+		createBasicHead(workspaceView, null, "ItSrc", "s2", new GTTreePath("s2"));
 
 		createInteger(new GTTreePath("s1"), "intAttr");
 		createInteger(new GTTreePath("s2"), "intAttr");
