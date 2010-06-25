@@ -4,19 +4,20 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
+@RunWith(JUnit4.class)
 public class DefaultInstanceName_tc_execution extends GTCadseTestCase {
 
-	/**
-	 * Selects the CADSE to be executed and closes unless views.
-	 */
-	@Test
-	public void test_preparation() throws Exception {
-
+	/** Performs initializations */
+	@BeforeClass
+	public static void createContext() throws Exception {
 		selectCadses("Cadse Model.Workspace.CADSE_DefaultInstanceName");
 		welcomeView.close();
 		workspaceView.show();
