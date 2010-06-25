@@ -16,7 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
@@ -51,6 +54,7 @@ import fr.imag.adele.graphictests.test.GTPreferences;
  * <li>File Content Model</li>
  * </ul>
  */
+@RunWith(JUnit4.class)
 public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 
 	protected final String cadse_name = "CADSE_CheckPages";
@@ -69,15 +73,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 * </ul>
 	 * 
 	 * @throws Exception
-	 *             the exception
+	 *         the exception
 	 */
-	@Test
-	public void test_preparation() throws Exception {
+	@BeforeClass
+	public static void createContext() {
 
 		// Starts CADSEg
 		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
-
-		// Closes unless views
 		welcomeView.close();
 		workspaceView.show();
 	}
@@ -414,27 +416,27 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 * Creates generic file content model.
 	 * 
 	 * @param expected_creationCST
-	 *            the expected item type constants for the creation page
+	 *        the expected item type constants for the creation page
 	 * @param expected_creationVal
-	 *            the expected default values for the creation page
+	 *        the expected default values for the creation page
 	 * @param sourceNode
-	 *            The path to the mapping entry of a specific item type.
+	 *        The path to the mapping entry of a specific item type.
 	 * @param typeName
-	 *            The name of the type to be created
+	 *        The name of the type to be created
 	 * @param projectName
-	 *            The project name
+	 *        The project name
 	 * @param hasSourceFolder
-	 *            If this mapping gets a source folder
+	 *        If this mapping gets a source folder
 	 * @param className
-	 *            The name of the implementation class
+	 *        The name of the implementation class
 	 * @param packageName
-	 *            The package name
+	 *        The package name
 	 * @param folderPath
-	 *            The folder path
+	 *        The folder path
 	 * @param filePath
-	 *            The path of the file which will be associated to the item
+	 *        The path of the file which will be associated to the item
 	 * @param extendsClass
-	 *            The value of the extends class attribute. Null for default.
+	 *        The value of the extends class attribute. Null for default.
 	 */
 	private void checkCreationContentModel(String[] expected_creationCST, Object[] expected_creationVal,
 			GTTreePath sourceNode, String typeName, String projectName, Boolean hasSourceFolder, String className,
@@ -493,19 +495,19 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 * Attribute creation test.
 	 * 
 	 * @param path
-	 *            the path to an item in the workspace view which will be the source for the creation
+	 *        the path to an item in the workspace view which will be the source for the creation
 	 * @param attributeName
-	 *            the name of the new item
+	 *        the name of the new item
 	 * @param itConstant
-	 *            the CADSEG item type constant
+	 *        the CADSEG item type constant
 	 * @param expected_creationCST
-	 *            the expected creation page attributes constants
+	 *        the expected creation page attributes constants
 	 * @param expected_creationVal
-	 *            the expected default values for the creation dialog
+	 *        the expected default values for the creation dialog
 	 * @param expected_modifCST
-	 *            the expected modification page attributes constants
+	 *        the expected modification page attributes constants
 	 * @throws WidgetNotFoundException
-	 *             the widget not found exception
+	 *         the widget not found exception
 	 */
 	private void itemCreationTest(GTTreePath path, String attributeName, ItemType itConstant,
 			String[] expected_creationCST, Object[] expected_creationVal, String[] expected_modifCST)
@@ -526,15 +528,15 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 * Creates an item and checks if the creation page displays the correct set of fields.
 	 * 
 	 * @param path
-	 *            The path in the workspace view used for item creation
+	 *        The path in the workspace view used for item creation
 	 * @param attributeName
-	 *            The name of the new attribute
+	 *        The name of the new attribute
 	 * @param itConstant
-	 *            The ItemType constant of this attribute
+	 *        The ItemType constant of this attribute
 	 * @param expected_creationCST
-	 *            The list of expected fields attributes constants.
+	 *        The list of expected fields attributes constants.
 	 * @param expected_creationVal
-	 *            the expected default values for the creation dialog
+	 *        the expected default values for the creation dialog
 	 * @return the tree path to find the created item in the workspace view
 	 */
 	private GTTreePath checkCreationPage(GTTreePath path, String attributeName, ItemType itConstant,
@@ -596,13 +598,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 * Checks if a modification page displays correct fields in a given section for a given item.
 	 * 
 	 * @param path
-	 *            The item path in the workspace view
+	 *        The item path in the workspace view
 	 * @param tab
-	 *            The tab of the property page. Can be null.
+	 *        The tab of the property page. Can be null.
 	 * @param section
-	 *            The section where to look for constants. Can be null.
+	 *        The section where to look for constants. Can be null.
 	 * @param expected
-	 *            The list of expected fields attributes constants.
+	 *        The list of expected fields attributes constants.
 	 */
 	private void checkModificationPage(GTTreePath path, ItemType itConstant, String[] expected) {
 		String tab = tabLabel(itConstant);
@@ -619,8 +621,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 			else {
 				propertiesView.show();
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			// Selects node into the tree
 			workspaceView.selectNode(path);
 
@@ -659,9 +660,9 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 * Tests is two string arrays are equal.
 	 * 
 	 * @param provided
-	 *            The first string array
+	 *        The first string array
 	 * @param expected
-	 *            The second string array
+	 *        The second string array
 	 * @return a boolean
 	 */
 	private boolean isSameValues(Object[] provided, Object[] expected) {
@@ -695,7 +696,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 * the workbench part given into parameter. For debug purpose only.
 	 * 
 	 * @param wp
-	 *            the workbench part for searching fields
+	 *        the workbench part for searching fields
 	 * @return the java code
 	 */
 	private String getStringDef(GTCadseWorkbenchPart wp) {
@@ -727,7 +728,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 * the workbench part given into parameter. For debug purpose only.
 	 * 
 	 * @param wp
-	 *            the workbench part for searching fields
+	 *        the workbench part for searching fields
 	 * @return the java code
 	 */
 	private String getStringVal(GTCadseWorkbenchPart wp) {
@@ -822,9 +823,9 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		 * Assert check box has correct state number.
 		 * 
 		 * @param field
-		 *            the field
+		 *        the field
 		 * @param attr
-		 *            the attr
+		 *        the attr
 		 */
 		static void assertCheckBoxHasCorrectStateNumber(GTCadseField field, IAttributeType<?> attr) {
 
