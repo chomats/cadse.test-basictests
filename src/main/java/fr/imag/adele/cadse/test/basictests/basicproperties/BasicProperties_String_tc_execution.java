@@ -3,22 +3,24 @@ package fr.imag.adele.cadse.test.basictests.basicproperties;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
 /**
  */
+@RunWith(JUnit4.class)
 public class BasicProperties_String_tc_execution extends GTCadseTestCase {
 
 	/** The test driver */
-	BasicProperties_String_testDriver driver = new BasicProperties_String_testDriver();
+	protected static BasicProperties_String_testDriver driver = new BasicProperties_String_testDriver();
 
-	/**
-	 * Selects the CADSE to be executed and closes unless views.
-	 */
-	@Test
-	public void test_preparation() throws Exception {
+	/** Performs initializations */
+	@BeforeClass
+	public static void createContext() throws Exception {
 		driver.selectCadse();
 		welcomeView.close();
 		workspaceView.show();
