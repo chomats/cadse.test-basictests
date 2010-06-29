@@ -327,7 +327,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		String[] expected_modifCST = { "PROJECT_CONTENT_MODEL_at_PROJECT_NAME_",
 				"JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 
-		createItemType(data_model, "mapping_javaProject", notAbstractKv, rootKv, withContentKv);
+		createItemType(data_model, "mapping_javaProject", notAbstractKv(), rootKv(), withContentKv());
 
 		checkCreationContentModel(expected_creationCST, expected_creationVal, mapping
 				.concat("mapping_javaProject-manager"), "JavaProjectContentModel", "${#qualified-name}_test", null,
@@ -350,7 +350,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		String[] expected_modifCST = { "JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_",
 				"JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 
-		createItemType(data_model, "mapping_JavaFile", notAbstractKv, rootKv, withContentKv);
+		createItemType(data_model, "mapping_JavaFile", notAbstractKv(), rootKv(), withContentKv());
 
 		checkCreationContentModel(expected_creationCST, expected_creationVal, mapping
 				.concat("mapping_JavaFile-manager"), "JavaFileContentModel", null, null, "${#short-name}",
@@ -372,7 +372,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		String[] expected_modifCST = { "FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_",
 				"FOLDER_CONTENT_MODEL_at_REQUIRE_FOLDER_" };
 
-		createItemType(data_model, "mapping_folder", notAbstractKv, rootKv, withContentKv);
+		createItemType(data_model, "mapping_folder", notAbstractKv(), rootKv(), withContentKv());
 
 		checkCreationContentModel(expected_creationCST, expected_creationVal, mapping.concat("mapping_folder-manager"),
 				"FolderContentModel", null, null, null, null, "${#short-name}", null, null);
@@ -392,7 +392,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		Object[] expected_creationVal = { "", true };
 		String[] expected_modifCST = { "FILE_CONTENT_MODEL_at_FILE_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 
-		createItemType(data_model, "mapping_file", notAbstractKv, rootKv, withContentKv);
+		createItemType(data_model, "mapping_file", notAbstractKv(), rootKv(), withContentKv());
 
 		checkCreationContentModel(expected_creationCST, expected_creationVal, mapping.concat("mapping_file-manager"),
 				"FileContentModel", null, null, null, null, null, "${#short-name}.txt", null);

@@ -70,7 +70,7 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		// Item without content //
 		// ==================== //
 
-		createItemType(data_model, "no_content", notAbstractKv, rootKv, noContentKv);
+		createItemType(data_model, "no_content", notAbstractKv(), rootKv(), noContentKv());
 
 		assertItemCantbeCreated(workspaceView, mapping_model.concat("no_content" + managerSufix), file_cm,
 				GTPreferences.FAILING_ASSERT_TIMEOUT);
@@ -86,17 +86,17 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		// ======================= //
 
 		// Java project content model with and without source folder
-		createItemType(data_model, "javaproject_content_src", notAbstractKv, rootKv, withContentKv);
-		createItemType(data_model, "javaproject_content_nosrc", notAbstractKv, rootKv, withContentKv);
+		createItemType(data_model, "javaproject_content_src", notAbstractKv(), rootKv(), withContentKv());
+		createItemType(data_model, "javaproject_content_nosrc", notAbstractKv(), rootKv(), withContentKv());
 
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_src" + managerSufix),
-				jpcmSrcFolderKv);
+				jpcmSrcFolderKv());
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_nosrc" + managerSufix),
-				notJpcmSrcFolderKv);
+				notJpcmSrcFolderKv());
 
 		// Java project content model Name template
-		createItemType(data_model, "javaproject_content_template1", notAbstractKv, rootKv, withContentKv);
-		createItemType(data_model, "javaproject_content_template2", notAbstractKv, rootKv, withContentKv);
+		createItemType(data_model, "javaproject_content_template1", notAbstractKv(), rootKv(), withContentKv());
+		createItemType(data_model, "javaproject_content_template2", notAbstractKv(), rootKv(), withContentKv());
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("javaproject_content_template1"
 				+ managerSufix), new KeyValue(CadseGCST.PROJECT_CONTENT_MODEL_at_PROJECT_NAME_,
 				"${#qualified-name}_test"));
@@ -107,17 +107,17 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		// Common root project //
 		// =================== //
 
-		createItemType(data_model, "root_project", notAbstractKv, rootKv, withContentKv);
+		createItemType(data_model, "root_project", notAbstractKv(), rootKv(), withContentKv());
 		createJavaProjectContentModel(workspaceView, mapping_model.concat("root_project" + managerSufix),
-				jpcmSrcFolderKv);
+				jpcmSrcFolderKv());
 
 		// ================ //
 		// FileContentModel //
 		// ================ //
 
-		createItemType(data_model, "file_content", notAbstractKv, notRootKv, withContentKv);
+		createItemType(data_model, "file_content", notAbstractKv(), notRootKv(), withContentKv());
 		createLinkType("link_file", data_model.concat("root_project"), data_model.concat("file_content"), "0",
-				"unbounded", partKv);
+				"unbounded", partKv());
 		createFileContentModel(workspaceView, mapping_model.concat("file_content" + managerSufix), new KeyValue(
 				CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_, "/${#short-name}.txt"));
 
@@ -125,9 +125,9 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		// FolderContentModel //
 		// ================== //
 
-		createItemType(data_model, "folder_content", notAbstractKv, notRootKv, withContentKv);
+		createItemType(data_model, "folder_content", notAbstractKv(), notRootKv(), withContentKv());
 		createLinkType("link_folder", data_model.concat("root_project"), data_model.concat("folder_content"), "0",
-				"unbounded", partKv);
+				"unbounded", partKv());
 		createFolderContentModel(workspaceView, mapping_model.concat("folder_content" + managerSufix), new KeyValue(
 				CadseGCST.FOLDER_CONTENT_MODEL_at_FOLDER_PATH_, "/${#short-name}"));
 
@@ -135,9 +135,9 @@ public class HasContent_tc_CADSEg extends GTCadseTestCase {
 		// JavaFileContentModel //
 		// ==================== //
 
-		createItemType(data_model, "javaFile_content", notAbstractKv, notRootKv, withContentKv);
+		createItemType(data_model, "javaFile_content", notAbstractKv(), notRootKv(), withContentKv());
 		createLinkType("link_javaFile", data_model.concat("root_project"), data_model.concat("javaFile_content"), "0",
-				"unbounded", partKv);
+				"unbounded", partKv());
 		createJavaFileContentModel(workspaceView, mapping_model.concat("javaFile_content" + managerSufix),
 				new KeyValue(CadseGCST.JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_, "${#short-name}"), new KeyValue(
 						CadseGCST.JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_, "fr.imag.adele.${#short-name}"));

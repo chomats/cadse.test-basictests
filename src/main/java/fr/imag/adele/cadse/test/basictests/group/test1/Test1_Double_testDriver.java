@@ -9,33 +9,47 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.si
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.cadse.test.basictests.testdriver.GTCollectionTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class Test1_Double_testDriver extends Test1_Common_testDriver {
 
-	/**
-	 * Instantiates a new testDriver
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
 	 */
-	public Test1_Double_testDriver() {
-		initializeTestParameters();
+	@Override
+	public ItemType getAttributeTypeUnderTest() {
+		return CadseGCST.DOUBLE;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#initializeTestParameters()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
 	 */
 	@Override
-	protected void initializeTestParameters() {
+	public String getAttributeNameUnderTest() {
+		return "Double";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getCTP()
+	 */
+	@Override
+	public GTCollectionTestParameter getCTP() {
+
+		GTCollectionTestParameter ctp = new GTCollectionTestParameter();
 
 		/* =========== */
 		/* DEFINITIONS */
 		/* =========== */
 
 		/* Common parameters */
-		KeyValue[] sicpValues = { sicpKv /* , notSicpKv */};
-		KeyValue[] simpValues = { simpKv, notSimpKv };
-		KeyValue[] cbuValues = { cbuKv, notCbuKv };
-		KeyValue[] listValues = { notListKv, listKv };
+		KeyValue[] sicpValues = { sicpKv(), /* notSicpKv() */};
+		KeyValue[] simpValues = { simpKv(), notSimpKv() };
+		KeyValue[] cbuValues = { cbuKv(), notCbuKv() };
+		KeyValue[] listValues = { notListKv(), listKv() };
 
 		/* Default value given into CADSEg */
 		KeyValue defValKv1 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, new Double(10));
@@ -70,23 +84,7 @@ public class Test1_Double_testDriver extends Test1_Common_testDriver {
 		ctp.addParameter("newValue1", newValue1);
 		ctp.addParameter("newValue2", newValue2);
 		ctp.addParameter("newValue3", newValue3);
-	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
-	 */
-	@Override
-	protected ItemType getAttributeTypeUnderTest() {
-		return CadseGCST.DOUBLE;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
-	 */
-	@Override
-	protected String getAttributeNameUnderTest() {
-		return "Double";
+		return ctp;
 	}
 }

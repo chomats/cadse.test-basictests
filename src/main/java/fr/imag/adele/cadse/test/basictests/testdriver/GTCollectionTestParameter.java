@@ -14,9 +14,6 @@ public class GTCollectionTestParameter {
 	/** The list of parameters for each test */
 	protected ArrayList<HashMap<String, KeyValue>> tests = new ArrayList<HashMap<String, KeyValue>>();
 
-	/**
-	 * Instantiates a new GTCommonTestParameter
-	 */
 	public GTCollectionTestParameter() {
 	}
 
@@ -55,9 +52,9 @@ public class GTCollectionTestParameter {
 	 * Adds a parameter which can takes different values.
 	 * 
 	 * @param key
-	 *            the key
+	 *        the key
 	 * @param values
-	 *            the values
+	 *        the values
 	 */
 	public void addParameter(String key, KeyValue[] values) {
 		parameters.put(key, values);
@@ -68,7 +65,7 @@ public class GTCollectionTestParameter {
 	 * Gets a test.
 	 * 
 	 * @param i
-	 *            the test number
+	 *        the test number
 	 * @return the test
 	 */
 	public GTTestParameter getTestParameters(int i) {
@@ -119,5 +116,10 @@ public class GTCollectionTestParameter {
 				tests = result;
 			}
 		}
+	}
+
+	public void setAttributeNameUnderTest(String string) {
+		// TODO Auto-generated method stub
+
 	}
 }

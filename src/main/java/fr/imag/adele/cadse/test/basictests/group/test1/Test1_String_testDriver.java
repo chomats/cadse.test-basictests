@@ -11,35 +11,49 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.si
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.cadse.test.basictests.testdriver.GTCollectionTestParameter;
 import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class Test1_String_testDriver extends Test1_Common_testDriver {
 
-	/**
-	 * Instantiates a new testDriver
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
 	 */
-	public Test1_String_testDriver() {
-		initializeTestParameters();
+	@Override
+	public ItemType getAttributeTypeUnderTest() {
+		return CadseGCST.STRING;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#initializeTestParameters()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
 	 */
 	@Override
-	protected void initializeTestParameters() {
+	public String getAttributeNameUnderTest() {
+		return "String";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getCTP()
+	 */
+	@Override
+	public GTCollectionTestParameter getCTP() {
+
+		GTCollectionTestParameter ctp = new GTCollectionTestParameter();
 
 		/* =========== */
 		/* DEFINITIONS */
 		/* =========== */
 
 		/* Common parameters */
-		KeyValue[] sicpValues = { sicpKv, notSicpKv };
-		KeyValue[] simpValues = { simpKv /* , notSimpKv */};
-		KeyValue[] cbuValues = { cbuKv, notCbuKv };
-		KeyValue[] listValues = { notListKv, listKv };
+		KeyValue[] sicpValues = { sicpKv(), notSicpKv() };
+		KeyValue[] simpValues = { simpKv() /* , notSimpKv() */};
+		KeyValue[] cbuValues = { cbuKv(), notCbuKv() };
+		KeyValue[] listValues = { notListKv(), listKv() };
 
 		/* Default value given into CADSEg */
 		KeyValue defValKv1 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
@@ -80,24 +94,8 @@ public class Test1_String_testDriver extends Test1_Common_testDriver {
 		ctp.addParameter("newValue2", newValue2);
 		ctp.addParameter("newValue3", newValue3);
 		ctp.addParameter("notEmpty", notEmpty);
-	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
-	 */
-	@Override
-	protected ItemType getAttributeTypeUnderTest() {
-		return CadseGCST.STRING;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
-	 */
-	@Override
-	protected String getAttributeNameUnderTest() {
-		return "String";
+		return ctp;
 	}
 
 	/*
@@ -159,10 +157,12 @@ public class Test1_String_testDriver extends Test1_Common_testDriver {
 		boolean notEmpty = tp.getBoolean("notEmpty");
 
 		if (isList) {
-			if (kv.value == null)
+			if (kv.value == null) {
 				return false;
-			else
+			}
+			else {
 				return notEmpty ? !kv.getString().equals("") : true;
+			}
 		}
 		else {
 			return true;
