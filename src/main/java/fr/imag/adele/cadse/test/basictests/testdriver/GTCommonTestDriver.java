@@ -134,8 +134,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 */
 	protected boolean createAttributes(GTTestParameter tp, GTTreePath typePath) {
 		try {
-			createBasicAttribute(typePath, getAttributeTypeUnderTest(), getAttributeNameUnderTest(),
-					getCreationKeyValues(tp));
+			createBasicAttribute(typePath, getAttributeTypeUnderTest(), getAttributeName(), getCreationKeyValues(tp));
 			return true;
 		} catch (Exception e) {
 			return false;
