@@ -45,17 +45,18 @@ public class Root_tc_CADSEg extends GTCadseTestCase {
 	public void test_item_creation() throws Exception {
 
 		// Creates item types (R => Root, Nr => Non root)
-		createItemType(data_model, "itR", notAbstractKv, rootKv);
-		createItemType(data_model, "itNr", notAbstractKv, notRootKv);
+		createItemType(data_model, "itR", notAbstractKv(), rootKv());
+		createItemType(data_model, "itNr", notAbstractKv(), notRootKv());
 
 		createItemType(data_model, "itRR", new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itR")),
-				notAbstractKv, rootKv);
+				notAbstractKv(), rootKv());
 		createItemType(data_model, "itRNr", new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itR")),
-				notAbstractKv, notRootKv);
+				notAbstractKv(), notRootKv());
 		createItemType(data_model, "itNrR", new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itNr")),
-				notAbstractKv, rootKv);
+				notAbstractKv(), rootKv());
 		createItemType(data_model, "itNrNr",
-				new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itNr")), notAbstractKv, notRootKv);
+				new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, data_model.concat("itNr")), notAbstractKv(),
+				notRootKv());
 	}
 
 	/**

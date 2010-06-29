@@ -53,8 +53,8 @@ public class Link_tc_CADSEg extends GTCadseTestCase {
 		String link_name = type_prefix + "link";
 
 		/* Item Type definition */
-		createItemType(data_model, s1_name, notAbstractKv, rootKv);
-		createItemType(data_model, d1_name, notAbstractKv, rootKv);
+		createItemType(data_model, s1_name, notAbstractKv(), rootKv());
+		createItemType(data_model, d1_name, notAbstractKv(), rootKv());
 
 		/* Link type definition */
 		createLinkType(link_name, s1_path, d1_path, "0", "2");
@@ -78,12 +78,12 @@ public class Link_tc_CADSEg extends GTCadseTestCase {
 		String l22_name = type_prefix + "l22";
 
 		/* Item Type definition */
-		createItemType(data_model, s1_name, notAbstractKv, rootKv);
-		createItemType(data_model, s2_name, new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, s1_path), notAbstractKv,
-				rootKv);
-		createItemType(data_model, d1_name, notAbstractKv, rootKv);
-		createItemType(data_model, d2_name, new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, d1_path), notAbstractKv,
-				rootKv);
+		createItemType(data_model, s1_name, notAbstractKv(), rootKv());
+		createItemType(data_model, s2_name, new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, s1_path), notAbstractKv(),
+				rootKv());
+		createItemType(data_model, d1_name, notAbstractKv(), rootKv());
+		createItemType(data_model, d2_name, new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, d1_path), notAbstractKv(),
+				rootKv());
 
 		/* Link type definition */
 		createLinkType(l11_name, s1_path, d1_path, "0", "unbounded");
@@ -103,8 +103,8 @@ public class Link_tc_CADSEg extends GTCadseTestCase {
 		GTTreePath dst_path = data_model.concat(dst_name);
 
 		/* Item Type definition */
-		createItemType(data_model, src_name, notAbstractKv, rootKv);
-		createItemType(data_model, dst_name, notAbstractKv, rootKv);
+		createItemType(data_model, src_name, notAbstractKv(), rootKv());
+		createItemType(data_model, dst_name, notAbstractKv(), rootKv());
 
 		/* Link type definition */
 		createLinkType(link_name, src_path, dst_path, "0", "unbounded", new KeyValue(
@@ -122,11 +122,11 @@ public class Link_tc_CADSEg extends GTCadseTestCase {
 		GTTreePath dst_path = data_model.concat(dst_name);
 
 		/* Item Type definition */
-		createItemType(data_model, src_name, notAbstractKv, rootKv);
-		createItemType(data_model, dst_name, notAbstractKv, rootKv);
+		createItemType(data_model, src_name, notAbstractKv(), rootKv());
+		createItemType(data_model, dst_name, notAbstractKv(), rootKv());
 
 		/* Link type definition */
-		createLinkType(link_name, src_path, dst_path, "0", "unbounded", partKv);
+		createLinkType(link_name, src_path, dst_path, "0", "unbounded", partKv());
 	}
 
 	/**

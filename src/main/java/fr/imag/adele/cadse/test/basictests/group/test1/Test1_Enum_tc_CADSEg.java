@@ -4,16 +4,26 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
+import fr.imag.adele.cadse.test.basictests.testdriver.GTCollectionTestParameter;
+import fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver;
+import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
-@RunWith(JUnit4.class)
+@RunWith(value = Parameterized.class)
 public class Test1_Enum_tc_CADSEg extends GTCadseTestCase {
+
+	/** The test instance number. (Test is parameterized) */
+	protected int instanceNumber;
 
 	/** Performs initializations */
 	@BeforeClass
@@ -21,17 +31,53 @@ public class Test1_Enum_tc_CADSEg extends GTCadseTestCase {
 		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
 		welcomeView.close();
 		workspaceView.show();
+
+		getDriver().createCadse();
 	}
 
 	/**
-	 * Creates a set of integer attributes.
+	 * The test itself.
 	 * 
 	 * @throws Exception
 	 *         the exception
 	 */
 	@Test
-	public void test_Enum() throws Exception {
-		Test1_Enum_testDriver data = new Test1_Enum_testDriver();
-		data.testCreation();
+	public void testCreation() throws Exception {
+		GTTestParameter param = getDriver().getCTP().getTestParameters(instanceNumber);
+		getDriver().testCreation(param);
+	}
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param i
+	 *        the instance number.
+	 */
+	public Test1_Enum_tc_CADSEg(int i) {
+		instanceNumber = i;
+	}
+
+	/**
+	 * Compute parameters for this test.
+	 * 
+	 * @return an array with all the parameters.
+	 */
+	@Parameters
+	public static Collection<Object[]> data() {
+		GTCollectionTestParameter ctp = getDriver().getCTP();
+		ArrayList<Object[]> params = new ArrayList<Object[]>();
+		for (int i = 0; i < ctp.numberOfTests(); i++) {
+			params.add(new Object[] { i });
+		}
+		return params;
+	}
+
+	/**
+	 * Gets the test driver.
+	 * 
+	 * @return the test driver
+	 */
+	protected static GTCommonTestDriver getDriver() {
+		return new Test1_Enum_testDriver();
 	}
 }

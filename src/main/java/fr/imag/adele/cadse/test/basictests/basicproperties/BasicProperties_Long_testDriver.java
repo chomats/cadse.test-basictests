@@ -10,33 +10,47 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.si
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.cadse.test.basictests.testdriver.GTCollectionTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class BasicProperties_Long_testDriver extends BasicProperties_Common_testDriver {
 
-	/**
-	 * Instantiates a new testDriver
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
 	 */
-	public BasicProperties_Long_testDriver() {
-		initializeTestParameters();
+	@Override
+	public ItemType getAttributeTypeUnderTest() {
+		return CadseGCST.LONG;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#initializeTestParameters()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
 	 */
 	@Override
-	protected void initializeTestParameters() {
+	public String getAttributeNameUnderTest() {
+		return "Long";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getCTP()
+	 */
+	@Override
+	public GTCollectionTestParameter getCTP() {
+
+		GTCollectionTestParameter ctp = new GTCollectionTestParameter();
 
 		/* =========== */
 		/* DEFINITIONS */
 		/* =========== */
 
-		// Common parameters
-		KeyValue[] sicpValues = { sicpKv, notSicpKv };
-		KeyValue[] simpValues = { simpKv, notSimpKv };
-		KeyValue[] cbuValues = { cbuKv, notCbuKv };
-		KeyValue[] listValues = { notListKv, listKv };
+		/* Common parameters */
+		KeyValue[] sicpValues = { sicpKv(), notSicpKv() };
+		KeyValue[] simpValues = { simpKv(), notSimpKv() };
+		KeyValue[] cbuValues = { cbuKv(), notCbuKv() };
+		KeyValue[] listValues = { notListKv(), listKv() };
 
 		/* Values given into CADSEg */
 		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
@@ -61,23 +75,7 @@ public class BasicProperties_Long_testDriver extends BasicProperties_Common_test
 
 		ctp.addParameter("defVal", defVal);
 		ctp.addParameter("newValue", newVal);
-	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
-	 */
-	@Override
-	protected ItemType getAttributeTypeUnderTest() {
-		return CadseGCST.LONG;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
-	 */
-	@Override
-	protected String getAttributeNameUnderTest() {
-		return "Long";
+		return ctp;
 	}
 }

@@ -2,6 +2,7 @@ package fr.imag.adele.cadse.test.basictests.group.test1;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.propertiesView;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.groupKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
@@ -245,9 +246,9 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		GTTreePath src = dataModel.concat(getItSrcName(tp));
 		GTTreePath dst = dataModel.concat(getItDstName(tp));
 
-		createItemType(dataModel, src.getDestinationName(), notAbstractKv, rootKv);
-		createItemType(dataModel, dst.getDestinationName(), notAbstractKv, rootKv);
-		createLinkType(getLinkName(tp), src, dst, null, null, KeyValue.groupKv);
+		createItemType(dataModel, src.getDestinationName(), notAbstractKv(), rootKv());
+		createItemType(dataModel, dst.getDestinationName(), notAbstractKv(), rootKv());
+		createLinkType(getLinkName(tp), src, dst, null, null, groupKv());
 
 		return src;
 	}
@@ -294,7 +295,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * .testdriver.GTTestParameter)
 	 */
 	@Override
-	protected void testExecution(GTTestParameter tp) {
+	public void testExecution(GTTestParameter tp) {
 
 		boolean sicp = tp.getBoolean("sicp");
 		boolean simp = tp.getBoolean("simp");

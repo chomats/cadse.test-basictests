@@ -7,6 +7,7 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.si
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.cadse.test.basictests.testdriver.GTCollectionTestParameter;
 import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods;
@@ -17,29 +18,42 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 	/** Enum Type name */
 	String enumTypeName = "myEnum";
 
-	/**
-	 * Instantiates a new testDriver
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
 	 */
-	public Test1_Enum_testDriver() {
-		initializeTestParameters();
+	@Override
+	public ItemType getAttributeTypeUnderTest() {
+		return CadseGCST.ENUM;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#initializeTestParameters()
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
 	 */
 	@Override
-	protected void initializeTestParameters() {
+	public String getAttributeNameUnderTest() {
+		return "Enum";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getCTP()
+	 */
+	@Override
+	public GTCollectionTestParameter getCTP() {
+
+		GTCollectionTestParameter ctp = new GTCollectionTestParameter();
 
 		/* =========== */
 		/* DEFINITIONS */
 		/* =========== */
 
 		/* Common parameters */
-		KeyValue[] sicpValues = { sicpKv /* , notSicpKv */};
-		KeyValue[] simpValues = { simpKv, notSimpKv };
-		/* KeyValue[] cbuValues = { cbuKv, notCbuKv }; CBU = this attribute does not exists with enum type */
-		KeyValue[] listValues = { notListKv, listKv };
+		KeyValue[] sicpValues = { sicpKv(), /* notSicpKv() */};
+		KeyValue[] simpValues = { simpKv(), notSimpKv() };
+		/* KeyValue[] cbuValues = { cbuKv(), notCbuKv() }; CBU = this attribute does not exists with enum type */
+		KeyValue[] listValues = { notListKv(), listKv() };
 
 		/* Default value given into CADSEg */
 		KeyValue defValKv1 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
@@ -81,24 +95,8 @@ public class Test1_Enum_testDriver extends Test1_Common_testDriver {
 		ctp.addParameter("newValue3", newValue3);
 
 		ctp.addParameter("enumType", enumType);
-	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeTypeUnderTest()
-	 */
-	@Override
-	protected ItemType getAttributeTypeUnderTest() {
-		return CadseGCST.ENUM;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getAttributeNameUnderTest()
-	 */
-	@Override
-	protected String getAttributeNameUnderTest() {
-		return "Enum";
+		return ctp;
 	}
 
 	/*

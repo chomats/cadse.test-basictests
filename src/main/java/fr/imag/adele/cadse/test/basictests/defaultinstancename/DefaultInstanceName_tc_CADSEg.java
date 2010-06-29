@@ -45,7 +45,7 @@ public class DefaultInstanceName_tc_CADSEg extends GTCadseTestCase {
 	public void test_item_creation() throws Exception {
 
 		// Creates item type with default instance name
-		createItemType(data_model, "my_item_type", notAbstractKv, rootKv);
+		createItemType(data_model, "my_item_type", notAbstractKv(), rootKv());
 		workspaceView.selectNode(data_model.concat("my_item_type"));
 		propertiesView.showTab("Item type");
 		propertiesView.findCadseField(CadseGCST.ITEM_TYPE_at_DEFAULT_INSTANCE_NAME_).typeText("my_default_name");

@@ -64,23 +64,24 @@ public class IsAbstract_tc_CADSEg extends GTCadseTestCase {
 
 		// KeyValue abstractKv = new KeyValue(CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_, true);
 
-		createItemType(data_model, "itA", abstractKv, rootKv);
-		createString(data_model.concat("itA"), "string_attribute_itA", defValAKv, sicpKv, simpKv, notListKv);
+		createItemType(data_model, "itA", abstractKv(), rootKv());
+		createString(data_model.concat("itA"), "string_attribute_itA", defValAKv, sicpKv(), simpKv(), notListKv());
 
-		createItemType(data_model, "itNa", notAbstractKv, rootKv);
-		createString(data_model.concat("itNa"), "string_attribute_itNa", defValNaKv, sicpKv, simpKv, notListKv);
+		createItemType(data_model, "itNa", notAbstractKv(), rootKv());
+		createString(data_model.concat("itNa"), "string_attribute_itNa", defValNaKv, sicpKv(), simpKv(), notListKv());
 
-		createItemType(data_model, "itAA", superItA, abstractKv, rootKv);
-		createString(data_model.concat("itAA"), "string_attribute_itAA", defValAAKv, sicpKv, simpKv, notListKv);
+		createItemType(data_model, "itAA", superItA, abstractKv(), rootKv());
+		createString(data_model.concat("itAA"), "string_attribute_itAA", defValAAKv, sicpKv(), simpKv(), notListKv());
 
-		createItemType(data_model, "itANa", superItA, notAbstractKv, rootKv);
-		createString(data_model.concat("itANa"), "string_attribute_itANa", defValANaKv, sicpKv, simpKv, notListKv);
+		createItemType(data_model, "itANa", superItA, notAbstractKv(), rootKv());
+		createString(data_model.concat("itANa"), "string_attribute_itANa", defValANaKv, sicpKv(), simpKv(), notListKv());
 
-		createItemType(data_model, "itNaA", superItNa, abstractKv, rootKv);
-		createString(data_model.concat("itNaA"), "string_attribute_itNaA", defValNaAKv, sicpKv, simpKv, notListKv);
+		createItemType(data_model, "itNaA", superItNa, abstractKv(), rootKv());
+		createString(data_model.concat("itNaA"), "string_attribute_itNaA", defValNaAKv, sicpKv(), simpKv(), notListKv());
 
-		createItemType(data_model, "itNaNa", superItNa, notAbstractKv, rootKv);
-		createString(data_model.concat("itNaNa"), "string_attribute_itNaNa", defValNaNaKv, sicpKv, simpKv, notListKv);
+		createItemType(data_model, "itNaNa", superItNa, notAbstractKv(), rootKv());
+		createString(data_model.concat("itNaNa"), "string_attribute_itNaNa", defValNaNaKv, sicpKv(), simpKv(),
+				notListKv());
 	}
 
 	/**

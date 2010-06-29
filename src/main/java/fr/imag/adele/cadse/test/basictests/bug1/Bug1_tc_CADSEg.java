@@ -1,6 +1,7 @@
 package fr.imag.adele.cadse.test.basictests.bug1;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.groupKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
@@ -14,7 +15,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
@@ -40,8 +40,8 @@ public class Bug1_tc_CADSEg extends Bug1_Common {
 		GTTreePath src = dataModel.concat("ItSrc");
 		GTTreePath dst = dataModel.concat("ItDst");
 
-		createItemType(dataModel, src.getDestinationName(), notAbstractKv, rootKv);
-		createItemType(dataModel, dst.getDestinationName(), notAbstractKv, rootKv);
-		createLinkType("groupLink", src, dst, null, null, KeyValue.groupKv);
+		createItemType(dataModel, src.getDestinationName(), notAbstractKv(), rootKv());
+		createItemType(dataModel, dst.getDestinationName(), notAbstractKv(), rootKv());
+		createLinkType("groupLink", src, dst, null, null, groupKv());
 	}
 }
