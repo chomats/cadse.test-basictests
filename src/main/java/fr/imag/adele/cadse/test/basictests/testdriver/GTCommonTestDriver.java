@@ -38,8 +38,19 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	// CADSE DEFINITION //
 	// ================ //
 
+	/**
+	 * Gets the attribute type under test.
+	 * 
+	 * @return the attribute type under test.
+	 */
 	public abstract ItemType getAttributeTypeUnderTest();
 
+	/**
+	 * Gets the attribute name under test. Because this method can be used befor CADSEG is started, the result musn't be
+	 * computed from {@link #getAttributeTypeUnderTest()} method.
+	 * 
+	 * @return the attribute name under test
+	 */
 	public abstract String getAttributeNameUnderTest();
 
 	/**
@@ -49,10 +60,22 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 */
 	protected abstract String getTestName();
 
+	/**
+	 * The name of the CADSE to be created.
+	 */
 	protected String cadseName = CADSEPrefix + getTestName() + getAttributeNameUnderTest();
+
+	/** A Path to the CADSE in a tree view. */
 	protected GTTreePath cadseModel = new GTTreePath(cadseName);
+
+	/** A path to the data model. */
 	protected GTTreePath dataModel = cadseModel.concat(CadseDefinitionManager.DATA_MODEL);
 
+	/**
+	 * Gets the test parameters.
+	 * 
+	 * @return the test parameters.
+	 */
 	public abstract GTCollectionTestParameter getCTP();
 
 	/**
