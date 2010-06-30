@@ -10,7 +10,7 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.si
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
-import fr.imag.adele.cadse.test.basictests.testdriver.GTCollectionTestParameter;
+import fr.imag.adele.cadse.test.basictests.common.GTCollectionTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class BasicProperties_Integer_testDriver extends BasicProperties_Common_testDriver {

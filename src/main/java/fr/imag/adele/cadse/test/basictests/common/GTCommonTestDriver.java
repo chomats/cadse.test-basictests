@@ -1,4 +1,4 @@
-package fr.imag.adele.cadse.test.basictests.testdriver;
+package fr.imag.adele.cadse.test.basictests.common;
 
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicAttribute;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;

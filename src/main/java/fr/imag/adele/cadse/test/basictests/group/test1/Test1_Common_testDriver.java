@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 
-import fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver;
-import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
+import fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver;
+import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;

@@ -6,7 +6,7 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.ro
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
 import fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Integer_testDriver;
-import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
+import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class Test3_Integer_testDriver extends BasicProperties_Integer_testDriver {
