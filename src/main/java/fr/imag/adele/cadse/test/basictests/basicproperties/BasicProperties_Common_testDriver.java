@@ -209,7 +209,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		GTCadseShell shell = new GTCadseShell(getItName(tp));
 
 		// is field present
-		boolean isFieldPresent = shell.fieldExists(getAttributeNameUnderTest());
+		boolean isFieldPresent = shell.fieldExists(getAttributeName());
 		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, fieldInCP,
 				isFieldPresent);
 
@@ -217,13 +217,13 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		if (fieldInCP) {
 			Object expected = getInitialValue(tp);
 
-			Object attrDefVal = shell.findCadseField(getAttributeNameUnderTest()).getAttribute().getDefaultValue();
+			Object attrDefVal = shell.findCadseField(getAttributeName()).getAttribute().getDefaultValue();
 			assertEqualsListValues("Initial default value error for #" + tp.testNumber, expected, attrDefVal);
 
-			Object actualVisual = shell.findCadseField(getAttributeNameUnderTest()).getValue();
+			Object actualVisual = shell.findCadseField(getAttributeName()).getValue();
 			assertEqualsListValues("Initial visual value error for #" + tp.testNumber, expected, actualVisual);
 
-			Object actualModel = shell.findCadseField(getAttributeNameUnderTest()).getModelValue();
+			Object actualModel = shell.findCadseField(getAttributeName()).getModelValue();
 			assertEqualsListValues("Initial model value error for #" + tp.testNumber, expected, actualModel);
 		}
 
@@ -248,7 +248,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		// model value (default value) is locked even if the field displays another value.
 		if (fieldInCP && newValue != null && isValidValue(tp, getFinalValue(tp))) {
 			Object expected = getFinalValue(tp);
-			Object actual = shell.findCadseField(getAttributeNameUnderTest()).getModelValue();
+			Object actual = shell.findCadseField(getAttributeName()).getModelValue();
 			assertEqualsListValues("Final model value error for #" + tp.testNumber, expected, actual);
 		}
 
@@ -279,7 +279,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		if (isAttributeCreationSuccess(tp)) {
 			Item item = CadseCore.getLogicalWorkspace().getItem(id);
 			assertNotNull(item);
-			IAttributeType<?> attr = item.getType().getAttributeType(getAttributeNameUnderTest());
+			IAttributeType<?> attr = item.getType().getAttributeType(getAttributeName());
 			assertNotNull(attr);
 			Object actualModel = item.getAttribute(attr);
 			Object expectedModel = getFinalValue(tp);
@@ -299,12 +299,12 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		// Field value
 		if (fieldInMP) {
 			Object expectedGraphical = getFinalValue(tp);
-			Object actualGraphical = propertiesView.findCadseField(getAttributeNameUnderTest()).getValue();
+			Object actualGraphical = propertiesView.findCadseField(getAttributeName()).getValue();
 			assertEqualsListValues("Error in graphical modification page for #" + tp.testNumber, expectedGraphical,
 					actualGraphical);
 
 			Object expectedModel = getFinalValue(tp);
-			Object actualModel = propertiesView.findCadseField(getAttributeNameUnderTest()).getModelValue();
+			Object actualModel = propertiesView.findCadseField(getAttributeName()).getModelValue();
 			assertEqualsListValues("Error in model modification page for #" + tp.testNumber, expectedModel, actualModel);
 		}
 	}
