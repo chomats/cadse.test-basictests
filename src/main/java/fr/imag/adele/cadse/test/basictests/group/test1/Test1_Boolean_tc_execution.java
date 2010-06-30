@@ -1,7 +1,6 @@
 package fr.imag.adele.cadse.test.basictests.group.test1;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ import org.junit.runners.Parameterized.Parameters;
 import fr.imag.adele.cadse.test.basictests.testdriver.GTCollectionTestParameter;
 import fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver;
 import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
-import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
 @RunWith(value = Parameterized.class)
@@ -28,11 +26,9 @@ public class Test1_Boolean_tc_execution extends GTCadseTestCase {
 	/** Performs initializations */
 	@BeforeClass
 	public static void createContext() throws Exception {
-		selectCadses(GTCadseRTConstants.CADSEG_MODEL);
+		getDriver().selectCadse();
 		welcomeView.close();
 		workspaceView.show();
-
-		getDriver().createCadse();
 	}
 
 	/**
