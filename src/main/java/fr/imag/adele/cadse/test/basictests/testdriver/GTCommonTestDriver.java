@@ -46,8 +46,8 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	public abstract ItemType getAttributeTypeUnderTest();
 
 	/**
-	 * Gets the attribute name under test. Because this method can be used befor CADSEG is started, the result musn't be
-	 * computed from {@link #getAttributeTypeUnderTest()} method.
+	 * Gets the attribute name under test. Because this method can be used before CADSEg is started, the result musn't
+	 * be computed from {@link #getAttributeTypeUnderTest()} method.
 	 * 
 	 * @return the attribute name under test
 	 */

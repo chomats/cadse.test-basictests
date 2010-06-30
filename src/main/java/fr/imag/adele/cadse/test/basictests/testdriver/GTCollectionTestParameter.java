@@ -117,9 +117,4 @@ public class GTCollectionTestParameter {
 			}
 		}
 	}
-
-	public void setAttributeNameUnderTest(String string) {
-		// TODO Auto-generated method stub
-
-	}
 }
