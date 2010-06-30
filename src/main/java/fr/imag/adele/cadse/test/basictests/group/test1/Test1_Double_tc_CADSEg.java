@@ -13,9 +13,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import fr.imag.adele.cadse.test.basictests.testdriver.GTCollectionTestParameter;
-import fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver;
-import fr.imag.adele.cadse.test.basictests.testdriver.GTTestParameter;
+import fr.imag.adele.cadse.test.basictests.common.GTCollectionTestParameter;
+import fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver;
+import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
