@@ -101,10 +101,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		boolean isList = tp.getBoolean("list");
 
 		if (isList) {
-			return new KeyValue(getAttributeName(), new String[] {});
+			return new KeyValue(getAttributeName(tp), new String[] {});
 		}
 		else {
-			return new KeyValue(getAttributeName(), tp.getValue("defVal").value);
+			return new KeyValue(getAttributeName(tp), tp.getValue("defVal").value);
 		}
 	}
 
@@ -122,7 +122,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		if (sicp) {
 			if (isList) {
-				return new KeyValue(getAttributeName(), new String[] { tp.getValue("newValue1").value.toString() });
+				return new KeyValue(getAttributeName(tp), new String[] { tp.getValue("newValue1").value.toString() });
 			}
 			else {
 				return tp.getValue("newValue1");
@@ -163,14 +163,14 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 				model.add(val2.toString());
 			}
 
-			return new KeyValue(getAttributeName(), visual.toArray(new String[] {}));
+			return new KeyValue(getAttributeName(tp), visual.toArray(new String[] {}));
 		}
 
 		// not list
 		else {
 			if (simp) {
 				if (isValidValue(tp, val2)) {
-					return new KeyValue(getAttributeName(), val2);
+					return new KeyValue(getAttributeName(tp), val2);
 				}
 				else {
 					return getNewValue1(tp);
@@ -216,14 +216,14 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 				}
 			}
 
-			return new KeyValue(getAttributeName(), visual.toArray(new String[] {}));
+			return new KeyValue(getAttributeName(tp), visual.toArray(new String[] {}));
 		}
 
 		// not list
 		else {
 			if (simp) {
 				if (isValidValue(tp, newVal)) {
-					return new KeyValue(getAttributeName(), newVal);
+					return new KeyValue(getAttributeName(tp), newVal);
 				}
 				else {
 					return getNewValue2(tp);
@@ -243,11 +243,11 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 */
 	@Override
 	protected GTTreePath createTypes(GTTestParameter tp) {
-		GTTreePath src = dataModel.concat(getItSrcName(tp));
-		GTTreePath dst = dataModel.concat(getItDstName(tp));
+		GTTreePath src = getDataModel(tp).concat(getItSrcName(tp));
+		GTTreePath dst = getDataModel(tp).concat(getItDstName(tp));
 
-		createItemType(dataModel, src.getDestinationName(), notAbstractKv(), rootKv());
-		createItemType(dataModel, dst.getDestinationName(), notAbstractKv(), rootKv());
+		createItemType(getDataModel(tp), src.getDestinationName(), notAbstractKv(), rootKv());
+		createItemType(getDataModel(tp), dst.getDestinationName(), notAbstractKv(), rootKv());
 		createLinkType(getLinkName(tp), src, dst, null, null, groupKv());
 
 		return src;
@@ -316,7 +316,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		GTCadseShell shell = new GTCadseShell(getItSrcName(tp));
 
 		// is field present
-		boolean isFieldPresent = shell.fieldExists(getAttributeName());
+		boolean isFieldPresent = shell.fieldExists(getAttributeName(tp));
 		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, fieldInCP,
 				isFieldPresent);
 
@@ -324,10 +324,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		if (fieldInCP) {
 			KeyValue expected = getDefaultValue(tp);
 
-			Object actualVisual = shell.findCadseField(getAttributeName()).getValue();
+			Object actualVisual = shell.findCadseField(getAttributeName(tp)).getValue();
 			assertEqualsListValues("Initial visual value error for #" + tp.testNumber, expected.value, actualVisual);
 
-			Object actualModel = shell.findCadseField(getAttributeName()).getModelValue();
+			Object actualModel = shell.findCadseField(getAttributeName(tp)).getModelValue();
 			assertEqualsListValues("Initial model value error for #" + tp.testNumber, expected.value, actualModel);
 		}
 
@@ -375,7 +375,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		assertEquals(getInstanceSrcName(tp), propertiesView.findCadseFieldName().getText());
 
 		// is field present
-		isFieldPresent = propertiesView.fieldExists(getAttributeName());
+		isFieldPresent = propertiesView.fieldExists(getAttributeName(tp));
 		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, fieldInMP,
 				isFieldPresent);
 
@@ -383,10 +383,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		if (fieldInMP) {
 			KeyValue expected = getNewValue1(tp);
 
-			Object actualVisual = propertiesView.findCadseField(getAttributeName()).getValue();
+			Object actualVisual = propertiesView.findCadseField(getAttributeName(tp)).getValue();
 			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value, actualVisual);
 
-			Object actualModel = propertiesView.findCadseField(getAttributeName()).getModelValue();
+			Object actualModel = propertiesView.findCadseField(getAttributeName(tp)).getModelValue();
 			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value, actualModel);
 		}
 
@@ -417,14 +417,14 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 			KeyValue expected = getNewValue2(tp);
 
-			Object actualVisual = shell.findCadseField(getAttributeName()).getValue();
+			Object actualVisual = shell.findCadseField(getAttributeName(tp)).getValue();
 			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value, actualVisual);
 
-			Object actualModel = shell.findCadseField(getAttributeName()).getModelValue();
+			Object actualModel = shell.findCadseField(getAttributeName(tp)).getModelValue();
 			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value, actualModel);
 		}
 		else {
-			assertCadseFieldDoesNotExist(shell, getAttributeName(), 0);
+			assertCadseFieldDoesNotExist(shell, getAttributeName(tp), 0);
 			assertButtonDoesNotExist(shell, GTEclipseConstants.NEXT_BUTTON, 0);
 		}
 
@@ -435,7 +435,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		/* ======================= */
 
 		// is field present
-		isFieldPresent = propertiesView.fieldExists(getAttributeName());
+		isFieldPresent = propertiesView.fieldExists(getAttributeName(tp));
 		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, fieldInMP,
 				isFieldPresent);
 
@@ -458,7 +458,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		/* ================================= */
 
 		// is field present
-		isFieldPresent = propertiesView.fieldExists(getAttributeName());
+		isFieldPresent = propertiesView.fieldExists(getAttributeName(tp));
 		assertEquals("Presence of the attribute field is not as expected for #" + tp.testNumber, fieldInMP,
 				isFieldPresent);
 
@@ -469,10 +469,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			propertiesView.showTab(getInstanceSrcName(tp));
 			KeyValue expected = getNewValue3(tp);
 
-			Object actualVisual = propertiesView.findCadseField(getAttributeName()).getValue();
+			Object actualVisual = propertiesView.findCadseField(getAttributeName(tp)).getValue();
 			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value, actualVisual);
 
-			Object actualModel = propertiesView.findCadseField(getAttributeName()).getModelValue();
+			Object actualModel = propertiesView.findCadseField(getAttributeName(tp)).getModelValue();
 			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value, actualModel);
 		}
 	}
