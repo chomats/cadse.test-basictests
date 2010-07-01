@@ -9,11 +9,10 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.si
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.test.basictests.common.GTCollectionTestParameter;
-import fr.imag.adele.cadse.test.basictests.common.GTCommonParameters;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
-public class BasicProperties_Enum_parameters extends GTCommonParameters {
+public class BasicProperties_Enum_parameters extends BasicProperties_Common_parameters {
 
 	/** Enum type name. */
 	String enumTypeName = "myEnum";
@@ -36,7 +35,7 @@ public class BasicProperties_Enum_parameters extends GTCommonParameters {
 	protected GTCollectionTestParameter initCTP() {
 
 		GTCollectionTestParameter ctp = new GTCollectionTestParameter(getAttributeTypeUnderTest(),
-				getAttributeNameUnderTest(), getAttributeName());
+				getAttributeNameUnderTest(), getAttributeName(), getTestName());
 
 		/* =========== */
 		/* DEFINITIONS */

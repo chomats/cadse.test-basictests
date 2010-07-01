@@ -21,6 +21,8 @@ public class GTTestParameter {
 
 	protected String attributeName;
 
+	protected String testName;
+
 	/**
 	 * Instantiates a new GTTestParameter.
 	 * 
@@ -30,12 +32,13 @@ public class GTTestParameter {
 	 *        the test number
 	 */
 	public GTTestParameter(int testNumber, HashMap<String, KeyValue> params, ItemType attributeTypeUnderTest,
-			String attributeNameUnderTest, String attributeName) {
+			String attributeNameUnderTest, String attributeName, String testName) {
 		this.testNumber = testNumber;
 		this.params = params;
 		this.attributeTypeUnderTest = attributeTypeUnderTest;
 		this.attributeNameUnderTest = attributeNameUnderTest;
 		this.attributeName = attributeName;
+		this.testName = testName;
 	}
 
 	public ItemType getAttributeTypeUnderTest() {
@@ -44,6 +47,15 @@ public class GTTestParameter {
 
 	public String getAttributeNameUnderTest() {
 		return attributeNameUnderTest;
+	}
+
+	/**
+	 * Gets the name of the test. This is a general name, without reference to any type, such as boolean.
+	 * 
+	 * @return the name of the test.
+	 */
+	public String getTestName() {
+		return testName;
 	}
 
 	/**
