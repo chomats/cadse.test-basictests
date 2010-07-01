@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class GTTestParameter {
@@ -14,24 +15,42 @@ public class GTTestParameter {
 	/** The test number */
 	public final int testNumber;
 
+	protected ItemType attributeTypeUnderTest;
+
+	protected String attributeNameUnderTest;
+
+	protected String attributeName;
+
 	/**
 	 * Instantiates a new GTTestParameter.
 	 * 
 	 * @param params
-	 *            the attributes values.
+	 *        the attributes values.
 	 * @param testNumber
-	 *            the test number
+	 *        the test number
 	 */
-	public GTTestParameter(int testNumber, HashMap<String, KeyValue> params) {
+	public GTTestParameter(int testNumber, HashMap<String, KeyValue> params, ItemType attributeTypeUnderTest,
+			String attributeNameUnderTest, String attributeName) {
 		this.testNumber = testNumber;
 		this.params = params;
+		this.attributeTypeUnderTest = attributeTypeUnderTest;
+		this.attributeNameUnderTest = attributeNameUnderTest;
+		this.attributeName = attributeName;
+	}
+
+	public ItemType getAttributeTypeUnderTest() {
+		return attributeTypeUnderTest;
+	}
+
+	public String getAttributeNameUnderTest() {
+		return attributeNameUnderTest;
 	}
 
 	/**
 	 * Gets the KeyValue object from its key reference.
 	 * 
 	 * @param key
-	 *            the key
+	 *        the key
 	 * @return the KeyValue object.
 	 */
 	public KeyValue getValue(String key) {
@@ -42,7 +61,7 @@ public class GTTestParameter {
 	 * Gets the KeyValue object from its key reference.
 	 * 
 	 * @param key
-	 *            the key
+	 *        the key
 	 * @return the KeyValue object.
 	 */
 	public KeyValue[] getValues(String... keys) {
@@ -68,7 +87,7 @@ public class GTTestParameter {
 	 * Gets the KeyValue visual value and returns it as a String.
 	 * 
 	 * @param key
-	 *            the key
+	 *        the key
 	 * @return the string
 	 */
 	public String getString(String key) {
@@ -79,7 +98,7 @@ public class GTTestParameter {
 	 * Returns true uf the TestParametes contains a value for a given key.
 	 * 
 	 * @param key
-	 *            the key
+	 *        the key
 	 * @return true, if successful
 	 */
 	public boolean containsKey(String key) {
@@ -112,5 +131,14 @@ public class GTTestParameter {
 			}
 		}
 		return sb.toString();
+	}
+
+	/**
+	 * Gets the attribute name.
+	 * 
+	 * @return the attribute name
+	 */
+	protected String getAttributeName() {
+		return attributeName;
 	}
 }
