@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import fr.imag.adele.cadse.test.basictests.common.GTCollectionTestParameter;
+import fr.imag.adele.cadse.test.basictests.common.GTCommonParameters;
 import fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver;
 import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
@@ -41,7 +41,8 @@ public class BasicProperties_Double_tc_CADSEg extends GTCadseTestCase {
 		welcomeView.close();
 		workspaceView.show();
 
-		getDriver().createCadse();
+		GTTestParameter param = getParameters().getTestParameters(0);
+		getDriver().createCadse(param);
 	}
 
 	/**
@@ -52,7 +53,7 @@ public class BasicProperties_Double_tc_CADSEg extends GTCadseTestCase {
 	 */
 	@Test
 	public void testCreation() throws Exception {
-		GTTestParameter param = getDriver().getCTP().getTestParameters(instanceNumber);
+		GTTestParameter param = getParameters().getTestParameters(instanceNumber);
 		getDriver().testCreation(param);
 	}
 
@@ -73,9 +74,9 @@ public class BasicProperties_Double_tc_CADSEg extends GTCadseTestCase {
 	 */
 	@Parameters
 	public static Collection<Object[]> data() {
-		GTCollectionTestParameter ctp = getDriver().getCTP();
+		GTCommonParameters param = getParameters();
 		ArrayList<Object[]> params = new ArrayList<Object[]>();
-		for (int i = 0; i < ctp.numberOfTests(); i++) {
+		for (int i = 0; i < param.numberOfTests(); i++) {
 			params.add(new Object[] { i });
 		}
 		return params;
@@ -88,5 +89,14 @@ public class BasicProperties_Double_tc_CADSEg extends GTCadseTestCase {
 	 */
 	protected static GTCommonTestDriver getDriver() {
 		return new BasicProperties_Double_testDriver();
+	}
+
+	/**
+	 * Gets the test parameters.
+	 * 
+	 * @return the test parameters
+	 */
+	protected static GTCommonParameters getParameters() {
+		return new BasicProperties_Double_parameters();
 	}
 }
