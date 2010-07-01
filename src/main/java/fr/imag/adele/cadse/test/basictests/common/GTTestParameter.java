@@ -15,13 +15,17 @@ public class GTTestParameter {
 	/** The test number */
 	public final int testNumber;
 
-	protected ItemType attributeTypeUnderTest;
+	/** The attribute item type which is under test. */
+	protected final ItemType attributeTypeUnderTest;
 
-	protected String attributeNameUnderTest;
+	/** The attribute name which is under test. */
+	protected final String attributeNameUnderTest;
 
-	protected String attributeName;
+	/** The name of the attribute */
+	private final String attributeName;
 
-	protected String testName;
+	/** The test name. Used to compute CADSE definition name */
+	private final String testName;
 
 	/**
 	 * Instantiates a new GTTestParameter.
