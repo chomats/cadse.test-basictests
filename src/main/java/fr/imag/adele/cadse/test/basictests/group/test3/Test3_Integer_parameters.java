@@ -4,6 +4,7 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.cb
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notCbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
@@ -39,30 +40,22 @@ public class Test3_Integer_parameters extends Test3_Common_parameters {
 		/* =========== */
 
 		/* Common parameters */
-		KeyValue[] sicpValues = { sicpKv(), /* notSicpKv() */};
+		KeyValue[] sicpValues = { sicpKv(), notSicpKv() };
 		KeyValue[] simpValues = { simpKv(), notSimpKv() };
 		KeyValue[] cbuValues = { cbuKv(), notCbuKv() };
 		KeyValue[] listValues = { notListKv(), listKv() };
 
-		/* Default value given into CADSEg */
-		KeyValue defValKv1 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, new Integer(10));
-		KeyValue defValKv2 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
-		KeyValue[] defVal = new KeyValue[] { defValKv1, defValKv2 };
+		/* Values given into CADSEg */
+		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, "");
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, new Integer(123));
+		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
+		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
 
-		/* Value used for head creation */
-		KeyValue newValue1Kv1 = new KeyValue(getAttributeName(), new Integer(11));
-		KeyValue newValue1Kv2 = new KeyValue(getAttributeName(), null);
-		KeyValue[] newValue1 = new KeyValue[] { newValue1Kv1, newValue1Kv2 };
-
-		/* Value used for member creation */
-		KeyValue newValue2Kv1 = new KeyValue(getAttributeName(), new Integer(12));
-		KeyValue newValue2Kv2 = new KeyValue(getAttributeName(), null);
-		KeyValue[] newValue2 = new KeyValue[] { newValue2Kv1, newValue2Kv2 };
-
-		/* Value used to modify head after member creation */
-		KeyValue newValue3Kv1 = new KeyValue(getAttributeName(), new Integer(13));
-		KeyValue newValue3Kv2 = new KeyValue(getAttributeName(), null);
-		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv1, newValue3Kv2 };
+		/* Execution : new value */
+		KeyValue kv31 = new KeyValue(getAttributeName(), "");
+		KeyValue kv32 = new KeyValue(getAttributeName(), new Integer(456));
+		KeyValue kv33 = new KeyValue(getAttributeName(), null);
+		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33 };
 
 		/* ==== */
 		/* INIT */
@@ -74,9 +67,7 @@ public class Test3_Integer_parameters extends Test3_Common_parameters {
 		ctp.addParameter("list", listValues);
 
 		ctp.addParameter("defVal", defVal);
-		ctp.addParameter("newValue1", newValue1);
-		ctp.addParameter("newValue2", newValue2);
-		ctp.addParameter("newValue3", newValue3);
+		ctp.addParameter("newValue", newVal);
 
 		return ctp;
 	}

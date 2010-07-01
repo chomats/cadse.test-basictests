@@ -150,7 +150,7 @@ public class GTTestParameter {
 	 * 
 	 * @return the attribute name
 	 */
-	protected String getAttributeName() {
+	public String getAttributeName() {
 		return attributeName;
 	}
 }

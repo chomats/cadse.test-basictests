@@ -175,6 +175,9 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		}
 	}
 
+	protected void preExecute(GTTestParameter tp) {
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * @see
@@ -192,12 +195,16 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 		KeyValue newValue = tp.getValue("newValue");
 
+		preExecute(tp);
+
 		/* ============= */
 		/* Creation page */
 		/* ============= */
 
-		workspaceView.contextMenuNew(getItName(tp)).click();
-		GTCadseShell shell = new GTCadseShell(getItName(tp));
+		GTCadseShell shell = initCreationPage(tp);
+		shell.findCadseFieldName().typeText(getInstanceName(tp));
+		UUID id = shell.findCadseFieldName().getRunningField().getSwtUiplatform().getItem().getId();
+		displayAttributeCreationPage(tp, shell);
 
 		// is field present
 		boolean isFieldPresent = shell.fieldExists(getAttributeName(tp));
@@ -232,8 +239,8 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 			}
 		}
 
-		// name + CHANGES FOCUS!!!
-		shell.findCadseFieldName().typeText(getInstanceName(tp));
+		// CHANGES FOCUS!!!
+		shell.findButton("Cancel").setFocus();
 
 		// final model value (okButtonActivated is important! if the value is not correct, the previous correct
 		// model value (default value) is locked even if the field displays another value.
@@ -245,9 +252,6 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 		// Waits until refresh
 		GTPreferences.sleep(SWTBotPreferences.DEFAULT_POLL_DELAY);
-
-		// Gets the UUID
-		UUID id = shell.findCadseFieldName().getRunningField().getSwtUiplatform().getItem().getId();
 
 		// Closes shell
 		if (isOkButtonActivated(tp)) {
@@ -268,13 +272,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 		/* ============== */
 
 		if (isAttributeCreationSuccess(tp)) {
-			Item item = CadseCore.getLogicalWorkspace().getItem(id);
-			assertNotNull(item);
-			IAttributeType<?> attr = item.getType().getAttributeType(getAttributeName(tp));
-			assertNotNull(attr);
-			Object actualModel = item.getAttribute(attr);
-			Object expectedModel = getFinalValue(tp);
-			assertEqualsListValues("Error in model checking for #" + tp.testNumber, expectedModel, actualModel);
+			modelChecking(tp, id);
 		}
 
 		/* ============= */
@@ -289,6 +287,7 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 
 		// Field value
 		if (fieldInMP) {
+			displayAttributeModificationPage(tp);
 			Object expectedGraphical = getFinalValue(tp);
 			Object actualGraphical = propertiesView.findCadseField(getAttributeName(tp)).getValue();
 			assertEqualsListValues("Error in graphical modification page for #" + tp.testNumber, expectedGraphical,
@@ -298,5 +297,58 @@ public abstract class BasicProperties_Common_testDriver extends GTCommonTestDriv
 			Object actualModel = propertiesView.findCadseField(getAttributeName(tp)).getModelValue();
 			assertEqualsListValues("Error in model modification page for #" + tp.testNumber, expectedModel, actualModel);
 		}
+	}
+
+	/**
+	 * Check the model value using API. To be used after instance creation.
+	 * 
+	 * @param tp
+	 *        the Test Parameter
+	 * @param id
+	 *        the instance id
+	 */
+	protected void modelChecking(GTTestParameter tp, UUID id) {
+		Item item = CadseCore.getLogicalWorkspace().getItem(id);
+		assertNotNull(item);
+		IAttributeType<?> attr = item.getType().getAttributeType(getAttributeName(tp));
+		Object actualModel = item.getAttribute(attr);
+		Object expectedModel = getFinalValue(tp);
+		assertEqualsListValues("Error in model checking for #" + tp.testNumber, expectedModel, actualModel);
+	}
+
+	/**
+	 * Displays the attribute creation page when creation wizard is shown.
+	 * 
+	 * @param tp
+	 *        the Test Parameter
+	 * @param shell
+	 */
+	protected void displayAttributeCreationPage(GTTestParameter tp, GTCadseShell shell) {
+		// already displayed!
+	}
+
+	/**
+	 * Displays the attribute modification page when property page is shown.
+	 * 
+	 * @param tp
+	 *        the Test Parameter
+	 */
+	protected void displayAttributeModificationPage(GTTestParameter tp) {
+		// already displayed!
+	}
+
+	/**
+	 * Starts instance creation by displaying creation page and filling the instance name.
+	 * 
+	 * @param tp
+	 * @return
+	 */
+	protected GTCadseShell initCreationPage(GTTestParameter tp) {
+		workspaceView.contextMenuNew(getItName(tp)).click();
+		GTCadseShell shell = new GTCadseShell(getItName(tp));
+
+		shell.findCadseFieldName().typeText(getInstanceName(tp));
+
+		return shell;
 	}
 }
