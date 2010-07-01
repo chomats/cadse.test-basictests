@@ -73,7 +73,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 
 		/* Post create */
 		if (success) {
-			GTTreePath attrPath = typePath.concat(tp.getAttributeNameUnderTest());
+			GTTreePath attrPath = typePath.concat(tp.getAttributeName());
 			postCreate(tp, typePath, attrPath);
 		}
 	}
