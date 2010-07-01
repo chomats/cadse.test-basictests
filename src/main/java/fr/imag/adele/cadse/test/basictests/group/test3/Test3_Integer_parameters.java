@@ -10,10 +10,9 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.si
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.test.basictests.common.GTCollectionTestParameter;
-import fr.imag.adele.cadse.test.basictests.common.GTCommonParameters;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
-public class Test3_Integer_parameters extends GTCommonParameters {
+public class Test3_Integer_parameters extends Test3_Common_parameters {
 
 	public Test3_Integer_parameters() {
 		ctp = initCTP();
@@ -33,7 +32,7 @@ public class Test3_Integer_parameters extends GTCommonParameters {
 	protected GTCollectionTestParameter initCTP() {
 
 		GTCollectionTestParameter ctp = new GTCollectionTestParameter(getAttributeTypeUnderTest(),
-				getAttributeNameUnderTest(), getAttributeName());
+				getAttributeNameUnderTest(), getAttributeName(), getTestName());
 
 		/* =========== */
 		/* DEFINITIONS */

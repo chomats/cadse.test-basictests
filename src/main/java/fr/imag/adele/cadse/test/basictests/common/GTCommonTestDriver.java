@@ -35,17 +35,10 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	// ================ //
 
 	/**
-	 * Gets the name of the test. This is a general name, without reference to any type, such as boolean.
-	 * 
-	 * @return the name of the test.
-	 */
-	protected abstract String getTestName();
-
-	/**
 	 * The name of the CADSE to be created.
 	 */
 	protected String getCadseName(GTTestParameter tp) {
-		return CADSEPrefix + getTestName() + tp.getAttributeNameUnderTest();
+		return CADSEPrefix + tp.getTestName() + tp.getAttributeNameUnderTest();
 	}
 
 	/** A Path to the CADSE in a tree view. */

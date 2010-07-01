@@ -25,15 +25,6 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	/** Link prefix used to compute the names */
 	protected final String linkName = "link";
 
-	/*
-	 * (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getTestName()
-	 */
-	@Override
-	public String getTestName() {
-		return "group_test1";
-	}
-
 	/**
 	 * Gets the source it name, for a given instance.
 	 * 
