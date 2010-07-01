@@ -20,11 +20,11 @@ public class Test3_Integer_testDriver extends BasicProperties_Integer_testDriver
 	@Override
 	protected GTTreePath createTypes(GTTestParameter tp) {
 		String sufix = getItName(tp).substring(0, 1).toUpperCase() + getItName(tp).substring(1);
-		GTTreePath src = dataModel.concat("parent" + sufix);
-		GTTreePath dst = dataModel.concat(getItName(tp));
+		GTTreePath src = getDataModel(tp).concat("parent" + sufix);
+		GTTreePath dst = getDataModel(tp).concat(getItName(tp));
 
-		createItemType(dataModel, src.getDestinationName(), notAbstractKv(), rootKv());
-		createItemType(dataModel, dst.getDestinationName(), notAbstractKv(), rootKv());
+		createItemType(getDataModel(tp), src.getDestinationName(), notAbstractKv(), rootKv());
+		createItemType(getDataModel(tp), dst.getDestinationName(), notAbstractKv(), rootKv());
 		createLinkType("group" + sufix, src, dst, null, null, groupKv());
 
 		return dst;
