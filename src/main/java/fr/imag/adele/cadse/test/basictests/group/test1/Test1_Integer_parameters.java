@@ -81,5 +81,4 @@ public class Test1_Integer_parameters extends GTCommonParameters {
 
 		return ctp;
 	}
-
 }
