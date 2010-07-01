@@ -52,9 +52,9 @@ public class BasicProperties_Integer_parameters extends BasicProperties_Common_p
 		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
 
 		/* Execution : new value */
-		KeyValue kv31 = new KeyValue(getAttributeNameUnderTest(), "");
-		KeyValue kv32 = new KeyValue(getAttributeNameUnderTest(), new Integer(456));
-		KeyValue kv33 = new KeyValue(getAttributeNameUnderTest(), null);
+		KeyValue kv31 = new KeyValue(getAttributeName(), "");
+		KeyValue kv32 = new KeyValue(getAttributeName(), new Integer(456));
+		KeyValue kv33 = new KeyValue(getAttributeName(), null);
 		KeyValue[] newVal = new KeyValue[] { kv31, kv32, kv33 };
 
 		/* ==== */
