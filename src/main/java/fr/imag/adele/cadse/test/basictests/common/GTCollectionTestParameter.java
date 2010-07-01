@@ -15,14 +15,26 @@ public class GTCollectionTestParameter {
 	/** The list of parameters for each test */
 	protected ArrayList<HashMap<String, KeyValue>> tests = new ArrayList<HashMap<String, KeyValue>>();
 
-	protected ItemType attributeTypeUnderTest;
+	/** The attribute item type which is under test. */
+	protected final ItemType attributeTypeUnderTest;
 
-	protected String attributeNameUnderTest;
+	/** The attribute name which is under test. */
+	protected final String attributeNameUnderTest;
 
+	/** The name of the attribute */
 	private final String attributeName;
 
+	/** The test name. Used to compute CADSE definition name */
 	private final String testName;
 
+	/**
+	 * Constructor.
+	 * 
+	 * @param attributeType
+	 * @param attributeName
+	 * @param attrName
+	 * @param testName
+	 */
 	public GTCollectionTestParameter(ItemType attributeType, String attributeName, String attrName, String testName) {
 		this.attributeTypeUnderTest = attributeType;
 		this.attributeNameUnderTest = attributeName;
