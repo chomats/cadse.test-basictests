@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import fr.imag.adele.cadse.test.basictests.common.GTCollectionTestParameter;
+import fr.imag.adele.cadse.test.basictests.common.GTCommonParameters;
 import fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver;
 import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
@@ -28,7 +28,8 @@ public class BasicProperties_Double_tc_execution extends GTCadseTestCase {
 	/** Performs initializations */
 	@BeforeClass
 	public static void createContext() throws Exception {
-		getDriver().selectCadse();
+		GTTestParameter param = getParameters().getTestParameters(0);
+		getDriver().selectCadse(param);
 		welcomeView.close();
 		workspaceView.show();
 	}
@@ -41,7 +42,7 @@ public class BasicProperties_Double_tc_execution extends GTCadseTestCase {
 	 */
 	@Test
 	public void testExecution() throws Exception {
-		GTTestParameter param = getDriver().getCTP().getTestParameters(instanceNumber);
+		GTTestParameter param = getParameters().getTestParameters(instanceNumber);
 		getDriver().testExecution(param);
 	}
 
@@ -62,9 +63,9 @@ public class BasicProperties_Double_tc_execution extends GTCadseTestCase {
 	 */
 	@Parameters
 	public static Collection<Object[]> data() {
-		GTCollectionTestParameter ctp = getDriver().getCTP();
+		GTCommonParameters param = getParameters();
 		ArrayList<Object[]> params = new ArrayList<Object[]>();
-		for (int i = 0; i < ctp.numberOfTests(); i++) {
+		for (int i = 0; i < param.numberOfTests(); i++) {
 			params.add(new Object[] { i });
 		}
 		return params;
@@ -77,5 +78,14 @@ public class BasicProperties_Double_tc_execution extends GTCadseTestCase {
 	 */
 	protected static GTCommonTestDriver getDriver() {
 		return new BasicProperties_Double_testDriver();
+	}
+
+	/**
+	 * Gets the test parameters.
+	 * 
+	 * @return the test parameters
+	 */
+	protected static GTCommonParameters getParameters() {
+		return new BasicProperties_Double_parameters();
 	}
 }
