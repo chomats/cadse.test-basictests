@@ -7,7 +7,6 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectC
 import java.util.ArrayList;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
-import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseWorkbenchPart;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
@@ -28,30 +27,12 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	/** Item type prefix used to compute the item types names. */
 	public final String itPrefix = "it";
 
-	/** Attribute prefix used to compute the attributes names. */
-	public final String attrPrefix = "attr";
-
 	/** Instance prefix used to compute the names. */
 	public final String instancePrefix = "instance";
 
 	// ================ //
 	// CADSE DEFINITION //
 	// ================ //
-
-	/**
-	 * Gets the attribute type under test.
-	 * 
-	 * @return the attribute type under test.
-	 */
-	public abstract ItemType getAttributeTypeUnderTest();
-
-	/**
-	 * Gets the attribute name under test. Because this method can be used before CADSEg is started, the result musn't
-	 * be computed from {@link #getAttributeTypeUnderTest()} method.
-	 * 
-	 * @return the attribute name under test
-	 */
-	public abstract String getAttributeNameUnderTest();
 
 	/**
 	 * Gets the name of the test. This is a general name, without reference to any type, such as boolean.
@@ -63,20 +44,19 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	/**
 	 * The name of the CADSE to be created.
 	 */
-	protected String cadseName = CADSEPrefix + getTestName() + getAttributeNameUnderTest();
+	protected String getCadseName(GTTestParameter tp) {
+		return CADSEPrefix + getTestName() + tp.getAttributeNameUnderTest();
+	}
 
 	/** A Path to the CADSE in a tree view. */
-	protected GTTreePath cadseModel = new GTTreePath(cadseName);
+	protected GTTreePath getCadseModel(GTTestParameter tp) {
+		return new GTTreePath(getCadseName(tp));
+	}
 
 	/** A path to the data model. */
-	protected GTTreePath dataModel = cadseModel.concat(CadseDefinitionManager.DATA_MODEL);
-
-	/**
-	 * Gets the test parameters.
-	 * 
-	 * @return the test parameters.
-	 */
-	public abstract GTCollectionTestParameter getCTP();
+	protected GTTreePath getDataModel(GTTestParameter tp) {
+		return getCadseModel(tp).concat(CadseDefinitionManager.DATA_MODEL);
+	}
 
 	/**
 	 * Creates a specific the configuration.
@@ -100,7 +80,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 
 		/* Post create */
 		if (success) {
-			GTTreePath attrPath = typePath.concat(getAttributeNameUnderTest());
+			GTTreePath attrPath = typePath.concat(tp.getAttributeNameUnderTest());
 			postCreate(tp, typePath, attrPath);
 		}
 	}
@@ -134,7 +114,8 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 */
 	protected boolean createAttributes(GTTestParameter tp, GTTreePath typePath) {
 		try {
-			createBasicAttribute(typePath, getAttributeTypeUnderTest(), getAttributeName(), getCreationKeyValues(tp));
+			createBasicAttribute(typePath, tp.getAttributeTypeUnderTest(), getAttributeName(tp),
+					getCreationKeyValues(tp));
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -177,8 +158,8 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	/**
 	 * Creates the CADSE.
 	 */
-	public void createCadse() {
-		createCadseDefinition(cadseName, "model." + cadseName);
+	public void createCadse(GTTestParameter tp) {
+		createCadseDefinition(getCadseName(tp), "model." + getCadseName(tp));
 	}
 
 	/**
@@ -186,8 +167,8 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * 
 	 * @return the attribute name
 	 */
-	protected String getAttributeName() {
-		return attrPrefix + getAttributeNameUnderTest();
+	protected String getAttributeName(GTTestParameter tp) {
+		return tp.getAttributeName();
 	}
 
 	/**
@@ -201,8 +182,8 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	/**
 	 * At startup, selects the CADSE created before.
 	 */
-	public void selectCadse() {
-		selectCadses("Cadse Model.Workspace." + cadseName);
+	public void selectCadse(GTTestParameter tp) {
+		selectCadses("Cadse Model.Workspace." + getCadseName(tp));
 	}
 
 	/**
