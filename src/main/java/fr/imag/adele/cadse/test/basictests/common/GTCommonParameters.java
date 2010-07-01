@@ -15,6 +15,8 @@ public abstract class GTCommonParameters {
 
 	protected abstract GTCollectionTestParameter initCTP();
 
+	protected abstract String getTestName();
+
 	public int numberOfTests() {
 		return ctp.numberOfTests();
 	}

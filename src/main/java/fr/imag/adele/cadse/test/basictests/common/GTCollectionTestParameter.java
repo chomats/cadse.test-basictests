@@ -21,10 +21,13 @@ public class GTCollectionTestParameter {
 
 	private final String attributeName;
 
-	public GTCollectionTestParameter(ItemType attributeType, String attributeName, String attrName) {
+	private final String testName;
+
+	public GTCollectionTestParameter(ItemType attributeType, String attributeName, String attrName, String testName) {
 		this.attributeTypeUnderTest = attributeType;
 		this.attributeNameUnderTest = attributeName;
 		this.attributeName = attrName;
+		this.testName = testName;
 	}
 
 	/*
@@ -79,7 +82,8 @@ public class GTCollectionTestParameter {
 	 * @return the test
 	 */
 	public GTTestParameter getTestParameters(int i) {
-		return new GTTestParameter(i, tests.get(i), attributeTypeUnderTest, attributeNameUnderTest, attributeName);
+		return new GTTestParameter(i, tests.get(i), attributeTypeUnderTest, attributeNameUnderTest, attributeName,
+				testName);
 	}
 
 	/**
