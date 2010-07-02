@@ -5,3 +5,4 @@ target/*
 .DS_Store
 *~
 META-INF/MANIFEST.MF
+screenshots/*
