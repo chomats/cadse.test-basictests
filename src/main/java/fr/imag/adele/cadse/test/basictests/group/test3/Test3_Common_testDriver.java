@@ -99,7 +99,7 @@ public class Test3_Common_testDriver extends BasicProperties_Common_testDriver {
 	protected void modelChecking(GTTestParameter tp, UUID id) {
 		Item item = CadseCore.getLogicalWorkspace().getItem(id);
 		assertNotNull(item);
-		IAttributeType<?> attr = item.getType().getAttributeType(getAttributeName(tp));
+		IAttributeType<?> attr = item.getLocalAttributeType(getAttributeName(tp));
 		Object actualModel = item.getAttribute(attr);
 		Object expectedModel = getFinalValue(tp);
 		assertEqualsListValues("Error in model checking for #" + tp.testNumber, expectedModel, actualModel);
