@@ -1,9 +1,12 @@
 package fr.imag.adele.cadse.test.basictests.common.type;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.propertiesView;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
+import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class GTStringParameter extends GTTypeParameter {
 
@@ -62,5 +65,12 @@ public class GTStringParameter extends GTTypeParameter {
 	@Override
 	public KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
 		return kv;
+	}
+
+	@Override
+	public void setAdvancedAttributeProperties(GTTestParameter tp, GTTreePath attrPath) {
+		workspaceView.selectNode(attrPath);
+		propertiesView.showTab("String");
+		propertiesView.setValue(tp.getValue("notEmpty"));
 	}
 }

@@ -68,7 +68,7 @@ public class Test3_Common_testDriver extends GTSimpleTestDriver {
 		/* Post create */
 		if (success) {
 			GTTreePath attrPath = headPath.concat(tp.getAttributeName());
-			postCreate(tp, headPath, attrPath);
+			tp.setAdvancedAttributeProperties(attrPath);
 		}
 	}
 

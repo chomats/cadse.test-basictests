@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
+import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class GTTestParameter {
 
@@ -64,6 +65,10 @@ public class GTTestParameter {
 
 	public KeyValue adaptedValue(KeyValue kv) {
 		return typeParameter.adaptedValue(this, kv);
+	}
+
+	public void setAdvancedAttributeProperties(GTTreePath attrPath) {
+		typeParameter.setAdvancedAttributeProperties(this, attrPath);
 	}
 
 	/**
