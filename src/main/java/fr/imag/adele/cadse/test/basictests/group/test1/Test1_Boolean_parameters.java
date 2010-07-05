@@ -8,31 +8,21 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.no
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.test.basictests.common.GTCollectionTestParameter;
+import fr.imag.adele.cadse.test.basictests.common.type.GTBooleanParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class Test1_Boolean_parameters extends Test1_Common_parameters {
 
 	public Test1_Boolean_parameters() {
 		ctp = initCTP();
-	}
-
-	@Override
-	public ItemType getAttributeTypeUnderTest() {
-		return CadseGCST.BOOLEAN;
-	}
-
-	@Override
-	public String getAttributeNameUnderTest() {
-		return "Boolean";
+		typeParameter = new GTBooleanParameter();
 	}
 
 	@Override
 	protected GTCollectionTestParameter initCTP() {
 
-		GTCollectionTestParameter ctp = new GTCollectionTestParameter(getAttributeTypeUnderTest(),
-				getAttributeNameUnderTest(), getAttributeName(), getTestName());
+		GTCollectionTestParameter ctp = new GTCollectionTestParameter(typeParameter, getAttributeName(), getTestName());
 
 		/* =========== */
 		/* DEFINITIONS */

@@ -4,36 +4,25 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.cb
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notCbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.test.basictests.common.GTCollectionTestParameter;
+import fr.imag.adele.cadse.test.basictests.common.type.GTStringParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class Test3_String_parameters extends Test3_Common_parameters {
 
 	public Test3_String_parameters() {
 		ctp = initCTP();
-	}
-
-	@Override
-	public ItemType getAttributeTypeUnderTest() {
-		return CadseGCST.STRING;
-	}
-
-	@Override
-	public String getAttributeNameUnderTest() {
-		return "String";
+		typeParameter = new GTStringParameter();
 	}
 
 	@Override
 	protected GTCollectionTestParameter initCTP() {
-		
-		GTCollectionTestParameter ctp = new GTCollectionTestParameter(getAttributeTypeUnderTest(),
-				getAttributeNameUnderTest(), getAttributeName(), getTestName());
+
+		GTCollectionTestParameter ctp = new GTCollectionTestParameter(typeParameter, getAttributeName(), getTestName());
 
 		/* =========== */
 		/* DEFINITIONS */

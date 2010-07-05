@@ -6,17 +6,21 @@ import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
-public class BasicProperties_String_testDriver extends BasicProperties_Common_testDriver {
+public class BasicProperties_String_testDriver extends
+		BasicProperties_Common_testDriver {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#postCreate(fr.imag.adele.cadse.test.basictests
-	 * .testdriver.GTTestParameter, fr.imag.adele.graphictests.gttree.GTTreePath,
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#postCreate
+	 * (fr.imag.adele.cadse.test.basictests .testdriver.GTTestParameter,
+	 * fr.imag.adele.graphictests.gttree.GTTreePath,
 	 * fr.imag.adele.graphictests.gttree.GTTreePath)
 	 */
 	@Override
-	protected void postCreate(GTTestParameter tp, GTTreePath itPath, GTTreePath attrPath) {
+	protected void postCreate(GTTestParameter tp, GTTreePath itPath,
+			GTTreePath attrPath) {
 		workspaceView.selectNode(attrPath);
 		propertiesView.showTab("String");
 		propertiesView.setValue(tp.getValue("notEmpty"));
@@ -24,8 +28,9 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#isOkButtonActivated(fr.
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.basicproperties.
+	 * BasicProperties_Common_testDriver#isOkButtonActivated(fr.
 	 * imag.adele.cadse.test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
@@ -37,8 +42,7 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 
 		if (isList) {
 			return true;
-		}
-		else {
+		} else {
 
 			// Checking cbu constraint
 			if (cbu && value == null) {
@@ -54,32 +58,6 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#setNewGraphicalValue(fr
-	 * .imag.adele.cadse.test.basictests.testdriver.GTTestParameter,
-	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell)
-	 */
-	@Override
-	protected boolean isSettableValue(GTTestParameter tp, KeyValue kv) {
-
-		boolean isList = tp.getBoolean("list");
-		boolean notEmpty = tp.getBoolean("notEmpty");
-
-		if (isList) {
-			if (kv.value == null) {
-				return false;
-			}
-			else {
-				return notEmpty ? !kv.getString().equals("") : true;
-			}
-		}
-		else {
-			return true;
-		}
-	}
-
 	@Override
 	protected KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
 		return kv;
@@ -87,8 +65,9 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver#getFinalModelValue(fr.imag
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.basicproperties.
+	 * BasicProperties_Common_testDriver#getFinalModelValue(fr.imag
 	 * .adele.cadse.test.basictests.testdriver.GTTestParameter)
 	 */
 	@Override
@@ -108,25 +87,20 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 
 				if (notEmpty && newValue.equals("")) {
 					return new Object[] {};
-				}
-				else {
+				} else {
 					return new Object[] { newValue };
 				}
-			}
-			else {
+			} else {
 				return new Object[] {};
 			}
-		}
-		else {
+		} else {
 			if (fieldInCP) {
 				if (newKv != null) { // in case graphic = "" and model = null
 					return newValue;
-				}
-				else {
+				} else {
 					return defVal;
 				}
-			}
-			else {
+			} else {
 				return defVal;
 			}
 		}

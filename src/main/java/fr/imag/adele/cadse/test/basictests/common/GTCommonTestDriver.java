@@ -37,7 +37,8 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	/**
 	 * Gets the name of the CADSE to be created.
 	 * 
-	 * @param tp the test parameter
+	 * @param tp
+	 *            the test parameter
 	 * 
 	 * @return the CADSE name
 	 */
@@ -48,7 +49,8 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	/**
 	 * Gets the path to the CADSE in a tree view.
 	 * 
-	 * @param tp the test parameter
+	 * @param tp
+	 *            the test parameter
 	 * 
 	 * @return the CADSE model
 	 */
@@ -59,7 +61,8 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	/**
 	 * Gets a path to the data model.
 	 * 
-	 * @param tp the test parameter
+	 * @param tp
+	 *            the test parameter
 	 * 
 	 * @return the data model
 	 */
@@ -71,7 +74,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * Creates a specific the configuration.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 */
 	public void testCreation(GTTestParameter tp) {
 
@@ -85,7 +88,8 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 		boolean success = createAttributes(tp, typePath);
 
 		boolean expected = isAttributeCreationSuccess(tp);
-		assertEquals("testCreation error with #" + tp.testNumber, expected, success);
+		assertEquals("testCreation error with #" + tp.testNumber, expected,
+				success);
 
 		/* Post create */
 		if (success) {
@@ -98,7 +102,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * Performs actions before the item creation.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 */
 	protected void preCreate(GTTestParameter tp) {
 	}
@@ -107,7 +111,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * Creates the types.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return a path to the type from which attributes will be created
 	 */
 	abstract protected GTTreePath createTypes(GTTestParameter tp);
@@ -116,15 +120,15 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * Creates the attributes.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @param typePath
-	 *        a path to the type on which attributes should be created
+	 *            a path to the type on which attributes should be created
 	 * @return true, if successful
 	 */
 	protected boolean createAttributes(GTTestParameter tp, GTTreePath typePath) {
 		try {
-			createBasicAttribute(typePath, tp.getAttributeTypeUnderTest(), getAttributeName(tp),
-					getCreationKeyValues(tp));
+			createBasicAttribute(typePath, tp.getAttributeTypeUnderTest(),
+					getAttributeName(tp), getCreationKeyValues(tp));
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -135,7 +139,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * Gets the creation key values.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the list of KeyValues for creating the attribute.
 	 */
 	abstract protected KeyValue[] getCreationKeyValues(GTTestParameter tp);
@@ -144,7 +148,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * Returns true if the attribute can be created, false otherwise.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return true if the attribute can be created, false otherwise.
 	 */
 	protected boolean isAttributeCreationSuccess(GTTestParameter tp) {
@@ -155,13 +159,14 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * Performs actions after the item creation.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @param itPath
-	 *        the item type path
+	 *            the item type path
 	 * @param attrPath
-	 *        the attribute path
+	 *            the attribute path
 	 */
-	protected void postCreate(GTTestParameter tp, GTTreePath itPath, GTTreePath attrPath) {
+	protected void postCreate(GTTestParameter tp, GTTreePath itPath,
+			GTTreePath attrPath) {
 	}
 
 	/**
@@ -184,7 +189,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * At runtime, test the configuration tp.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 */
 	public abstract void testExecution(GTTestParameter tp);
 
@@ -199,9 +204,9 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * Set values into a GTCadseWorkbenchPart.
 	 * 
 	 * @param wp
-	 *        the GTCadseWorkbenchPart
+	 *            the GTCadseWorkbenchPart
 	 * @param values
-	 *        the values
+	 *            the values
 	 * @return true, if sets the values
 	 */
 	protected boolean setValues(GTCadseWorkbenchPart wp, KeyValue... values) {
@@ -214,33 +219,12 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	}
 
 	/**
-	 * Checks if it should be possible to set a value.
-	 * 
-	 * @param tp
-	 *        the tp
-	 * @param value
-	 *        the value
-	 * @return true, if the value can be set
-	 */
-	protected boolean isSettableValue(GTTestParameter tp, KeyValue kv) {
-
-		boolean isList = tp.getBoolean("list");
-
-		if (isList) {
-			return kv != null && kv.value != null && !kv.value.toString().equals("");
-		}
-		else {
-			return true;
-		}
-	}
-
-	/**
 	 * Checks if a value is valid, depending on the context.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @param value
-	 *        the value
+	 *            the value
 	 * @return true, if is ok button is activated
 	 */
 	protected boolean isValidValue(GTTestParameter tp, Object value) {
@@ -250,12 +234,10 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 
 		if (isList) {
 			return true;
-		}
-		else {
+		} else {
 			if (cbu == true && (value == null || value.toString().isEmpty())) {
 				return false;
-			}
-			else {
+			} else {
 				return true;
 			}
 		}
@@ -273,13 +255,14 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * Assert values are String or String[] and are equals.
 	 * 
 	 * @param message
-	 *        a failing message
+	 *            a failing message
 	 * @param expected
-	 *        the expected list
+	 *            the expected list
 	 * @param actual
-	 *        the actual list
+	 *            the actual list
 	 */
-	protected void assertEqualsListValues(String message, Object expected, Object actual) {
+	protected void assertEqualsListValues(String message, Object expected,
+			Object actual) {
 
 		ArrayList<Object> tab1 = generateArray(expected);
 		ArrayList<Object> tab2 = generateArray(actual);
@@ -309,7 +292,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * Convert the object into parameter to an Array.
 	 * 
 	 * @param object
-	 *        the source object
+	 *            the source object
 	 * @return an array list
 	 */
 	@SuppressWarnings("unchecked")
@@ -325,22 +308,18 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 			for (Object o : (ArrayList) object) {
 				if (o instanceof Enum) {
 					tab.add(o.toString());
-				}
-				else {
+				} else {
 					tab.add(o);
 				}
 			}
-		}
-		else if (object instanceof Object[]) {
+		} else if (object instanceof Object[]) {
 			Object[] t = (Object[]) object;
 			for (int i = 0; i < t.length; i++) {
 				tab.add(t[i]);
 			}
-		}
-		else if (object instanceof Enum) {
+		} else if (object instanceof Enum) {
 			tab.add(object.toString());
-		}
-		else {
+		} else {
 			tab.add(object);
 		}
 		return tab;

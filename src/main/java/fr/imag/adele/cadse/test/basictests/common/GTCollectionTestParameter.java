@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class GTCollectionTestParameter {
@@ -16,10 +16,7 @@ public class GTCollectionTestParameter {
 	protected ArrayList<HashMap<String, KeyValue>> tests = new ArrayList<HashMap<String, KeyValue>>();
 
 	/** The attribute item type which is under test. */
-	protected final ItemType attributeTypeUnderTest;
-
-	/** The attribute name which is under test. */
-	protected final String attributeNameUnderTest;
+	protected final GTTypeParameter typeParameter;
 
 	/** The name of the attribute */
 	private final String attributeName;
@@ -35,15 +32,15 @@ public class GTCollectionTestParameter {
 	 * @param attrName
 	 * @param testName
 	 */
-	public GTCollectionTestParameter(ItemType attributeType, String attributeName, String attrName, String testName) {
-		this.attributeTypeUnderTest = attributeType;
-		this.attributeNameUnderTest = attributeName;
+	public GTCollectionTestParameter(GTTypeParameter typeParameter, String attrName, String testName) {
+		this.typeParameter = typeParameter;
 		this.attributeName = attrName;
 		this.testName = testName;
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -77,9 +74,9 @@ public class GTCollectionTestParameter {
 	 * Adds a parameter which can takes different values.
 	 * 
 	 * @param key
-	 *        the key
+	 *            the key
 	 * @param values
-	 *        the values
+	 *            the values
 	 */
 	public void addParameter(String key, KeyValue[] values) {
 		parameters.put(key, values);
@@ -90,12 +87,11 @@ public class GTCollectionTestParameter {
 	 * Gets a test.
 	 * 
 	 * @param i
-	 *        the test number
+	 *            the test number
 	 * @return the test
 	 */
 	public GTTestParameter getTestParameters(int i) {
-		return new GTTestParameter(i, tests.get(i), attributeTypeUnderTest, attributeNameUnderTest, attributeName,
-				testName);
+		return new GTTestParameter(i, tests.get(i), typeParameter, attributeName, testName);
 	}
 
 	/**

@@ -18,7 +18,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	 * Gets the it name, for a given instance
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the it name
 	 */
 	protected String getItName(GTTestParameter tp) {
@@ -29,7 +29,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	 * Gets the instance name.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the instance name
 	 */
 	protected String getInstanceName(GTTestParameter tp) {
@@ -37,11 +37,11 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	}
 
 	/**
-	 * Gets the the default value as it appears in the creation page. This value is the default value, corrected by
-	 * CADSEg to match all the constraints.
+	 * Gets the the default value as it appears in the creation page. This value
+	 * is the default value, corrected by CADSEg to match all the constraints.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the corrected def val
 	 */
 	protected KeyValue getCorrectedDefVal(GTTestParameter tp) {
@@ -49,11 +49,11 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	}
 
 	/**
-	 * Gets the the new value as it appears in the modification page. This value is the default value, corrected by
-	 * CADSEg to match all the constraints.
+	 * Gets the the new value as it appears in the modification page. This value
+	 * is the default value, corrected by CADSEg to match all the constraints.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the corrected def val
 	 */
 	protected KeyValue getCorrectedNewVal(GTTestParameter tp) {
@@ -64,8 +64,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 
 		if (kv.value instanceof String && kv.getString().isEmpty()) {
 			return new KeyValue(kv, null);
-		}
-		else {
+		} else {
 			return kv;
 		}
 	}
@@ -74,7 +73,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	 * Gets the initial visual value.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return a string or a list of string
 	 */
 	protected Object getInitialValue(GTTestParameter tp) {
@@ -83,8 +82,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 
 		if (isList) {
 			return new Object[] {};
-		}
-		else {
+		} else {
 			return getCorrectedDefVal(tp).value;
 		}
 	}
@@ -93,7 +91,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	 * Gets the final model value.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the final model value
 	 */
 	protected Object getFinalValue(GTTestParameter tp) {
@@ -105,31 +103,36 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 		if (isList) { // def val is ignored with list attributes
 			if (sicp && newKv != null && isValidValue(tp, newKv.value)) {
 				return new Object[] { newKv.value };
-			}
-			else {
+			} else {
 				return new Object[] {};
 			}
-		}
-		else {
+		} else {
 			if (sicp && newKv != null && isValidValue(tp, newKv.value)) {
 				return getCorrectedNewVal(tp).value;
-			}
-			else {
+			} else {
 				return getCorrectedDefVal(tp).value;
 			}
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver#getCreationKeyValues(fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver#
+	 * getCreationKeyValues
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
 	 */
 	@Override
 	protected KeyValue[] getCreationKeyValues(GTTestParameter tp) {
 		return tp.getValues("defVal", "sicp", "simp", "cbu", "list");
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver#isOkButtonActivated(fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver#
+	 * isOkButtonActivated
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
 	 */
 	@Override
 	protected boolean isOkButtonActivated(GTTestParameter tp) {
@@ -138,12 +141,10 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 		if (isAttributeCreationSuccess(tp)) {
 			if (sicp) {
 				return isValidValue(tp, tp.getValue("newValue").value);
-			}
-			else {
+			} else {
 				return isValidValue(tp, tp.getValue("defVal").value);
 			}
-		}
-		else {
+		} else {
 			return true;
 		}
 	}
@@ -153,8 +154,9 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#testExecution(fr.imag.adele.cadse.test.basictests
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#
+	 * testExecution(fr.imag.adele.cadse.test.basictests
 	 * .testdriver.GTTestParameter)
 	 */
 	@Override
@@ -202,7 +204,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 		if (fieldInCP && newValue != null) {
 
 			boolean actualSuccess = setValues(shell, newValue);
-			boolean expectedSuccess = isSettableValue(tp, newValue);
+			boolean expectedSuccess = tp.isSettableValue(newValue);
 			assertEquals("Success or failure is not as expected for #" + tp.testNumber, expectedSuccess, actualSuccess);
 
 			// setting the new value has failed, as expected
@@ -215,8 +217,10 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 		// CHANGES FOCUS!!!
 		shell.findButton("Cancel").setFocus();
 
-		// final model value (okButtonActivated is important! if the value is not correct, the previous correct
-		// model value (default value) is locked even if the field displays another value.
+		// final model value (okButtonActivated is important! if the value is
+		// not correct, the previous correct
+		// model value (default value) is locked even if the field displays
+		// another value.
 		if (fieldInCP && newValue != null && isValidValue(tp, getFinalValue(tp))) {
 			Object expected = getFinalValue(tp);
 			Object actual = shell.findCadseField(getAttributeName(tp)).getModelValue();
@@ -229,8 +233,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 		// Closes shell
 		if (isOkButtonActivated(tp)) {
 			shell.close();
-		}
-		else {
+		} else {
 			try {
 				shell.close(GTPreferences.FAILING_ASSERT_TIMEOUT);
 				fail("OK button is activated whereas it shouldn't for #" + tp.testNumber);
@@ -276,9 +279,9 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	 * Check the model value using API. To be used after instance creation.
 	 * 
 	 * @param tp
-	 *        the Test Parameter
+	 *            the Test Parameter
 	 * @param id
-	 *        the instance id
+	 *            the instance id
 	 */
 	protected abstract void modelChecking(GTTestParameter tp, UUID id);
 
@@ -286,7 +289,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	 * Displays the attribute creation page when creation wizard is shown.
 	 * 
 	 * @param tp
-	 *        the Test Parameter
+	 *            the Test Parameter
 	 * @param shell
 	 */
 	protected void displayAttributeCreationPage(GTTestParameter tp, GTCadseShell shell) {
@@ -297,14 +300,15 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	 * Displays the attribute modification page when property page is shown.
 	 * 
 	 * @param tp
-	 *        the Test Parameter
+	 *            the Test Parameter
 	 */
 	protected void displayAttributeModificationPage(GTTestParameter tp) {
 		// already displayed by default!
 	}
 
 	/**
-	 * Starts instance creation by displaying creation page and filling the instance name.
+	 * Starts instance creation by displaying creation page and filling the
+	 * instance name.
 	 * 
 	 * @param tp
 	 * @return
