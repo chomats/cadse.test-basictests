@@ -46,4 +46,16 @@ public class GTBooleanParameter extends GTTypeParameter {
 			return true;
 		}
 	}
+
+	@Override
+	public KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
+
+		boolean cbu = tp.getBoolean("cbu");
+
+		if (cbu == true && kv.value == null) {
+			return new KeyValue("", false);
+		} else {
+			return kv;
+		}
+	}
 }

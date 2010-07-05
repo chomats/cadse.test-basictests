@@ -24,11 +24,6 @@ public class BasicProperties_String_testDriver extends BasicProperties_Common_te
 		propertiesView.setValue(tp.getValue("notEmpty"));
 	}
 
-	@Override
-	protected KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
-		return kv;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 

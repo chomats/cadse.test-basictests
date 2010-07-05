@@ -24,11 +24,6 @@ public class Test3_String_testDriver extends Test3_Common_testDriver {
 		propertiesView.setValue(tp.getValue("notEmpty"));
 	}
 
-	@Override
-	protected KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
-		return kv;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 

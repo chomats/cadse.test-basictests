@@ -45,7 +45,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	 * @return the corrected def val
 	 */
 	protected KeyValue getCorrectedDefVal(GTTestParameter tp) {
-		return adaptedValue(tp, tp.getValue("defVal"));
+		return tp.adaptedValue(tp.getValue("defVal"));
 	}
 
 	/**
@@ -57,16 +57,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	 * @return the corrected def val
 	 */
 	protected KeyValue getCorrectedNewVal(GTTestParameter tp) {
-		return adaptedValue(tp, tp.getValue("newValue"));
-	}
-
-	protected KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
-
-		if (kv.value instanceof String && kv.getString().isEmpty()) {
-			return new KeyValue(kv, null);
-		} else {
-			return kv;
-		}
+		return tp.adaptedValue(tp.getValue("newValue"));
 	}
 
 	/**
