@@ -15,6 +15,7 @@ import org.junit.runners.Parameterized.Parameters;
 import fr.imag.adele.cadse.test.basictests.common.GTCommonParameters;
 import fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver;
 import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
+import fr.imag.adele.cadse.test.basictests.group.test1.Test1_Common_testDriver;
 
 @RunWith(value = Parameterized.class)
 public class Test3_Integer_tc_execution {
@@ -35,7 +36,7 @@ public class Test3_Integer_tc_execution {
 	 * The test itself.
 	 * 
 	 * @throws Exception
-	 *         the exception
+	 *             the exception
 	 */
 	@Test
 	public void testExecution() throws Exception {
@@ -47,7 +48,7 @@ public class Test3_Integer_tc_execution {
 	 * Constructor.
 	 * 
 	 * @param i
-	 *        the instance number.
+	 *            the instance number.
 	 */
 	public Test3_Integer_tc_execution(int i) {
 		instanceNumber = i;
@@ -74,7 +75,7 @@ public class Test3_Integer_tc_execution {
 	 * @return the test driver
 	 */
 	protected static GTCommonTestDriver getDriver() {
-		return new Test3_Integer_testDriver();
+		return new Test1_Common_testDriver();
 	}
 
 	/**

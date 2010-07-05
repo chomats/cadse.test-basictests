@@ -36,7 +36,7 @@ public class Test1_String_tc_execution extends GTCadseTestCase {
 	 * The test itself.
 	 * 
 	 * @throws Exception
-	 *         the exception
+	 *             the exception
 	 */
 	@Test
 	public void testExecution() throws Exception {
@@ -48,7 +48,7 @@ public class Test1_String_tc_execution extends GTCadseTestCase {
 	 * Constructor.
 	 * 
 	 * @param i
-	 *        the instance number.
+	 *            the instance number.
 	 */
 	public Test1_String_tc_execution(int i) {
 		instanceNumber = i;
@@ -75,7 +75,7 @@ public class Test1_String_tc_execution extends GTCadseTestCase {
 	 * @return the test driver
 	 */
 	protected static GTCommonTestDriver getDriver() {
-		return new Test1_String_testDriver();
+		return new Test1_Common_testDriver();
 	}
 
 	/**

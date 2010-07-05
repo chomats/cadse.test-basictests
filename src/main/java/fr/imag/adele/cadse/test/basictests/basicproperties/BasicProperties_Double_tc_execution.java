@@ -38,7 +38,7 @@ public class BasicProperties_Double_tc_execution extends GTCadseTestCase {
 	 * The test itself.
 	 * 
 	 * @throws Exception
-	 *         the exception
+	 *             the exception
 	 */
 	@Test
 	public void testExecution() throws Exception {
@@ -50,7 +50,7 @@ public class BasicProperties_Double_tc_execution extends GTCadseTestCase {
 	 * Constructor.
 	 * 
 	 * @param i
-	 *        the instance number.
+	 *            the instance number.
 	 */
 	public BasicProperties_Double_tc_execution(int i) {
 		instanceNumber = i;
@@ -77,7 +77,7 @@ public class BasicProperties_Double_tc_execution extends GTCadseTestCase {
 	 * @return the test driver
 	 */
 	protected static GTCommonTestDriver getDriver() {
-		return new BasicProperties_Double_testDriver();
+		return new BasicProperties_Common_testDriver();
 	}
 
 	/**

@@ -20,7 +20,7 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
-public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
+public class Test1_Common_testDriver extends GTCommonTestDriver {
 
 	/** Link prefix used to compute the names */
 	protected final String linkName = "link";
