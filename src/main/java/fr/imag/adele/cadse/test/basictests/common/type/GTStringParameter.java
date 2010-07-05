@@ -33,4 +33,29 @@ public class GTStringParameter extends GTTypeParameter {
 			return true;
 		}
 	}
+
+	@Override
+	public boolean isValidValue(GTTestParameter tp, Object value) {
+
+		boolean isList = tp.getBoolean("list");
+		boolean cbu = tp.getBoolean("cbu");
+		boolean notEmpty = tp.getBoolean("notEmpty");
+
+		if (isList) {
+			return true;
+		} else {
+
+			// Checking cbu constraint
+			if (cbu && value == null) {
+				return false;
+			}
+
+			// Checking not empty constraint
+			if (notEmpty && value != null && value.toString().equals("")) {
+				return false;
+			}
+
+			return true;
+		}
+	}
 }
