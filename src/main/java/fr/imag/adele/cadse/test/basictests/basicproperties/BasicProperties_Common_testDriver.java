@@ -15,20 +15,29 @@ import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
-public abstract class BasicProperties_Common_testDriver extends GTSimpleTestDriver {
+public class BasicProperties_Common_testDriver extends GTSimpleTestDriver {
 
-	/* (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver#createTypes(fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver#createTypes
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
 	 */
 	@Override
 	protected GTTreePath createTypes(GTTestParameter tp) {
 		createItemType(getDataModel(tp), getItName(tp), notAbstractKv(), rootKv());
 		return getDataModel(tp).concat(getItName(tp));
 	}
-	
-	/* (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.common.GTSimpleTestDriver#initCreationPage(fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.GTSimpleTestDriver#
+	 * initCreationPage
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
 	 */
+	@Override
 	protected GTCadseShell initCreationPage(GTTestParameter tp) {
 		workspaceView.contextMenuNew(getItName(tp)).click();
 		GTCadseShell shell = new GTCadseShell(getItName(tp));
@@ -37,10 +46,16 @@ public abstract class BasicProperties_Common_testDriver extends GTSimpleTestDriv
 
 		return shell;
 	}
-	
-	/* (non-Javadoc)
-	 * @see fr.imag.adele.cadse.test.basictests.common.GTSimpleTestDriver#modelChecking(fr.imag.adele.cadse.test.basictests.common.GTTestParameter, java.util.UUID)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.common.GTSimpleTestDriver#modelChecking
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter,
+	 * java.util.UUID)
 	 */
+	@Override
 	protected void modelChecking(GTTestParameter tp, UUID id) {
 		Item item = CadseCore.getLogicalWorkspace().getItem(id);
 		assertNotNull(item);

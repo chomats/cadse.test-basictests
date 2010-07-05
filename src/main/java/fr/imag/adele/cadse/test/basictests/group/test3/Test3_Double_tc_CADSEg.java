@@ -16,6 +16,7 @@ import org.junit.runners.Parameterized.Parameters;
 import fr.imag.adele.cadse.test.basictests.common.GTCommonParameters;
 import fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver;
 import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
+import fr.imag.adele.cadse.test.basictests.group.test1.Test1_Common_testDriver;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 
 @RunWith(value = Parameterized.class)
@@ -39,7 +40,7 @@ public class Test3_Double_tc_CADSEg {
 	 * The test itself.
 	 * 
 	 * @throws Exception
-	 *         the exception
+	 *             the exception
 	 */
 	@Test
 	public void testCreation() throws Exception {
@@ -51,7 +52,7 @@ public class Test3_Double_tc_CADSEg {
 	 * Constructor.
 	 * 
 	 * @param i
-	 *        the instance number.
+	 *            the instance number.
 	 */
 	public Test3_Double_tc_CADSEg(int i) {
 		instanceNumber = i;
@@ -78,7 +79,7 @@ public class Test3_Double_tc_CADSEg {
 	 * @return the test driver
 	 */
 	protected static GTCommonTestDriver getDriver() {
-		return new Test3_Double_testDriver();
+		return new Test1_Common_testDriver();
 	}
 
 	/**
