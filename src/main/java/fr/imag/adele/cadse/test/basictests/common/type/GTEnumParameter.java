@@ -36,4 +36,15 @@ public class GTEnumParameter extends GTTypeParameter {
 			return true;
 		}
 	}
+
+	@Override
+	public boolean isAttributeCreationSuccess(GTTestParameter tp) {
+
+		String defVal = tp.getString("defVal");
+		if (defVal == null || defVal.equals("")) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }

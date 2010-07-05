@@ -138,7 +138,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	protected boolean isOkButtonActivated(GTTestParameter tp) {
 		boolean sicp = tp.getBoolean("sicp");
 
-		if (isAttributeCreationSuccess(tp)) {
+		if (tp.isAttributeCreationSuccess()) {
 			if (sicp) {
 				return tp.isValidValue(tp.getValue("newValue").value);
 			} else {
@@ -165,8 +165,8 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 		boolean sicp = tp.getBoolean("sicp");
 		boolean simp = tp.getBoolean("simp");
 
-		boolean fieldInCP = sicp && isAttributeCreationSuccess(tp);
-		boolean fieldInMP = simp && isAttributeCreationSuccess(tp);
+		boolean fieldInCP = sicp && tp.isAttributeCreationSuccess();
+		boolean fieldInMP = simp && tp.isAttributeCreationSuccess();
 
 		KeyValue newValue = tp.getValue("newValue");
 
@@ -247,7 +247,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 		/* Model checking */
 		/* ============== */
 
-		if (isAttributeCreationSuccess(tp)) {
+		if (tp.isAttributeCreationSuccess()) {
 			modelChecking(tp, id);
 		}
 

@@ -87,7 +87,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 		/* Attributes creation */
 		boolean success = createAttributes(tp, typePath);
 
-		boolean expected = isAttributeCreationSuccess(tp);
+		boolean expected = tp.isAttributeCreationSuccess();
 		assertEquals("testCreation error with #" + tp.testNumber, expected, success);
 
 		/* Post create */
@@ -142,17 +142,6 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * @return the list of KeyValues for creating the attribute.
 	 */
 	abstract protected KeyValue[] getCreationKeyValues(GTTestParameter tp);
-
-	/**
-	 * Returns true if the attribute can be created, false otherwise.
-	 * 
-	 * @param tp
-	 *            the test parameter
-	 * @return true if the attribute can be created, false otherwise.
-	 */
-	protected boolean isAttributeCreationSuccess(GTTestParameter tp) {
-		return true;
-	}
 
 	/**
 	 * Performs actions after the item creation.
