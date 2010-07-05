@@ -1,28 +1,17 @@
 package fr.imag.adele.cadse.test.basictests.common;
 
-import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter;
 
 public abstract class GTCommonParameters {
 
 	/** The GTCollectionTestParameter, containing all the tests */
 	protected GTCollectionTestParameter ctp;
 
+	/** The type parameter */
+	protected GTTypeParameter typeParameter;
+
 	/** Attribute prefix used to compute the attributes names. */
 	public final String attrPrefix = "attr";
-
-	/**
-	 * The attribute item type which is under test.
-	 * 
-	 * @return the attribute type under test
-	 */
-	protected abstract ItemType getAttributeTypeUnderTest();
-
-	/**
-	 * The attribute name which is under test.
-	 * 
-	 * @return the attribute name under test
-	 */
-	protected abstract String getAttributeNameUnderTest();
 
 	/**
 	 * Performs ctp initialization.
@@ -51,7 +40,7 @@ public abstract class GTCommonParameters {
 	 * gets the GTTestParameter from the instance number.
 	 * 
 	 * @param instanceNumber
-	 *        the instance number
+	 *            the instance number
 	 * @return the test parameters
 	 */
 	public GTTestParameter getTestParameters(int instanceNumber) {
@@ -64,6 +53,6 @@ public abstract class GTCommonParameters {
 	 * @return the attribute name
 	 */
 	protected String getAttributeName() {
-		return attrPrefix + getAttributeNameUnderTest();
+		return attrPrefix + typeParameter.getAttributeName();
 	}
 }

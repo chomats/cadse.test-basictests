@@ -1,16 +1,14 @@
 package fr.imag.adele.cadse.test.basictests.group.test3;
 
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.cbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.listKv;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notCbuKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notListKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notSimpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.test.basictests.common.GTCollectionTestParameter;
+import fr.imag.adele.cadse.test.basictests.common.type.GTEnumParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
@@ -18,26 +16,16 @@ public class Test3_Enum_parameters extends Test3_Common_parameters {
 
 	/** Enum type name. */
 	String enumTypeName = "myEnum";
-	
+
 	public Test3_Enum_parameters() {
 		ctp = initCTP();
-	}
-
-	@Override
-	public ItemType getAttributeTypeUnderTest() {
-		return CadseGCST.ENUM;
-	}
-
-	@Override
-	public String getAttributeNameUnderTest() {
-		return "Enum";
+		typeParameter = new GTEnumParameter();
 	}
 
 	@Override
 	protected GTCollectionTestParameter initCTP() {
-		
-		GTCollectionTestParameter ctp = new GTCollectionTestParameter(getAttributeTypeUnderTest(),
-				getAttributeNameUnderTest(), getAttributeName(), getTestName());
+
+		GTCollectionTestParameter ctp = new GTCollectionTestParameter(typeParameter, getAttributeName(), getTestName());
 
 		/* =========== */
 		/* DEFINITIONS */
@@ -46,7 +34,10 @@ public class Test3_Enum_parameters extends Test3_Common_parameters {
 		/* Common parameters */
 		KeyValue[] sicpValues = { sicpKv(), notSicpKv() };
 		KeyValue[] simpValues = { simpKv(), notSimpKv() };
-		/* KeyValue[] cbuValues = { cbuKv(), notCbuKv() }; CBU = this attribute does not exists with enum type */
+		/*
+		 * KeyValue[] cbuValues = { cbuKv(), notCbuKv() }; CBU = this attribute
+		 * does not exists with enum type
+		 */
 		KeyValue[] listValues = { notListKv(), listKv() };
 
 		/* Default Value */
@@ -69,7 +60,10 @@ public class Test3_Enum_parameters extends Test3_Common_parameters {
 
 		ctp.addParameter("sicp", sicpValues);
 		ctp.addParameter("simp", simpValues);
-		/* ctp.addParameter("cbu", cbuValues); CBU = this attribute does not exists with enum type */
+		/*
+		 * ctp.addParameter("cbu", cbuValues); CBU = this attribute does not
+		 * exists with enum type
+		 */
 		ctp.addParameter("list", listValues);
 
 		ctp.addParameter("defVal", defVal);

@@ -29,7 +29,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the source it name, for a given instance.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the source it name
 	 */
 	protected String getItSrcName(GTTestParameter tp) {
@@ -40,7 +40,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the link name, for a given instance
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the link name
 	 */
 	protected String getLinkName(GTTestParameter tp) {
@@ -51,7 +51,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the it destination name, for a given instance
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the destination it name
 	 */
 	protected String getItDstName(GTTestParameter tp) {
@@ -62,7 +62,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the source instance name.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the source instance name
 	 */
 	protected String getInstanceSrcName(GTTestParameter tp) {
@@ -73,7 +73,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the destination instance name.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the destination instance name
 	 */
 	protected String getInstanceDstName(GTTestParameter tp) {
@@ -84,7 +84,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the default value.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the default value
 	 */
 	protected KeyValue getDefaultValue(GTTestParameter tp) {
@@ -93,8 +93,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		if (isList) {
 			return new KeyValue(getAttributeName(tp), new String[] {});
-		}
-		else {
+		} else {
 			return new KeyValue(getAttributeName(tp), tp.getValue("defVal").value);
 		}
 	}
@@ -103,7 +102,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the first new value.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the first new value
 	 */
 	protected KeyValue getNewValue1(GTTestParameter tp) {
@@ -114,12 +113,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		if (sicp) {
 			if (isList) {
 				return new KeyValue(getAttributeName(tp), new String[] { tp.getValue("newValue1").value.toString() });
-			}
-			else {
+			} else {
 				return tp.getValue("newValue1");
 			}
-		}
-		else {
+		} else {
 			return getDefaultValue(tp);
 		}
 	}
@@ -128,7 +125,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the second new value.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the second new value
 	 */
 	protected KeyValue getNewValue2(GTTestParameter tp) {
@@ -162,12 +159,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			if (simp) {
 				if (isValidValue(tp, val2)) {
 					return new KeyValue(getAttributeName(tp), val2);
-				}
-				else {
+				} else {
 					return getNewValue1(tp);
 				}
-			}
-			else {
+			} else {
 				return getNewValue1(tp);
 			}
 		}
@@ -177,7 +172,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * Gets the third new value.
 	 * 
 	 * @param tp
-	 *        the test parameter
+	 *            the test parameter
 	 * @return the third new value
 	 */
 	protected KeyValue getNewValue3(GTTestParameter tp) {
@@ -215,12 +210,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 			if (simp) {
 				if (isValidValue(tp, newVal)) {
 					return new KeyValue(getAttributeName(tp), newVal);
-				}
-				else {
+				} else {
 					return getNewValue2(tp);
 				}
-			}
-			else {
+			} else {
 				return getNewValue2(tp);
 			}
 		}
@@ -228,9 +221,10 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#createTypes(fr.imag.adele.cadse.test.basictests
-	 * .testdriver.GTTestParameter)
+	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#createTypes
+	 * (fr.imag.adele.cadse.test.basictests .testdriver.GTTestParameter)
 	 */
 	@Override
 	protected GTTreePath createTypes(GTTestParameter tp) {
@@ -246,8 +240,9 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#getCreationKeyValues(fr.imag.adele.cadse.test
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#
+	 * getCreationKeyValues(fr.imag.adele.cadse.test
 	 * .basictests.testdriver.GTTestParameter)
 	 */
 	@Override
@@ -257,8 +252,9 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#isOkButtonActivated(fr.imag.adele.cadse.test
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#
+	 * isOkButtonActivated(fr.imag.adele.cadse.test
 	 * .basictests.testdriver.GTTestParameter)
 	 */
 	@Override
@@ -269,20 +265,19 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		if (isAttributeCreationSuccess(tp)) {
 			if (sicp) {
 				return isValidValue(tp, tp.getValue("newValue1").value);
-			}
-			else {
+			} else {
 				return isValidValue(tp, tp.getValue("defVal").value);
 			}
-		}
-		else {
+		} else {
 			return true;
 		}
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#testExecution(fr.imag.adele.cadse.test.basictests
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#
+	 * testExecution(fr.imag.adele.cadse.test.basictests
 	 * .testdriver.GTTestParameter)
 	 */
 	@Override
@@ -325,7 +320,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		// SET Value1
 		if (fieldInCP && val1 != null) {
 			boolean actualSuccess = setValues(shell, val1);
-			boolean expectedSuccess = isSettableValue(tp, val1);
+			boolean expectedSuccess = tp.isSettableValue(val1);
 			assertEquals("Success or failure is not as expected for #" + tp.testNumber, expectedSuccess, actualSuccess);
 
 			// setting the new value has failed, as expected
@@ -344,8 +339,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		// Closes shell
 		if (isOkButtonActivated(tp)) {
 			shell.close();
-		}
-		else {
+		} else {
 			try {
 				shell.close(GTPreferences.FAILING_ASSERT_TIMEOUT);
 				fail("OK button is activated whereas it shouldn't for #" + tp.testNumber);
@@ -383,7 +377,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		// SET New Value 2
 		if (fieldInMP && val2 != null) {
-			boolean expectedSuccess = isSettableValue(tp, val2);
+			boolean expectedSuccess = tp.isSettableValue(val2);
 			boolean actualSuccess = setValues(propertiesView, val2);
 			assertEquals("Success or failure is not as expected for #" + tp.testNumber, expectedSuccess, actualSuccess);
 
@@ -413,8 +407,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 			Object actualModel = shell.findCadseField(getAttributeName(tp)).getModelValue();
 			assertEqualsListValues("Error with final visual value for #" + tp.testNumber, expected.value, actualModel);
-		}
-		else {
+		} else {
 			assertCadseFieldDoesNotExist(shell, getAttributeName(tp), 0);
 			assertButtonDoesNotExist(shell, GTEclipseConstants.NEXT_BUTTON, 0);
 		}
@@ -432,7 +425,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		// SET New Value 2
 		if (fieldInMP && val3 != null) {
-			boolean expectedSuccess = isSettableValue(tp, val3);
+			boolean expectedSuccess = tp.isSettableValue(val3);
 			workspaceView.selectNode(getInstanceSrcName(tp));
 			propertiesView.showTab(getItSrcName(tp));
 			boolean actualSuccess = setValues(propertiesView, val3);

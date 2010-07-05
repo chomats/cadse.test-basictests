@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import fr.imag.adele.cadse.core.ItemType;
+import fr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class GTTestParameter {
@@ -16,10 +17,7 @@ public class GTTestParameter {
 	public final int testNumber;
 
 	/** The attribute item type which is under test. */
-	protected final ItemType attributeTypeUnderTest;
-
-	/** The attribute name which is under test. */
-	protected final String attributeNameUnderTest;
+	protected final GTTypeParameter typeParameter;
 
 	/** The name of the attribute */
 	private final String attributeName;
@@ -31,30 +29,34 @@ public class GTTestParameter {
 	 * Instantiates a new GTTestParameter.
 	 * 
 	 * @param params
-	 *        the attributes values.
+	 *            the attributes values.
 	 * @param testNumber
-	 *        the test number
+	 *            the test number
 	 */
-	public GTTestParameter(int testNumber, HashMap<String, KeyValue> params, ItemType attributeTypeUnderTest,
-			String attributeNameUnderTest, String attributeName, String testName) {
+	public GTTestParameter(int testNumber, HashMap<String, KeyValue> params, GTTypeParameter typeParameter,
+			String attributeName, String testName) {
 		this.testNumber = testNumber;
 		this.params = params;
-		this.attributeTypeUnderTest = attributeTypeUnderTest;
-		this.attributeNameUnderTest = attributeNameUnderTest;
+		this.typeParameter = typeParameter;
 		this.attributeName = attributeName;
 		this.testName = testName;
 	}
 
 	public ItemType getAttributeTypeUnderTest() {
-		return attributeTypeUnderTest;
+		return typeParameter.getAttributeType();
 	}
 
 	public String getAttributeNameUnderTest() {
-		return attributeNameUnderTest;
+		return typeParameter.getAttributeName();
+	}
+
+	public boolean isSettableValue(KeyValue value) {
+		return typeParameter.isSettableValue(this, value);
 	}
 
 	/**
-	 * Gets the name of the test. This is a general name, without reference to any type, such as boolean.
+	 * Gets the name of the test. This is a general name, without reference to
+	 * any type, such as boolean.
 	 * 
 	 * @return the name of the test.
 	 */
@@ -66,7 +68,7 @@ public class GTTestParameter {
 	 * Gets the KeyValue object from its key reference.
 	 * 
 	 * @param key
-	 *        the key
+	 *            the key
 	 * @return the KeyValue object.
 	 */
 	public KeyValue getValue(String key) {
@@ -77,7 +79,7 @@ public class GTTestParameter {
 	 * Gets the KeyValue object from its key reference.
 	 * 
 	 * @param key
-	 *        the key
+	 *            the key
 	 * @return the KeyValue object.
 	 */
 	public KeyValue[] getValues(String... keys) {
@@ -103,7 +105,7 @@ public class GTTestParameter {
 	 * Gets the KeyValue visual value and returns it as a String.
 	 * 
 	 * @param key
-	 *        the key
+	 *            the key
 	 * @return the string
 	 */
 	public String getString(String key) {
@@ -114,7 +116,7 @@ public class GTTestParameter {
 	 * Returns true uf the TestParametes contains a value for a given key.
 	 * 
 	 * @param key
-	 *        the key
+	 *            the key
 	 * @return true, if successful
 	 */
 	public boolean containsKey(String key) {
@@ -123,6 +125,7 @@ public class GTTestParameter {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -135,14 +138,11 @@ public class GTTestParameter {
 
 			if (value == null) {
 				sb.append("    - [" + key + "] " + "<<NULL KEY_VALUE>>" + "\n");
-			}
-			else if (value.value == null) {
+			} else if (value.value == null) {
 				sb.append("    - [" + key + "] " + "<<NULL VALUE>>" + "\n");
-			}
-			else if (value.value.toString().isEmpty()) {
+			} else if (value.value.toString().isEmpty()) {
 				sb.append("    - [" + key + "] " + "<<EMPTY>>" + "\n");
-			}
-			else {
+			} else {
 				sb.append("    - [" + key + "] " + value.value.toString() + "\n");
 			}
 		}

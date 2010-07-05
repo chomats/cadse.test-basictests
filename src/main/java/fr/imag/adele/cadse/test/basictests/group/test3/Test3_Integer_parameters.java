@@ -9,31 +9,21 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.no
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.test.basictests.common.GTCollectionTestParameter;
+import fr.imag.adele.cadse.test.basictests.common.type.GTIntegerParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class Test3_Integer_parameters extends Test3_Common_parameters {
 
 	public Test3_Integer_parameters() {
 		ctp = initCTP();
-	}
-
-	@Override
-	public ItemType getAttributeTypeUnderTest() {
-		return CadseGCST.INTEGER;
-	}
-
-	@Override
-	public String getAttributeNameUnderTest() {
-		return "Integer";
+		typeParameter = new GTIntegerParameter();
 	}
 
 	@Override
 	protected GTCollectionTestParameter initCTP() {
 
-		GTCollectionTestParameter ctp = new GTCollectionTestParameter(getAttributeTypeUnderTest(),
-				getAttributeNameUnderTest(), getAttributeName(), getTestName());
+		GTCollectionTestParameter ctp = new GTCollectionTestParameter(typeParameter, getAttributeName(), getTestName());
 
 		/* =========== */
 		/* DEFINITIONS */
