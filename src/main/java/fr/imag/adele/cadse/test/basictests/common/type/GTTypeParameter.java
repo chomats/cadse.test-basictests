@@ -65,4 +65,12 @@ public abstract class GTTypeParameter {
 	public boolean isAttributeCreationSuccess(GTTestParameter tp) {
 		return true;
 	}
+
+	public KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
+		if (kv.value instanceof String && kv.getString().isEmpty()) {
+			return new KeyValue(kv, null);
+		} else {
+			return kv;
+		}
+	}
 }

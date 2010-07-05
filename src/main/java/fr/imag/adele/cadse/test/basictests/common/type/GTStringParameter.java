@@ -58,4 +58,9 @@ public class GTStringParameter extends GTTypeParameter {
 			return true;
 		}
 	}
+
+	@Override
+	public KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
+		return kv;
+	}
 }

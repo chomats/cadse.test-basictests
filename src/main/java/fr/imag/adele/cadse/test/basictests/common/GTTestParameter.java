@@ -62,6 +62,10 @@ public class GTTestParameter {
 		return typeParameter.isAttributeCreationSuccess(this);
 	}
 
+	public KeyValue adaptedValue(KeyValue kv) {
+		return typeParameter.adaptedValue(this, kv);
+	}
+
 	/**
 	 * Gets the name of the test. This is a general name, without reference to
 	 * any type, such as boolean.
