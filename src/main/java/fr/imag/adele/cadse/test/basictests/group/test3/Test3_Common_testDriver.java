@@ -62,7 +62,7 @@ public class Test3_Common_testDriver extends GTSimpleTestDriver {
 
 		/* Attributes creation */
 		boolean success = createAttributes(tp, headPath);
-		boolean expected = isAttributeCreationSuccess(tp);
+		boolean expected = tp.isAttributeCreationSuccess();
 		assertEquals("testCreation error with #" + tp.testNumber, expected, success);
 
 		/* Post create */
@@ -83,7 +83,7 @@ public class Test3_Common_testDriver extends GTSimpleTestDriver {
 	protected void displayAttributeCreationPage(GTTestParameter tp, GTCadseShell shell) {
 
 		boolean sicp = tp.getBoolean("sicp");
-		boolean fieldInCP = sicp && isAttributeCreationSuccess(tp);
+		boolean fieldInCP = sicp && tp.isAttributeCreationSuccess();
 
 		if (fieldInCP) {
 			shell.next();

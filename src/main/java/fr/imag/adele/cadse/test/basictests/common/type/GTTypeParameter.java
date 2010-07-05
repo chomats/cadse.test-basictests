@@ -54,4 +54,15 @@ public abstract class GTTypeParameter {
 			}
 		}
 	}
+
+	/**
+	 * Returns true if the attribute can be created, false otherwise.
+	 * 
+	 * @param tp
+	 *            the test parameter
+	 * @return true if the attribute can be created, false otherwise.
+	 */
+	public boolean isAttributeCreationSuccess(GTTestParameter tp) {
+		return true;
+	}
 }

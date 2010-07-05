@@ -262,7 +262,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		boolean sicp = tp.getBoolean("sicp");
 
-		if (isAttributeCreationSuccess(tp)) {
+		if (tp.isAttributeCreationSuccess()) {
 			if (sicp) {
 				return tp.isValidValue(tp.getValue("newValue1").value);
 			} else {
@@ -286,8 +286,8 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		boolean sicp = tp.getBoolean("sicp");
 		boolean simp = tp.getBoolean("simp");
 
-		boolean fieldInCP = sicp && isAttributeCreationSuccess(tp);
-		boolean fieldInMP = simp && isAttributeCreationSuccess(tp);
+		boolean fieldInCP = sicp && tp.isAttributeCreationSuccess();
+		boolean fieldInMP = simp && tp.isAttributeCreationSuccess();
 
 		// Values used to set fields
 		KeyValue val1 = tp.getValue("newValue1");

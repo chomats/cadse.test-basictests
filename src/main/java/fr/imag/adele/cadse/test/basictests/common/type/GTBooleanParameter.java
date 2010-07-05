@@ -33,4 +33,17 @@ public class GTBooleanParameter extends GTTypeParameter {
 			}
 		}
 	}
+
+	@Override
+	public boolean isAttributeCreationSuccess(GTTestParameter tp) {
+		boolean cbu = tp.getBoolean("cbu");
+		Boolean defVal = tp.getBoolean("defVal");
+		boolean isList = tp.getBoolean("list");
+
+		if (defVal == null && cbu == true && !isList) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }

@@ -58,6 +58,10 @@ public class GTTestParameter {
 		return typeParameter.isValidValue(this, value);
 	}
 
+	public boolean isAttributeCreationSuccess() {
+		return typeParameter.isAttributeCreationSuccess(this);
+	}
+
 	/**
 	 * Gets the name of the test. This is a general name, without reference to
 	 * any type, such as boolean.

@@ -37,22 +37,4 @@ public class BasicProperties_Enum_testDriver extends BasicProperties_Common_test
 	protected KeyValue[] getCreationKeyValues(GTTestParameter tp) {
 		return tp.getValues("enumType", "defVal", "sicp", "simp", /* "cbu", */"list");
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @seefr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#
-	 * attributeCreationSuccess(fr.imag.adele.cadse
-	 * .test.basictests.testdriver.GTTestParameter)
-	 */
-	@Override
-	protected boolean isAttributeCreationSuccess(GTTestParameter tp) {
-
-		String defVal = tp.getString("defVal");
-		if (defVal == null || defVal.equals("")) {
-			return false;
-		} else {
-			return true;
-		}
-	}
 }
