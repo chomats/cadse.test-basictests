@@ -35,18 +35,34 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	// ================ //
 
 	/**
-	 * The name of the CADSE to be created.
+	 * Gets the name of the CADSE to be created.
+	 * 
+	 * @param tp the test parameter
+	 * 
+	 * @return the CADSE name
 	 */
 	protected String getCadseName(GTTestParameter tp) {
 		return CADSEPrefix + tp.getTestName() + tp.getAttributeNameUnderTest();
 	}
 
-	/** A Path to the CADSE in a tree view. */
+	/**
+	 * Gets the path to the CADSE in a tree view.
+	 * 
+	 * @param tp the test parameter
+	 * 
+	 * @return the CADSE model
+	 */
 	protected GTTreePath getCadseModel(GTTestParameter tp) {
 		return new GTTreePath(getCadseName(tp));
 	}
 
-	/** A path to the data model. */
+	/**
+	 * Gets a path to the data model.
+	 * 
+	 * @param tp the test parameter
+	 * 
+	 * @return the data model
+	 */
 	protected GTTreePath getDataModel(GTTestParameter tp) {
 		return getCadseModel(tp).concat(CadseDefinitionManager.DATA_MODEL);
 	}

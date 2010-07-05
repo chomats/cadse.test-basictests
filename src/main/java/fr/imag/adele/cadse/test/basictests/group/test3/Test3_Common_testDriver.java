@@ -14,12 +14,12 @@ import java.util.UUID;
 import fr.imag.adele.cadse.core.Item;
 import fr.imag.adele.cadse.core.attribute.IAttributeType;
 import fr.imag.adele.cadse.core.impl.CadseCore;
-import fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_testDriver;
+import fr.imag.adele.cadse.test.basictests.common.GTSimpleTestDriver;
 import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
-public class Test3_Common_testDriver extends BasicProperties_Common_testDriver {
+public class Test3_Common_testDriver extends GTSimpleTestDriver {
 
 	@Override
 	public void testCreation(GTTestParameter tp) {
