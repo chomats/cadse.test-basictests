@@ -3,6 +3,7 @@ package fr.imag.adele.cadse.test.basictests.common.type;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
+import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public abstract class GTTypeParameter {
 
@@ -72,5 +73,18 @@ public abstract class GTTypeParameter {
 		} else {
 			return kv;
 		}
+	}
+
+	/**
+	 * Performs actions after the item creation.
+	 * 
+	 * @param tp
+	 *            the test parameter
+	 * @param itPath
+	 *            the item type path
+	 * @param attrPath
+	 *            the attribute path
+	 */
+	public void setAdvancedAttributeProperties(GTTestParameter tp, GTTreePath attrPath) {
 	}
 }

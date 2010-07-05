@@ -93,7 +93,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 		/* Post create */
 		if (success) {
 			GTTreePath attrPath = typePath.concat(tp.getAttributeName());
-			postCreate(tp, typePath, attrPath);
+			tp.setAdvancedAttributeProperties(attrPath);
 		}
 	}
 
@@ -142,19 +142,6 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * @return the list of KeyValues for creating the attribute.
 	 */
 	abstract protected KeyValue[] getCreationKeyValues(GTTestParameter tp);
-
-	/**
-	 * Performs actions after the item creation.
-	 * 
-	 * @param tp
-	 *            the test parameter
-	 * @param itPath
-	 *            the item type path
-	 * @param attrPath
-	 *            the attribute path
-	 */
-	protected void postCreate(GTTestParameter tp, GTTreePath itPath, GTTreePath attrPath) {
-	}
 
 	/**
 	 * Creates the CADSE.
