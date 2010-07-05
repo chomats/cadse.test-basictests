@@ -18,43 +18,10 @@ public class Test3_String_testDriver extends Test3_Common_testDriver {
 	 * fr.imag.adele.graphictests.gttree.GTTreePath)
 	 */
 	@Override
-	protected void postCreate(GTTestParameter tp, GTTreePath itPath,
-			GTTreePath attrPath) {
+	protected void postCreate(GTTestParameter tp, GTTreePath itPath, GTTreePath attrPath) {
 		workspaceView.selectNode(attrPath);
 		propertiesView.showTab("String");
 		propertiesView.setValue(tp.getValue("notEmpty"));
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @seefr.imag.adele.cadse.test.basictests.basicproperties.
-	 * BasicProperties_Common_testDriver#isOkButtonActivated(fr.
-	 * imag.adele.cadse.test.basictests.testdriver.GTTestParameter)
-	 */
-	@Override
-	protected boolean isValidValue(GTTestParameter tp, Object value) {
-
-		boolean isList = tp.getBoolean("list");
-		boolean cbu = tp.getBoolean("cbu");
-		boolean notEmpty = tp.getBoolean("notEmpty");
-
-		if (isList) {
-			return true;
-		} else {
-
-			// Checking cbu constraint
-			if (cbu && value == null) {
-				return false;
-			}
-
-			// Checking not empty constraint
-			if (notEmpty && value != null && value.toString().equals("")) {
-				return false;
-			}
-
-			return true;
-		}
 	}
 
 	@Override

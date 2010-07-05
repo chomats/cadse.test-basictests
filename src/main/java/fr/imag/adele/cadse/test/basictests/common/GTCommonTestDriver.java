@@ -88,8 +88,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 		boolean success = createAttributes(tp, typePath);
 
 		boolean expected = isAttributeCreationSuccess(tp);
-		assertEquals("testCreation error with #" + tp.testNumber, expected,
-				success);
+		assertEquals("testCreation error with #" + tp.testNumber, expected, success);
 
 		/* Post create */
 		if (success) {
@@ -127,8 +126,8 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 */
 	protected boolean createAttributes(GTTestParameter tp, GTTreePath typePath) {
 		try {
-			createBasicAttribute(typePath, tp.getAttributeTypeUnderTest(),
-					getAttributeName(tp), getCreationKeyValues(tp));
+			createBasicAttribute(typePath, tp.getAttributeTypeUnderTest(), getAttributeName(tp),
+					getCreationKeyValues(tp));
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -165,8 +164,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * @param attrPath
 	 *            the attribute path
 	 */
-	protected void postCreate(GTTestParameter tp, GTTreePath itPath,
-			GTTreePath attrPath) {
+	protected void postCreate(GTTestParameter tp, GTTreePath itPath, GTTreePath attrPath) {
 	}
 
 	/**
@@ -219,31 +217,6 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	}
 
 	/**
-	 * Checks if a value is valid, depending on the context.
-	 * 
-	 * @param tp
-	 *            the test parameter
-	 * @param value
-	 *            the value
-	 * @return true, if is ok button is activated
-	 */
-	protected boolean isValidValue(GTTestParameter tp, Object value) {
-
-		boolean cbu = tp.getBoolean("cbu");
-		boolean isList = tp.getBoolean("list");
-
-		if (isList) {
-			return true;
-		} else {
-			if (cbu == true && (value == null || value.toString().isEmpty())) {
-				return false;
-			} else {
-				return true;
-			}
-		}
-	}
-
-	/**
 	 * true if the creation page ok button is activated.
 	 * 
 	 * @param tp
@@ -261,8 +234,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 * @param actual
 	 *            the actual list
 	 */
-	protected void assertEqualsListValues(String message, Object expected,
-			Object actual) {
+	protected void assertEqualsListValues(String message, Object expected, Object actual) {
 
 		ArrayList<Object> tab1 = generateArray(expected);
 		ArrayList<Object> tab2 = generateArray(actual);

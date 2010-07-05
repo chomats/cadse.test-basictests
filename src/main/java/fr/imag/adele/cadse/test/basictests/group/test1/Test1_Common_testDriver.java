@@ -157,7 +157,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		// not list
 		else {
 			if (simp) {
-				if (isValidValue(tp, val2)) {
+				if (tp.isValidValue(val2)) {
 					return new KeyValue(getAttributeName(tp), val2);
 				} else {
 					return getNewValue1(tp);
@@ -208,7 +208,7 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 		// not list
 		else {
 			if (simp) {
-				if (isValidValue(tp, newVal)) {
+				if (tp.isValidValue(newVal)) {
 					return new KeyValue(getAttributeName(tp), newVal);
 				} else {
 					return getNewValue2(tp);
@@ -264,9 +264,9 @@ public abstract class Test1_Common_testDriver extends GTCommonTestDriver {
 
 		if (isAttributeCreationSuccess(tp)) {
 			if (sicp) {
-				return isValidValue(tp, tp.getValue("newValue1").value);
+				return tp.isValidValue(tp.getValue("newValue1").value);
 			} else {
-				return isValidValue(tp, tp.getValue("defVal").value);
+				return tp.isValidValue(tp.getValue("defVal").value);
 			}
 		} else {
 			return true;

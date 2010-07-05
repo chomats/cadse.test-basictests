@@ -29,4 +29,29 @@ public abstract class GTTypeParameter {
 			return true;
 		}
 	}
+
+	/**
+	 * Checks if a value is valid, depending on the context.
+	 * 
+	 * @param tp
+	 *            the test parameter
+	 * @param value
+	 *            the value
+	 * @return true, if is ok button is activated
+	 */
+	public boolean isValidValue(GTTestParameter tp, Object value) {
+
+		boolean cbu = tp.getBoolean("cbu");
+		boolean isList = tp.getBoolean("list");
+
+		if (isList) {
+			return true;
+		} else {
+			if (cbu == true && (value == null || value.toString().isEmpty())) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+	}
 }

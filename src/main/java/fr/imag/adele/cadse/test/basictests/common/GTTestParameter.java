@@ -54,6 +54,10 @@ public class GTTestParameter {
 		return typeParameter.isSettableValue(this, value);
 	}
 
+	public boolean isValidValue(Object value) {
+		return typeParameter.isValidValue(this, value);
+	}
+
 	/**
 	 * Gets the name of the test. This is a general name, without reference to
 	 * any type, such as boolean.

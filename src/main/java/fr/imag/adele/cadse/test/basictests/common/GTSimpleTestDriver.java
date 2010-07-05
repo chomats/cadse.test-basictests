@@ -101,13 +101,13 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 		KeyValue newKv = tp.getValue("newValue");
 
 		if (isList) { // def val is ignored with list attributes
-			if (sicp && newKv != null && isValidValue(tp, newKv.value)) {
+			if (sicp && newKv != null && tp.isValidValue(newKv.value)) {
 				return new Object[] { newKv.value };
 			} else {
 				return new Object[] {};
 			}
 		} else {
-			if (sicp && newKv != null && isValidValue(tp, newKv.value)) {
+			if (sicp && newKv != null && tp.isValidValue(newKv.value)) {
 				return getCorrectedNewVal(tp).value;
 			} else {
 				return getCorrectedDefVal(tp).value;
@@ -140,9 +140,9 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 
 		if (isAttributeCreationSuccess(tp)) {
 			if (sicp) {
-				return isValidValue(tp, tp.getValue("newValue").value);
+				return tp.isValidValue(tp.getValue("newValue").value);
 			} else {
-				return isValidValue(tp, tp.getValue("defVal").value);
+				return tp.isValidValue(tp.getValue("defVal").value);
 			}
 		} else {
 			return true;
@@ -221,7 +221,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 		// not correct, the previous correct
 		// model value (default value) is locked even if the field displays
 		// another value.
-		if (fieldInCP && newValue != null && isValidValue(tp, getFinalValue(tp))) {
+		if (fieldInCP && newValue != null && tp.isValidValue(getFinalValue(tp))) {
 			Object expected = getFinalValue(tp);
 			Object actual = shell.findCadseField(getAttributeName(tp)).getModelValue();
 			assertEqualsListValues("Final model value error for #" + tp.testNumber, expected, actual);
