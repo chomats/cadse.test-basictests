@@ -87,4 +87,11 @@ public abstract class GTTypeParameter {
 	 */
 	public void setAdvancedAttributeProperties(GTTestParameter tp, GTTreePath attrPath) {
 	}
+
+	public KeyValue[] getCreationKeyValues(GTTestParameter tp) {
+		return tp.getValues("defVal", "sicp", "simp", "cbu", "list");
+	}
+
+	public void preCreate(GTTestParameter tp, GTTreePath dataModel) {
+	}
 }

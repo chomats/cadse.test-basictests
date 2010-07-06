@@ -35,7 +35,7 @@ public class Test3_Enum_tc_execution {
 	 * The test itself.
 	 * 
 	 * @throws Exception
-	 *         the exception
+	 *             the exception
 	 */
 	@Test
 	public void testExecution() throws Exception {
@@ -47,7 +47,7 @@ public class Test3_Enum_tc_execution {
 	 * Constructor.
 	 * 
 	 * @param i
-	 *        the instance number.
+	 *            the instance number.
 	 */
 	public Test3_Enum_tc_execution(int i) {
 		instanceNumber = i;
@@ -74,7 +74,7 @@ public class Test3_Enum_tc_execution {
 	 * @return the test driver
 	 */
 	protected static GTCommonTestDriver getDriver() {
-		return new Test3_Enum_testDriver();
+		return new Test3_Common_testDriver();
 	}
 
 	/**

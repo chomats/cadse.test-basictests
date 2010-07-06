@@ -43,7 +43,7 @@ public class BasicProperties_Enum_tc_CADSEg extends GTCadseTestCase {
 	 * The test itself.
 	 * 
 	 * @throws Exception
-	 *         the exception
+	 *             the exception
 	 */
 	@Test
 	public void testCreation() throws Exception {
@@ -55,7 +55,7 @@ public class BasicProperties_Enum_tc_CADSEg extends GTCadseTestCase {
 	 * Constructor.
 	 * 
 	 * @param i
-	 *        the instance number.
+	 *            the instance number.
 	 */
 	public BasicProperties_Enum_tc_CADSEg(int i) {
 		instanceNumber = i;
@@ -82,7 +82,7 @@ public class BasicProperties_Enum_tc_CADSEg extends GTCadseTestCase {
 	 * @return the test driver
 	 */
 	protected static GTCommonTestDriver getDriver() {
-		return new BasicProperties_Enum_testDriver();
+		return new BasicProperties_Common_testDriver();
 	}
 
 	/**

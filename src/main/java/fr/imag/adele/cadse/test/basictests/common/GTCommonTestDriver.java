@@ -79,7 +79,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	public void testCreation(GTTestParameter tp) {
 
 		/* Pre create */
-		preCreate(tp);
+		tp.preCreate(getDataModel(tp));
 
 		/* Item type and link creation */
 		GTTreePath typePath = createTypes(tp);
@@ -126,22 +126,13 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 	 */
 	protected boolean createAttributes(GTTestParameter tp, GTTreePath typePath) {
 		try {
-			createBasicAttribute(typePath, tp.getAttributeTypeUnderTest(), getAttributeName(tp),
-					getCreationKeyValues(tp));
+			createBasicAttribute(typePath, tp.getAttributeTypeUnderTest(), getAttributeName(tp), tp
+					.getCreationKeyValues());
 			return true;
 		} catch (Exception e) {
 			return false;
 		}
 	}
-
-	/**
-	 * Gets the creation key values.
-	 * 
-	 * @param tp
-	 *            the test parameter
-	 * @return the list of KeyValues for creating the attribute.
-	 */
-	abstract protected KeyValue[] getCreationKeyValues(GTTestParameter tp);
 
 	/**
 	 * Creates the CADSE.
