@@ -16,11 +16,18 @@ public class Test1_Enum_parameters extends Test1_Common_parameters {
 	/** Enum Type name */
 	String enumTypeName = "myEnum";
 
+	/** Constructor. */
 	public Test1_Enum_parameters() {
 		ctp = initCTP();
 		typeParameter = new GTEnumParameter();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.common.GTCommonParameters#initCTP()
+	 */
 	@Override
 	protected GTCollectionTestParameter initCTP() {
 

@@ -14,11 +14,18 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class Test1_Integer_parameters extends Test1_Common_parameters {
 
+	/** Constructor. */
 	public Test1_Integer_parameters() {
 		ctp = initCTP();
 		typeParameter = new GTIntegerParameter();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.common.GTCommonParameters#initCTP()
+	 */
 	@Override
 	protected GTCollectionTestParameter initCTP() {
 

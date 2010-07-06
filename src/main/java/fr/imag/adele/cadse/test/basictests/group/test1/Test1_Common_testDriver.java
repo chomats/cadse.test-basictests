@@ -223,8 +223,8 @@ public class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * fr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#createTypes
-	 * (fr.imag.adele.cadse.test.basictests .testdriver.GTTestParameter)
+	 * fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver#createTypes
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
 	 */
 	@Override
 	protected GTTreePath createTypes(GTTestParameter tp) {
@@ -241,9 +241,9 @@ public class Test1_Common_testDriver extends GTCommonTestDriver {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seefr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#
-	 * isOkButtonActivated(fr.imag.adele.cadse.test
-	 * .basictests.testdriver.GTTestParameter)
+	 * @seefr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver#
+	 * isOkButtonActivated
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
 	 */
 	@Override
 	protected boolean isOkButtonActivated(GTTestParameter tp) {
@@ -264,9 +264,9 @@ public class Test1_Common_testDriver extends GTCommonTestDriver {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seefr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#
-	 * testExecution(fr.imag.adele.cadse.test.basictests
-	 * .testdriver.GTTestParameter)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver#testExecution
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
 	 */
 	@Override
 	public void testExecution(GTTestParameter tp) {
