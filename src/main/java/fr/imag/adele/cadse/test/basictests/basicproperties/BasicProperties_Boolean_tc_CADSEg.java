@@ -20,7 +20,7 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
 /**
- * Tests basic properties for boolean attributes.
+ * Tests basic properties for boolean attributes. CADSEg part.
  * <ul>
  * <li>default value</li>
  * <li>hidden in computed pages</li>

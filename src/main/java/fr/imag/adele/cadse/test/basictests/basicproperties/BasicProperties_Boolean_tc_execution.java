@@ -18,6 +18,13 @@ import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
 /**
+ * Tests basic properties for boolean attributes. Execution part.
+ * <ul>
+ * <li>default value</li>
+ * <li>hidden in computed pages</li>
+ * <li>must be initialized</li>
+ * <li>cannot be undefined</li>
+ * </ul>
  */
 @RunWith(value = Parameterized.class)
 public class BasicProperties_Boolean_tc_execution extends GTCadseTestCase {
