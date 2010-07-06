@@ -7,16 +7,36 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class GTBooleanParameter extends GTTypeParameter {
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
+	 * getAttributeType()
+	 */
 	@Override
 	public ItemType getAttributeType() {
 		return CadseGCST.BOOLEAN;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
+	 * getAttributeName()
+	 */
 	@Override
 	public String getAttributeName() {
 		return "Boolean";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
+	 * isSettableValue
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter,
+	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue)
+	 */
 	@Override
 	public boolean isSettableValue(GTTestParameter tp, KeyValue kv) {
 
@@ -34,6 +54,13 @@ public class GTBooleanParameter extends GTTypeParameter {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
+	 * isAttributeCreationSuccess
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
+	 */
 	@Override
 	public boolean isAttributeCreationSuccess(GTTestParameter tp) {
 		boolean cbu = tp.getBoolean("cbu");
@@ -47,6 +74,14 @@ public class GTBooleanParameter extends GTTypeParameter {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#adaptedValue
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter,
+	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue)
+	 */
 	@Override
 	public KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
 

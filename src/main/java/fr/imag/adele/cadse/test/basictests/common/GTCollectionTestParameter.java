@@ -27,10 +27,12 @@ public class GTCollectionTestParameter {
 	/**
 	 * Constructor.
 	 * 
-	 * @param attributeType
-	 * @param attributeName
 	 * @param attrName
+	 *            the attr name
 	 * @param testName
+	 *            the test name
+	 * @param typeParameter
+	 *            the type parameter
 	 */
 	public GTCollectionTestParameter(GTTypeParameter typeParameter, String attrName, String testName) {
 		this.typeParameter = typeParameter;

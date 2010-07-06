@@ -12,16 +12,36 @@ public class GTEnumParameter extends GTTypeParameter {
 	/** Enum type name. */
 	String enumTypeName = "myEnum";
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
+	 * getAttributeType()
+	 */
 	@Override
 	public ItemType getAttributeType() {
 		return CadseGCST.ENUM;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
+	 * getAttributeName()
+	 */
 	@Override
 	public String getAttributeName() {
 		return "Enum";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#isValidValue
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter,
+	 * java.lang.Object)
+	 */
 	@Override
 	public boolean isValidValue(GTTestParameter tp, Object value) {
 
@@ -43,6 +63,13 @@ public class GTEnumParameter extends GTTypeParameter {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
+	 * isAttributeCreationSuccess
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
+	 */
 	@Override
 	public boolean isAttributeCreationSuccess(GTTestParameter tp) {
 
@@ -54,11 +81,26 @@ public class GTEnumParameter extends GTTypeParameter {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
+	 * getCreationKeyValues
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
+	 */
 	@Override
 	public KeyValue[] getCreationKeyValues(GTTestParameter tp) {
 		return tp.getValues("enumType", "sicp", "simp", /* "cbu", */"list", "defVal");
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#preCreate
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter,
+	 * fr.imag.adele.graphictests.gttree.GTTreePath)
+	 */
 	@Override
 	public void preCreate(GTTestParameter tp, GTTreePath dataModel) {
 		if (tp.testNumber == 0) {

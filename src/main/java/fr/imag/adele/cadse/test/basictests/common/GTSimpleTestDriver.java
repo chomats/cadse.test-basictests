@@ -128,15 +128,21 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 		}
 	}
 
+	/**
+	 * Method called at the beginning of a test in execution phase.
+	 * 
+	 * @param tp
+	 *            the test parameter
+	 */
 	protected void preExecute(GTTestParameter tp) {
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seefr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#
-	 * testExecution(fr.imag.adele.cadse.test.basictests
-	 * .testdriver.GTTestParameter)
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver#testExecution
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
 	 */
 	@Override
 	public void testExecution(GTTestParameter tp) {

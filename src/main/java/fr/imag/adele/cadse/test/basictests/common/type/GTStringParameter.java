@@ -10,16 +10,36 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class GTStringParameter extends GTTypeParameter {
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
+	 * getAttributeType()
+	 */
 	@Override
 	public ItemType getAttributeType() {
 		return CadseGCST.STRING;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
+	 * getAttributeName()
+	 */
 	@Override
 	public String getAttributeName() {
 		return "String";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
+	 * isSettableValue
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter,
+	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue)
+	 */
 	@Override
 	public boolean isSettableValue(GTTestParameter tp, KeyValue kv) {
 
@@ -37,6 +57,14 @@ public class GTStringParameter extends GTTypeParameter {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#isValidValue
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter,
+	 * java.lang.Object)
+	 */
 	@Override
 	public boolean isValidValue(GTTestParameter tp, Object value) {
 
@@ -62,11 +90,27 @@ public class GTStringParameter extends GTTypeParameter {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#adaptedValue
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter,
+	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue)
+	 */
 	@Override
 	public KeyValue adaptedValue(GTTestParameter tp, KeyValue kv) {
 		return kv;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
+	 * setAdvancedAttributeProperties
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter,
+	 * fr.imag.adele.graphictests.gttree.GTTreePath)
+	 */
 	@Override
 	public void setAdvancedAttributeProperties(GTTestParameter tp, GTTreePath attrPath) {
 		workspaceView.selectNode(attrPath);

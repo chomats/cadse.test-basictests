@@ -7,8 +7,10 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public abstract class GTTypeParameter {
 
+	/** Gets the ItemType of this attribute */
 	public abstract ItemType getAttributeType();
 
+	/** Gets the name of this attribute */
 	public abstract String getAttributeName();
 
 	/**
@@ -88,10 +90,26 @@ public abstract class GTTypeParameter {
 	public void setAdvancedAttributeProperties(GTTestParameter tp, GTTreePath attrPath) {
 	}
 
+	/**
+	 * Gets the key values used in creation page for creating the attribute.
+	 * 
+	 * @param tp
+	 *            the test parameter
+	 * 
+	 * @return the creation key values
+	 */
 	public KeyValue[] getCreationKeyValues(GTTestParameter tp) {
 		return tp.getValues("defVal", "sicp", "simp", "cbu", "list");
 	}
 
+	/**
+	 * Actions to be performed before attribute creation
+	 * 
+	 * @param tp
+	 *            the test parameter
+	 * @param dataModel
+	 *            path to the data model
+	 */
 	public void preCreate(GTTestParameter tp, GTTreePath dataModel) {
 	}
 }
