@@ -43,22 +43,53 @@ public class GTTestParameter {
 		this.testName = testName;
 	}
 
+	/**
+	 * Gets the ItemType of the attribute under test.
+	 * 
+	 * @return the ItemType of the attribute type under test
+	 */
 	public ItemType getAttributeTypeUnderTest() {
 		return typeParameter.getAttributeType();
 	}
 
+	/**
+	 * Gets the name of the attribute under test.
+	 * 
+	 * @return the name of the attribute type under test
+	 */
 	public String getAttributeNameUnderTest() {
 		return typeParameter.getAttributeName();
 	}
 
+	/**
+	 * Checks if it should be possible to set a value.
+	 * 
+	 * @param value
+	 *            the value
+	 * 
+	 * @return true, if the value can be set
+	 */
 	public boolean isSettableValue(KeyValue value) {
 		return typeParameter.isSettableValue(this, value);
 	}
 
+	/**
+	 * Checks if a value is valid, depending on the context.
+	 * 
+	 * @param value
+	 *            the value
+	 * 
+	 * @return true, if is ok button is activated
+	 */
 	public boolean isValidValue(Object value) {
 		return typeParameter.isValidValue(this, value);
 	}
 
+	/**
+	 * Returns true if the attribute can be created, false otherwise.
+	 * 
+	 * @return true if the attribute can be created, false otherwise.
+	 */
 	public boolean isAttributeCreationSuccess() {
 		return typeParameter.isAttributeCreationSuccess(this);
 	}
@@ -67,14 +98,31 @@ public class GTTestParameter {
 		return typeParameter.adaptedValue(this, kv);
 	}
 
+	/**
+	 * Performs actions after the item creation.
+	 * 
+	 * @param attrPath
+	 *            the attribute path
+	 */
 	public void setAdvancedAttributeProperties(GTTreePath attrPath) {
 		typeParameter.setAdvancedAttributeProperties(this, attrPath);
 	}
 
+	/**
+	 * Gets the key values used in creation page for creating the attribute.
+	 * 
+	 * @return the creation key values
+	 */
 	public KeyValue[] getCreationKeyValues() {
 		return typeParameter.getCreationKeyValues(this);
 	}
 
+	/**
+	 * Actions to be performed before attribute creation.
+	 * 
+	 * @param dataModel
+	 *            path to the data model
+	 */
 	public void preCreate(GTTreePath dataModel) {
 		typeParameter.preCreate(this, dataModel);
 	}
@@ -138,7 +186,7 @@ public class GTTestParameter {
 	}
 
 	/**
-	 * Returns true uf the TestParametes contains a value for a given key.
+	 * Returns true if the TestParametes contains a value for a given key.
 	 * 
 	 * @param key
 	 *            the key
