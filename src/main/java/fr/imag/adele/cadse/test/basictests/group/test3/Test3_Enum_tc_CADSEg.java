@@ -39,7 +39,7 @@ public class Test3_Enum_tc_CADSEg {
 	 * The test itself.
 	 * 
 	 * @throws Exception
-	 *         the exception
+	 *             the exception
 	 */
 	@Test
 	public void testCreation() throws Exception {
@@ -51,7 +51,7 @@ public class Test3_Enum_tc_CADSEg {
 	 * Constructor.
 	 * 
 	 * @param i
-	 *        the instance number.
+	 *            the instance number.
 	 */
 	public Test3_Enum_tc_CADSEg(int i) {
 		instanceNumber = i;
@@ -78,7 +78,7 @@ public class Test3_Enum_tc_CADSEg {
 	 * @return the test driver
 	 */
 	protected static GTCommonTestDriver getDriver() {
-		return new Test3_Enum_testDriver();
+		return new Test3_Common_testDriver();
 	}
 
 	/**

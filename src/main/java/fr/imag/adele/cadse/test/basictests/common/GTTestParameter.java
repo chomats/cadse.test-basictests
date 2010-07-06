@@ -71,6 +71,14 @@ public class GTTestParameter {
 		typeParameter.setAdvancedAttributeProperties(this, attrPath);
 	}
 
+	public KeyValue[] getCreationKeyValues() {
+		return typeParameter.getCreationKeyValues(this);
+	}
+
+	public void preCreate(GTTreePath dataModel) {
+		typeParameter.preCreate(this, dataModel);
+	}
+
 	/**
 	 * Gets the name of the test. This is a general name, without reference to
 	 * any type, such as boolean.

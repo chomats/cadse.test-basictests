@@ -3,8 +3,14 @@ package fr.imag.adele.cadse.test.basictests.common.type;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
+import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods;
+import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class GTEnumParameter extends GTTypeParameter {
+
+	/** Enum type name. */
+	String enumTypeName = "myEnum";
 
 	@Override
 	public ItemType getAttributeType() {
@@ -45,6 +51,18 @@ public class GTEnumParameter extends GTTypeParameter {
 			return false;
 		} else {
 			return true;
+		}
+	}
+
+	@Override
+	public KeyValue[] getCreationKeyValues(GTTestParameter tp) {
+		return tp.getValues("enumType", "sicp", "simp", /* "cbu", */"list", "defVal");
+	}
+
+	@Override
+	public void preCreate(GTTestParameter tp, GTTreePath dataModel) {
+		if (tp.testNumber == 0) {
+			GTCadseHelperMethods.createEnumType(dataModel, enumTypeName, "one", "two", "three", "four", "five");
 		}
 	}
 }

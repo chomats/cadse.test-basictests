@@ -110,18 +110,6 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	 * (non-Javadoc)
 	 * 
 	 * @seefr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver#
-	 * getCreationKeyValues
-	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
-	 */
-	@Override
-	protected KeyValue[] getCreationKeyValues(GTTestParameter tp) {
-		return tp.getValues("defVal", "sicp", "simp", "cbu", "list");
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @seefr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver#
 	 * isOkButtonActivated
 	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
 	 */

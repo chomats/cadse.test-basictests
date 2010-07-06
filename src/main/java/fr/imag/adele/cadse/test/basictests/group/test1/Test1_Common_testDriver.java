@@ -242,18 +242,6 @@ public class Test1_Common_testDriver extends GTCommonTestDriver {
 	 * (non-Javadoc)
 	 * 
 	 * @seefr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#
-	 * getCreationKeyValues(fr.imag.adele.cadse.test
-	 * .basictests.testdriver.GTTestParameter)
-	 */
-	@Override
-	protected KeyValue[] getCreationKeyValues(GTTestParameter tp) {
-		return tp.getValues("sicp", "simp", "cbu", "list", "defVal");
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @seefr.imag.adele.cadse.test.basictests.testdriver.GTCommonTestDriver#
 	 * isOkButtonActivated(fr.imag.adele.cadse.test
 	 * .basictests.testdriver.GTTestParameter)
 	 */
