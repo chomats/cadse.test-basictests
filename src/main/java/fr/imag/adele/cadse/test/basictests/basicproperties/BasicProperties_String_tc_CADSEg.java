@@ -20,7 +20,13 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 
 /**
- * Tests basic properties for string attributes.
+ * Tests basic properties for string attributes. CADSEg part.
+ * <ul>
+ * <li>default value</li>
+ * <li>hidden in computed pages</li>
+ * <li>must be initialized</li>
+ * <li>cannot be undefined</li>
+ * </ul>
  */
 @RunWith(value = Parameterized.class)
 public class BasicProperties_String_tc_CADSEg extends GTCadseTestCase {

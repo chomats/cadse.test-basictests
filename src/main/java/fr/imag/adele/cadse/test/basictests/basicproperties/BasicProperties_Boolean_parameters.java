@@ -15,11 +15,18 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
 public class BasicProperties_Boolean_parameters extends BasicProperties_Common_parameters {
 
+	/** Constructor */
 	public BasicProperties_Boolean_parameters() {
 		ctp = initCTP();
 		typeParameter = new GTBooleanParameter();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.common.GTCommonParameters#initCTP()
+	 */
 	@Override
 	protected GTCollectionTestParameter initCTP() {
 

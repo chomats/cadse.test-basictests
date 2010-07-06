@@ -17,11 +17,18 @@ public class BasicProperties_Enum_parameters extends BasicProperties_Common_para
 	/** Enum type name. */
 	String enumTypeName = "myEnum";
 
+	/** Constructor */
 	public BasicProperties_Enum_parameters() {
 		ctp = initCTP();
 		typeParameter = new GTEnumParameter();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * fr.imag.adele.cadse.test.basictests.common.GTCommonParameters#initCTP()
+	 */
 	@Override
 	protected GTCollectionTestParameter initCTP() {
 
