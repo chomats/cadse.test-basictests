@@ -17,8 +17,8 @@ public class BasicProperties_Boolean_parameters extends BasicProperties_Common_p
 
 	/** Constructor */
 	public BasicProperties_Boolean_parameters() {
-		ctp = initCTP();
 		typeParameter = new GTBooleanParameter();
+		ctp = initCTP();
 	}
 
 	/*
