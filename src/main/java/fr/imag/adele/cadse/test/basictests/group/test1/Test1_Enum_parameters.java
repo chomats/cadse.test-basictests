@@ -18,8 +18,8 @@ public class Test1_Enum_parameters extends Test1_Common_parameters {
 
 	/** Constructor. */
 	public Test1_Enum_parameters() {
-		ctp = initCTP();
 		typeParameter = new GTEnumParameter();
+		ctp = initCTP();
 	}
 
 	/*

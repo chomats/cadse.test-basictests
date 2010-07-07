@@ -16,8 +16,8 @@ public class Test3_String_parameters extends Test3_Common_parameters {
 
 	/** Constructor. */
 	public Test3_String_parameters() {
-		ctp = initCTP();
 		typeParameter = new GTStringParameter();
+		ctp = initCTP();
 	}
 
 	/*

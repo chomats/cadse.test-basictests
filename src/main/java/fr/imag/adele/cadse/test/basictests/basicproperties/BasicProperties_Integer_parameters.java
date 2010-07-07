@@ -17,8 +17,8 @@ public class BasicProperties_Integer_parameters extends BasicProperties_Common_p
 
 	/** Constructor */
 	public BasicProperties_Integer_parameters() {
-		ctp = initCTP();
 		typeParameter = new GTIntegerParameter();
+		ctp = initCTP();
 	}
 
 	/*

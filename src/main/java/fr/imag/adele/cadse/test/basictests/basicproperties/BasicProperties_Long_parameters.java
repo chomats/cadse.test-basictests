@@ -17,8 +17,8 @@ public class BasicProperties_Long_parameters extends BasicProperties_Common_para
 
 	/** Constructor */
 	public BasicProperties_Long_parameters() {
-		ctp = initCTP();
 		typeParameter = new GTLongParameter();
+		ctp = initCTP();
 	}
 
 	/*

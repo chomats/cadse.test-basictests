@@ -17,8 +17,8 @@ public class Test3_Boolean_parameters extends Test3_Common_parameters {
 
 	/** Constructor. */
 	public Test3_Boolean_parameters() {
-		ctp = initCTP();
 		typeParameter = new GTBooleanParameter();
+		ctp = initCTP();
 	}
 
 	/*
@@ -43,14 +43,14 @@ public class Test3_Boolean_parameters extends Test3_Common_parameters {
 		KeyValue[] listValues = { notListKv(), listKv() };
 
 		/* Values given into CADSEg */
-		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, new Boolean(true));
-		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, new Boolean(false));
+		KeyValue kv11 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, Boolean.TRUE);
+		KeyValue kv12 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, Boolean.FALSE);
 		KeyValue kv13 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
 		KeyValue[] defVal = new KeyValue[] { kv11, kv12, kv13 };
 
 		/* Execution : new value */
-		KeyValue kv21 = new KeyValue(getAttributeName(), new Boolean(true));
-		KeyValue kv22 = new KeyValue(getAttributeName(), new Boolean(false));
+		KeyValue kv21 = new KeyValue(getAttributeName(), Boolean.TRUE);
+		KeyValue kv22 = new KeyValue(getAttributeName(), Boolean.FALSE);
 		KeyValue kv23 = new KeyValue(getAttributeName(), null);
 		KeyValue[] newVal = new KeyValue[] { kv21, kv22, kv23 };
 

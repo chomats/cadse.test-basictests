@@ -19,8 +19,8 @@ public class BasicProperties_Enum_parameters extends BasicProperties_Common_para
 
 	/** Constructor */
 	public BasicProperties_Enum_parameters() {
-		ctp = initCTP();
 		typeParameter = new GTEnumParameter();
+		ctp = initCTP();
 	}
 
 	/*
