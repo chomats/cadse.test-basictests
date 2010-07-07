@@ -223,7 +223,7 @@ public abstract class GTCommonTestDriver extends GTCadseTestCase {
 				val2 = val2.toString();
 			}
 
-			assertEquals(val1, val2);
+			assertEquals(message, val1, val2);
 		}
 	}
 
