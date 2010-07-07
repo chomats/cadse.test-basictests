@@ -16,8 +16,8 @@ public class Test1_Boolean_parameters extends Test1_Common_parameters {
 
 	/** Constructor. */
 	public Test1_Boolean_parameters() {
-		ctp = initCTP();
 		typeParameter = new GTBooleanParameter();
+		ctp = initCTP();
 	}
 
 	/*
@@ -42,22 +42,22 @@ public class Test1_Boolean_parameters extends Test1_Common_parameters {
 		KeyValue[] listValues = { notListKv(), listKv() };
 
 		/* Default value given into CADSEg */
-		KeyValue defValKv1 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, new Boolean(true));
+		KeyValue defValKv1 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, Boolean.TRUE);
 		KeyValue defValKv2 = new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, null);
 		KeyValue[] defVal = new KeyValue[] { defValKv1, defValKv2 };
 
 		/* Value used for head creation */
-		KeyValue newValue1Kv1 = new KeyValue(getAttributeName(), new Boolean(false));
+		KeyValue newValue1Kv1 = new KeyValue(getAttributeName(), Boolean.FALSE);
 		KeyValue newValue1Kv2 = new KeyValue(getAttributeName(), null);
 		KeyValue[] newValue1 = new KeyValue[] { newValue1Kv1, newValue1Kv2 };
 
 		/* Value used for member creation */
-		KeyValue newValue2Kv1 = new KeyValue(getAttributeName(), new Boolean(true));
+		KeyValue newValue2Kv1 = new KeyValue(getAttributeName(), Boolean.TRUE);
 		KeyValue newValue2Kv2 = new KeyValue(getAttributeName(), null);
 		KeyValue[] newValue2 = new KeyValue[] { newValue2Kv1, newValue2Kv2 };
 
 		/* Value used to modify head after member creation */
-		KeyValue newValue3Kv1 = new KeyValue(getAttributeName(), new Boolean(false));
+		KeyValue newValue3Kv1 = new KeyValue(getAttributeName(), Boolean.FALSE);
 		KeyValue newValue3Kv2 = new KeyValue(getAttributeName(), null);
 		KeyValue[] newValue3 = new KeyValue[] { newValue3Kv1, newValue3Kv2 };
 

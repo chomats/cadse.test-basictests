@@ -17,8 +17,8 @@ public class BasicProperties_Double_parameters extends BasicProperties_Common_pa
 
 	/** Constructor */
 	public BasicProperties_Double_parameters() {
-		ctp = initCTP();
 		typeParameter = new GTDoubleParameter();
+		ctp = initCTP();
 	}
 
 	/*

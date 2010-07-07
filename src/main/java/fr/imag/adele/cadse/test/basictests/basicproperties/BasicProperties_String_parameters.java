@@ -16,8 +16,8 @@ public class BasicProperties_String_parameters extends BasicProperties_Common_pa
 
 	/** Constructor */
 	public BasicProperties_String_parameters() {
-		ctp = initCTP();
 		typeParameter = new GTStringParameter();
+		ctp = initCTP();
 	}
 
 	/*

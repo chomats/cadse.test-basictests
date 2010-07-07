@@ -17,8 +17,8 @@ public class Test3_Integer_parameters extends Test3_Common_parameters {
 
 	/** Constructor. */
 	public Test3_Integer_parameters() {
-		ctp = initCTP();
 		typeParameter = new GTIntegerParameter();
+		ctp = initCTP();
 	}
 
 	/*

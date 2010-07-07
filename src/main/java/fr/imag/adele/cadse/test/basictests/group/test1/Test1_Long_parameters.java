@@ -16,8 +16,8 @@ public class Test1_Long_parameters extends Test1_Common_parameters {
 
 	/** Constructor. */
 	public Test1_Long_parameters() {
-		ctp = initCTP();
 		typeParameter = new GTLongParameter();
+		ctp = initCTP();
 	}
 
 	/*

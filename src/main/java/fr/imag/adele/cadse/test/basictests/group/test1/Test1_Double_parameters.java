@@ -16,8 +16,8 @@ public class Test1_Double_parameters extends Test1_Common_parameters {
 
 	/** Constructor. */
 	public Test1_Double_parameters() {
-		ctp = initCTP();
 		typeParameter = new GTDoubleParameter();
+		ctp = initCTP();
 	}
 
 	/*
