@@ -196,10 +196,11 @@ public class GTTestParameter {
 		return params.containsKey(key);
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * ToString method. The exact details of the representation are unspecified
+	 * and subject to change.
 	 * 
-	 * @see java.lang.Object#toString()
+	 * @return a string representing the class.
 	 */
 	@Override
 	public String toString() {
