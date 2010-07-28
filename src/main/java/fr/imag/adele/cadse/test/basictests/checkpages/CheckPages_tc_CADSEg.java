@@ -35,7 +35,8 @@ import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
 /**
- * Checks whereas the creation and modification pages have the correct layout. The following items are tested:
+ * Checks whereas the creation and modification pages have the correct layout.
+ * The following items are tested:
  * <ul>
  * <li>CADSE definition</li>
  * <li>Item Type</li>
@@ -73,7 +74,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 * </ul>
 	 * 
 	 * @throws Exception
-	 *         the exception
+	 *             the exception
 	 */
 	@BeforeClass
 	public static void createContext() {
@@ -84,12 +85,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the CADSE definition pages (creation and modification) have the correct layout.
+	 * Tests if the CADSE definition pages (creation and modification) have the
+	 * correct layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_CADSE_Definition() throws Exception {
+	public void testCADSEDefinition() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_lt_EXTENDS" };
 		Object[] expected_creationVal = { "", "", new Object[] {} };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
@@ -103,12 +105,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the Item type pages (creation and modification) have the correct layout.
+	 * Tests if the Item type pages (creation and modification) have the correct
+	 * layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_Item_Type() throws Exception {
+	public void testItemType() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ITEM_TYPE_lt_SUPER_TYPE",
 				"ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_" };
 
@@ -122,12 +125,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the boolean attribute pages (creation and modification) have the correct layout.
+	 * Tests if the boolean attribute pages (creation and modification) have the
+	 * correct layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_Boolean_Attribute() throws Exception {
+	public void testBooleanAttribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
 				"ATTRIBUTE_at_SHOW_IN_DEFAULT_CP_", "ATTRIBUTE_at_SHOW_IN_DEFAULT_MP_",
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
@@ -146,12 +150,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the double attribute pages (creation and modification) have the correct layout.
+	 * Tests if the double attribute pages (creation and modification) have the
+	 * correct layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_Double_Attribute() throws Exception {
+	public void testDoubleAttribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
 				"ATTRIBUTE_at_SHOW_IN_DEFAULT_CP_", "ATTRIBUTE_at_SHOW_IN_DEFAULT_MP_",
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
@@ -168,12 +173,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the integer attribute pages (creation and modification) have the correct layout.
+	 * Tests if the integer attribute pages (creation and modification) have the
+	 * correct layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_Integer_Attribute() throws Exception {
+	public void testIntegerAttribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
 				"ATTRIBUTE_at_SHOW_IN_DEFAULT_CP_", "ATTRIBUTE_at_SHOW_IN_DEFAULT_MP_",
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
@@ -190,12 +196,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the long attribute pages (creation and modification) have the correct layout.
+	 * Tests if the long attribute pages (creation and modification) have the
+	 * correct layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_Long_Attribute() throws Exception {
+	public void testLongAttribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
 				"ATTRIBUTE_at_SHOW_IN_DEFAULT_CP_", "ATTRIBUTE_at_SHOW_IN_DEFAULT_MP_",
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
@@ -212,12 +219,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the string attribute pages (creation and modification) have the correct layout.
+	 * Tests if the string attribute pages (creation and modification) have the
+	 * correct layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_String_Attribute() throws Exception {
+	public void testStringAttribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_",
 				"ATTRIBUTE_at_SHOW_IN_DEFAULT_CP_", "ATTRIBUTE_at_SHOW_IN_DEFAULT_MP_",
 				"ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_",
@@ -234,12 +242,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the enum type pages (creation and modification) have the correct layout.
+	 * Tests if the enum type pages (creation and modification) have the correct
+	 * layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_Enum_Type() throws Exception {
+	public void testEnumType() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ENUM_TYPE_at_VALUES_" };
 		Object[] expected_creationVal = { "", new Object[] {} };
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
@@ -249,12 +258,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the enum attribute pages (creation and modification) have the correct layout.
+	 * Tests if the enum attribute pages (creation and modification) have the
+	 * correct layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_Enum_Attribute() throws Exception {
+	public void testEnumAttribute() throws Exception {
 
 		String[] expected_creationCST = { "ITEM_at_NAME_", "ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_",
 				"ATTRIBUTE_at_SHOW_IN_DEFAULT_CP_", "ATTRIBUTE_at_SHOW_IN_DEFAULT_MP_", "ATTRIBUTE_at_IS_LIST_",
@@ -272,12 +282,115 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the link type attribute pages (creation and modification) have the correct layout.
+	 * Tests if the List of Boolean attribute pages (creation and modification)
+	 * have the correct layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_LinkType_Attribute() throws Exception {
+	public void testListBooleanAttribute() throws Exception {
+		String[] expected_typeCreationCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+		Object[] expected_typeCreationVal = { false, true };
+		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
+				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+
+		itemListCreationTest(it_mit, "myListBoolean", CadseGCST.BOOLEAN, expected_typeCreationCST,
+				expected_typeCreationVal, expected_typeModifCST);
+	}
+
+	/**
+	 * Tests if the List of Double attribute pages (creation and modification)
+	 * have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testListDoubleAttribute() throws Exception {
+		String[] expected_typeCreationCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+		Object[] expected_typeCreationVal = { "", false };
+		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
+				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+
+		itemListCreationTest(it_mit, "myListDouble", CadseGCST.DOUBLE, expected_typeCreationCST,
+				expected_typeCreationVal, expected_typeModifCST);
+	}
+
+	/**
+	 * Tests if the List of Enum attribute pages (creation and modification)
+	 * have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testListEnumAttribute() throws Exception {
+		String[] expected_typeCreationCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+		Object[] expected_typeCreationVal = { "", false };
+		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
+				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+
+		itemListCreationTest(it_mit, "myListEnum", CadseGCST.ENUM, expected_typeCreationCST, expected_typeCreationVal,
+				expected_typeModifCST);
+	}
+
+	/**
+	 * Tests if the List of Double attribute pages (creation and modification)
+	 * have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testListIntegerAttribute() throws Exception {
+		String[] expected_typeCreationCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+		Object[] expected_typeCreationVal = { "", false };
+		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
+				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+
+		itemListCreationTest(it_mit, "myListInteger", CadseGCST.INTEGER, expected_typeCreationCST,
+				expected_typeCreationVal, expected_typeModifCST);
+	}
+
+	/**
+	 * Tests if the List of Double attribute pages (creation and modification)
+	 * have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testListLongAttribute() throws Exception {
+		String[] expected_typeCreationCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+		Object[] expected_typeCreationVal = { "", false };
+		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
+				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+
+		itemListCreationTest(it_mit, "myListLong", CadseGCST.LONG, expected_typeCreationCST, expected_typeCreationVal,
+				expected_typeModifCST);
+	}
+
+	/**
+	 * Tests if the List of Double attribute pages (creation and modification)
+	 * have the correct layout.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testListStringAttribute() throws Exception {
+		String[] expected_typeCreationCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+		Object[] expected_typeCreationVal = { "", false };
+		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
+				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+
+		itemListCreationTest(it_mit, "myListString", CadseGCST.STRING, expected_typeCreationCST,
+				expected_typeCreationVal, expected_typeModifCST);
+	}
+
+	/**
+	 * Tests if the link type attribute pages (creation and modification) have
+	 * the correct layout.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testLinkTypeAttribute() throws Exception {
 		String[] expected_creationCST = { "ITEM_at_NAME_", "LINK_TYPE_lt_DESTINATION", "LINK_TYPE_at_ANNOTATION_",
 				"LINK_TYPE_at_AGGREGATION_", "LINK_TYPE_at_COMPOSITION_", "LINK_TYPE_at_PART_",
 				"LINK_TYPE_at_REQUIRE_", "LINK_TYPE_at_MAPPING_", "LINK_TYPE_at_GROUP_", "LINK_TYPE_at_HIDDEN_",
@@ -302,25 +415,26 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the manager pages (creation and modification) have the correct layout.
+	 * Tests if the manager pages (creation and modification) have the correct
+	 * layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_Manager() throws Exception {
+	public void testManager() throws Exception {
 		String[] expected_modifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
 				"MANAGER_at_HUMAN_NAME_" };
-		;
 		checkModificationPage(mapping.concat(item_type_name + "-manager"), CadseGCST.MANAGER, expected_modifCST);
 	}
 
 	/**
-	 * Tests if the Java Project Content Model mapping pages (creation and modification) have the correct layout.
+	 * Tests if the Java Project Content Model mapping pages (creation and
+	 * modification) have the correct layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_JavaProjectContentModel() throws Exception {
+	public void testJavaProjectContentModel() throws Exception {
 		String[] expected_creationCST = { "PROJECT_CONTENT_MODEL_at_PROJECT_NAME_",
 				"JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 		Object[] expected_creationVal = { "${#qualified-name}", true, false };
@@ -338,12 +452,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the Java File Content Model mapping pages (creation and modification) have the correct layout.
+	 * Tests if the Java File Content Model mapping pages (creation and
+	 * modification) have the correct layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_JavaFileContentModel() throws Exception {
+	public void testJavaFileContentModel() throws Exception {
 		String[] expected_creationCST = { "JAVA_FILE_CONTENT_MODEL_at_CLASS_NAME_",
 				"JAVA_FILE_CONTENT_MODEL_at_PACKAGE_NAME_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 		Object[] expected_creationVal = { "", "", true };
@@ -361,12 +476,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the Folder Content Model mapping pages (creation and modification) have the correct layout.
+	 * Tests if the Folder Content Model mapping pages (creation and
+	 * modification) have the correct layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_FolderContentModel() throws Exception {
+	public void testFolderContentModel() throws Exception {
 		String[] expected_creationCST = { "FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 		Object[] expected_creationVal = { "", false };
 		String[] expected_modifCST = { "FOLDER_CONTENT_MODEL_at_FOLDER_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_",
@@ -382,12 +498,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Tests if the File Content Model mapping pages (creation and modification) have the correct layout.
+	 * Tests if the File Content Model mapping pages (creation and modification)
+	 * have the correct layout.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void test_FileContentModel() throws Exception {
+	public void testFileContentModel() throws Exception {
 		String[] expected_creationCST = { "FILE_CONTENT_MODEL_at_FILE_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
 		Object[] expected_creationVal = { "", true };
 		String[] expected_modifCST = { "FILE_CONTENT_MODEL_at_FILE_PATH_", "CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_" };
@@ -407,7 +524,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void test_check_compilation() throws Exception {
+	public void testCheckCompilation() throws Exception {
 		checkCompilationErrors(workspaceView, cadse_model, GTPreferences.TIMEOUT);
 	}
 
@@ -415,27 +532,27 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 * Creates generic file content model.
 	 * 
 	 * @param expected_creationCST
-	 *        the expected item type constants for the creation page
+	 *            the expected item type constants for the creation page
 	 * @param expected_creationVal
-	 *        the expected default values for the creation page
+	 *            the expected default values for the creation page
 	 * @param sourceNode
-	 *        The path to the mapping entry of a specific item type.
+	 *            The path to the mapping entry of a specific item type.
 	 * @param typeName
-	 *        The name of the type to be created
+	 *            The name of the type to be created
 	 * @param projectName
-	 *        The project name
+	 *            The project name
 	 * @param hasSourceFolder
-	 *        If this mapping gets a source folder
+	 *            If this mapping gets a source folder
 	 * @param className
-	 *        The name of the implementation class
+	 *            The name of the implementation class
 	 * @param packageName
-	 *        The package name
+	 *            The package name
 	 * @param folderPath
-	 *        The folder path
+	 *            The folder path
 	 * @param filePath
-	 *        The path of the file which will be associated to the item
+	 *            The path of the file which will be associated to the item
 	 * @param extendsClass
-	 *        The value of the extends class attribute. Null for default.
+	 *            The value of the extends class attribute. Null for default.
 	 */
 	private void checkCreationContentModel(String[] expected_creationCST, Object[] expected_creationVal,
 			GTTreePath sourceNode, String typeName, String projectName, Boolean hasSourceFolder, String className,
@@ -494,19 +611,20 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 * Attribute creation test.
 	 * 
 	 * @param path
-	 *        the path to an item in the workspace view which will be the source for the creation
+	 *            the path to an item in the workspace view which will be the
+	 *            source for the creation
 	 * @param attributeName
-	 *        the name of the new item
+	 *            the name of the new item
 	 * @param itConstant
-	 *        the CADSEG item type constant
+	 *            the CADSEG item type constant
 	 * @param expected_creationCST
-	 *        the expected creation page attributes constants
+	 *            the expected creation page attributes constants
 	 * @param expected_creationVal
-	 *        the expected default values for the creation dialog
+	 *            the expected default values for the creation dialog
 	 * @param expected_modifCST
-	 *        the expected modification page attributes constants
+	 *            the expected modification page attributes constants
 	 * @throws WidgetNotFoundException
-	 *         the widget not found exception
+	 *             the widget not found exception
 	 */
 	private void itemCreationTest(GTTreePath path, String attributeName, ItemType itConstant,
 			String[] expected_creationCST, Object[] expected_creationVal, String[] expected_modifCST)
@@ -524,18 +642,64 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Creates an item and checks if the creation page displays the correct set of fields.
+	 * Attribute creation test.
 	 * 
 	 * @param path
-	 *        The path in the workspace view used for item creation
+	 *            the path to an item in the workspace view which will be the
+	 *            source for the creation
 	 * @param attributeName
-	 *        The name of the new attribute
+	 *            the name of the new item
 	 * @param itConstant
-	 *        The ItemType constant of this attribute
+	 *            the CADSEG item type constant
 	 * @param expected_creationCST
-	 *        The list of expected fields attributes constants.
+	 *            the expected creation page attributes constants
 	 * @param expected_creationVal
-	 *        the expected default values for the creation dialog
+	 *            the expected default values for the creation dialog
+	 * @param expected_modifCST
+	 *            the expected modification page attributes constants
+	 * @throws WidgetNotFoundException
+	 *             the widget not found exception
+	 */
+	private void itemListCreationTest(GTTreePath path, String attributeName, ItemType itConstant,
+			String[] expected_typeCreationCST, Object[] expected_typeCreationVal, String[] expected_typeModifCST)
+			throws WidgetNotFoundException {
+
+		String[] expected_listCreationCST = { "ITEM_at_NAME_", "LIST_lt_SUB_TYPE", "ATTRIBUTE_at_SHOW_IN_DEFAULT_CP_",
+				"ATTRIBUTE_at_SHOW_IN_DEFAULT_MP_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_",
+				"ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_" };
+		Object[] expected_listCreationVal = { "", "", false, true, "Create new revision", "Abort", true,
+				"Generic merge values" };
+		String[] expected_listModifCST = { "ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
+				"LIST_lt_SUB_TYPE", "ATTRIBUTE_at_SHOW_IN_DEFAULT_CP_", "ATTRIBUTE_at_SHOW_IN_DEFAULT_MP_",
+				"ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_",
+				"ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_TRANSIENT_" };
+
+		// Attribute creation and creation page checking
+		GTTreePath completePath = checkListCreationPage(path, attributeName, itConstant, expected_listCreationCST,
+				expected_listCreationVal, expected_typeCreationCST, expected_typeCreationVal);
+
+		// Modification page
+		checkModificationPage(completePath, CadseGCST.LIST, expected_listModifCST);
+		checkModificationPage(completePath.concat("sub-element"), itConstant, expected_typeModifCST);
+
+		// The creation process shouldn't have induced compilation error/
+		checkCompilationErrors(workspaceView, cadse_model);
+	}
+
+	/**
+	 * Creates an item and checks if the creation page displays the correct set
+	 * of fields.
+	 * 
+	 * @param path
+	 *            The path in the workspace view used for item creation
+	 * @param attributeName
+	 *            The name of the new attribute
+	 * @param itConstant
+	 *            The ItemType constant of this attribute
+	 * @param expected_creationCST
+	 *            The list of expected fields attributes constants.
+	 * @param expected_creationVal
+	 *            the expected default values for the creation dialog
 	 * @return the tree path to find the created item in the workspace view
 	 */
 	private GTTreePath checkCreationPage(GTTreePath path, String attributeName, ItemType itConstant,
@@ -556,14 +720,11 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		if (itConstant == CadseGCST.LINK_TYPE) {
 			shell.findCadseField(CadseGCST.LINK_TYPE_lt_DESTINATION).browser(cadse_name,
 					CadseDefinitionManager.DATA_MODEL, item_type_name);
-		}
-		else if (itConstant == CadseGCST.CADSE_DEFINITION) {
+		} else if (itConstant == CadseGCST.CADSE_DEFINITION) {
 			shell.findCadseField(CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.myCadse");
-		}
-		else if (itConstant == CadseGCST.ENUM_TYPE) {
+		} else if (itConstant == CadseGCST.ENUM_TYPE) {
 			shell.findCadseField(CadseGCST.ENUM_TYPE_at_VALUES_).addBrowser("one", "two", "three");
-		}
-		else if (itConstant == CadseGCST.ENUM) {
+		} else if (itConstant == CadseGCST.ENUM) {
 			shell.findCadseField(CadseGCST.ENUM_lt_ENUM_TYPE).browser("my_enum_type");
 		}
 		shell.close(GTPreferences.TIMEOUT); /* For CADSE Definition */
@@ -572,8 +733,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		GTTreePath completePath = null;
 		if (path != null) {
 			completePath = path.concat(attributeName);
-		}
-		else {
+		} else {
 			completePath = new GTTreePath(attributeName);
 		}
 
@@ -594,20 +754,105 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Checks if a modification page displays correct fields in a given section for a given item.
+	 * Creates an item and checks if the creation page displays the correct set
+	 * of fields.
 	 * 
 	 * @param path
-	 *        The item path in the workspace view
+	 *            The path in the workspace view used for item creation
+	 * @param attributeName
+	 *            The name of the new attribute
+	 * @param itConstant
+	 *            The ItemType constant of this attribute
+	 * @param expected_listCreationCST
+	 *            The list of expected fields attributes constants.
+	 * @param expected_listCreationVal
+	 *            the expected default values for the creation dialog
+	 * @return the tree path to find the created item in the workspace view
+	 */
+	private GTTreePath checkListCreationPage(GTTreePath path, String attributeName, ItemType itConstant,
+			String[] expected_listCreationCST, Object[] expected_listCreationVal, String[] expected_typeCreationCST,
+			Object[] expected_typeCreationVal) {
+
+		// Creation
+		workspaceView.contextMenuNew(path, CadseGCST.LIST).click();
+		GTCadseShell shell = new GTCadseShell(CadseGCST.LIST);
+		String[] listCreationCST = shell.findAttributeConstants();
+		Object[] listCreationVal = shell.findAttributeValues();
+		String listCreationCST_str = getStringDef(shell);
+		String listCreationVal_str = getStringVal(shell);
+
+		// Checkboxes checking
+		booleanFieldChecker.check(shell);
+		shell.findCadseFieldName().typeText(attributeName);
+
+		shell.findCadseField(CadseGCST.LIST_lt_SUB_TYPE).setSelection(itConstant.getDisplayName());
+		GTCadseShell shell2 = new GTCadseShell(itConstant);
+		String[] typeCreationCST = shell2.findAttributeConstants();
+		Object[] typeCreationVal = shell2.findAttributeValues();
+		String typeCreationCST_str = getStringDef(shell2);
+		String typeCreationVal_str = getStringVal(shell2);
+		if (itConstant == CadseGCST.ENUM)
+			shell2.findCadseField(CadseGCST.ENUM_lt_ENUM_TYPE).browser("my_enum_type");
+		booleanFieldChecker.check(shell2);
+		shell2.close();
+
+		shell.close();
+
+		// Compute complete path
+		GTTreePath completePath = null;
+		if (path != null) {
+			completePath = path.concat(attributeName);
+		} else {
+			completePath = new GTTreePath(attributeName);
+		}
+
+		// Assert item has been created
+		workspaceView.selectNode(completePath, GTPreferences.TIMEOUT);
+
+		// Performs test
+		if (isSameValues(listCreationCST, expected_listCreationCST) == false) {
+			throw new WidgetNotFoundException(
+					"The workbench part doesn't contains expected attributes. Expected String : " + listCreationCST_str);
+		}
+		if (isSameValues(listCreationVal, expected_listCreationVal) == false) {
+			throw new WidgetNotFoundException(
+					"The default values are not those which were expected. Expected String : " + listCreationVal_str);
+		}
+		if (isSameValues(typeCreationCST, expected_typeCreationCST) == false) {
+			throw new WidgetNotFoundException(
+					"The workbench part doesn't contains expected attributes. Expected String : " + typeCreationCST_str);
+		}
+		if (isSameValues(typeCreationVal, expected_typeCreationVal) == false) {
+			throw new WidgetNotFoundException(
+					"The default values are not those which were expected. Expected String : " + typeCreationVal_str);
+		}
+
+		return completePath;
+	}
+
+	/**
+	 * Checks if a modification page displays correct fields in a given section
+	 * for a given item.
+	 * 
+	 * @param path
+	 *            The item path in the workspace view
 	 * @param tab
-	 *        The tab of the property page. Can be null.
+	 *            The tab of the property page. Can be null.
 	 * @param section
-	 *        The section where to look for constants. Can be null.
+	 *            The section where to look for constants. Can be null.
 	 * @param expected
-	 *        The list of expected fields attributes constants.
+	 *            The list of expected fields attributes constants.
 	 */
 	private void checkModificationPage(GTTreePath path, ItemType itConstant, String[] expected) {
 		String tab = tabLabel(itConstant);
-		String section = sectionLabel(itConstant);
+
+		// TODO to be removed as soon as bug will be corrected
+		// String section = sectionLabel(itConstant);
+		String section; // erreur
+		if (path.getDestinationName().equals("sub-element")) // erreur
+			section = "Attribute"; // erreur
+		else
+			section = sectionLabel(itConstant); // erreur
 
 		try {
 			// Selects node into the tree
@@ -616,8 +861,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 			// Displays property view
 			if (tab != null) {
 				propertiesView.showTab(tab);
-			}
-			else {
+			} else {
 				propertiesView.show();
 			}
 		} catch (Exception e) {
@@ -627,8 +871,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 			// Displays property view
 			if (tab != null) {
 				propertiesView.showTab(tab);
-			}
-			else {
+			} else {
 				propertiesView.show();
 			}
 		}
@@ -637,8 +880,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		String[] modifCST;
 		if (section != null) {
 			modifCST = propertiesView.findSection(section).findAttributeConstants();
-		}
-		else {
+		} else {
 			modifCST = propertiesView.findAttributeConstants();
 		}
 
@@ -659,9 +901,9 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 * Tests is two string arrays are equal.
 	 * 
 	 * @param provided
-	 *        The first string array
+	 *            The first string array
 	 * @param expected
-	 *        The second string array
+	 *            The second string array
 	 * @return a boolean
 	 */
 	private boolean isSameValues(Object[] provided, Object[] expected) {
@@ -674,15 +916,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 
 			if (provided[i] == null && expected[i] != null || provided[i] != null && expected[i] == null) {
 				return false;
-			}
-			else if (provided[i] instanceof Object[] && expected[i] instanceof Object[]) {
+			} else if (provided[i] instanceof Object[] && expected[i] instanceof Object[]) {
 				Object[] tab1 = (Object[]) provided[i];
 				Object[] tab2 = (Object[]) expected[i];
 				if (isSameValues(tab1, tab2) == false) {
 					return false;
 				}
-			}
-			else if (provided[i] != null && !provided[i].equals(expected[i])) {
+			} else if (provided[i] != null && !provided[i].equals(expected[i])) {
 				return false;
 			}
 		}
@@ -691,11 +931,12 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Return a java piece of code with the definition of a list of strings which are the constants of fields found in
-	 * the workbench part given into parameter. For debug purpose only.
+	 * Return a java piece of code with the definition of a list of strings
+	 * which are the constants of fields found in the workbench part given into
+	 * parameter. For debug purpose only.
 	 * 
 	 * @param wp
-	 *        the workbench part for searching fields
+	 *            the workbench part for searching fields
 	 * @return the java code
 	 */
 	private String getStringDef(GTCadseWorkbenchPart wp) {
@@ -709,8 +950,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		for (IAttributeType<?> attr : attrlist) {
 			if (begin) {
 				begin = false;
-			}
-			else {
+			} else {
 				sb.append(", ");
 			}
 			sb.append("\"");
@@ -723,11 +963,12 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	}
 
 	/**
-	 * Return a java piece of code with the definition of a list of strings which are the constants of fields found in
-	 * the workbench part given into parameter. For debug purpose only.
+	 * Return a java piece of code with the definition of a list of strings
+	 * which are the constants of fields found in the workbench part given into
+	 * parameter. For debug purpose only.
 	 * 
 	 * @param wp
-	 *        the workbench part for searching fields
+	 *            the workbench part for searching fields
 	 * @return the java code
 	 */
 	private String getStringVal(GTCadseWorkbenchPart wp) {
@@ -741,38 +982,32 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		for (Object value : values) {
 			if (begin) {
 				begin = false;
-			}
-			else {
+			} else {
 				sb.append(", ");
 			}
 
 			if (value == null) {
 				sb.append("null");
-			}
-			else if (value instanceof String) {
+			} else if (value instanceof String) {
 				sb.append("\"");
 				sb.append(value);
 				sb.append("\"");
-			}
-			else if (value instanceof Boolean) {
+			} else if (value instanceof Boolean) {
 				sb.append(value.toString());
-			}
-			else if (value instanceof String[]) {
+			} else if (value instanceof String[]) {
 				sb.append("new Object[]{");
 				boolean start = true;
 				for (String str : (String[]) value) {
 					if (start) {
 						start = false;
-					}
-					else {
+					} else {
 						sb.append(", ");
 					}
 					sb.append(str);
 				}
 				sb.append("}");
 
-			}
-			else {
+			} else {
 				throw new WidgetNotFoundException("Unsupported element of class : " + value.getClass().getName());
 			}
 		}
@@ -795,7 +1030,13 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 
 			List<KeyValue> list = new ArrayList<KeyValue>();
 
-			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, 3)); // boolean attr can have a null dv
+			list.add(new KeyValue(CadseGCST.ATTRIBUTE_at_DEFAULT_VALUE_, 3)); // boolean
+			// attr
+			// can
+			// have
+			// a
+			// null
+			// dv
 
 			return list;
 		}
@@ -822,9 +1063,9 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		 * Assert check box has correct state number.
 		 * 
 		 * @param field
-		 *        the field
+		 *            the field
 		 * @param attr
-		 *        the attr
+		 *            the attr
 		 */
 		static void assertCheckBoxHasCorrectStateNumber(GTCadseField field, IAttributeType<?> attr) {
 
