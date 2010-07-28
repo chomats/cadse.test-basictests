@@ -323,10 +323,10 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 */
 	@Test
 	public void testListEnumAttribute() throws Exception {
-		String[] expected_typeCreationCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
-		Object[] expected_typeCreationVal = { "", false };
-		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
-				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+		String[] expected_typeCreationCST = { "ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_" };
+		Object[] expected_typeCreationVal = { null, "" };
+		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ENUM_lt_ENUM_TYPE",
+				"ATTRIBUTE_at_DEFAULT_VALUE_" };
 
 		itemListCreationTest(it_mit, "myListEnum", CadseGCST.ENUM, expected_typeCreationCST, expected_typeCreationVal,
 				expected_typeModifCST);
@@ -377,7 +377,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		String[] expected_typeCreationCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
 		Object[] expected_typeCreationVal = { "", false };
 		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
-				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "STRING_at_NOT_EMPTY_" };
 
 		itemListCreationTest(it_mit, "myListString", CadseGCST.STRING, expected_typeCreationCST,
 				expected_typeCreationVal, expected_typeModifCST);
@@ -849,7 +849,11 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		// TODO to be removed as soon as bug will be corrected
 		// String section = sectionLabel(itConstant);
 		String section; // erreur
-		if (path.getDestinationName().equals("sub-element")) // erreur
+		if (sectionLabel(itConstant).equals("Enum")) // erreur
+			section = "Enum"; // erreur
+		else if (sectionLabel(itConstant).equals("String")) // erreur
+			section = "String"; // erreur
+		else if (path.getDestinationName().equals("sub-element")) // erreur
 			section = "Attribute"; // erreur
 		else
 			section = sectionLabel(itConstant); // erreur
