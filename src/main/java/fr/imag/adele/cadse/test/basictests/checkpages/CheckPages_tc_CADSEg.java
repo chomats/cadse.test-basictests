@@ -845,18 +845,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	 */
 	private void checkModificationPage(GTTreePath path, ItemType itConstant, String[] expected) {
 		String tab = tabLabel(itConstant);
-
-		// TODO to be removed as soon as bug will be corrected
-		// String section = sectionLabel(itConstant);
-		String section; // erreur
-		if (sectionLabel(itConstant).equals("Enum")) // erreur
-			section = "Enum"; // erreur
-		else if (sectionLabel(itConstant).equals("String")) // erreur
-			section = "String"; // erreur
-		else if (path.getDestinationName().equals("sub-element")) // erreur
-			section = "Attribute"; // erreur
-		else
-			section = sectionLabel(itConstant); // erreur
+		String section = sectionLabel(itConstant);
 
 		try {
 			// Selects node into the tree
