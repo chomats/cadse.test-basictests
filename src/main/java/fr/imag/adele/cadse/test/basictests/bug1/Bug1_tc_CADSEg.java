@@ -4,16 +4,21 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.groupKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaCore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import fr.imag.adele.cadse.cadseg.eclipse.CheckCompilationError;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
@@ -43,5 +48,7 @@ public class Bug1_tc_CADSEg extends Bug1_Common {
 		createItemType(dataModel, src.getDestinationName(), notAbstractKv(), rootKv());
 		createItemType(dataModel, dst.getDestinationName(), notAbstractKv(), rootKv());
 		createLinkType("groupLink", src, dst, null, null, groupKv());
+	
+		checkCompilationErrors(workspaceView, cadseModel);
 	}
 }
