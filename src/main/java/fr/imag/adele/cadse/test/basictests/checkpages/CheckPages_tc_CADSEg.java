@@ -291,8 +291,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	public void testListBooleanAttribute() throws Exception {
 		String[] expected_typeCreationCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
 		Object[] expected_typeCreationVal = { false, true };
-		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
-				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+		String[] expected_typeModifCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
 
 		itemListCreationTest(it_mit, "myListBoolean", CadseGCST.BOOLEAN, expected_typeCreationCST,
 				expected_typeCreationVal, expected_typeModifCST);
@@ -308,8 +307,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	public void testListDoubleAttribute() throws Exception {
 		String[] expected_typeCreationCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
 		Object[] expected_typeCreationVal = { "", false };
-		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
-				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+		String[] expected_typeModifCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
 
 		itemListCreationTest(it_mit, "myListDouble", CadseGCST.DOUBLE, expected_typeCreationCST,
 				expected_typeCreationVal, expected_typeModifCST);
@@ -325,8 +323,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	public void testListEnumAttribute() throws Exception {
 		String[] expected_typeCreationCST = { "ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_" };
 		Object[] expected_typeCreationVal = { null, "" };
-		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ENUM_lt_ENUM_TYPE",
-				"ATTRIBUTE_at_DEFAULT_VALUE_" };
+		String[] expected_typeModifCST = { "ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_" };
 
 		itemListCreationTest(it_mit, "myListEnum", CadseGCST.ENUM, expected_typeCreationCST, expected_typeCreationVal,
 				expected_typeModifCST);
@@ -342,8 +339,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	public void testListIntegerAttribute() throws Exception {
 		String[] expected_typeCreationCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
 		Object[] expected_typeCreationVal = { "", false };
-		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
-				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+		String[] expected_typeModifCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
 
 		itemListCreationTest(it_mit, "myListInteger", CadseGCST.INTEGER, expected_typeCreationCST,
 				expected_typeCreationVal, expected_typeModifCST);
@@ -359,8 +355,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	public void testListLongAttribute() throws Exception {
 		String[] expected_typeCreationCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
 		Object[] expected_typeCreationVal = { "", false };
-		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
-				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
+		String[] expected_typeModifCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
 
 		itemListCreationTest(it_mit, "myListLong", CadseGCST.LONG, expected_typeCreationCST, expected_typeCreationVal,
 				expected_typeModifCST);
@@ -376,8 +371,8 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 	public void testListStringAttribute() throws Exception {
 		String[] expected_typeCreationCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_" };
 		Object[] expected_typeCreationVal = { "", false };
-		String[] expected_typeModifCST = { "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_",
-				"ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "STRING_at_NOT_EMPTY_" };
+		String[] expected_typeModifCST = { "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_",
+				"STRING_at_NOT_EMPTY_" };
 
 		itemListCreationTest(it_mit, "myListString", CadseGCST.STRING, expected_typeCreationCST,
 				expected_typeCreationVal, expected_typeModifCST);
@@ -887,7 +882,8 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 		}
 
 		// Check boolean field
-		booleanFieldChecker.check(propertiesView);
+		if (!path.getDestinationName().equals("sub-element"))
+			booleanFieldChecker.check(propertiesView);
 	}
 
 	/**
