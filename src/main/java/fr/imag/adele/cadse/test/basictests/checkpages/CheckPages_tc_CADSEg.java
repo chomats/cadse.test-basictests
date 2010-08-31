@@ -679,6 +679,7 @@ public class CheckPages_tc_CADSEg extends GTCadseTestCase {
 
 		// The creation process shouldn't have induced compilation error/
 		checkCompilationErrors(workspaceView, cadse_model);
+
 	}
 
 	/**
