@@ -85,16 +85,12 @@ public class GTBooleanParameter extends GTTypeParameter {
 	public boolean isAttributeCreationSuccess(GTTestParameter tp) {
 		boolean cbu = tp.getBoolean("cbu");
 		Boolean defVal = tp.getBoolean("defVal");
-		boolean isList = tp.getBoolean("list");
 
-		if (isList && defVal == null) {
+		// List or non list is the same logic
+		if (defVal == null && cbu == true)
 			return false;
-		}
-		if (defVal == null && cbu == true && !isList) {
-			return false;
-		} else {
+		else
 			return true;
-		}
 	}
 
 	/*
