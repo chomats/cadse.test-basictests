@@ -87,6 +87,9 @@ public class GTBooleanParameter extends GTTypeParameter {
 		Boolean defVal = tp.getBoolean("defVal");
 		boolean isList = tp.getBoolean("list");
 
+		if (isList && defVal == null) {
+			return false;
+		}
 		if (defVal == null && cbu == true && !isList) {
 			return false;
 		} else {
