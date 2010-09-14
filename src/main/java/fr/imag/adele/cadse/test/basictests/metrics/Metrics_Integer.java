@@ -75,7 +75,7 @@ public class Metrics_Integer extends Metrics_common {
 	 * Constructor.
 	 * 
 	 * @param number
-	 *        the instance number.
+	 *            the instance number.
 	 */
 	public Metrics_Integer(int number) {
 		instanceNumber = number;
@@ -102,9 +102,11 @@ public class Metrics_Integer extends Metrics_common {
 
 	/**
 	 * Performs the test itself.
+	 * 
+	 * @throws Exception
 	 */
 	@Test
-	public void testRunner() {
+	public void testRunner() throws Exception {
 		createInteger(itemType, "IntegerAttr" + instanceNumber);
 	}
 }

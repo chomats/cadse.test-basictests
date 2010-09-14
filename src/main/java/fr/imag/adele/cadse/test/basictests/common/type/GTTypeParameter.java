@@ -45,9 +45,19 @@ public abstract class GTTypeParameter {
 	public boolean isSettableValue(GTTestParameter tp, KeyValue kv) {
 
 		boolean isList = tp.getBoolean("list");
+		boolean cbu = tp.getBoolean("cbu");
 
 		if (isList) {
-			return kv != null && kv.value != null && !kv.value.toString().equals("");
+			if (kv == null)
+				return false;
+			if (kv.value == null)
+				return false;
+			if (!kv.value.toString().equals(""))
+				return true;
+			if (cbu)
+				return false;
+			else
+				return true;
 		} else {
 			return true;
 		}
