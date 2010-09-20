@@ -35,7 +35,6 @@ import org.junit.runners.Parameterized.Parameters;
 import fr.imag.adele.cadse.test.basictests.common.GTCommonParameters;
 import fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver;
 import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
-import fr.imag.adele.cadse.test.basictests.group.test1.Test1_Common_testDriver;
 
 @RunWith(value = Parameterized.class)
 public class Test3_Long_tc_execution {
@@ -95,7 +94,7 @@ public class Test3_Long_tc_execution {
 	 * @return the test driver
 	 */
 	protected static GTCommonTestDriver getDriver() {
-		return new Test1_Common_testDriver();
+		return new Test3_Common_testDriver();
 	}
 
 	/**
