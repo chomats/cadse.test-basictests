@@ -133,7 +133,11 @@ public class GTStringParameter extends GTTypeParameter {
 	 */
 	@Override
 	public void setAdvancedAttributeProperties(GTTestParameter tp, GTTreePath attrPath) {
-		workspaceView.selectNode(attrPath);
+		boolean isList = tp.getBoolean("list");
+		if (isList)
+			workspaceView.selectNode(attrPath.concat("sub-element"));
+		else
+			workspaceView.selectNode(attrPath);
 		propertiesView.showTab("String");
 		propertiesView.setValue(tp.getValue("notEmpty"));
 	}
