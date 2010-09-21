@@ -226,7 +226,7 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 		// not correct, the previous correct
 		// model value (default value) is locked even if the field displays
 		// another value.
-		if (fieldInCP && newValue != null && tp.isValidValue(getFinalValue(tp))) {
+		if (isOkButtonActivated(tp) && fieldInCP && newValue != null && tp.isValidValue(getFinalValue(tp))) {
 			Object expected = getFinalValue(tp);
 			Object actual = shell.findCadseField(getAttributeName(tp)).getModelValue();
 			assertEqualsListValues("Final model value error for #" + tp.testNumber, expected, actual);
