@@ -105,6 +105,33 @@ public class GTEnumParameter extends GTTypeParameter {
 	 * (non-Javadoc)
 	 * 
 	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
+	 * isSettableValue
+	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter,
+	 * fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue)
+	 */
+	@Override
+	public boolean isSettableValue(GTTestParameter tp, KeyValue kv) {
+
+		boolean isList = tp.getBoolean("list");
+
+		if (isList) {
+			if (kv == null)
+				return false;
+			else if (kv.value == null)
+				return false;
+			else if (!kv.value.toString().equals(""))
+				return true;
+			else
+				return false;
+		} else {
+			return true;
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seefr.imag.adele.cadse.test.basictests.common.type.GTTypeParameter#
 	 * getCreationKeyValues
 	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter)
 	 */
