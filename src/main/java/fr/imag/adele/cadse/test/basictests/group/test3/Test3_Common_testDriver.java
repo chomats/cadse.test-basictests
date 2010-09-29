@@ -45,7 +45,7 @@ public class Test3_Common_testDriver extends GTSimpleTestDriver {
 	public void testCreation(GTTestParameter tp) {
 
 		/* Pre create */
-		preCreate(tp);
+		tp.preCreate(getDataModel(tp));
 
 		/* Item type and link creation */
 		createTypes(tp);
