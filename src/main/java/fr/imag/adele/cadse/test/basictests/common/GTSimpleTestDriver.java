@@ -27,6 +27,9 @@ import java.util.UUID;
 
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 
+import fr.imag.adele.cadse.core.Item;
+import fr.imag.adele.cadse.core.attribute.IAttributeType;
+import fr.imag.adele.cadse.core.impl.CadseCore;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
@@ -288,7 +291,14 @@ public abstract class GTSimpleTestDriver extends GTCommonTestDriver {
 	 * @param id
 	 *            the instance id
 	 */
-	protected abstract void modelChecking(GTTestParameter tp, UUID id);
+	protected void modelChecking(GTTestParameter tp, UUID id) {
+		Item item = CadseCore.getLogicalWorkspace().getItem(id);
+		assertNotNull(item);
+		IAttributeType<?> attr = item.getType().getAttributeType(getAttributeName(tp));
+		Object actualModel = item.getAttribute(attr);
+		Object expectedModel = getFinalValue(tp);
+		assertEqualsListValues("Error in model checking for #" + tp.testNumber, expectedModel, actualModel);
+	}
 
 	/**
 	 * Displays the attribute creation page when creation wizard is shown.
