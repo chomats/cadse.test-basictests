@@ -24,12 +24,6 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
-
-import java.util.UUID;
-
-import fr.imag.adele.cadse.core.Item;
-import fr.imag.adele.cadse.core.attribute.IAttributeType;
-import fr.imag.adele.cadse.core.impl.CadseCore;
 import fr.imag.adele.cadse.test.basictests.common.GTSimpleTestDriver;
 import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
@@ -65,23 +59,5 @@ public class BasicProperties_Common_testDriver extends GTSimpleTestDriver {
 		shell.findCadseFieldName().typeText(getInstanceName(tp));
 
 		return shell;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * fr.imag.adele.cadse.test.basictests.common.GTSimpleTestDriver#modelChecking
-	 * (fr.imag.adele.cadse.test.basictests.common.GTTestParameter,
-	 * java.util.UUID)
-	 */
-	@Override
-	protected void modelChecking(GTTestParameter tp, UUID id) {
-		Item item = CadseCore.getLogicalWorkspace().getItem(id);
-		assertNotNull(item);
-		IAttributeType<?> attr = item.getType().getAttributeType(getAttributeName(tp));
-		Object actualModel = item.getAttribute(attr);
-		Object expectedModel = getFinalValue(tp);
-		assertEqualsListValues("Error in model checking for #" + tp.testNumber, expectedModel, actualModel);
 	}
 }
