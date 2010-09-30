@@ -28,12 +28,6 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.ro
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicHead;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
-
-import java.util.UUID;
-
-import fr.imag.adele.cadse.core.Item;
-import fr.imag.adele.cadse.core.attribute.IAttributeType;
-import fr.imag.adele.cadse.core.impl.CadseCore;
 import fr.imag.adele.cadse.test.basictests.common.GTSimpleTestDriver;
 import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
@@ -113,15 +107,5 @@ public class Test3_Common_testDriver extends GTSimpleTestDriver {
 	@Override
 	protected void displayAttributeModificationPage(GTTestParameter tp) {
 		propertiesView.showTab(getInstanceSrcName(tp));
-	}
-
-	@Override
-	protected void modelChecking(GTTestParameter tp, UUID id) {
-		Item item = CadseCore.getLogicalWorkspace().getItem(id);
-		assertNotNull(item);
-		IAttributeType<?> attr = item.getLocalAttributeType(getAttributeName(tp));
-		Object actualModel = item.getAttribute(attr);
-		Object expectedModel = getFinalValue(tp);
-		assertEqualsListValues("Error in model checking for #" + tp.testNumber, expectedModel, actualModel);
 	}
 }
