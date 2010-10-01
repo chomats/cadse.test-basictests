@@ -4,6 +4,7 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.groupKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicHead;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
 import fr.imag.adele.cadse.test.basictests.common.GTSimpleTestDriver;
@@ -32,11 +33,20 @@ public class Test2_Common_testDriver extends GTSimpleTestDriver {
 
 	@Override
 	protected GTCadseShell initCreationPage(GTTestParameter tp) {
-		workspaceView.contextMenuNew(getItName(tp)).click();
+		workspaceView.contextMenuNewMember(new GTTreePath(getInstanceSrcName(tp)), getItName(tp)).click();
 		GTCadseShell shell = new GTCadseShell(getItName(tp));
-
-		shell.findCadseFieldName().typeText(getInstanceName(tp));
-
 		return shell;
+	}
+
+	protected String getInstanceSrcName(GTTestParameter tp) {
+		return "groupHead" + tp.testNumber;
+	}
+
+	@Override
+	protected void preExecute(GTTestParameter tp) {
+
+		/* Head creation */
+		GTTreePath headPath = new GTTreePath(getInstanceSrcName(tp));
+		createBasicHead(workspaceView, null, getItSrcName(tp), getInstanceSrcName(tp), headPath);
 	}
 }
