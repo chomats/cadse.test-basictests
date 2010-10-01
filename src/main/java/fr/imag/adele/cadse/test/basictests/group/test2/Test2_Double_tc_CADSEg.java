@@ -34,7 +34,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Double_parameters;
 import fr.imag.adele.cadse.test.basictests.common.GTCommonParameters;
 import fr.imag.adele.cadse.test.basictests.common.GTCommonTestDriver;
 import fr.imag.adele.cadse.test.basictests.common.GTTestParameter;
@@ -110,6 +109,6 @@ public class Test2_Double_tc_CADSEg extends GTCadseTestCase {
 	 * @return the test parameters
 	 */
 	protected static GTCommonParameters getParameters() {
-		return new BasicProperties_Double_parameters();
+		return new Test2_Double_parameters();
 	}
 }
