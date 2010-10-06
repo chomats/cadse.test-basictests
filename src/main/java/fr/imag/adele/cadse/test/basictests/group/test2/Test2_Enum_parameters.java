@@ -7,13 +7,12 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.no
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_parameters;
 import fr.imag.adele.cadse.test.basictests.common.GTCollectionTestParameter;
 import fr.imag.adele.cadse.test.basictests.common.type.GTEnumParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
-public class Test2_Enum_parameters extends BasicProperties_Common_parameters {
+public class Test2_Enum_parameters extends Test2_Common_parameters {
 
 	/** Enum type name. */
 	String enumTypeName = "myEnum";

@@ -8,12 +8,11 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.no
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.test.basictests.basicproperties.BasicProperties_Common_parameters;
 import fr.imag.adele.cadse.test.basictests.common.GTCollectionTestParameter;
 import fr.imag.adele.cadse.test.basictests.common.type.GTStringParameter;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 
-public class Test2_String_parameters extends BasicProperties_Common_parameters {
+public class Test2_String_parameters extends Test2_Common_parameters {
 
 	/** Constructor */
 	public Test2_String_parameters() {
