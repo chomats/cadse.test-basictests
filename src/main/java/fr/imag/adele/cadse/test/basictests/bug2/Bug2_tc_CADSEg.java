@@ -18,7 +18,7 @@
  *
  * Copyright (C) 2006-2010 Adele Team/LIG/Grenoble University, France
  */
-package fr.imag.adele.cadse.test.basictests.bug1;
+package fr.imag.adele.cadse.test.basictests.bug2;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView.workspaceView;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.groupKv;
@@ -40,7 +40,7 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 @RunWith(JUnit4.class)
-public class Bug1_tc_CADSEg extends Bug1_Common {
+public class Bug2_tc_CADSEg extends Bug2_Common {
 
 	/** A path to the CADSE definition. */
 	public final GTTreePath cadseModel = new GTTreePath(cadseName);
