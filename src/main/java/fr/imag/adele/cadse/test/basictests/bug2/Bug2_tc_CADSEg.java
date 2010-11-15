@@ -24,10 +24,13 @@ import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseView
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.groupKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.notAbstractKv;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.rootKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.sicpKv;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue.simpKv;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createCadseDefinition;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createString;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.selectCadses;
 import static fr.imag.adele.graphictests.gtworkbench_part.GTView.welcomeView;
 
@@ -58,12 +61,20 @@ public class Bug2_tc_CADSEg extends Bug2_Common {
 		// Populates DataModel
 		createCadseDefinition(cadseName, "model." + cadseName);
 
-		GTTreePath src = dataModel.concat("ItSrc");
-		GTTreePath dst = dataModel.concat("ItDst");
+		GTTreePath it1Path = dataModel.concat(it1Name);
+		GTTreePath it2Path = dataModel.concat(it2Name);
+		GTTreePath it3Path = dataModel.concat(it3Name);
 
-		createItemType(dataModel, src.getDestinationName(), notAbstractKv(), rootKv());
-		createItemType(dataModel, dst.getDestinationName(), notAbstractKv(), rootKv());
-		createLinkType("groupLink", src, dst, null, null, groupKv());
+		createItemType(dataModel, it1Name, notAbstractKv(), rootKv());
+		createItemType(dataModel, it2Name, notAbstractKv(), rootKv());
+		createItemType(dataModel, it3Name, notAbstractKv(), rootKv());
+
+		createString(it1Path, attr1Name, sicpKv(), simpKv());
+		createString(it2Path, attr2Name, sicpKv(), simpKv());
+		createString(it3Path, attr3Name, sicpKv(), simpKv());
+
+		createLinkType("groupLink1to2", it1Path, it2Path, null, null, groupKv());
+		createLinkType("groupLink2to3", it2Path, it3Path, null, null, groupKv());
 
 		checkCompilationErrors(workspaceView, cadseModel);
 	}

@@ -20,7 +20,21 @@
  */
 package fr.imag.adele.cadse.test.basictests.bug2;
 
-public class Bug2_Common {
+import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
+
+public class Bug2_Common extends GTCadseTestCase {
 	/** CADSE prefix, used to compute CADSE name. */
 	public final String cadseName = "CADSEBug2";
+
+	String instance1Name = "instance1";
+	String instance2Name = "instance2";
+	String instance3Name = "instance3";
+
+	String it1Name = "It1";
+	String it2Name = "It2";
+	String it3Name = "It3";
+
+	String attr1Name = "str1";
+	String attr2Name = "str2";
+	String attr3Name = "str3";
 }
